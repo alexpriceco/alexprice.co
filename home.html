@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>alexprice.co</title>
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="animate.css">
+    <link rel="stylesheet" type="text/css" href="modal.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/animate.js" ></script>
+    <script type="text/javascript" src="js/sidebar.js" ></script>
+    <script type="text/javascript" src="js/modal.js" ></script>
+    <script type="text/javascript" src="js/smooth-scroll.min.js" ></script>
+    <script type="text/javascript">smoothScroll.init();</script>
+</head>
+    
+<body id="top">
+    <nav class="animated-slowly fadeIn">
+        <ul>
+        <a href="#"><li>home</li></a>
+        <a href="volt/index.html"><li>volt</li></a>
+        </ul>
+    </nav>
+    <div class="covertext-tarp">
+        <section class="covertext">
+            <div class="animated-slowly fadeInDown">I'm a web developer, entrepreneur, product designer, and STEM evangalist.</div>
+            <hr class="animated-super-slowly fadeIn" style="width:60%;">
+            <div class="animated-slowly fadeInUp"><i class="qualify">Want to talk about your awesome project that needs a website? 
+                <a href="#" class="popup-trigger">Click me</a>.</i></div>
+        </section>
+    </div>
+    
+    <div class="popup" role="alert"> <!--this is the email popup modal-->
+        <div class="popup-container">
+            <p>Let's get in touch.</p><br>
+            <form method="post" action="mailer.php">
+                <div><input name="name" type="text" placeholder="name"></div><br>
+                <div><input name="email" type="text" placeholder="email"></div><br>
+                <div><textarea name="message" placeholder="tell me about your project"></textarea></div><br>
+                <div><input type="submit" name="submit" value="Send" class="green"></div>
+                <input name="context" type='hidden' value="home" />
+            </form>
+        </div>
+    </div>   
+</body>
+    
+</html>
