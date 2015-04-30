@@ -1,0 +1,37 @@
+@mixin mixin-rotate($deg) {
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-ms-transform: rotate($deg);
+	-o-transform: rotate($deg);
+	transform: rotate($deg);
+}
+
+@mixin mixin-disable-select() {
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin mixin-transition-ease-in-out() {
+	-webkit-transition: max-height 0.3s ease-in-out;
+	-moz-transition: max-height 0.3s ease-in-out;
+	-o-transition: max-height 0.3s ease-in-out;
+	transition: max-height 0.3s ease-in-out;
+}
+
+@mixin mixin-transform-translate($percent) {
+	-webkit-transform: translateX($percent) translateY($percent);
+	-moz-transform: translateX($percent) translateY($percent);
+	-ms-transform: translateX($percent) translateY($percent);
+	-o-transform: translateX($percent) translateY($percent);
+	transform: translateX($percent) translateY($percent);
+}
+
+@mixin mixin-transform-transition() {
+	-webkit-transition: -webkit-transform .3s, top .3s, background-color 0s;
+	-moz-transition: -moz-transform .3s, top .3s, background-color 0s;
+	transition: transform .3s, top .3s, background-color 0s;
+}

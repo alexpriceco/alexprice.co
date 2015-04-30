@@ -1,6 +1,6 @@
 .popup,
 .popup-help,
-.popup-notyet {
+.popup-purchase {
   position: fixed;
   left: 0;
   top: 0;
@@ -16,16 +16,16 @@
 }
 .popup p,
 .popup-help p,
-.popup-notyet p {
+.popup-purchase p {
     color: #222222;
 }
-.popup-notyet p {
+.popup-purchase p {
     width: 70%;
     margin: 0 auto;
 }
 .popup.is-visible,
 .popup-help.is-visible,
-.popup-notyet.is-visible {
+.popup-purchase.is-visible {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
@@ -35,7 +35,7 @@
 
 .popup-container,
 .popup-container-help,
-.popup-container-notyet {
+.popup-container-purchase {
     padding-top: 7vh;
     position: relative;
     width: 90%;
@@ -64,7 +64,7 @@
 }
 .popup-container .green,
 .popup-container-help .green,
-.popup-container-notyet .green {
+.popup-container-purchase .green {
     width:100%;
     border:none;
     font-size: 1em;

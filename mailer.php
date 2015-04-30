@@ -38,6 +38,10 @@ else if($context == "volt-signup") {
     $content = "$name requested that you add $visitor_email to the mailing list.";
     $location = "thanks.html?option=volt-signup";
 }
+else if($context == "volt-purchase") {
+    $content = "$name at $visitor_email submitted an order!";
+    $location = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WKQ9SYMUAAEVA";
+}
 else {
     $content = "$name submitted a form with this content:\n\n$message \n\nYou can respond to $visitor_email.";
     $location = "thanks.html?option=general";

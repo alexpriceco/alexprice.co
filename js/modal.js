@@ -11,10 +11,10 @@ jQuery(document).ready(function($){
 		$('.popup-help').addClass('is-visible');
 	});
 	
-    //open notyet popup
-    $('.popup-trigger-notyet').on('click', function(event){
+    //open purchase popup
+    $('.popup-trigger-purchase').on('click', function(event){
 		event.preventDefault();
-		$('.popup-notyet').addClass('is-visible');
+		$('.popup-purchase').addClass('is-visible');
 	});
     
 	//close popup
@@ -33,9 +33,9 @@ jQuery(document).ready(function($){
 		}
 	});
     
-	//close notyet popup
-	$('.popup-notyet').on('click', function(event){
-		if( $(event.target).is('.popup-close') || $(event.target).is('.popup-notyet') ) {
+	//close purchase popup
+	$('.popup-purchase').on('click', function(event){
+		if( $(event.target).is('.popup-close') || $(event.target).is('.popup-purchase') ) {
 			event.preventDefault();
 			$(this).removeClass('is-visible');
 		}
@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
     	if(event.which=='27'){
     		$('.popup').removeClass('is-visible');
             $('.popup-help').removeClass('is-visible');
-            $('.popup-notyet').removeClass('is-visible');
+            $('.popup-purchase').removeClass('is-visible');
 	    }
     });
 });

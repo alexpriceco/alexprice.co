@@ -117,25 +117,6 @@ a, a:visited {
 }
 
 
-#hero{background: url(left.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;}
-#speed{background: url(right.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;}
-#vex{background: url(front.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  color:#f9f9f9;}
-#purchase{background-color:#f9f9f9; background:none;}
-
-
 
 @media (min-width: 40px) and (max-width: 991px) {
     .content-container { 

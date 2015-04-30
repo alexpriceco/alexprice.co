@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VEXvolt</title>
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="min.volt.css">
+    <link rel="stylesheet" type="text/css" href="../animate.css">
+    <link rel="stylesheet" type="text/css" href="../modal.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/animate.js" ></script>
+    <script type="text/javascript" src="../js/modal.js" ></script>
+    <script type="text/javascript" src="../js/smooth-scroll.min.js" ></script>
+    <script type="text/javaScript" src="../js/validator.js"></script>
+    <script>smoothScroll.init();</script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+    
+<body>
+    <nav class="animated-medium fadeIn">
+        <ul>
+        <a href="../home.html"><li class="fade-left">home</li></a>
+        <a data-scroll href="#purchase"><li class="fade-right">purchase</li></a>
+        </ul>
+    </nav>
+    
+     <section id="page-wrap">
+
+        <div id="main">
+
+        <article class="hero">
+            <div class="content-container animated fadeInUp"><!--everything above the fold-->
+                <!--<div class="voltmeter animated left">
+                    <img src="../images/full-example.png" />
+                </div>-->
+
+                <div class="empower animated right fade-top">
+                    <b class="sub">Never get caught with a dead robot again.</b> <br><br>
+                    Welcome to the newest, easiest, fastest, and cheapest way to measure how much juice is left in a VEX battery.
+                </div>
+            </div>
+        </article>
+
+        <article class="features"><!--first item-->
+            <div class="pretty item dd top">
+                <!--<div class="left imco">
+                    <img src="../images/example.png" />
+                </div>-->
+                <div class="right teco fade-top" id="vexinmind">
+                    <b class="sub">Built with VEX in mind.</b> <br><br>
+                    In the rush before a match, you need to be able to grab a charged battery, fast. The volt is insanely simple to use, so you can worry about robots, rather than dead batteries.
+                </div>
+            </div>
+            <div class="item fakeheight" id="pretty"></div>
+
+            <div class="easy item top"><!--second item-->
+                <!--<div class="right imco">
+                    <img src="../images/example.png" />
+                </div>-->
+                <div class="left teco fade-top" id="speed">
+                    <b class="sub">Designed for speed.</b> <br><br>
+                    We&#39;ve gone through several iterations to make sure that this voltmeter is as precise and fast as possible. Quick results, fast. 
+                </div>
+            </div>
+            <div class="item fakeheight" id="easy"></div>
+
+            <div class="cheap item top"><!--third item-->
+                <!--<div class="left imco">
+                    <img src="../images/example.png" />
+                </div>-->
+
+                <div class="right teco fade-top" id="cheap">
+                    <b class="sub">What&#39;s that? You don&#39;t have wheelbarrows of cash?</b> <br><br>
+                    We spent a lot of time finding the perfect balance between cost and quality. 
+                    We settled on <b>$25, plus free shipping</b>. You can&#39t go wrong with free shipping.
+                </div>
+            </div>
+        </article>
+
+        <article class="purchase top" id="purchase"><!--buy phase-->
+            <div class="item animated top">
+                <div class="animated left teco fade-top">
+                    <br>
+                    <b class="title">Ready to give us your money?</b> <br><br>
+                    Of course you are. Hit the purchase button to buy online, we&#39;ve got PayPal to make checkout easy. If you want to stay up to date with changes and new stuff, email us!
+                    <br><br>
+                    <div class="center">
+                        <a href="#" class="popup-trigger button">email us</a>
+                        
+                        <a href="#" class="popup-trigger-purchase button">purchase</a>
+                    </div>
+                </div>  
+                <!--<div class="animated right voltmeter">
+                    <img src="../images/full-example.png" />
+                </div>-->
+            </div>
+        </article>
+         
+         <footer>
+             <a href="#" id="below" class="popup-trigger-help">questions?</a>
+         </footer>
+
+        </div>
+        
+    </section>
+     
+    <div class="popup-help" role="alert"> <!--this is the problem email popup modal-->
+        <div class="popup-container-help">
+            <p>Ask away, and I'll get back to you in a day.</p><br>
+            <form method="post" name="myemailform" action="../mailer.php">
+                <div><input name="name" type="text" placeholder="name"></div><br>
+                <div><input name="email" type="text" placeholder="email"></div><br>
+                <div><textarea name="message" placeholder="what's up?"></textarea></div><br>
+                <div><input type="submit" name="submit" value="Send" class="green"></div>
+                <input type='hidden' name='context' value="volt-question" />
+            </form>
+        </div>
+    </div>   
+    
+    <div class="popup" role="alert"> <!--this is the email popup modal-->
+        <div class="popup-container">
+            <p>Name and email, you know the drill.</p><br>
+            <form method="post" name="myemailform" action="../mailer.php">
+                <div><input name="name" type="text" placeholder="name"></div><br>
+                <div><input name="email" type="text" placeholder="email"></div><br><br>
+                <div><input type="submit" name="submit" value="Send" class="green"></div>
+                <input type='hidden' name='context' value="volt-signup" />
+            </form>
+        </div>
+    </div>  
+    
+    <div class="popup-purchase" role="alert"> <!--this is the email popup modal-->
+        <div class="popup-container-purchase">
+            <p>So that we can let you know when your order&#39;s shipped, can you tell us who you are, and how to reach you?</p><br>
+            <form method="post" name="myemailform" action="../mailer.php">
+                <div><input name="name" type="text" placeholder="name"></div><br>
+                <div><input name="email" type="text" placeholder="email"></div><br><br>
+                <div><input type="submit" name="submit" value="Send" class="green"></div>
+                <input type='hidden' name='context' value="volt-purchase" />
+            </form>
+        </div>
+    </div>  
+
+
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('.fade-right').addClass("hidden").viewportChecker({
+                classToAdd: 'visible animated fadeInRight',
+                offset: 0    
+               });   
+            jQuery('.fade-left').addClass("hidden").viewportChecker({
+                classToAdd: 'visible animated fadeInLeft' ,
+                offset: 0   
+               });  
+            jQuery('.fade-top').addClass("hidden").viewportChecker({
+                classToAdd: 'visible animated fadeInUp' ,
+                offset: 0   
+               });
+        });            
+    </script>
+    <script type="text/javascript">
+        var frmvalidator  = new Validator("myemailform");
+        frmvalidator.addValidation("name","req","Please provide your name"); 
+        frmvalidator.addValidation("email","req","Please provide your email"); 
+        frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+    </script>
+</body>
+    
+</html>

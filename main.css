@@ -17,7 +17,8 @@ body {
     font-family: "open sans", "helvetica neue", "helvetica", sans-serif;
     background-color: #f9f9f9;
     color: #2A3033;
-    z-index: 10;
+    position:relative;
+    z-index:0;
 }
 a {
     text-decoration: none;
@@ -63,19 +64,27 @@ footer {
     text-align: center;
     height:15vh;
     width:100vw;
-    display: table;
+    display:table;
+    bottom:0;
 }
+div#main {
+    position:relative;
+    z-index:1;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
 footer a,
 footer a:visited {
-    color: #879299;
+    color: #546066;
     display: table-cell;
     vertical-align: middle;
 }
 footer a:hover {
     color: #5CB1E0;
+    opacity:1;
 }
 section {
-    height: 100vh; 
+    height: 100vh;
 }
 .button {
     border-radius: 3px;
