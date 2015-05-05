@@ -16,6 +16,18 @@ jQuery(document).ready(function($){
 		event.preventDefault();
 		$('.popup-purchase').addClass('is-visible');
 	});
+	
+    //open purchase popup
+    $('.popup-trigger-bulk').on('click', function(event){
+		event.preventDefault();
+		$('.popup-bulk').addClass('is-visible');
+	});
+	
+    //open purchase popup
+    $('.popup-trigger-edu').on('click', function(event){
+		event.preventDefault();
+		$('.popup-edu').addClass('is-visible');
+	});
     
 	//close popup
 	$('.popup').on('click', function(event){
@@ -27,6 +39,22 @@ jQuery(document).ready(function($){
     
 	//close help popup
 	$('.popup-help').on('click', function(event){
+		if( $(event.target).is('.popup-close') || $(event.target).is('.popup-help') ) {
+			event.preventDefault();
+			$(this).removeClass('is-visible');
+		}
+	});
+    
+	//close help popup
+	$('.popup-bulk').on('click', function(event){
+		if( $(event.target).is('.popup-close') || $(event.target).is('.popup-help') ) {
+			event.preventDefault();
+			$(this).removeClass('is-visible');
+		}
+	});
+    
+	//close help popup
+	$('.popup-edu').on('click', function(event){
 		if( $(event.target).is('.popup-close') || $(event.target).is('.popup-help') ) {
 			event.preventDefault();
 			$(this).removeClass('is-visible');
@@ -47,6 +75,8 @@ jQuery(document).ready(function($){
     		$('.popup').removeClass('is-visible');
             $('.popup-help').removeClass('is-visible');
             $('.popup-purchase').removeClass('is-visible');
+            $('.popup-bulk').removeClass('is-visible');
+            $('.popup-edu').removeClass('is-visible');
 	    }
     });
 });

@@ -34,6 +34,14 @@ else if($context == "home") {
     $content = "$name wants to work on a project with you. Here's what they said: \n\n$message \n\nYou can respond to $visitor_email.";
     $location = "thanks.html?option=project";
 }
+else if($context == "edu") {
+    $content = "$name is an educator: \n\n$message \n\nYou can respond to $visitor_email.";
+    $location = "thanks.html?option=volt-edu";
+}
+else if($context == "bulk") {
+    $content = "$name inquired regarding a bulk order: \n\n$message \n\nYou can respond to $visitor_email.";
+    $location = "thanks.html?option=volt-bulk";
+}
 else if($context == "volt-signup") {
     $content = "$name requested that you add $visitor_email to the mailing list.";
     $location = "thanks.html?option=volt-signup";

@@ -1,44 +1,31 @@
-/*
-//   white       :   #f9f9f9
-//   black       :   #2A3033 
-//   baby blue   :   #A3CDE5 
-//   light blue  :   #5CB1E0 
-//   dark blue   :   #4788AD 
-//   shark       :   #464F54 
-//   light shark :   #879299
-*/
-
-
 nav ul li {
-    color: #464F54;
+    color: #464F54
 }
 nav ul li:hover {
-    color: #5CB1E0;
+    color: #5CB1E0
 }
-
 ::selection {
     color: #f9f9f9;
-    background: rgba(135, 146, 153, 0.4);
+    background: rgba(135, 146, 153, 0.4)
 }
-
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0
 }
 body {
-    background-color:#77c5f7;
-    margin:0;
+    background-color: #77c5f7;
+    margin: 0;
     font-family: 'Open Sans', sans-serif;
     min-width: 500px;
-    text-align: center;
+    text-align: center
 }
 .hero {
-    height:99vh;
+    height: 99vh;
     display: table;
-    width: 100%;
+    width: 100%
 }
 .features {
-    background-color:#f9f9f9;
+    background-color: #f9f9f9
 }
 .purchase {
     min-height: 85vh;
@@ -46,112 +33,147 @@ body {
 }
 .purchase .item {
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: middle
 }
 .content-container {
     text-align: center;
-    padding: 0 20vw;   
+    padding: 0 20vw;
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: middle
 }
-.voltmeter img, .imco img {
+.voltmeter img,
+.imco img {
     max-height: 40vh;
     min-height: 200px;
     vertical-align: middle;
-    max-width: 100%;
+    max-width: 100%
 }
 .empower {
     vertical-align: middle;
-    text-align:left;
-    display: inline-block;
+    text-align: left;
+    display: inline-block
 }
 .sub {
-    font-size:1.4em;
+    font-size: 1.4em
 }
 .title {
-    font-size: 2.2em;
+    font-size: 2.2em
 }
-.left, 
+.left,
 .right {
-    width:45%;
+    width: 45%;
     display: inline-block;
-    padding: 14vh 0;
+    padding: 14vh 0
 }
 .imco {
     text-align: center;
     padding: 0;
-    vertical-align: bottom;
+    vertical-align: bottom
 }
 .teco {
     vertical-align: middle;
-    text-align: left;
+    text-align: left
 }
 .item {
-    padding: 0 20vw;
+    padding: 0 20vw
 }
 .easy {
-    background-color:#77c5f7;
+    background-color: #77c5f7
 }
-.hidden{
-     opacity:0;
+.hidden {
+    opacity: 0
 }
 .hide {
-    display: none;
+    display: none
 }
-.visible{
-     opacity:1;
+.visible {
+    opacity: 1
 }
-a, a:visited {
+a,
+a:visited {
     color: #0071bc;
-    text-decoration: none;
+    text-decoration: none
 }
 .modal {
     position: fixed;
-    top:50%;
-    left:50%;
-    height:500px;
-    width:500px;
+    top: 50%;
+    left: 50%;
+    height: 500px;
+    width: 500px
 }
 .cleared {
-    display: none;
+    display: none
 }
+.fakeheight {
+    height: 50vh;
+}
+#pretty {
+    background: url(left.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#easy {
+    background: url(right.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#cheap {
+    background-color: #f9f9f9;
+    background: none;
+}
+.hero {
+    background: url(front.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #f9f9f9;
+}
+a.greytext {
+    font-size: 0.9em;
+    color:#464F54 !important;
+    -webkit-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+       -moz-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+         -o-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+            transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    display: inline-block;
 
-
-
-@media (min-width: 40px) and (max-width: 991px) {
-    .content-container { 
-        padding: 0 5vw;
-        display: block;
+}
+a.greytext:hover{
+    color:#2A3033 !important;
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+    .pretty,
+    .cheap,
+    .easy,
+    .purchase,
+    .purchase .item {
+        margin: 0;
+        padding: 0;
     }
-    .popup-container, .popup-container-help {
-        max-width: none;
+    body {
         font-size: 2.2em;
-        margin-top: 20vh;
-    }
-    .popup-container {
-        margin-top:25vh;
-    }
-    .teco, .imco, .voltmeter, .empower {
-        width:100%;
-        min-width: 600px;
-        display: inline-block;
-    }
-    .item { 
-        padding: 2vh 5vw;
-        margin:0 auto;
-        display: table;
-        margin: 0 auto;
-    }
-    .left, .right {
-        width:80%;
-        min-width: 300px;
-        font-size: 2.8em;
-    }
-    footer {  
-        font-size: 2.8em;
-        padding: 7%;
     }
     .button {
-        padding: 24px;
+        padding: 0.6em;
+    }
+    .content-container {
+        width: 90%;
+        margin: 0;
+        padding: 0;
+    }
+    #pretty,
+    #easy,
+    .hero {
+        background-size: contain;
+    }
+    .modal {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
     }
 }
