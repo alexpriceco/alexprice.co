@@ -1,0 +1,378 @@
+/* VARIABLES */
+$white1: #fefefe;
+$white2: #f9f9f9;
+$shark1: #879299;
+$shark2: #464F54;
+$mark1: #e35654;
+$mark2: #a33e3d;
+/* ======= */
+
+
+/* MIXINS */
+@mixin transition100ms() {
+    -webkit-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+    -moz-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+    -o-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+    transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+/* ======= */
+
+
+/* IMPORTS */
+@import 'normal';
+@import 'fontawesome/font-awesome.scss';
+/* ======= */
+
+
+
+/* MAIN STYLES */
+* {
+    margin: 0; 
+    padding: 0;
+}
+body {
+    font-family: "open sans", "helvetica neue", "helvetica", sans-serif;
+    background-color: $white1;
+    color: $shark2;
+    position:relative;
+}
+a {
+    text-decoration: none;
+    color: $shark1;
+    @include transition100ms();
+}
+a:hover {
+    color: $mark1;
+}
+nav {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: $shark1;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width:100vw;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 50;
+}
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    padding:2em;
+    @include transition100ms();
+}
+footer { 
+    background-color: $shark2;
+    color: $shark1 !important;
+    text-align: center;
+    height:15vh;
+    width:100vw;
+    display:table;
+    bottom:0;
+    
+    a, a:visited {
+    color: $shark2;
+    display: table-cell;
+    vertical-align: middle;
+    }
+}
+section {
+    min-height: 100vh;
+    text-align:center;
+}
+.button {
+    border-radius: 3px;
+    background-color:none;
+    border: 1px solid $shark1;
+    display: inline-block;
+    padding: 12px;
+    color: $shark1;
+    margin-right:16px;
+    @include transition100ms();
+}
+.button:hover {
+    color: $white1;
+    background-color: $mark1;
+    border-color: $mark1;
+}
+.h-center {
+    text-align: center;
+    margin:0 auto;
+}
+.v-center {
+    width:100vw;
+    height:100vh;
+    display: table;
+    text-align: center;
+}
+.v-center-child {
+    display: table-cell;
+    vertical-align: middle;
+    padding-bottom:3em;
+}
+hr {
+    border: 0;
+    height: 1px;
+    margin: 5px auto;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
+}
+
+
+#fullpage {
+    text-align: center;
+}
+
+#fullpage section {
+    display:table;
+    width:100%;
+    text-align: center;
+}
+
+section.shark {
+	background-color:$shark2;
+    color:$white1;
+}
+span.paren {
+    color:$shark1;
+    font-size: 1em;
+    font-weight: normal !important;
+}
+.hidden {
+    display: none;
+}
+h2 {
+    margin-bottom: 0.8em;
+}
+.fa {
+    font-size: 1.3em;
+}
+.project-wrapper {
+    display:inline-block;
+    margin:1em 2%;
+    width:23%;  
+    min-width:250px;
+    background-color:$white1;
+    color:$shark2;
+}
+.project {
+    height:100%;
+    text-align: left;
+    img {
+        width:100%;
+        display: block;
+    }
+    .header, .body {
+        padding:2em;
+    }
+    .header {
+        padding-bottom:0;
+    }
+    .body {
+        padding-top:0;
+    }
+}
+/* END MAIN STYLES */
+
+/* FORM STYLES */
+textarea, input {
+    resize: none;
+    padding:0;
+    margin:0;
+}
+input[type=text], textarea {
+    font-size: 1em;
+    padding: 12px 20px;
+    border:0;
+    border-bottom: 1px solid $shark1;
+    -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+    @include transition100ms();
+}
+input:focus, textarea:focus {
+    border-color: $shark2;
+    box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+    outline: none;
+}
+input[type=submit] {
+    padding: 16px 0;
+    cursor: pointer;
+    background: $white1;
+    color: $shark2;
+    text-transform: uppercase;
+    border: none;
+    -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+    @include transition100ms();
+}
+input[type=submit]:hover, input[type=submit]:focus {
+    color: $mark1;
+    border-color: $mark1;
+    outline: none;
+}
+#chatter label {
+    display: block;
+    font-size:1.5em;
+    font-weight: bold;
+    padding-bottom:1.5em;
+}
+/* END FORM STYLES*/
+
+/* MAPS */
+.map {
+    position:relative;
+    padding-bottom:20%;
+    height:0;
+    overflow:hidden;
+    margin-top:2em;
+    
+    iframe {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100% !important;
+        height:100% !important;
+    }
+}
+/* END MAPS*/
+
+/* ARTICLES */
+.hero {
+    background-color:$shark1;
+    
+    .subwrap {
+        width:60%;
+        margin: 0 auto;
+        text-align: left;
+        
+        h1 {
+            color:$white1;
+        }
+        .subtext {
+            text-transform: uppercase;
+            color:$shark2;
+        }
+    }
+}
+.wrap {
+    padding:2em;
+
+    article {
+        width:60%;
+        margin: 0 auto;
+        text-align: left;
+        font-size: 1.2em;
+        color:$shark2;
+        padding:2em 0;
+    }
+}
+img.square {
+    width:100%;
+}
+/* END ARTICLES */
+
+/* KEYFRAMES */
+/* NOTHING HERE! :D (...yet...)*/
+/* END KEYFRAMES*/
+
+/* RESPONSIVE */
+
+/* ----------- iPhone 5 and 5S ----------- */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    html { font-size: 1.2em; }
+    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
+    .wrap { padding:1em; }
+    .wrap article, .subwrap { width:90%; }
+}
+
+/* ----------- iPhone 6 ----------- */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    html { font-size: 1.2em; }
+    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
+    .wrap { padding:1em; }
+    .wrap article, .subwrap { width:90%; }
+}
+
+/* ----------- iPhone 6+ ----------- */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    html { font-size: 1.2em; }
+    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
+    .wrap { padding:1em; }
+    .wrap article, .subwrap { width:90%; }
+}
+
+/* ----------- Galaxy S3 ----------- */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 2) {
+    html { font-size: 1.2em; }
+    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
+    .wrap { padding:1em; }
+    .wrap article, .subwrap { width:90%; }
+}
+
+/* ----------- Galaxy S4 ----------- */
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+    html { font-size: 1.2em; }
+    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
+    .wrap { padding:1em; }
+    .wrap article, .subwrap { width:90%; }
+}
+
+/* ----------- Galaxy S5 ----------- */
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+    html { font-size: 1.2em; }
+    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
+    .wrap { padding:1em; }
+    .wrap article, .subwrap { width:90%; }
+}
+
+/* ----------- HTC One ----------- */
+@media screen 
+  and (device-width: 360px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 3) {
+    html { font-size: 1.2em; }
+    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
+    .wrap { padding:1em; }
+    .wrap article, .subwrap { width:90%; }
+}
+/* END RESPONSIVE*/
+
+/* HACKS */
+.douchebag_safari {
+    position: fixed;
+    width: 1px;
+    left: -50px;
+}
+.douchebag_safari input {
+    width: 1%;
+}
+.summer-break { /*BIG BREAK*/
+    height:4em; visibility:hidden; margin-bottom:-1px;
+}
+/* END THE BS */

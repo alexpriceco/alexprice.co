@@ -1,48 +1,239 @@
+<!--
+
+
+         888                               d8b                           
+         888                               Y8P                           
+         888                                                             
+  8888b. 888 .d88b. 888  88888888b. 888d888888 .d8888b .d88b.    .d8888b .d88b.  
+     "88b888d8P  Y8b`Y8bd8P'888 "88b888P"  888d88P"   d8P  Y8b  d88P"   d88""88b 
+ .d88888888888888888  X88K  888  888888    888888     88888888  888     888  888 
+ 888  888888Y8b.    .d8""8b.888 d88P888    888Y88b.   Y8b.   d8bY88b.   Y88..88P 
+ "Y888888888 "Y8888 888  88888888P" 888    888 "Y8888P "Y8888Y8P "Y8888P "Y88P" 
+                          888                                          
+                          888                                          
+                          888                                              
+  
+<!--                                                                                -->
+<!--                  alexprice.co - a product by Alex Price                        -->
+<!--                   built in Austin, TX & Santa Cruz, CA                         -->
+<!--                      email me at alex@alexprice.co                             -->
+<!--                                                                                -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>alexprice.co</title>
-    <link rel="stylesheet" type="text/css" href="sidebar.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="animate.css">
-    <link rel="stylesheet" type="text/css" href="modal.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="js/animate.js" ></script>
-    <script type="text/javascript" src="js/sidebar.js" ></script>
-    <script type="text/javascript" src="js/modal.js" ></script>
-    <script type="text/javascript" src="js/smooth-scroll.min.js" ></script>
-    <script type="text/javascript">smoothScroll.init();</script>
-</head>
+    <title>Alex Price &amp; Co.</title>
     
-<body id="top">
-    <nav class="animated-medium fadeIn">
-        <ul>
-        <a href="#"><li class="animated fadeInLeft">home</li></a>
-        <a href="volt/index.html"><li class="animated fadeInRight">volt</li></a>
-        </ul>
-    </nav>
-    <div class="covertext-tarp">
-        <section class="covertext">
-            <div class="animated-slowly fadeInDown">I'm a web developer, entrepreneur, product designer, STEM evangalist.</div>
-            <hr class="animated-super-slowly fadeIn" style="width:60%;">
-            <div class="animated-slowly fadeInUp"><i class="qualify">Want to talk about your awesome project that needs a website? 
-                <a href="#" class="popup-trigger">Click me</a>.</i></div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="css/compressed/index.css">
+    <link rel="stylesheet" type="text/css" href="css/compressed/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/compressed/jquery.fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="css/compressed/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/compressed/normalize.css" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+    <script type="text/javascript" src="js/animate.js" ></script>
+    <script type="text/javascript" src="js/chatter.js" ></script>
+    <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['about', 'projects', 'contact'],
+                menu: '#menu', css3: true,
+                scrollOverflow:true
+            }); 
+        });
+    </script>
+    <script src="js/modernizr.custom.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( '.chattertoggle' ).click(function() {     
+                $('#chatter').slideToggle('normal');   
+                $('#chatter-instructions').slideToggle('normal');  
+            }); 
+            console.log("And here... we... go!");
+            $( '#map-toggle' ).click(function() { $('.map').slideToggle('normal'); });
+            $('#chatter').on('submit', function () { "use strict";
+                $('.js-clear_field').attr('disabled', 'disabled');
+            });
+        });
+    </script>
+</head>
+
+    
+<body id="home">
+    
+    <div id="fullpage">
+        <section class="section" data-anchor="about">
+            <div class="animated-super-slowly fadeIn">
+            <h2>Hey, I'm Alex.</h2>
+            <span>I'm a web designer, entrepreneur, student, and STEM evangelist.<br>
+                <span class="paren">
+                    I'm also rebuilding my website. <a data-scroll class="chattertoggle" href="#contact">HMU</a>
+                </span>
+            </span><br><br>
+            <span class="external-links">
+                <a href="https://twitter.com/alexprice_co" class="fa fa-twitter"></a>&nbsp;&nbsp;
+                <a href="#" id="map-toggle" class="fa fa-map-marker"></a>&nbsp;&nbsp;
+                <a href="https://github.com/posixoddity" class="fa fa-github"></a>
+            </span>
+            </div>
+            
+            <div class="map" style="display:none;">
+                <embed src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d220527.8788664024!2d-97.7434824!3d30.2727575!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b50a22f2576f%3A0xfded6e1aca5cba6!2sDowntown%2C+Austin%2C+TX!5e0!3m2!1sen!2sus!4v1432667796143&z=9" width="100%" height="300" frameborder="0" style="border:0">Give it a sec...</embed>
+            </div>
+        
+            <br><br>
         </section>
+
+        <section class="shark section" id="project-panel" data-anchor="projects">
+            <hr class="summer-break"><br>
+            
+            <h2>Projects</h2>
+            
+            <div class="project-wrapper">
+                <div class="project">
+                    <a href="http://alexprice.co/blog/infographic.html"><img src="media/infographic.png" /></a>
+                    <div class="header"><h3>Graphic Design</h3></div>
+                    <div class="body"><span>Representing data beautifully: both logically and aesthetically. 
+                        <a href="http://alexprice.co/blog/infographic.html">more</a>
+                    </span></div>
+                </div>
+            </div>
+
+            <div class="project-wrapper">
+                <div class="project">
+                    <a href="http://alexprice.co/projects/volt"><img src="media/volt.jpeg" /></a>
+                    <div class="header"><h3>Volt</h3></div>
+                    <div class="body"><span>A simple and beautiful tool for measuring VEX battery voltage. 
+                        <a href="http://alexprice.co/projects/volt">more</a>
+                    </span></div>
+                </div>
+            </div>
+
+            <div class="project-wrapper">
+                <div class="project">
+                    <a href="http://alexprice.co/#projects"><img src="media/placeholder.png" /></a>
+                    <div class="header"><h3>Robotics Website</h3></div>
+                    <div class="body"><span>Homepage for Austin-based robotics team, the ausTIN CANs. 
+                        <a href="http://alexprice.co/#projects">more</a>
+                    </span></div>
+                </div>
+            </div>
+
+            <div class="project-wrapper">
+                <div class="project">
+                    <a href="http://alexprice.co/#projects"><img src="media/placeholder.png" /></a>
+                    <div class="header"><h3>Personal Branding</h3></div>
+                    <div class="body"><span>Designing a brand all of my own: me, on the web and beyond. 
+                        <a href="http://alexprice.co/#projects">more</a>
+                    </span></div>
+                </div>
+            </div>
+
+            <div class="project-wrapper">
+                <div class="project">
+                    <a href="http://alexprice.co/blog/fathersday.html"><img src="media/fathersday/sketch3.jpg" /></a>
+                    <div class="header"><h3>Watch + Phone</h3></div>
+                    <div class="body"><span>Rich hand crafted stand for Apple Watch and iPhone. 
+                        <a href="http://alexprice.co/blog/fathersday.html">more</a>
+                    </span></div>
+                </div>
+            </div>
+            
+            
+            <hr class="summer-break"><br>
+        </section>
+
+        <section class="section" data-anchor="contact">
+            
+            <div id="chatter-instructions">
+                <h2>Contact</h2>
+                <span>Want to work together? <a href="#" class="chattertoggle">Let's chat.</a></span>
+            </div>
+            
+            <form id="chatter" class="chatter hidden"  autocomplete="off"  method="post" name="myemailform" action="php/mailer.php">
+                <div class="chatter-inner">
+                    <ol class="questions">
+                        <li class="who?">
+                            <span><label for="q1">Who're you?</label></span>
+                            <input size="22" id="name" name="name" type="text" placeholder="John Doe" autocomplete="off"/>
+                        </li>
+                        <li class="where?">
+                            <span><label for="q2">Where are you? <span class="paren">(city)</span></label></span>
+                            <input size="22" id="where" name="where" type="text" placeholder="Austin, TX" autocomplete="off"/>
+                        </li>
+                        <li class="what?">
+                            <span><label for="q3">What're you up to?</label></span>
+                            <input size="22" id="what" name="message" type="text" placeholder="Your project in a sentence." autocomplete="off">
+                        </li>
+                        <li class="email?">
+                            <span><label for="q4">Who should I email?</label></span>
+                            <input size="22" id="email" name="email" type="text" placeholder="john@doe.com" autocomplete="off"/>
+                        </li>
+                    </ol>
+                    
+                    <button class="next"></button>
+                    <input type='hidden' name='context' value="chatter-home" />
+                    <button class="submit" type="submit">Fire away</button>
+                    
+                    <div class="controls">
+                        <button class="next"></button>
+                        <div class="progress"></div>
+                        <span class="number">
+                            <span class="number-current"></span>
+                            <span class="number-total"></span>
+                        </span>
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+                
+                <span class="final-message">
+                    <div class="finished">
+                        <h2>Rad. </h2>
+                        <span>All done - I'll have something in your inbox before tomorrow.<br>
+                            <span class="paren"><a data-scroll href="http://giphy.com/embed/i6cC4H3eF8Pqo?html5=true">
+                                Here's a reward for that awesome email.</a></span>
+                        </span>
+                    </div>
+                </span>
+                
+            </form>
+
+            <br><br>
+        </section>
+    <div class="douchebag_safari"> <!-- breaks safari + chrome autofill algorithms -->
+        <input class="js-clear_field" tabindex="-1" name="e-mail" type="email">
+        <input class="js-clear_field" tabindex="-1" name="Ecom_User_Password" type="password">
+    </div>
     </div>
     
-    <div class="popup" role="alert"> <!--this is the email popup modal-->
-        <div class="popup-container">
-            <p>Let's get in touch.</p><br>
-            <form method="post" action="mailer.php">
-                <div><input name="name" type="text" placeholder="name"></div><br>
-                <div><input name="email" type="text" placeholder="email"></div><br>
-                <div><textarea name="message" placeholder="tell me about your project"></textarea></div><br>
-                <div><input type="submit" name="submit" value="Send" class="green"></div>
-                <input name="context" type='hidden' value="home" />
-            </form>
-        </div>
-    </div>   
+    <script src="js/classie.js"></script>
+    <script src="js/stepsForm.js"></script>
+    <script>
+        var theForm = document.getElementById( 'chatter' );
+            theForm.setAttribute( "autocomplete", "off" );
+        new stepsForm( theForm, {
+            onSubmit : function( form ) {
+                classie.addClass( theForm.querySelector( '.chatter-inner' ), 'hide' );
+                form.submit();
+                var messageEl = theForm.querySelector( '.final-message' );
+                classie.addClass( messageEl, 'show' );
+            }
+        });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-63630411-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 </body>
     
 </html>
