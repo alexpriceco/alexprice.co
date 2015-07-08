@@ -1,0 +1,117 @@
+<!--
+
+
+         888                               d8b                           
+         888                               Y8P                           
+         888                                                             
+  8888b. 888 .d88b. 888  88888888b. 888d888888 .d8888b .d88b.    .d8888b .d88b.  
+     "88b888d8P  Y8b`Y8bd8P'888 "88b888P"  888d88P"   d8P  Y8b  d88P"   d88""88b 
+ .d88888888888888888  X88K  888  888888    888888     88888888  888     888  888 
+ 888  888888Y8b.    .d8""8b.888 d88P888    888Y88b.   Y8b.   d8bY88b.   Y88..88P 
+ "Y888888888 "Y8888 888  88888888P" 888    888 "Y8888P "Y8888Y8P "Y8888P "Y88P" 
+                          888                                          
+                          888                                          
+                          888                                              
+  
+<!--                                                                                -->
+<!--                  alexprice.co - a product by Alex Price                        -->
+<!--                   built in Austin, TX & Santa Cruz, CA                         -->
+<!--                      email me at alex@alexprice.co                             -->
+<!--                                                                                -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="css/compressed/index.css">
+    <link rel="stylesheet" type="text/css" href="css/compressed/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/compressed/jquery.fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="css/compressed/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/compressed/normalize.css" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+    <script type="text/javascript" src="js/animate.js" ></script>
+    <script type="text/javascript" src="js/chatter.js" ></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( '.chattertoggle' ).click(function() {     
+                $('#chatter').slideToggle('normal');   
+                $('#chatter-instructions').slideToggle('normal');  
+            }); 
+            console.log("And here... we... go!");
+            $( '#map-toggle' ).click(function() { $('.map').slideToggle('normal'); });
+            $('#chatter').on('submit', function () { "use strict";
+                $('.js-clear_field').attr('disabled', 'disabled');
+            });
+        });
+    </script>
+    <script src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=YOURKEYHERE" type="text/javascript"></script>
+    <script language="Javascript" type="text/javascript">
+        //<![CDATA[
+        var searchControl = new GSearchControl();
+            searchControl.addSearcher(new GwebSearch());
+            searchControl.draw(document.getElementById("search-box"));
+        }
+        GSearch.setOnLoadCallback(OnLoad);
+        //]]>
+    </script>
+</head>
+
+    
+<body id="home">
+    
+    <div class="v-center">
+    <section class="animated-super-slowly fadeIn v-center-child" data-anchor="about">
+        <h2><span id="day">Hey</span>, Alex.</h2>
+        <span class="external-links">
+            <a href="https://google.com" class="fa fa-google"></a>&nbsp;&nbsp;
+            <a href="https://facebook.com" class="fa fa-facebook"></a>&nbsp;&nbsp;
+            <a href="https://twitter.com/alexprice_co" class="fa fa-twitter"></a>&nbsp;&nbsp;
+            <a href="http://alexprice.co" class="fa fa-home"></a>&nbsp;&nbsp;
+            <a href="https://github.com/posixoddity" class="fa fa-github"></a>
+        </span>
+
+        <br><br>
+    </section>
+    </div>
+    
+    <script type="text/javascript">
+        function customDate() {
+            var d = new Date();
+            var t = d.getHours();
+            
+            var gday = "Hey";
+            
+            if(t<0) {
+                gday = "Nice night";
+            }
+            else if (7<=t && t<11) {
+                gday = "Morning";
+            }
+            else if (11<t && t<15) {
+                gday = "G'day";
+            }
+            else if (15<t && t<18) {
+                gday = "Afternoon";
+            }
+            else if (18<=t) {
+                gday = "Evening";
+            }
+            else {
+                gday = "Something's fucked";
+            }
+            
+            document.getElementById("day").innerHTML = gday;
+        }
+        customDate();
+    </script>
+    
+</body>
+    
+</html>

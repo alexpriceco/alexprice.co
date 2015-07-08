@@ -37,17 +37,8 @@
     
     <script type="text/javascript" src="js/animate.js" ></script>
     <script type="text/javascript" src="js/chatter.js" ></script>
-    <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#fullpage').fullpage({
-                anchors: ['about', 'projects', 'contact'],
-                menu: '#menu', css3: true,
-                scrollOverflow:true
-            }); 
-        });
-    </script>
+    <script type="text/javascript" src="js/smooth-scroll.min.js" ></script>
+    <script type="text/javascript">smoothScroll.init();</script>
     <script src="js/modernizr.custom.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -67,151 +58,154 @@
     
 <body id="home">
     
-    <div id="fullpage">
-        <section class="section" data-anchor="about">
-            <div class="animated-super-slowly fadeIn">
-            <h2>Hey, I'm Alex.</h2>
-            <span>I'm a web designer, entrepreneur, student, and STEM evangelist.<br>
-                <span class="paren">
-                    I'm also rebuilding my website. <a data-scroll class="chattertoggle" href="#contact">HMU</a>
-                </span>
-            </span><br><br>
-            <span class="external-links">
-                <a href="https://twitter.com/alexprice_co" class="fa fa-twitter"></a>&nbsp;&nbsp;
-                <a href="#" id="map-toggle" class="fa fa-map-marker"></a>&nbsp;&nbsp;
-                <a href="https://github.com/posixoddity" class="fa fa-github"></a>
+    <div class="v-center">
+    <section class="animated-super-slowly fadeIn v-center-child" data-anchor="about">
+        <h2>Hey, I'm Alex.</h2>
+        <span>I'm a web designer, entrepreneur, student, and STEM evangelist.<br>
+            <span class="paren">
+                I'm also rebuilding my website. <a data-scroll class="chattertoggle" href="#contact">HMU</a>
             </span>
-            </div>
-            
-            <div class="map" style="display:none;">
-                <embed src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d220527.8788664024!2d-97.7434824!3d30.2727575!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b50a22f2576f%3A0xfded6e1aca5cba6!2sDowntown%2C+Austin%2C+TX!5e0!3m2!1sen!2sus!4v1432667796143&z=9" width="100%" height="300" frameborder="0" style="border:0">Give it a sec...</embed>
-            </div>
-        
-            <br><br>
-        </section>
+        </span><br><br>
+        <span class="external-links">
+            <a href="https://twitter.com/alexprice_co" class="fa fa-twitter"></a>&nbsp;&nbsp;
+            <a href="#" id="map-toggle" class="fa fa-map-marker"></a>&nbsp;&nbsp;
+            <a href="https://github.com/posixoddity" class="fa fa-github"></a>
+        </span>
 
-        <section class="shark section" id="project-panel" data-anchor="projects">
-            <hr class="summer-break"><br>
-            
-            <h2>Projects</h2>
-            
-            <div class="project-wrapper">
-                <div class="project">
-                    <a href="http://alexprice.co/blog/infographic.html"><img src="media/infographic.png" /></a>
-                    <div class="header"><h3>Graphic Design</h3></div>
-                    <div class="body"><span>Representing data beautifully: both logically and aesthetically. 
-                        <a href="http://alexprice.co/blog/infographic.html">more</a>
-                    </span></div>
-                </div>
-            </div>
+        <div class="map" style="display:none;">
+            <embed src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d220527.8788664024!2d-97.7434824!3d30.2727575!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b50a22f2576f%3A0xfded6e1aca5cba6!2sDowntown%2C+Austin%2C+TX!5e0!3m2!1sen!2sus!4v1432667796143&z=9" width="100%" height="300" frameborder="0" style="border:0">Give it a sec...</embed>
+        </div>
 
-            <div class="project-wrapper">
-                <div class="project">
-                    <a href="http://alexprice.co/projects/volt"><img src="media/volt.jpeg" /></a>
-                    <div class="header"><h3>Volt</h3></div>
-                    <div class="body"><span>A simple and beautiful tool for measuring VEX battery voltage. 
-                        <a href="http://alexprice.co/projects/volt">more</a>
-                    </span></div>
-                </div>
-            </div>
+        <br><br>
+    </section>
+    </div>
 
-            <div class="project-wrapper">
-                <div class="project">
-                    <a href="http://alexprice.co/#projects"><img src="media/placeholder.png" /></a>
-                    <div class="header"><h3>Robotics Website</h3></div>
-                    <div class="body"><span>Homepage for Austin-based robotics team, the ausTIN CANs. 
-                        <a href="http://alexprice.co/#projects">more</a>
-                    </span></div>
-                </div>
-            </div>
+    
+    <div class="v-center">
+    <section class="shark v-center-child" id="project-panel" data-anchor="projects">
+        <hr class="summer-break"><br>
 
-            <div class="project-wrapper">
-                <div class="project">
-                    <a href="http://alexprice.co/#projects"><img src="media/placeholder.png" /></a>
-                    <div class="header"><h3>Personal Branding</h3></div>
-                    <div class="body"><span>Designing a brand all of my own: me, on the web and beyond. 
-                        <a href="http://alexprice.co/#projects">more</a>
-                    </span></div>
-                </div>
+        <div class="project-wrapper">
+            <div class="project">
+                <a href="http://alexprice.co/blog/infographic.html"><img src="media/infographic.png" /></a>
+                <div class="header"><h3>Infographic Design</h3></div>
+                <div class="body"><span>Representing data beautifully: both logically and aesthetically. 
+                    <br><a href="http://alexprice.co/blog/infographic.html">read</a>
+                </span></div>
             </div>
+        </div>
 
-            <div class="project-wrapper">
-                <div class="project">
-                    <a href="http://alexprice.co/blog/fathersday.html"><img src="media/fathersday/sketch3.jpg" /></a>
-                    <div class="header"><h3>Watch + Phone</h3></div>
-                    <div class="body"><span>Rich hand crafted stand for Apple Watch and iPhone. 
-                        <a href="http://alexprice.co/blog/fathersday.html">more</a>
-                    </span></div>
-                </div>
+        <div class="project-wrapper">
+            <div class="project">
+                <a href="http://alexprice.co/projects/volt"><img src="media/volt.jpeg" /></a>
+                <div class="header"><h3>VEX Volt</h3></div>
+                <div class="body"><span>A simple and beautiful tool for measuring VEX battery voltage. 
+                    <br><a href="http://alexprice.co/projects/volt">more</a>
+                </span></div>
             </div>
-            
-            
-            <hr class="summer-break"><br>
-        </section>
+        </div>
 
-        <section class="section" data-anchor="contact">
-            
-            <div id="chatter-instructions">
-                <h2>Contact</h2>
-                <span>Want to work together? <a href="#" class="chattertoggle">Let's chat.</a></span>
+        <div class="project-wrapper">
+            <div class="project">
+                <a href="http://alexprice.co/#projects"><img src="media/robots.jpg" /></a>
+                <div class="header"><h3>Robotics Website</h3></div>
+                <div class="body"><span>Homepage for Austin-based robotics team, the ausTIN CANs. 
+                    <br><a href="http://andersonrobotics.org">view page</a>
+                </span></div>
             </div>
-            
-            <form id="chatter" class="chatter hidden"  autocomplete="off"  method="post" name="myemailform" action="php/mailer.php">
-                <div class="chatter-inner">
-                    <ol class="questions">
-                        <li class="who?">
-                            <span><label for="q1">Who're you?</label></span>
-                            <input size="22" id="name" name="name" type="text" placeholder="John Doe" autocomplete="off"/>
-                        </li>
-                        <li class="where?">
-                            <span><label for="q2">Where are you? <span class="paren">(city)</span></label></span>
-                            <input size="22" id="where" name="where" type="text" placeholder="Austin, TX" autocomplete="off"/>
-                        </li>
-                        <li class="what?">
-                            <span><label for="q3">What're you up to?</label></span>
-                            <input size="22" id="what" name="message" type="text" placeholder="Your project in a sentence." autocomplete="off">
-                        </li>
-                        <li class="email?">
-                            <span><label for="q4">Who should I email?</label></span>
-                            <input size="22" id="email" name="email" type="text" placeholder="john@doe.com" autocomplete="off"/>
-                        </li>
-                    </ol>
-                    
+        </div>
+
+        <div class="project-wrapper">
+            <div class="project">
+                <a href="http://alexprice.co/#projects"><img src="media/placeholder.png" /></a>
+                <div class="header"><h3>Personal Branding</h3></div>
+                <div class="body"><span>Designing a brand all of my own: me, on the web and beyond. 
+                    <br><a href="http://alexprice.co/#projects"></a>
+                </span></div>
+            </div>
+        </div>
+
+        <div class="project-wrapper">
+            <div class="project">
+                <a href="http://alexprice.co/blog/fathersday.html"><img src="media/fathersday/sketch3.jpg" /></a>
+                <div class="header"><h3>Watch + Phone</h3></div>
+                <div class="body"><span>Rich hand crafted stand for Apple Watch and iPhone. 
+                    <br><a href="http://alexprice.co/blog/fathersday.html">read</a>
+                </span></div>
+            </div>
+        </div>
+
+
+        <hr class="summer-break"><br>
+    </section>
+    </div>
+    
+
+    <div class="v-center" id="contact">
+    <section class="v-center-child" data-anchor="contact">
+
+        <div id="chatter-instructions">
+            <h2>Contact</h2>
+            <span>Want to work together? <a class="chattertoggle">Let's chat.</a></span>
+        </div>
+
+        <form id="chatter" class="chatter hidden"  autocomplete="off"  method="post" name="myemailform" action="php/mailer.php">
+            <div class="chatter-inner">
+                <ol class="questions">
+                    <li class="who?">
+                        <span><label for="q1">Who're you?</label></span>
+                        <input size="22" id="name" name="name" type="text" placeholder="John Doe" autocomplete="off"/>
+                    </li>
+                    <li class="where?">
+                        <span><label for="q2">Where are you? <span class="paren">(city)</span></label></span>
+                        <input size="22" id="where" name="where" type="text" placeholder="Austin, TX" autocomplete="off"/>
+                    </li>
+                    <li class="what?">
+                        <span><label for="q3">What're you up to?</label></span>
+                        <input size="22" id="what" name="message" type="text" placeholder="Your project in a sentence." autocomplete="off">
+                    </li>
+                    <li class="email?">
+                        <span><label for="q4">Who should I email?</label></span>
+                        <input size="22" id="email" name="email" type="text" placeholder="john@doe.com" autocomplete="off"/>
+                    </li>
+                </ol>
+
+                <button class="next"></button>
+                <input type='hidden' name='context' value="chatter-home" />
+                <button class="submit" type="submit">Fire away</button>
+
+                <div class="controls">
                     <button class="next"></button>
-                    <input type='hidden' name='context' value="chatter-home" />
-                    <button class="submit" type="submit">Fire away</button>
-                    
-                    <div class="controls">
-                        <button class="next"></button>
-                        <div class="progress"></div>
-                        <span class="number">
-                            <span class="number-current"></span>
-                            <span class="number-total"></span>
-                        </span>
-                        <span class="error-message"></span>
-                    </div>
+                    <div class="progress"></div>
+                    <span class="number">
+                        <span class="number-current"></span>
+                        <span class="number-total"></span>
+                    </span>
+                    <span class="error-message"></span>
                 </div>
-                
-                <span class="final-message">
-                    <div class="finished">
-                        <h2>Rad. </h2>
-                        <span>All done - I'll have something in your inbox before tomorrow.<br>
-                            <span class="paren"><a data-scroll href="http://giphy.com/embed/i6cC4H3eF8Pqo?html5=true">
-                                Here's a reward for that awesome email.</a></span>
-                        </span>
-                    </div>
-                </span>
-                
-            </form>
+            </div>
 
-            <br><br>
-        </section>
+            <span class="final-message">
+                <div class="finished">
+                    <h2>Rad. </h2>
+                    <span>All done - I'll have something in your inbox before tomorrow.<br>
+                        <span class="paren"><a data-scroll href="http://giphy.com/embed/i6cC4H3eF8Pqo?html5=true">
+                            Here's a reward for that awesome email.</a></span>
+                    </span>
+                </div>
+            </span>
+
+        </form>
+
+        <br><br>
+    </section>
+    </div>
+    
     <div class="douchebag_safari"> <!-- breaks safari + chrome autofill algorithms -->
         <input class="js-clear_field" tabindex="-1" name="e-mail" type="email">
         <input class="js-clear_field" tabindex="-1" name="Ecom_User_Password" type="password">
     </div>
-    </div>
-    
+        
     <script src="js/classie.js"></script>
     <script src="js/stepsForm.js"></script>
     <script>

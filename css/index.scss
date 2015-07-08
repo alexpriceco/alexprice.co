@@ -3,6 +3,8 @@ $white1: #fefefe;
 $white2: #f9f9f9;
 $shark1: #879299;
 $shark2: #464F54;
+$black1: #1c1e21;
+$black2: #272727;
 $mark1: #e35654;
 $mark2: #a33e3d;
 /* ======= */
@@ -86,12 +88,12 @@ section {
     border: 1px solid $shark1;
     display: inline-block;
     padding: 12px;
-    color: $shark1;
+    color: $shark1 !important;
     margin-right:16px;
     @include transition100ms();
 }
 .button:hover {
-    color: $white1;
+    color: $mark2;
     background-color: $mark1;
     border-color: $mark1;
 }
@@ -101,9 +103,12 @@ section {
 }
 .v-center {
     width:100vw;
-    height:100vh;
+    min-height:90vh;
     display: table;
     text-align: center;
+}
+#contact {
+    min-height: 100vh;
 }
 .v-center-child {
     display: table-cell;
@@ -153,7 +158,8 @@ h2 {
     display:inline-block;
     margin:1em 2%;
     width:23%;  
-    min-width:250px;
+    min-width:220px;
+    min-height:220px;
     background-color:$white1;
     color:$shark2;
 }
@@ -224,6 +230,9 @@ input[type=submit]:hover, input[type=submit]:focus {
     font-weight: bold;
     padding-bottom:1.5em;
 }
+.chattertoggle {
+    cursor: pointer;
+}
 /* END FORM STYLES*/
 
 /* MAPS */
@@ -272,6 +281,9 @@ input[type=submit]:hover, input[type=submit]:focus {
         font-size: 1.2em;
         color:$shark2;
         padding:2em 0;
+        .button:hover {
+            color:$white1 !important;
+        }
     }
 }
 img.square {
@@ -290,10 +302,7 @@ img.square {
   and (min-device-width: 320px) 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    html { font-size: 1.2em; }
-    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
-    .wrap { padding:1em; }
-    .wrap article, .subwrap { width:90%; }
+    body { font-size: 2.2em; }
 }
 
 /* ----------- iPhone 6 ----------- */
@@ -301,10 +310,7 @@ img.square {
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
-    html { font-size: 1.2em; }
-    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
-    .wrap { padding:1em; }
-    .wrap article, .subwrap { width:90%; }
+    body { font-size: 2.2em; }
 }
 
 /* ----------- iPhone 6+ ----------- */
@@ -312,10 +318,7 @@ img.square {
   and (min-device-width: 414px) 
   and (max-device-width: 736px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
-    html { font-size: 1.2em; }
-    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
-    .wrap { padding:1em; }
-    .wrap article, .subwrap { width:90%; }
+    body { font-size: 2.2em; }
 }
 
 /* ----------- Galaxy S3 ----------- */
@@ -323,10 +326,7 @@ img.square {
   and (device-width: 320px) 
   and (device-height: 640px) 
   and (-webkit-device-pixel-ratio: 2) {
-    html { font-size: 1.2em; }
-    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
-    .wrap { padding:1em; }
-    .wrap article, .subwrap { width:90%; }
+    body { font-size: 1.8em; }
 }
 
 /* ----------- Galaxy S4 ----------- */
@@ -334,10 +334,7 @@ img.square {
   and (device-width: 320px) 
   and (device-height: 640px) 
   and (-webkit-device-pixel-ratio: 3) {
-    html { font-size: 1.2em; }
-    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
-    .wrap { padding:1em; }
-    .wrap article, .subwrap { width:90%; }
+    body { font-size: 1.8em; }
 }
 
 /* ----------- Galaxy S5 ----------- */
@@ -345,10 +342,7 @@ img.square {
   and (device-width: 360px) 
   and (device-height: 640px) 
   and (-webkit-device-pixel-ratio: 3) {
-    html { font-size: 1.2em; }
-    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
-    .wrap { padding:1em; }
-    .wrap article, .subwrap { width:90%; }
+    body { font-size: 1.8em; }
 }
 
 /* ----------- HTC One ----------- */
@@ -356,10 +350,7 @@ img.square {
   and (device-width: 360px) 
   and (device-height: 640px) 
   and (-webkit-device-pixel-ratio: 3) {
-    html { font-size: 1.2em; }
-    .project-wrapper { width:90%; display:block; margin:0 auto; margin-bottom:2em; }
-    .wrap { padding:1em; }
-    .wrap article, .subwrap { width:90%; }
+    body { font-size: 1.8em; }
 }
 /* END RESPONSIVE*/
 
