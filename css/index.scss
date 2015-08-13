@@ -20,6 +20,7 @@ $mark2: #a33e3d;
 /* ======= */
 
 
+
 /* IMPORTS */
 @import 'normal';
 @import 'fontawesome/font-awesome.scss';
@@ -83,19 +84,32 @@ section {
     text-align:center;
 }
 .button {
-    border-radius: 3px;
     background-color:none;
-    border: 1px solid $shark1;
-    display: inline-block;
-    padding: 12px;
-    color: $shark1 !important;
-    margin-right:16px;
+    padding: 1.2em;
+    color: $shark1;
     @include transition100ms();
+    cursor: pointer;
 }
 .button:hover {
     color: $mark2;
     background-color: $mark1;
-    border-color: $mark1;
+}
+.button.white {
+    background-color:$white1;
+    color: $shark1;
+}
+.button.white:hover {
+    background-color: $mark1;
+    color: $white1;
+}
+
+.button.mark {
+    background-color:$mark1;
+    color: $white1;
+}
+.button.mark:hover {
+    background-color: $mark2;
+    color: $white1;
 }
 .h-center {
     text-align: center;
@@ -139,14 +153,12 @@ hr {
 section.shark {
 	background-color:$shark2;
     color:$white1;
+    padding:0;
 }
 span.paren {
     color:$shark1;
     font-size: 1em;
     font-weight: normal !important;
-}
-.hidden {
-    display: none;
 }
 h2 {
     margin-bottom: 0.8em;
@@ -175,12 +187,27 @@ h2 {
     }
     .header {
         padding-bottom:0;
+        border-top:1px $white1;
+        @include transition100ms();
     }
     .body {
         padding-top:0;
     }
 }
+.project:hover .body, .project:hover .header {
+    border-top:1px $mark1;
+    
+}
+#hero span {
+    orphans: 3;
+    widows: 3;
+}
+.hidden {
+    display: none;
+}
 /* END MAIN STYLES */
+
+
 
 /* FORM STYLES */
 textarea, input {
@@ -297,60 +324,32 @@ img.square {
 
 /* RESPONSIVE */
 
-/* ----------- iPhone 5 and 5S ----------- */
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    body { font-size: 2.2em; }
+@media all and (min-width: 321px) {
+    body { font-size:1.2em; }
+    .project-wrapper { width: 100vw; margin: 0; }
+    section { padding:1em; }
 }
 
-/* ----------- iPhone 6 ----------- */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
-    body { font-size: 2.2em; }
+@media all and (min-width: 641px) {
+    //641px and beyond!
 }
 
-/* ----------- iPhone 6+ ----------- */
-@media only screen 
-  and (min-device-width: 414px) 
-  and (max-device-width: 736px) 
-  and (-webkit-min-device-pixel-ratio: 3) { 
-    body { font-size: 2.2em; }
+@media all and (min-width: 769px) {
+    body { font-size:1em; }
+    section { padding:0; }
+    .seperator { display:none; }
+    .project-wrapper { margin:1em 2%; width:23%; display: inline-block; }
+    section.shark { padding: 3em 0; }
+    .button { border-radius: 3px; display: inline-block; }
+    .more-projects, .anti-orphan { display:none; }
+    
 }
 
-/* ----------- Galaxy S3 ----------- */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 2) {
-    body { font-size: 1.8em; }
+@media all and (min-width: 1025px) {
 }
 
-/* ----------- Galaxy S4 ----------- */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-    body { font-size: 1.8em; }
-}
-
-/* ----------- Galaxy S5 ----------- */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-    body { font-size: 1.8em; }
-}
-
-/* ----------- HTC One ----------- */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-    body { font-size: 1.8em; }
+@media all and (min-width: 1201px) {
+    // 1201px and up
 }
 /* END RESPONSIVE*/
 
@@ -362,8 +361,5 @@ img.square {
 }
 .douchebag_safari input {
     width: 1%;
-}
-.summer-break { /*BIG BREAK*/
-    height:4em; visibility:hidden; margin-bottom:-1px;
 }
 /* END THE BS */

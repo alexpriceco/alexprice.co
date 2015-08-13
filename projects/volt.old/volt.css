@@ -1,0 +1,179 @@
+nav ul li {
+    color: #464F54
+}
+nav ul li:hover {
+    color: #5CB1E0
+}
+::selection {
+    color: #f9f9f9;
+    background: rgba(135, 146, 153, 0.4)
+}
+* {
+    margin: 0;
+    padding: 0
+}
+body {
+    background-color: #77c5f7;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    min-width: 500px;
+    text-align: center
+}
+.hero {
+    height: 99vh;
+    display: table;
+    width: 100%
+}
+.features {
+    background-color: #f9f9f9
+}
+.purchase {
+    min-height: 85vh;
+    display: table;
+}
+.purchase .item {
+    display: table-cell;
+    vertical-align: middle
+}
+.content-container {
+    text-align: center;
+    padding: 0 20vw;
+    display: table-cell;
+    vertical-align: middle
+}
+.voltmeter img,
+.imco img {
+    max-height: 40vh;
+    min-height: 200px;
+    vertical-align: middle;
+    max-width: 100%
+}
+.empower {
+    vertical-align: middle;
+    text-align: left;
+    display: inline-block
+}
+.sub {
+    font-size: 1.4em
+}
+.title {
+    font-size: 2.2em
+}
+.left,
+.right {
+    width: 45%;
+    display: inline-block;
+    padding: 14vh 0
+}
+.imco {
+    text-align: center;
+    padding: 0;
+    vertical-align: bottom
+}
+.teco {
+    vertical-align: middle;
+    text-align: left
+}
+.item {
+    padding: 0 20vw
+}
+.easy {
+    background-color: #77c5f7
+}
+.hidden {
+    opacity: 0
+}
+.hide {
+    display: none
+}
+.visible {
+    opacity: 1
+}
+a,
+a:visited {
+    color: #0071bc;
+    text-decoration: none
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 500px;
+    width: 500px
+}
+.cleared {
+    display: none
+}
+.fakeheight {
+    height: 50vh;
+}
+#pretty {
+    background: url(left.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#easy {
+    background: url(right.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#cheap {
+    background-color: #f9f9f9;
+    background: none;
+}
+.hero {
+    background: url(front.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #f9f9f9;
+}
+a.greytext {
+    font-size: 0.9em;
+    color:#464F54 !important;
+    -webkit-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+       -moz-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+         -o-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+            transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    display: inline-block;
+
+}
+a.greytext:hover{
+    color:#2A3033 !important;
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+    .pretty,
+    .cheap,
+    .easy,
+    .purchase,
+    .purchase .item {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-size: 2.2em;
+    }
+    .button {
+        padding: 0.6em;
+    }
+    .content-container {
+        width: 90%;
+        margin: 0;
+        padding: 0;
+    }
+    #pretty,
+    #easy,
+    .hero {
+        background-size: contain;
+    }
+    .modal {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+    }
+}
