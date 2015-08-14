@@ -12,9 +12,9 @@ $mark2: #a33e3d;
 
 /* MIXINS */
 @mixin transition100ms() {
-    -webkit-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
-    -moz-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
-    -o-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000); 
+    -webkit-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    -moz-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    -o-transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
     transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
 }
 /* ======= */
@@ -30,7 +30,7 @@ $mark2: #a33e3d;
 
 /* MAIN STYLES */
 * {
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 body {
@@ -51,7 +51,7 @@ nav {
     background-color: rgba(255, 255, 255, 0.9);
     color: $shark1;
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
     width:100vw;
     text-transform: uppercase;
@@ -64,7 +64,7 @@ nav ul li {
     padding:2em;
     @include transition100ms();
 }
-footer { 
+footer {
     background-color: $shark2;
     color: $shark1 !important;
     text-align: center;
@@ -72,7 +72,7 @@ footer {
     width:100vw;
     display:table;
     bottom:0;
-    
+
     a, a:visited {
     color: $shark2;
     display: table-cell;
@@ -85,6 +85,7 @@ section {
 }
 .button {
     background-color:none;
+    min-width:2em;
     padding: 1.2em;
     color: $shark1;
     @include transition100ms();
@@ -133,10 +134,10 @@ hr {
     border: 0;
     height: 1px;
     margin: 5px auto;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
-    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
-    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
-    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0)); 
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(135, 146, 153, 0.75), rgba(0,0,0,0));
 }
 
 
@@ -169,7 +170,7 @@ h2 {
 .project-wrapper {
     display:inline-block;
     margin:1em 2%;
-    width:23%;  
+    width:23%;
     min-width:220px;
     min-height:220px;
     background-color:$white1;
@@ -196,7 +197,7 @@ h2 {
 }
 .project:hover .body, .project:hover .header {
     border-top:1px $mark1;
-    
+
 }
 #hero span {
     orphans: 3;
@@ -204,6 +205,9 @@ h2 {
 }
 .hidden {
     display: none;
+}
+.callmemaybe {
+  margin-left:2em;
 }
 /* END MAIN STYLES */
 
@@ -260,6 +264,9 @@ input[type=submit]:hover, input[type=submit]:focus {
 .chattertoggle {
     cursor: pointer;
 }
+#call {
+  display:none;
+}
 /* END FORM STYLES*/
 
 /* MAPS */
@@ -269,7 +276,7 @@ input[type=submit]:hover, input[type=submit]:focus {
     height:0;
     overflow:hidden;
     margin-top:2em;
-    
+
     iframe {
         position:absolute;
         top:0;
@@ -283,12 +290,12 @@ input[type=submit]:hover, input[type=submit]:focus {
 /* ARTICLES */
 .hero {
     background-color:$shark1;
-    
+
     .subwrap {
         width:60%;
         margin: 0 auto;
         text-align: left;
-        
+
         h1 {
             color:$white1;
         }
@@ -342,7 +349,7 @@ img.square {
     section.shark { padding: 3em 0; }
     .button { border-radius: 3px; display: inline-block; }
     .more-projects, .anti-orphan { display:none; }
-    
+
 }
 
 @media all and (min-width: 1025px) {

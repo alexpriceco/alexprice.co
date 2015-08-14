@@ -57,6 +57,12 @@
                 $(this).slideToggle('fast');
             })
 
+            //displays the call thing
+            $( '.calltoggle' ).click(function() {
+                $('#call').slideToggle('normal');
+                $('#chatter-instructions').slideToggle('normal');
+            });
+
             //google stuff
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
@@ -94,6 +100,8 @@
                     }, 2500);
                 }, 2500);
             }, 2000);
+
+
 
         });
     </script>
@@ -191,7 +199,23 @@
 
         <div id="chatter-instructions">
             <h2>Contact</h2>
-            <span>Want to work together? <a class="chattertoggle">Let's chat.</a></span>
+            <span>Want to work together? <br><br>
+              <a class="chattertoggle">
+                <div class="button mark">
+                  <i class="fa fa-comment"></i>
+                </div>
+              </a>
+              <a class="calltoggle callmemaybe" href="tel:+15127300930">
+                <div class="button mark">
+                  <i class="fa fa-phone"></i>
+                </div>
+              </a>
+            </span>
+        </div>
+
+        <div id="call">
+          <span>Link not working? Here's my number:</span>
+          <a href="tel:+15127300930">(512) 730-0930</a>
         </div>
 
         <form id="chatter" class="chatter hidden"  autocomplete="off"  method="post" name="myemailform" action="php/mailer.php">
@@ -241,10 +265,6 @@
             </span>
 
         </form>
-
-        <div class="callmemaybe">
-            <a href="tel:+15127663262">(you can also call me here)</a>
-        </div>
 
         <br><br>
     </section>
