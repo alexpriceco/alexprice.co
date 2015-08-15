@@ -272,8 +272,8 @@ input[type=submit]:hover, input[type=submit]:focus {
 /* MAPS */
 .map {
     position:relative;
-    padding-bottom:20%;
-    height:0;
+    height:30vh;
+    min-height:30%;
     overflow:hidden;
     margin-top:2em;
 
@@ -334,7 +334,6 @@ img.square {
 @media all and (min-width: 321px) {
     body { font-size:1.2em; }
     .project-wrapper { width: 100vw; margin: 0; }
-    section { padding:1em; }
 }
 
 @media all and (min-width: 641px) {
@@ -344,6 +343,7 @@ img.square {
 @media all and (min-width: 769px) {
     body { font-size:1em; }
     section { padding:0; }
+    .map iframe { height: 20vh; max-height:400px;}
     .seperator { display:none; }
     .project-wrapper { margin:1em 2%; width:23%; display: inline-block; }
     section.shark { padding: 3em 0; }
