@@ -1,18 +1,18 @@
 <!--
 
 
-         888                               d8b                           
-         888                               Y8P                           
-         888                                                             
-  8888b. 888 .d88b. 888  88888888b. 888d888888 .d8888b .d88b.    .d8888b .d88b.  
-     "88b888d8P  Y8b`Y8bd8P'888 "88b888P"  888d88P"   d8P  Y8b  d88P"   d88""88b 
- .d88888888888888888  X88K  888  888888    888888     88888888  888     888  888 
- 888  888888Y8b.    .d8""8b.888 d88P888    888Y88b.   Y8b.   d8bY88b.   Y88..88P 
- "Y888888888 "Y8888 888  88888888P" 888    888 "Y8888P "Y8888Y8P "Y8888P "Y88P" 
-                          88                                          
-                          888                                          
-                          888                                              
-  
+         888                               d8b
+         888                               Y8P
+         888
+  8888b. 888 .d88b. 888  88888888b. 888d888888 .d8888b .d88b.    .d8888b .d88b.
+     "88b888d8P  Y8b`Y8bd8P'888 "88b888P"  888d88P"   d8P  Y8b  d88P"   d88""88b
+ .d88888888888888888  X88K  888  888888    888888     88888888  888     888  888
+ 888  888888Y8b.    .d8""8b.888 d88P888    888Y88b.   Y8b.   d8bY88b.   Y88..88P
+ "Y888888888 "Y8888 888  88888888P" 888    888 "Y8888P "Y8888Y8P "Y8888P "Y88P"
+                          88
+                          888
+                          888
+
 
 <!--                                                                            -->
 <!--                   alexprice.co - a product by Alex Price                   -->
@@ -24,47 +24,57 @@
 <html>
 <head>
     <title>AP+Co. : Vex Volt</title>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" type="text/css" href="../../css/compressed/animate.css">
-    <link rel="stylesheet" type="text/css" 
+    <link rel="stylesheet" type="text/css"
           href="../../css/compressed/jquery.fullpage.css" />
     <link rel="stylesheet" type="text/css" href="../../css/compressed/component.css" />
     <link rel="stylesheet" type="text/css" href="../../css/compressed/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../../css/compressed/modal.css">
     <link rel="stylesheet" type="text/css" href="volt.css">
-    
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,
                 700italic,400,700' rel='stylesheet' type='text/css'>
-    
+
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../../js/animate.js" ></script>
     <script type="text/javascript" src="../../js/modal.js" ></script>
     <script type="text/javascript" src="../../js/smooth-scroll.min.js" >
     </script>
-    <script type="text/javaScript" 
+    <script type="text/javaScript"
             src="http://view.jquerymobile.com/master/external/jquery/jquery.js">
     </script>
     <script src="js/modernizr.custom.js"></script>
-    
+
     <script>smoothScroll.init();</script>
 </head>
 
-    
+
 <body id="home">
-    <section>
+    <!--<section>
     //3 title lines + animated background + fullscreen + animated walkthrough
     </section>
-    
+
     <section>
     //animates batteries out + animates voltmeter in
     </section>
-    
+
     <section>
     //rotates voltmeter + introduction text
     </section>
-    
+    -->
+
+    <section class="hero-feature" id="volt-top">
+      <div class="info-text">
+          <h2>Never get caught with a dead robot</h2>
+          <span>We knew there was an easier way to measure battery voltage.
+          That's why we built the VEXvolt - it's the simplest way to figure
+          out which of your batteries has juice left, designed by students,
+          for students. </span>
+      </div>
+    </section>
     <section class="feature">
         <div class="info-icon">
             <br>
@@ -72,14 +82,14 @@
         </div>
         <div class="info-text">
             <h2>Lightning fast</h2>
-            <span>Results in less than a second, to the tenth of a volt. A 
-                number that you can glance at, and with a thin polarizing 
-                strip, in any light level. A solution that works just as well 
+            <span>Results in less than a second, to the tenth of a volt. A
+                number that you can glance at, and with a thin polarizing
+                strip, in any light level. A solution that works just as well
                 as you do.</span>
         </div>
     </section>
-    <section id="volt-top"></section> <!--this is the close-up of the top-->
-    
+    <section id="volt-right"></section> <!--this is the close-up of the top-->
+
     <section class="feature">
         <div class="info-icon">
             <br>
@@ -87,20 +97,20 @@
         </div>
         <div class="info-text">
             <h2>Insanely simple</h2>
-            <span>Easy to hold, and designed to be crazy straightforward. Not 
-                only does it measure battery voltage, it also fits into a 
+            <span>Easy to hold, and designed to be crazy straightforward. Not
+                only does it measure battery voltage, it also fits into a
                 pocket as though it were built to do so.</span>
         </div>
     </section>
-    <section id="volt-bottom"></section> <!--this is the close-up of the bottom-->
-    
-    <section class="feature">
+    <section id="volt-left"></section> <!--this is the close-up of the bottom-->
+
+    <section class="feature" id="last-feature">
         <div class="purchase">
             <h2>Results, in volts.</h2>
             <span>Ready to give us your money (because robots aren't expensive
-                enough)? At least it's easy - checkout through PayPal, and rest 
+                enough)? At least it's easy - checkout through PayPal, and rest
                 easy knowing that we'll ship your Volts to you for free. Can't
-                beat free shipping.</span>
+                beat free shipping.</span><br>
             <a class="popup-trigger-help trigger">Any questions?</a>
         </div><br>
         <a class="popup-trigger-purchase trigger">
@@ -111,12 +121,15 @@
             <a class="popup-trigger-edu trigger">education</a>
             &nbsp; / &nbsp;
             <a class="popup-trigger-bulk trigger">bulk orders</a>
-        </span><br>
-        <img src="testimagepleaseignore.png" class="wafer-thin-mint" />
+        </span>
+        <!--
+        <img src="front.jpg" class="thick-veggie-burger" />
+        -->
     </section>
-     
-    
-    
+    <section id="volt-bottom"></section>
+
+
+
     <div class="popup-help" role="alert"> <!--this is the problem email popup modal-->
         <div class="popup-container-help">
             <p>Ask away, and I'll get back to you in a day.</p><br>
@@ -128,8 +141,8 @@
                 <input type='hidden' name='context' value="volt-question" />
             </form>
         </div>
-    </div>   
-     
+    </div>
+
     <div class="popup-edu" role="alert"> <!--this is the problem email popup modal-->
         <div class="popup-container-edu">
             <p>Teacher? Let us show our support. <br><i>(discount time!)</i></p><br>
@@ -142,26 +155,26 @@
                 <input type='hidden' name='context' value="volt-edu" />
             </form>
         </div>
-    </div>   
-     
+    </div>
+
     <div class="popup-bulk" role="alert"> <!--this is the problem email popup modal-->
         <div class="popup-container-bulk">
             <p>Want to make a bulk order?</p><br>
             <form method="post" name="myemailform" action="../../php/mailer.php">
-                <div><input name="name" type="text" 
+                <div><input name="name" type="text"
                             placeholder="Andrew Carnegie"></div><br>
-                <div><input name="email" type="text" 
+                <div><input name="email" type="text"
                             placeholder="andy@carnegie.co"></div><br>
-                <div><input name="message" type="text" 
+                <div><input name="message" type="text"
                             placeholder="How many did you want?">
                      </input></div><br>
-                <div><input type="submit" name="submit" value="Send" 
+                <div><input type="submit" name="submit" value="Send"
                             class="green"></div>
                 <input type='hidden' name='context' value="volt-bulk" />
             </form>
         </div>
-    </div> 
-    
+    </div>
+
     <div class="popup" role="alert"> <!--this is the email popup modal-->
         <div class="popup-container">
             <p>Name and email, you know the drill.</p><br>
@@ -172,8 +185,8 @@
                 <input type='hidden' name='context' value="volt-signup" />
             </form>
         </div>
-    </div>  
-    
+    </div>
+
     <div class="popup-purchase" role="alert"> <!--this is the email popup modal-->
         <div class="popup-container-purchase">
             <p>So that we can let you know when your order&#39;s shipped, can you tell us who you are, and how to reach you?</p><br>
@@ -184,9 +197,9 @@
                 <input type='hidden' name='context' value="volt-purchase" />
             </form>
         </div>
-    </div> 
-    
-    
+    </div>
+
+
 </body>
-    
+
 </html>
