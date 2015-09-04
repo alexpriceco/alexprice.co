@@ -41,43 +41,47 @@ section.feature {
 #volt-top {
     width:100%;
     background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.55)), url('front.jpg')
-                no-repeat center center fixed;
+                no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    min-width: 100%;
     background-position: top;
 }
 #volt-bottom {
     height:40vh;
     width:100%;
     background: url('front.jpg')
-                no-repeat center center fixed;
+                no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    min-width: 100%;
     background-position: top;
 }
 #volt-right {
     height:40vh;
     width:100%;
     background: url('right.jpg')
-                no-repeat center center fixed;
+                no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    min-width: 100%;
 }
 #volt-left {
     height:40vh;
     width:100%;
     background: url('left.jpg')
-                no-repeat center center fixed;
+                no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    min-width: 100%;
 }
 .question {
     color: $shark1;
@@ -132,7 +136,11 @@ section.feature {
     body {
       font-size:1.1em;
     }
-
+    #volt-top, #volt-bottom, #volt-right, #volt-left {
+        background-attachment: fixed;
+    }
 }
+
+
 @media all and (min-width: 1025px) {}
 @media all and (min-width: 1201px) {}
