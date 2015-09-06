@@ -121,6 +121,9 @@
                 pr = "You have an outstanding balance of $" +
                      bal + ".";
                 document.getElementById("paymentbuttons").className = "";
+              } else if(bal<0) {
+                pr = "We need to set up a phone call. Reach me using the buttons below."
+                document.getElementById("chatterbuttons").className = "";
               } else {
                 pr = "You have no outstanding balance! Awesome.";
               }
@@ -157,6 +160,19 @@
           <a class="popup-trigger trigger">
             <div class="button white">
               <i class="fa fa-envelope-o"></i>&nbsp;Check
+            </div>
+          </a>
+        </div>
+
+        <div id="chatterbuttons" class="hidden">
+          <a class="chattertoggle" href="mailto:alex@alexprice.co?subject=Let's%20set%20up%20a%20meeting!&amp;body=Hey%20Alex%2C%0A%0AI'm%20free%20between%202%20and%204%20this%20afternoon.%0A%0ACheers!">
+            <div class="button mark">
+              <i class="fa fa-comment"></i>
+            </div>
+          </a>
+          <a class="calltoggle callmemaybe" href="tel:+15127300930">
+            <div class="button mark">
+              <i class="fa fa-phone"></i>
             </div>
           </a>
         </div>
