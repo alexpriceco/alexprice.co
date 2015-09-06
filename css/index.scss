@@ -151,10 +151,14 @@ hr {
     text-align: center;
 }
 
-section.shark {
+.shark {
 	background-color:$shark2;
     color:$white1;
     padding:0;
+}
+.white {
+  background-color: $white1;
+  color: $black1;
 }
 span.paren {
     color:$shark1;
