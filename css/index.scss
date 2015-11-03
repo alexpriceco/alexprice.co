@@ -1,12 +1,11 @@
 /* VARIABLES */
 $white1: #fefefe;
-$white2: #f9f9f9;
-$shark1: #879299;
-$shark2: #464F54;
-$black1: #1c1e21;
-$black2: #272727;
-$mark1: #e35654;
-$mark2: #a33e3d;
+$black1: #353d43;
+$black2: #171c1e;
+$shark1: #abbcc3;
+$shark2: #788489;
+$mark1: #fa5248;
+$mark2: #c03b33;
 /* ======= */
 
 
@@ -36,12 +35,16 @@ $mark2: #a33e3d;
 body {
     font-family: "open sans", "helvetica neue", "helvetica", sans-serif;
     background-color: $white1;
-    color: $shark2;
+    color: $black1;
     position:relative;
+}
+h1, h2, h3, h4, h5, .title, .subtitle {
+    font-family: "vollkorn", serif;
+    font-weight: 400;
 }
 a {
     text-decoration: none;
-    color: $shark1;
+    color: $shark2;
     @include transition100ms();
 }
 a:hover {
@@ -49,7 +52,7 @@ a:hover {
 }
 nav {
     background-color: rgba(255, 255, 255, 0.9);
-    color: $shark1;
+    color: $shark2;
     position: fixed;
     top: 0;
     left: 0;
@@ -97,7 +100,7 @@ section {
 }
 .button.white {
     background-color:$white1;
-    color: $shark1;
+    color: $shark2;
 }
 .button.white:hover {
     background-color: $mark1;
@@ -151,10 +154,22 @@ hr {
     text-align: center;
 }
 
-.shark {
-	background-color:$shark2;
+.inverted-section {
+    background: rgba(171,188,195,1);
+    background: -moz-linear-gradient(top, rgba(171,188,195,1) 0%, rgba(137,151,156,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(171,188,195,1)), color-stop(100%, rgba(137,151,156,1)));
+    background: -webkit-linear-gradient(top, rgba(171,188,195,1) 0%, rgba(137,151,156,1) 100%);
+    background: -o-linear-gradient(top, rgba(171,188,195,1) 0%, rgba(137,151,156,1) 100%);
+    background: -ms-linear-gradient(top, rgba(171,188,195,1) 0%, rgba(137,151,156,1) 100%);
+    background: linear-gradient(to bottom, rgba(171,188,195,1) 0%, rgba(137,151,156,1) 100%);
+    -moz-box-shadow:    inset  0  8px 10px -8px rgba(53,61,67,0.3),
+                        inset  0 -8px 10px -8px rgba(53,61,67,0.3);
+    -webkit-box-shadow: inset  0  8px 10px -8px rgba(53,61,67,0.3),
+                        inset  0 -8px 10px -8px rgba(53,61,67,0.3);
+     box-shadow:        inset  0  8px 10px -8px rgba(53,61,67,0.3),
+                        inset  0 -8px 10px -8px rgba(53,61,67,0.3);
     color:$white1;
-    padding:0;
+    padding:2em;
 }
 .white {
   background-color: $white1;
@@ -178,11 +193,17 @@ h2 {
     min-width:220px;
     min-height:220px;
     background-color:$white1;
-    color:$shark2;
+    color:$black1;
 }
 .project {
     height:100%;
     text-align: left;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(53,61,67,0.3);
+       -moz-box-shadow: 0px 5px 10px 0px rgba(53,61,67,0.3);
+            box-shadow: 0px 5px 10px 0px rgba(53,61,67,0.3);
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
     img {
         width:100%;
         display: block;
@@ -191,7 +212,7 @@ h2 {
         padding:2em;
     }
     .header {
-        padding-bottom:0;
+        padding-bottom:.6em;
         border-top:1px $white1;
         @include transition100ms();
     }
@@ -201,6 +222,7 @@ h2 {
 }
 .project:hover .body, .project:hover .header {
     border-top:1px $mark1;
+    color:$black2;
 
 }
 #hero span {
@@ -293,7 +315,7 @@ input[type=submit]:hover, input[type=submit]:focus {
 
 /* ARTICLES */
 .hero {
-    background-color:$shark1;
+    background-color:$shark2;
 
     .subwrap {
         width:60%;

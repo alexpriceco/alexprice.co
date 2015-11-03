@@ -11,7 +11,7 @@ $content = "Nothing here";
 $location = "alexprice.co";
 
 //Validate first
-if(empty($name)||empty($visitor_email)) 
+if(empty($name)||empty($visitor_email))
 {
     echo "Name and email are mandatory!";
     exit;
@@ -23,7 +23,7 @@ if(IsInjected($visitor_email))
     exit;
 }
 
-//Figure out where to send it 
+//Figure out where to send it
 if($context == "volt-question") {
     $content = "$name had a question about the site/product: \n\n$message \n\nYou can respond to $visitor_email.";
     $location = "../html/thanks.html?option=volt-question";
@@ -85,5 +85,5 @@ function IsInjected($str)
   else
     { return false; }
 }
-   
-?> 
+
+?>
