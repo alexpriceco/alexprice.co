@@ -188,12 +188,14 @@ h2 {
 }
 .project-wrapper {
     display:inline-block;
-    margin:1em 2%;
-    width:23%;
-    min-width:220px;
+    width:220px;
     min-height:220px;
     background-color:$white1;
     color:$black1;
+    z-index: 1;
+}
+.nonexist {
+    background-color: rgba(0,0,0,0);
 }
 .project {
     height:100%;
@@ -223,7 +225,6 @@ h2 {
 .project:hover .body, .project:hover .header {
     border-top:1px $mark1;
     color:$black2;
-
 }
 #hero span {
     orphans: 3;
@@ -371,12 +372,17 @@ img.square {
     section { padding:0; }
     .map iframe { height: 20vh; max-height:400px;}
     .seperator { display:none; }
-    .project-wrapper { margin:1em 2%; width:23%; display: inline-block; }
-    section.shark { padding: 3em 0; }
+    .project-wrapper {
+        width:220px;
+        display: inline-block;
+        margin-right:-90px;
+    }
+    #project-panel {
+        text-align: center;
+    }
     .button { border-radius: 3px; display: inline-block; }
     .more-projects, .anti-orphan { display:none; }
     .inverted-section { padding: 2em; }
-
 }
 
 @media all and (min-width: 1025px) {

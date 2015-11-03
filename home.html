@@ -67,7 +67,19 @@
     <script type="text/javascript">smoothScroll.init();</script>
     <script src="js/modernizr.custom.js"></script>
     <script type="text/javascript">
+
+
+
         $(document).ready(function(){
+
+            //moves projects around
+            $( '.project-wrapper' ).click(function() {
+                $('#'+this.id).animate({"margin-right": "-280px"},1000);
+                $('#'+this.id).css('z-index', 2);
+                $('#'+this.id).siblings('.project-wrapper').css('z-index', 1);
+                $('#'+this.id).animate({"margin-right": "-90px"},1000);
+
+            });
 
             //displays the contact form
             $( '.chattertoggle' ).click(function() {
@@ -151,7 +163,8 @@
 
     <div class="v-center">
     <section class="inverted-section v-center-child" id="project-panel" data-anchor="projects">
-        <div class="project-wrapper">
+
+        <div class="project-wrapper" id="proj1">
             <div class="project">
                 <a href="http://alexprice.co/projects/volt"><img src="media/volt.jpeg" /></a>
                 <div class="header"><h3>VEX Volt</h3></div>
@@ -162,7 +175,7 @@
             </div>
         </div>
 
-        <div class="project-wrapper">
+        <div class="project-wrapper" id="proj2">
             <div class="project">
                 <a href="http://alexprice.co/blog/infographic.html"><img src="media/infographic.png" /></a>
                 <div class="header"><h3>Infographic Design</h3></div>
@@ -173,7 +186,7 @@
             </div>
         </div>
 
-        <div class="project-wrapper">
+        <div class="project-wrapper" id="proj3">
             <div class="project">
                 <a href="http://alexprice.co/#projects"><img src="media/robots.jpg" /></a>
                 <div class="header"><h3>Robotics Website</h3></div>
@@ -184,7 +197,7 @@
             </div>
         </div>
 
-        <div class="project-wrapper hidden" id="fourth-project">
+        <div class="project-wrapper hidden" id="proj4">
             <div class="project">
                 <a href="http://alexprice.co/#projects"><img src="media/placeholder.png" /></a>
                 <div class="header"><h3>Personal Branding</h3></div>
@@ -195,7 +208,7 @@
             </div>
         </div>
 
-        <div class="project-wrapper hidden">
+        <div class="project-wrapper hidden" id="proj5">
             <div class="project">
                 <a href="http://alexprice.co/blog/fathersday.html"><img src="media/fathersday/sketch3.jpg" /></a>
                 <div class="header"><h3>Watch + Phone</h3></div>
@@ -206,7 +219,13 @@
             </div>
         </div>
 
-        <a href="#fourth-project" data-scroll><div class="button white more-projects">more projects</div></a>
+        <div class="project-wrapper nonexist">
+            <div class="project">
+                <div class="hidden">Shhh, I'm not here!</div>
+            </div>
+        </div>
+
+        <a href="#proj4" data-scroll><div class="button white more-projects">more projects</div></a>
     </section>
     </div>
 
