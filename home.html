@@ -26,6 +26,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- loads css, important stuff up top-->
     <link rel="stylesheet" type="text/css" href="css/compressed/index.css">
     <link rel="stylesheet" type="text/css" href="css/compressed/animate.css">
     <link rel="stylesheet" type="text/css" href="css/compressed/jquery.fullpage.css" />
@@ -66,18 +67,26 @@
     <script type="text/javascript" src="js/smooth-scroll.min.js" ></script>
     <script type="text/javascript">smoothScroll.init();</script>
     <script src="js/modernizr.custom.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.6/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.6/slick-theme.css"/>
+
     <script type="text/javascript">
 
         $(document).ready(function(){
 
-            //moves projects around
-            $( '.project-wrapper' ).click(function() {
-                $('#'+this.id).animate({"margin-right": "-280px"},1000);
-                $('#'+this.id).css('z-index', 2);
-                $('#'+this.id).siblings('.project-wrapper').css('z-index', 1);
-                $('#'+this.id).animate({"margin-right": "-90px"},1000);
-
-            });
+            /*$('.projects').slick({
+                centerMode: true,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            unslick:true
+                        }
+                    }
+                ]
+            });*/
 
             //displays the contact form
             $( '.chattertoggle' ).click(function() {
@@ -89,7 +98,19 @@
                 $('.js-clear_field').attr('disabled', 'disabled');
             });
             $( '.more-projects' ).click(function() {
-                $( '.project-wrapper:nth-child(n+4)' ).slideToggle('normal').css('display','inline-block');
+                var winSize = $(window).width();
+                console.log(winSize);
+                if(winSize <= 769) {
+                    $( '.project-wrapper:nth-child(n+4)' ).slideToggle('fast').css('display','inline-block');
+                }
+                else {
+                    var styles = {
+                        display : "inline-block",
+                        width: "220px",
+                        "margin-top": "2em"
+                    };
+                    $( '.project-wrapper:nth-child(n+4)' ).fadeIn('fast').css(styles);
+                }
                 $(this).slideToggle('fast');
             })
 
@@ -138,14 +159,16 @@
 
     <div class="v-center">
     <section class="animated-super-slowly fadeIn v-center-child" data-anchor="about" id="hero">
+        <img class="logo" src="media/logo.svg" />
         <h1>Hey, I'm Alex.</h1>
-        <span id="subtext">I'm a student + designer.</span>
+        <span class="subtext">I'm a student + designer.</span>
         <span class="paren">
             <a data-scroll class="chattertoggle" href="#contact">Let's talk!</a>
         </span><br><br>
         <span class="external-links">
             <a href="https://twitter.com/alexpriceco" class="fa fa-twitter"></a>&nbsp;&nbsp;
             <a href="#" id="map-toggle" class="fa fa-map-marker"></a>&nbsp;&nbsp;
+            <a href="https://instagram.com/alexpriceco" class="fa fa-instagram"></a>&nbsp;&nbsp;
             <a href="https://github.com/alexpriceco" class="fa fa-github"></a>
         </span>
 
@@ -157,69 +180,75 @@
         <br><br>
     </section>
     </div>
-
-
     <div class="v-center">
     <section class="inverted-section v-center-child" id="project-panel" data-anchor="projects">
 
-        <div class="project-wrapper" id="proj1">
-            <div class="project">
-                <a href="http://alexprice.co/projects/volt"><img src="media/volt.jpeg" /></a>
-                <div class="header"><h3>VEX Volt</h3></div>
-                <div class="body"><span>A simple and beautiful tool for measuring VEX battery voltage.
-                    <br><a href="http://alexprice.co/projects/volt">more</a>
-                </span><br>
-                <span class="seperator">&mdash;</span></div>
-            </div>
-        </div>
+        <h1>Some of my work</h1>
+        <div class="subtext">I love to help teams tell impactful stories about
+            important products. I'm passionate about the details, and delight in
+            scaling ideas. I have work spanning from robotics to woodwork, and
+            side projects like QuarterBot, and my iPhone + Apple Watch stand.
+            <br><br>
+            I'm currently studying economics and computer science at UC Santa Cruz,
+            when I'm not freelancing.
+         </div>
+         <br><br>
 
-        <div class="project-wrapper" id="proj2">
-            <div class="project">
-                <a href="http://alexprice.co/blog/infographic.html"><img src="media/infographic.png" /></a>
-                <div class="header"><h3>Infographic Design</h3></div>
-                <div class="body"><span>Representing data beautifully: both logically and aesthetically.
-                    <br><a href="http://alexprice.co/blog/infographic.html">read</a>
-                </span><br>
-                <span class="seperator">&mdash;</span></div>
+         <br><br>
+         <div class="projects">
+            <div class="project-wrapper" id="proj1">
+                <div class="project">
+                    <a href="http://alexprice.co/projects/volt"><img src="media/volt.jpg" /></a>
+                    <div class="header"><h3>VEX Volt</h3></div>
+                    <div class="body"><span>A simple and beautiful tool for measuring VEX battery voltage.
+                        <br><a href="http://alexprice.co/projects/volt">more</a>
+                    </span><br>
+                    <span class="seperator">&mdash;</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="project-wrapper" id="proj3">
-            <div class="project">
-                <a href="http://alexprice.co/#projects"><img src="media/robots.jpg" /></a>
-                <div class="header"><h3>Robotics Website</h3></div>
-                <div class="body"><span>Homepage for Austin-based robotics team, the ausTIN CANs.
-                    <br><a href="http://andersonrobotics.org">view page</a>
-                </span><br>
-                <span class="seperator">&mdash;</span></div>
+            <div class="project-wrapper" id="proj2">
+                <div class="project">
+                    <a href="http://alexprice.co/blog/infographic.html"><img src="media/infographic.png" /></a>
+                    <div class="header"><h3>Infographic Design</h3></div>
+                    <div class="body"><span>Representing data beautifully: both logically and aesthetically.
+                        <br><a href="http://alexprice.co/blog/infographic.html">read</a>
+                    </span><br>
+                    <span class="seperator">&mdash;</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="project-wrapper hidden" id="proj4">
-            <div class="project">
-                <a href="http://alexprice.co/#projects"><img src="media/placeholder.png" /></a>
-                <div class="header"><h3>Personal Branding</h3></div>
-                <div class="body"><span>Designing a brand all of my own: me, on the web and beyond.
-                    <br><a href="http://alexprice.co/#projects"></a>
-                </span><br>
-                <span class="seperator">&mdash;</span></div>
+            <div class="project-wrapper" id="proj3">
+                <div class="project">
+                    <a href="http://andersonrobotics.org"><img src="media/robots.jpg" /></a>
+                    <div class="header"><h3>Robotics Website</h3></div>
+                    <div class="body"><span>Homepage for Austin-based robotics team, the ausTIN CANs.
+                        <br><a href="http://andersonrobotics.org">view page</a>
+                    </span><br>
+                    <span class="seperator">&mdash;</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="project-wrapper hidden" id="proj5">
-            <div class="project">
-                <a href="http://alexprice.co/blog/fathersday.html"><img src="media/fathersday/sketch3.jpg" /></a>
-                <div class="header"><h3>Watch + Phone</h3></div>
-                <div class="body"><span>Rich hand crafted stand for Apple Watch and iPhone.
-                    <br><a href="http://alexprice.co/blog/fathersday.html">read</a>
-                </span><br>
-                <span class="seperator">&mdash;</span></div>
+            <div class="project-wrapper hidden" id="proj4">
+                <div class="project">
+                    <img src="media/branding.jpg" />
+                    <div class="header"><h3>Personal Branding</h3></div>
+                    <div class="body"><span>Designing a brand all of my own: me, on the web and beyond.
+                        <br>
+                    </span><br>
+                    <span class="seperator">&mdash;</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="project-wrapper nonexist">
-            <div class="project">
-                <div class="hidden">Shhh, I'm not here!</div>
+            <div class="project-wrapper hidden" id="proj5">
+                <div class="project">
+                    <a href="http://alexprice.co/blog/fathersday.html"><img src="media/watchstand.jpg" /></a>
+                    <div class="header"><h3>Watch + Phone</h3></div>
+                    <div class="body"><span>Rich hand crafted stand for Apple Watch and iPhone.
+                        <br><a href="http://alexprice.co/blog/fathersday.html">read</a>
+                    </span><br>
+                    <span class="seperator">&mdash;</span></div>
+                </div>
             </div>
         </div>
 
@@ -233,7 +262,9 @@
 
         <div id="chatter-instructions">
             <h2>Contact</h2>
-            <span>Want to work together? <br><br>
+            <div class="subtext">If you think I'd be a good fit for your project (or company)
+            feel free to reach out. I'm always looking to add more folks to my client list.</div>
+            <br><br>
               <a class="chattertoggle">
                 <div class="button mark">
                   <i class="fa fa-comment"></i>
@@ -244,7 +275,6 @@
                   <i class="fa fa-phone"></i>
                 </div>
               </a>
-            </span>
         </div>
 
         <div id="call">
@@ -331,6 +361,7 @@
       ga('create', 'UA-63630411-1', 'auto');
       ga('send', 'pageview');
     </script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
 </body>
 
 </html>

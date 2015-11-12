@@ -125,6 +125,9 @@ section {
     display: table;
     text-align: center;
 }
+.logo {
+    width:5vw;
+}
 #contact {
     min-height: 100vh;
 }
@@ -192,7 +195,6 @@ h2 {
     min-height:220px;
     background-color:$white1;
     color:$black1;
-    z-index: 1;
 }
 .nonexist {
     background-color: rgba(0,0,0,0);
@@ -332,6 +334,7 @@ input[type=submit]:hover, input[type=submit]:focus {
         }
     }
 }
+.subtext { margin: 0 auto;}
 .wrap {
     padding:2em;
 
@@ -361,10 +364,10 @@ img.square {
 @media all and (min-width: 321px) {
     body { font-size:1.2em; }
     .project-wrapper { width: 100vw; margin: 0; }
+        .subtext {width:90%;}
 }
 
 @media all and (min-width: 641px) {
-    //641px and beyond!
 }
 
 @media all and (min-width: 769px) {
@@ -372,20 +375,34 @@ img.square {
     section { padding:0; }
     .map iframe { height: 20vh; max-height:400px;}
     .seperator { display:none; }
-    .project-wrapper {
+    .project-wrapper:nth-child(-n+3) {
         width:220px;
         display: inline-block;
-        margin-right:-90px;
+    }
+    .project-wrapper:nth-child(n+4) {
+        width:220px;
+        margin-top:2em;
+        display:none;
     }
     #project-panel {
         text-align: center;
     }
+    .subtext {width:50%;}
     .button { border-radius: 3px; display: inline-block; }
-    .more-projects, .anti-orphan { display:none; }
+    .button.more-projects { background-color:transparent; }
+    .button.more-projects:hover { background-color:transparent; }
     .inverted-section { padding: 2em; }
 }
 
+@media all and (min-width: 1190px) {
+    .project-wrapper:nth-child(n+4) {
+        width:220px;
+        display: inline-block;
+    }
+}
+
 @media all and (min-width: 1025px) {
+    .subtext {width:30%;}
 }
 
 @media all and (min-width: 1201px) {
