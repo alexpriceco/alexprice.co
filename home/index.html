@@ -1,0 +1,56 @@
+---
+layout: home
+---
+
+<section class="v-center body-copy">
+    <div class="animated" id="animated" style="visibility:hidden">
+        <h2><span id="day">Hey</span>, Alex.</h2>
+        <span class="icon-links">
+            <a href="http://alexprice.co" class="fa fa-home"></a>&nbsp;&nbsp;
+            <a href="https://twitter.com/alexpriceco" class="fa fa-twitter"></a>&nbsp;&nbsp;
+            <a href="https://www.toggl.com/app/timer" class="fa fa-clock-o"></a>&nbsp;&nbsp;
+            <a href="https://www.mailchimp.com/login" class="fa fa-envelope"></a>&nbsp;&nbsp;
+            <a href="https://www.codepen.io/pen/" class="fa fa-codepen"></a>&nbsp;&nbsp;
+            <a href="https://www.dropbox.com" class="fa fa-dropbox"></a>&nbsp;&nbsp;
+            <a href="https://www.asana.com" class="fa fa-list-ul"></a>&nbsp;&nbsp;
+            <a href="https://drive.google.com" class="fa fa-google"></a>
+        </span>
+        <br><br>
+    </div>
+</section>
+
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById("animated").className += " fadeIn";
+        document.getElementById("animated").setAttribute('style', '');
+    }
+
+    function customDate() {
+        var d = new Date();
+        var t = d.getHours();
+
+        var greeting = "Hello";
+
+        if(t<=0 && t<6) {
+            greeting = "Schlaft gut";
+        }
+        else if (6<=t && t<11) {
+            greeting = "Good morning";
+        }
+        else if (11<=t && t<15) {
+            greeting = "Good day";
+        }
+        else if (15<=t && t<18) {
+            greeting = "Good afternoon";
+        }
+        else if (18<=t) {
+            greeting = "Good evening";
+        }
+        else {
+            greeting = "Hello";
+        }
+
+        document.getElementById("day").innerHTML = greeting;
+    }
+    customDate();
+</script>

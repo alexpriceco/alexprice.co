@@ -1,0 +1,307 @@
+// Reset some basics
+html, body, h1, h2, h3,
+h4, h5, h6, p, pre, hr,
+blockquote, dl, dd, ol,
+ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+
+// Basic styling
+body {
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+    color: $d-gray;
+    background-color: $white;
+    text-align: center;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "kern" 1;
+    -moz-font-feature-settings: "kern" 1;
+    -o-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    > * {
+        margin: 0 auto;
+        text-align: left;
+    }
+}
+
+section {
+    width:40vw;
+    padding: 1em 30vw;
+    vertical-align: middle;
+
+    > .body-copy {
+        margin: 1em auto;
+        line-height: $spacing-unit;
+    }
+    &:first-of-type {
+        margin-top: 10vh;
+    }
+    &:last-of-type {
+        min-height: 40vh;
+    }
+}
+
+footer {
+    width:100%;
+    padding:1em 0;
+    text-align: center;
+}
+
+
+h1, h2, h3, h4, h5, h6,
+blockquote, pre, ul, ol,
+dl, figure,
+%vertical-rhythm {
+    margin: $spacing-unit auto auto auto;
+    line-height: $spacing-unit;
+}
+
+p {
+    margin: auto auto $spacing-unit / 2 auto ;
+}
+
+h1, h2 {
+    margin-top:2em;
+    white-space: pre;
+    font-family: $title-font-family;
+    color:$black;
+
+    &:after {
+        content:"\A";
+        display: block;
+        vertical-align: middle;
+        width: 1.5em;
+        margin-top:0.4em;
+        border-top: 1px solid $gray;
+    }
+}
+h2 {
+    color:$gray;
+    font-size:1.2em;
+    text-transform: uppercase;
+}
+
+
+
+// Images
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+
+// Figures
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: $small-font-size;
+}
+
+
+
+// Lists
+li {
+    margin-top:1em;
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
+
+
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $base-font-weight;
+}
+
+
+// Links
+a, a:visited {
+    @include ease(105ms);
+    color: $red;
+    text-decoration: none;
+
+    &:hover {
+        color: $d-gray;
+        background-color: $d-white;
+    }
+}
+.icon-links {
+    font-size:1.2em;
+}
+
+
+
+// Blockquotes
+blockquote {
+    color: $gray;
+    border-left: 2px solid $d-gray;
+    padding-left: $spacing-unit / 2;
+    font-size: 18px;
+    letter-spacing: -1px;
+    font-style: italic;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
+// Code formatting
+pre,
+code {
+    font-size: 15px;
+    border: 1px solid $gray;
+    border-radius: 3px;
+    background-color: #eef;
+}
+
+code {
+    padding: 1px 5px;
+}
+
+pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+
+    > code {
+        border: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+
+
+// Wrapper
+.wrapper {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    @extend %clearfix;
+
+    @include media-query($on-laptop) {
+        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+}
+
+
+
+// Clearfix
+%clearfix {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+
+// Shapes!
+.icon {
+
+    > svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+
+        path {
+            fill: $gray;
+        }
+    }
+}
+
+.triangle.before {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 3em 0 0 100vw;
+    border-color: transparent  transparent transparent $red;
+}
+.triangle.after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 3em 100vw 0 0;
+    border-color: $red transparent $red $red;
+}
+
+// Fixes
+section.red {
+    background-color: $red;
+    color:$white;
+
+    a, a:visited {
+        color:$d-white;
+    }
+    a:hover {
+        color:$white;
+    }
+
+
+    h1, h2 {
+        color:$white;
+
+        &:after {
+            border-top: 1px solid $white;
+        }
+    }
+    h2 {
+        color:$white;
+    }
+}
+.v-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.fullscreen {
+    width:100vw;
+    height:100vh;
+}
+.v-center {
+    @extend .v-align;
+    transform: translateY(-80%);
+    text-align: left;
+    display: inline-block;
+}
+
+// Mobile
+@media all and (min-width: 321px) and (max-width: 768px) {
+	section {
+		min-width:80vw;
+		padding:3em 10vw;
+
+      &:first-of-type {
+          margin-top: 5vh;
+      }
+      &.red {
+      	margin:0;
+      }
+      .body-copy {
+      	font-size: 1.2em;
+      }
+	}
+	h1 {
+		font-size: 2.2em;
+	}
+	h2 {
+		font-size:1.4em;
+	}
+}
