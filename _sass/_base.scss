@@ -47,6 +47,10 @@ footer {
     width:100%;
     padding:1em 0;
     text-align: center;
+    svg {
+        opacity:0.2;
+        max-width:10vw;
+    }
 }
 
 
@@ -289,7 +293,7 @@ section.red {
 		padding:3em 10vw;
 
       &:first-of-type {
-          margin-top: 5vh;
+          margin-top: -5vh;
       }
       &.red {
       	margin:0;

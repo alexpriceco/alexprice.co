@@ -1,9 +1,8 @@
 # Site settings
 title: Alex Price & Co.
 email: alex@alexprice.co
-description: > # this means to ignore newlines until "baseurl:"
-  I'm a human, writing code, and thinking about the humans 
-  served by that code.
+description: > I'm a human, writing code, and thinking about the humans served
+    by that code.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://alexprice.co" # the base hostname & protocol for your site
 
