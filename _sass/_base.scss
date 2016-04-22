@@ -28,28 +28,28 @@ body {
 
 section {
     width:40vw;
-    padding: 1em 30vw;
+    padding: 0 30vw;
     vertical-align: middle;
 
     > .body-copy {
-        margin: 1em auto;
         line-height: $spacing-unit;
     }
     &:first-of-type {
         margin-top: 10vh;
     }
     &:last-of-type {
-        min-height: 40vh;
+        min-height: 30vh;
     }
 }
 
 footer {
     width:100%;
-    padding:1em 0;
+    padding:2em 0;
     text-align: center;
+
     svg {
         opacity:0.2;
-        max-width:10vw;
+        max-width:3em;
     }
 }
 
@@ -67,7 +67,7 @@ p {
 }
 
 h1, h2 {
-    margin-top:2em;
+    padding-top:2em;
     white-space: pre;
     font-family: $title-font-family;
     color:$black;
@@ -80,6 +80,9 @@ h1, h2 {
         margin-top:0.4em;
         border-top: 1px solid $gray;
     }
+}
+h1 {
+    margin-top: 0;
 }
 h2 {
     color:$gray;
@@ -144,12 +147,12 @@ a, a:visited {
 
 // Blockquotes
 blockquote {
-    color: $gray;
-    border-left: 2px solid $d-gray;
-    padding-left: $spacing-unit / 2;
+    background-color: $d-white;
+    border-left: .5em solid $gray;
+    padding:1em;
+    margin-bottom:1em;
     font-size: 18px;
     letter-spacing: -1px;
-    font-style: italic;
 
     > :last-child {
         margin-bottom: 0;
@@ -250,6 +253,8 @@ pre {
 section.red {
     background-color: $red;
     color:$white;
+    padding-top:2em;
+    padding-bottom:2em;
 
     a, a:visited {
         color:$d-white;
@@ -289,8 +294,8 @@ section.red {
 // Mobile
 @media all and (min-width: 321px) and (max-width: 768px) {
 	section {
-		min-width:80vw;
-		padding:3em 10vw;
+        width:100vw;
+		padding:10vw 0;
 
       &:first-of-type {
           margin-top: -5vh;
@@ -298,11 +303,24 @@ section.red {
       &.red {
       	margin:0;
       }
-      .body-copy {
-      	font-size: 1.2em;
-      }
 	}
+
+    .body-copy {
+      font-size: 1.2em;
+      width:80vw;
+      margin-top:1em;
+      margin-left:10vw;
+    }
+
+
+    ol {
+        width:80vw;
+        > .body-copy {
+            margin-left:0;
+        }
+    }
 	h1 {
+        margin-left:10vw;
 		font-size: 2.2em;
 	}
 	h2 {
