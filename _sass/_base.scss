@@ -12,14 +12,15 @@ ul, figure {
 body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
     color: $d-gray;
-    background-color: $white;
-    text-align: center;
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
     -o-font-feature-settings: "kern" 1;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
+    background-color: $white;
+    text-align: center;
+
     > * {
         margin: 0 auto;
         text-align: left;
@@ -28,17 +29,15 @@ body {
 
 section {
     width:40vw;
-    padding: 0 30vw;
+    padding: 0 30vw 2em 30vw;
     vertical-align: middle;
 
     > .body-copy {
         line-height: $spacing-unit;
+        margin:1em auto;
     }
     &:first-of-type {
         margin-top: 10vh;
-    }
-    &:last-of-type {
-        min-height: 30vh;
     }
 }
 
@@ -50,6 +49,15 @@ footer {
     svg {
         opacity:0.2;
         max-width:3em;
+    }
+
+    .red + & {
+        background-color:$red;
+
+        path {
+            fill: $black;
+        }
+
     }
 }
 
@@ -151,8 +159,6 @@ blockquote {
     border-left: .5em solid $gray;
     padding:1em;
     margin-bottom:1em;
-    font-size: 18px;
-    letter-spacing: -1px;
 
     > :last-child {
         margin-bottom: 0;
@@ -182,6 +188,19 @@ pre {
         border: 0;
         padding-right: 0;
         padding-left: 0;
+    }
+}
+
+
+// Form Elements
+input {
+    background-color: $d-white;
+    border-left: .5em solid $gray;
+    padding:1em;
+    margin-bottom:1em;
+
+    &:focus {
+        outline:0;
     }
 }
 
@@ -227,10 +246,6 @@ pre {
         width: 16px;
         height: 16px;
         vertical-align: middle;
-
-        path {
-            fill: $gray;
-        }
     }
 }
 
@@ -253,8 +268,6 @@ pre {
 section.red {
     background-color: $red;
     color:$white;
-    padding-top:2em;
-    padding-bottom:2em;
 
     a, a:visited {
         color:$d-white;
