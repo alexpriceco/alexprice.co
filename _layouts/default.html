@@ -12,19 +12,23 @@
     {% include footer.html %}
 
   </body>
-{% if page.greetMe == "true" %}
+{% if page.greet == "true" %}
     <script type="text/javascript" src="{{ "/js/greeting.js" | prepend: site.baseurl }}"></script>
 {% endif %}
-{% if page.shortPage == "true" %}
+{% if page.protect == "true" %}
+  <script type="text/javascript" src="{{ "/js/protect.js" | prepend: site.baseurl }}"></script>
+{% endif %}
+{% if page.short == "true" %}
     <script type="text/javascript">
         var redSection = document.getElementById("red");
         var a = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         var b = redSection.offsetTop + document.querySelector("footer").offsetHeight;
-        var h = a - b - redSection.offsetHeight;
+        var h = a - b - redSection.offsetHeight+1;
         redSection.style.height = h +"px";
     </script>
 {% endif %}
 
 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic|Libre+Baskerville:700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl }}">
 </html>

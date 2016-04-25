@@ -197,14 +197,34 @@ input {
     background-color: $d-white;
     border-left: .5em solid $gray;
     padding:1em;
-    margin-bottom:1em;
+    @include ease(150ms);
 
     &:focus {
         outline:0;
     }
 }
+form {
+    margin:0 auto;
+    width:80vw;
+}
 
+button {
+    padding:1em;
+    background-color: $gray;
+    color:$white;
+    @include ease(150ms);
+    display:inline-block;
+    cursor: pointer;
 
+    &:focus {
+        outline:0;
+    }
+
+    &:hover {
+        background-color:$red;
+    }
+
+}
 
 // Wrapper
 .wrapper {
@@ -262,6 +282,31 @@ input {
     border-style: solid;
     border-width: 3em 100vw 0 0;
     border-color: $red transparent $red $red;
+}
+
+@keyframes load-right {
+  0% {
+    border-width: 0 100vw 3em 0;
+  }
+  50% {
+    border-width: 0;
+  }
+  100% {
+    border-width: 0 100vw 3em 0;
+  }
+}
+
+
+@keyframes load-left {
+  0% {
+    border-width: 0;
+  }
+  50% {
+    border-width: 3em 100vw 0 0;
+  }
+  100% {
+    border-width: 0;
+  }
 }
 
 // Fixes
