@@ -1,6 +1,7 @@
 ---
 layout: default
 greet: "true"
+pay: "true"
 ---
 
 <section>
@@ -13,6 +14,20 @@ greet: "true"
 		a live version of your site (if we're at that stage). Can't remember
 		your code? <a href="sms:15125502287">Message me</a>!
 	</div>
+	<br>
+
+		<form id="payment-form" action="buy.php" method="POST">
+			<label>Card Number</label>
+			<input type="text" size="20" autocomplete="off">
+			<span>Enter the number without spaces or hyphens.</span>
+			<label>CVC</label>
+			<input type="text" size="4" autocomplete="off">
+			<label>Expiration (MM/YYYY)</label>
+			<input type="text" size="2">
+			<span> / </span>
+			<input type="text" size="4">
+			<div id="payment-errors"></div>
+		</form>
 </section>
 
 <div class="triangle before"></div>
