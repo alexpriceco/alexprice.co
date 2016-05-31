@@ -6,7 +6,37 @@ ul, figure {
     margin: 0;
     padding: 0;
 }
+// Lists
+li {
+    margin-top:1em;
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
 
+
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $base-font-weight;
+}
+
+
+// Links
+a, a:visited {
+    @include ease(105ms);
+    color: $red;
+    text-decoration: none;
+
+    &:not(.unstyled):hover {
+        color: $d-gray;
+        background-color: $d-white;
+    }
+}
+.icon-links {
+    font-size:1.2em;
+}
 
 // Basic styling
 body {
@@ -50,10 +80,39 @@ footer {
     width:100%;
     padding: 2em 0;
     text-align: center;
+    @include gradient($red, $d-red);
 
-    svg {
-        opacity:0.16;
-        max-width:3em;
+    > a:hover {
+        background-color: transparent !important;
+    }
+
+    > .icon {
+        pointer-events: none;
+    }
+
+    .icon {
+        opacity:0.5;
+        color:$d-gray;
+        @include ease(128ms);
+        background-color: transparent;
+        width:64px;
+        padding:12px;
+        display: inline-block;
+        vertical-align: bottom;
+
+        &:hover {
+            background-color: transparent;
+            opacity:1;
+        }
+
+        i {
+            font-size:24px;
+        }
+
+        svg {
+            height:32px;
+            width:auto;
+        }
     }
 
     .red + & {
@@ -177,41 +236,6 @@ figure > img {
 figcaption {
     font-size: $small-font-size;
 }
-
-
-
-// Lists
-li {
-    margin-top:1em;
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
-}
-
-
-
-// Headings
-h1, h2, h3, h4, h5, h6 {
-    font-weight: $base-font-weight;
-}
-
-
-// Links
-a, a:visited {
-    @include ease(105ms);
-    color: $red;
-    text-decoration: none;
-
-    &:not(.unstyled):hover {
-        color: $d-gray;
-        background-color: $d-white;
-    }
-}
-.icon-links {
-    font-size:1.2em;
-}
-
 
 
 // Blockquotes
@@ -428,7 +452,8 @@ button {
 
 // Fixes
 section.red {
-    background-color: $red;
+
+    @include gradient($red, $d-red);
     color:$white;
 
     a, a:visited {

@@ -12,12 +12,15 @@
     {% include footer.html %}
 
   </body>
+
 {% if page.greet == "true" %}
     <script type="text/javascript" src="{{ "/js/greeting.js" | prepend: site.baseurl }}"></script>
 {% endif %}
+
 {% if page.protect == "true" %}
   <script type="text/javascript" src="{{ "/js/protect.js" | prepend: site.baseurl }}"></script>
 {% endif %}
+
 {% if page.short == "true" %}
     <script type="text/javascript">
         var redSection = document.getElementById("red");
@@ -27,7 +30,6 @@
         redSection.style.height = h +"px";
     </script>
 {% endif %}
-
 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic|Libre+Baskerville:700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl }}">
