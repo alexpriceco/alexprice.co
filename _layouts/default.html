@@ -15,9 +15,6 @@
 {% if page.greet == "true" %}
     <script type="text/javascript" src="{{ "/js/greeting.js" | prepend: site.baseurl }}"></script>
 {% endif %}
-{% if page.pay == "true" %}
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-{% endif %}
 {% if page.protect == "true" %}
   <script type="text/javascript" src="{{ "/js/protect.js" | prepend: site.baseurl }}"></script>
 {% endif %}

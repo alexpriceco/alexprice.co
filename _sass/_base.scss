@@ -39,15 +39,20 @@ section {
     &:first-of-type {
         margin-top: 10vh;
     }
+    &.inline {
+        display: inline-block;
+        padding:0;
+        vertical-align: top;
+    }
 }
 
 footer {
     width:100%;
-    padding:2em 0;
+    padding: 2em 0;
     text-align: center;
 
     svg {
-        opacity:0.2;
+        opacity:0.16;
         max-width:3em;
     }
 
@@ -57,7 +62,63 @@ footer {
         path {
             fill: $black;
         }
+    }
+}
 
+.button {
+    padding:1em;
+    min-height:24px;
+    min-width:24px;
+    vertical-align: bottom;
+    text-align: center;
+    border:none;
+    position: relative;
+    background-color:$d-gray;
+    color:$white;
+    display:inline-block;
+    @include ease(150ms);
+
+    & + & {
+        margin-right:1em;
+    }
+
+    &:hover {
+        background-color:$red;
+    }
+
+    > .fa-hand-o-right {
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform-origin: left;
+        transform: translate(-50%, -50%) rotate(0);
+    }
+    &:hover > .fa-hand-o-right {
+        animation: stick-em-up .5s;
+    }
+}
+.cta {
+    @extend .button;
+    // More todo here...
+}
+
+.empty {
+    color:$gray;
+    opacity: 0.5;
+}
+
+@keyframes stick-em-up {
+    0% {
+        transform-origin: left;
+        transform: translate(-50%, -50%) rotate(0);
+    }
+    30% {
+        transform-origin: left;
+        transform: translate(-50%, -50%) rotate(-40deg);
+    }
+    100% {
+        transform-origin: left;
+        transform: translate(-50%, -50%) rotate(0);
     }
 }
 
@@ -142,7 +203,7 @@ a, a:visited {
     color: $red;
     text-decoration: none;
 
-    &:hover {
+    &:not(.unstyled):hover {
         color: $d-gray;
         background-color: $d-white;
     }
@@ -269,6 +330,62 @@ button {
     }
 }
 
+.document {
+    width:128px;
+    height:168px;
+    display:inline-block;
+    margin:1em;
+    background-color:$pure-white;
+    @include ease(150ms);
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.1);
+    -moz-box-shadow:    0px 2px 8px 0px rgba(17, 17, 17, 0.1);
+    box-shadow:         0px 2px 8px 0px rgba(17, 17, 17, 0.1);
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+
+    > svg {
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -90%);
+        width:70%;
+    }
+
+    > span {
+        position:absolute;
+        bottom:.5em;
+        left:50%;
+        transform: translateX(-50%);
+        letter-spacing: .2em;
+        color:$black;
+        opacity: 0.5;
+    }
+}
+.document-container {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+
+    .document-description {
+        width:128px;
+        color:$gray;
+        @include ease(150ms);
+        transform: translateZ(0);
+    }
+
+    &:hover {
+        .document-description {
+            color:$d-gray;
+        }
+        .document {
+            -webkit-box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.2);
+            -moz-box-shadow:    0px 4px 16px 0px rgba(17, 17, 17, 0.2);
+            box-shadow:         0px 4px 16px 0px rgba(17, 17, 17, 0.2);
+        }
+    }
+}
+
 .triangle.before {
     width: 0;
     height: 0;
@@ -354,15 +471,27 @@ section.red {
 	section {
         width:100vw;
 		padding:10vw 0;
-
-      &:first-of-type {
-          margin-top: -5vh;
-      }
       &.red {
       	margin:0;
       }
+      &.inline {
+          display: block;
+          text-align: center;
+          vertical-align: top;
+          > .document-container {
+              display:inline-block;
+          }
+          h1, h2 {
+              text-align: left;
+              -webkit-hyphens: auto;
+              -moz-hyphens: auto;
+              -ms-hyphens: auto;
+              hyphens: auto;
+              width:80vw;
+              margin:0 auto;
+          }
+      }
 	}
-
     .body-copy {
       font-size: 1.2em;
       width:80vw;
@@ -378,10 +507,12 @@ section.red {
         }
     }
 	h1 {
+        word-wrap: break-word;
         margin-left:10vw;
 		font-size: 2.2em;
 	}
 	h2 {
+        word-wrap: break-all;
 		font-size:1.4em;
 	}
 }

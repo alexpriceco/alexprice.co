@@ -5,7 +5,7 @@ description: >
     I'm a human, writing code, and thinking about the humans served
     by that code.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://alexprice.co" # the base hostname & protocol for your site
+url: "/" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown

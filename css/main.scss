@@ -25,17 +25,17 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
+$pure-white: #fff;
 $white:	  #F7F8FA;
 $d-white: #F1F2F4;
 $gray:	  #656F7B;
 $d-gray:  #3E444C;
 $black:   #111111;
-$red:	  #D34A49;
-$d-red:   #DD5655;
+$red:	  #FE6A6D;
+$d-red:   #DD5D5F;
 
 // Width of the content area
 $content-width:    800px;
-
 $on-palm:          600px;
 $on-laptop:        800px;
 
@@ -61,8 +61,6 @@ $on-laptop:        800px;
         @content;
     }
 }
-
-
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
