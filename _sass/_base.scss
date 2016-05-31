@@ -58,8 +58,8 @@ body {
 }
 
 section {
-    width:40vw;
-    padding: 0 30vw 2em 30vw;
+    width:50vw;
+    padding: 0 25vw 2em 25vw;
     vertical-align: middle;
 
     > .body-copy {
@@ -80,7 +80,6 @@ footer {
     width:100%;
     padding: 2em 0;
     text-align: center;
-    @include gradient($red, $d-red);
 
     > a:hover {
         background-color: transparent !important;
@@ -92,7 +91,7 @@ footer {
 
     .icon {
         opacity:0.5;
-        color:$d-gray;
+        color:$white;
         @include ease(128ms);
         background-color: transparent;
         width:64px;
@@ -116,10 +115,8 @@ footer {
     }
 
     .red + & {
-        background-color:$red;
-
         path {
-            fill: $black;
+            fill: $white;
         }
     }
 }
@@ -195,27 +192,20 @@ p {
 }
 
 h1, h2 {
-    padding-top:2em;
-    white-space: pre;
-    font-family: $title-font-family;
     color:$black;
-
-    &:after {
-        content:"\A";
-        display: block;
-        vertical-align: middle;
-        width: 1.5em;
-        margin-top:0.4em;
-        border-top: 1px solid $gray;
-    }
 }
 h1 {
+    padding-top:2em;
+    font-size: 2em;
     margin-top: 0;
+    font-family: $base-font-family;
 }
 h2 {
     color:$gray;
-    font-size:1.2em;
-    text-transform: uppercase;
+    padding: 1em 0;
+    font-family: $base-font-family;
+    font-size:1.5em;
+    line-height: 1.5em;
 }
 
 
@@ -280,8 +270,7 @@ pre {
 // Form Elements
 input {
     background-color: $d-white;
-    border-left: .5em solid $gray;
-    padding:1em;
+    padding:0.5em 2em;
     @include ease(150ms);
 
     &:focus {
@@ -290,12 +279,14 @@ input {
 }
 form {
     margin:0 auto;
-    width:80vw;
+    width:100%;
+    display:flex;
 }
-
 button {
-    padding:1em;
-    background-color: $gray;
+    padding:0.5em 2em;
+    margin-left:1em;
+    background-color: $d-gray;
+    font-family: $serif-family;
     color:$white;
     @include ease(150ms);
     display:inline-block;
@@ -306,9 +297,15 @@ button {
     }
 
     &:hover {
-        background-color:$red;
+        background-color:$black;
     }
-
+}
+.left {
+    flex-grow: 1;
+}
+.right {
+    width:auto;
+    float:right;
 }
 
 // Wrapper
