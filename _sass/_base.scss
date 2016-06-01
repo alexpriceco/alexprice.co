@@ -78,8 +78,12 @@ section {
 
 footer {
     width:100%;
-    padding: 2em 0;
+    padding: 0;
     text-align: center;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-around;;
+    margin-top: 2em;
 
     > a:hover {
         background-color: transparent !important;
@@ -94,10 +98,10 @@ footer {
         color:$white;
         @include ease(128ms);
         background-color: transparent;
-        width:64px;
-        padding:12px;
         display: inline-block;
         vertical-align: bottom;
+        width:64px;
+        padding:0;
 
         &:hover {
             background-color: transparent;
@@ -112,6 +116,15 @@ footer {
             height:32px;
             width:auto;
         }
+    }
+
+    > * {
+        justify-content: center;
+        display: flex;
+    }
+
+    > a {
+        align-items: center;
     }
 
     .red + & {
@@ -273,8 +286,17 @@ input {
     padding:0.5em 2em;
     @include ease(150ms);
 
+    &:hover {
+        -webkit-box-shadow: 0px 2px 16px 0px rgba(17, 17, 17, 0.2);
+        -moz-box-shadow:    0px 2px 16px 0px rgba(17, 17, 17, 0.2);
+        box-shadow:         0px 2px 16px 0px rgba(17, 17, 17, 0.2);
+    }
+
     &:focus {
         outline:0;
+        -webkit-box-shadow: 0px 2px 16px 0px rgba(17, 17, 17, 0.2);
+        -moz-box-shadow:    0px 2px 16px 0px rgba(17, 17, 17, 0.2);
+        box-shadow:         0px 2px 16px 0px rgba(17, 17, 17, 0.2);
     }
 }
 form {
@@ -291,6 +313,7 @@ button {
     @include ease(150ms);
     display:inline-block;
     cursor: pointer;
+    white-space: nowrap;
 
     &:focus {
         outline:0;
@@ -298,6 +321,9 @@ button {
 
     &:hover {
         background-color:$black;
+        -webkit-box-shadow: 0px 2px 16px 0px rgba(17, 17, 17, 0.2);
+        -moz-box-shadow:    0px 2px 16px 0px rgba(17, 17, 17, 0.2);
+        box-shadow:         0px 2px 16px 0px rgba(17, 17, 17, 0.2);
     }
 }
 .left {
@@ -521,6 +547,18 @@ section.red {
       margin-left:10vw;
     }
 
+    footer {
+        width:80vw;
+        margin: 0 10vw;
+    }
+
+    button {
+        font-size:.8em;
+        padding: .75em 10vw .75em 1em;
+    }
+    input {
+        padding: .75em 0 .75em 10vw;
+    }
 
     ol {
         width:80vw;
@@ -530,11 +568,14 @@ section.red {
     }
 	h1 {
         word-wrap: break-word;
-        margin-left:10vw;
-		font-size: 2.2em;
+        width:80vw;
+        margin:0 auto;
+		font-size: 2em;
 	}
 	h2 {
         word-wrap: break-all;
-		font-size:1.4em;
+        width:80vw;
+        margin:0 2em;
+		font-size:1.2em;
 	}
 }
