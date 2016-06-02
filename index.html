@@ -1,6 +1,6 @@
 ---
 layout: default
-jquery: "true"
+mail: "true"
 ---
 
 <section id="hero" class="red">
@@ -64,11 +64,11 @@ jquery: "true"
 	</h2>
 
 	<div id="contact-form-messenger"></div>
-	<form id="contact-form" method="post" action="php/mail.php">
-		<input placeholder="Jane Doe" class="left" type="text" id="name" name="name"><br><br>
-		<input placeholder="jane.doe@company.io" class="left" type="email" id="email" name="email">
-		<button class="right" type="submit">
-			SEND <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+	<form id="contact-form">
+		<input type="text" id="name" name="name" class="left" placeholder="Jane Doe">
+		<input type="text" id="identifier" name="identifier" class="left hidden" placeholder="jane.doe@company.io">
+		<button class="right" id="next-button">
+			That's me!</i>
 		</button>
 	</form>
 

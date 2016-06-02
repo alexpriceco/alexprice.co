@@ -2,7 +2,15 @@
 
 _This is my personal site. I use it as an online business card, showcase, and thesis statement._
 
-I'm Alex Price: a student, product designer, and front-end developer. I eat a ton of carrots, read daily, love the sound of jazz and rain, and wear black oxford shirts with blue jeans. I collaborate with inspiring clients—we produce high-quality products to solve business objectives, and enjoy the process.
-I grew up in Austin TX, and moved to Santa Cruz CA, to study economics and computer science. I currently work at <a style="color:#D34A49" href="vchainsolutions.com">VChain Solutions</a>, building supply chain education software, but am open to new clients.
+I build websites, <a href="http://geshergroup.org">teams,</a>
+<a href="http://formulaslug.com">electric racecars</a>,
+<a href="http://vchainsolutions.com">edtech software</a>, and a few other things.
 
-Want to work together, grab lunch, or hop on a Skype call? Email me at <a style="color:#D34A49" href="mailto:alex@alexprice.co">alex@alexprice.co</a>.
+I grew up in Austin TX, and moved to Santa Cruz CA for university. I currently
+work at VChain Solutions, building supply chain education software, but am open
+to new clients. I’m looking for work with bots (read: ai), or transportation
+tech, in an engineering or design role.
+
+Reach out to me on <a href="http://twitter.com/alexpriceco">Twitter</a>, or on
+<a href="http://alexprice.co">my website</a>. I'd love to get coffee or lunch,
+and talk about robots, space, design, or transportation.

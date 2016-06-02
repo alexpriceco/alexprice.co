@@ -16,7 +16,6 @@ li {
 }
 
 
-
 // Headings
 h1, h2, h3, h4, h5, h6 {
     font-weight: $base-font-weight;
@@ -108,6 +107,11 @@ section {
         line-height: $spacing-unit;
         margin:1em auto;
     }
+
+    &:first-of-type {
+        padding-bottom: 10vh;
+    }
+
     &.inline {
         display: inline-block;
         padding:0;
@@ -360,7 +364,7 @@ button {
     padding:0.5em 2em;
     margin-left:1em;
     background-color: $d-gray;
-    font-family: $serif-family;
+    font-family: $base-font-family;
     color:$white;
     @include ease(150ms);
     display:inline-block;
@@ -592,6 +596,10 @@ section.white {
 }
 
 br.mobile {
+    display: none;
+}
+
+.hidden {
     display: none;
 }
 

@@ -1,33 +1,58 @@
-$(function() {
+function postMessageToSlack(name, message) {
+    var url = "https://hooks.slack.com/services/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"
+    var text = "("+ name +") "+ message
+    $.ajax({
+        data: 'payload=' + JSON.stringify({
+            "text": text
+        }),
+        dataType: 'json',
+        processData: false,
+        type: 'POST',
+        url: url
+    });
+}
 
-	var form = $('#contact-form');
-	var messenger = $('#contact-form-messenger');
 
-	$(form).submit(function(e) {
-        // Stop the browser from submitting the form.
-		e.preventDefault();
-		var formData = $(form).serialize();
+var name_submitted = false;
 
-		$.ajax({
-			type: 'POST',
-			url: $(form).attr('action'),
-			data: formData
-		})
-		.done(function(response) {
-            $(messenger).html("Thanks! Can't wait? Reach out to me " +
-                "<a href=\"https://twitter.com/alexpriceco\">on Twitter! " +
-                "<i class=\"fa fa-twitter\"></i></div></a>");
-			$('#name').val('');
-			$('#email').val('');
-		})
-		.fail(function(data) {
-			if (data.responseText !== '') {
-				$(messenger).text(data.responseText);
-			} else {
-				$(messenger).text('Oops! An error occured and your message could not be sent.');
-			}
-		});
+$('#next-button').click(function(event) {
+    event.preventDefault();
+    var name = $('#name').val();
 
-	});
+    if(name.length > 0) {
+        $('#name').hide();
+        $('#identifier').show();
+        $('#next-button').html('Get in touch');
+        $('#contact h2').html('Nice to meet you '+name+'! Throw your email, ' +
+            'phone number, or Twitter handle below, and I\'ll get in touch ' +
+            'with you.');
+        if(name_submitted == true) {
+            var identifier = $('#identifier').val();
+            if(identifier.length > 0) {
+                // $('#name').hide();
+                // $('#identifier').show();
+                var message = "Hi there! Reach me at "+identifier+'!';
+                postMessageToSlack(name, message);
+                $('#contact form, #contact .body-copy').hide();
+                $('#contact h1').html('I\'ll be in touch.');
+                $('#contact h2').html('In the meantime, reach out to me on ' +
+                    '<a href="https://twitter.com/alexpriceco">Twitter</a>, ' +
+                    'browse my <a href="https://instagram.com/alexpriceco">' +
+                    'Instagram</a>, or check out '+
+                    '<a href="https://media.giphy.com/media/InketCaEF5OOQ/giphy.gif">'+
+                    'this rad gif</a>.');
+            } else {
+                alert('I don\'t know how to get in touch with you! Enter your email, ' +
+                    'phone number, or Twitter handle.')
+            }
+        }
+        name_submitted = true;
+    } else {
+        alert('You\'ve gotta tell me who you are, first!')
+    }
+});
+
+$('#submit-button').click(function(event) {
+    event.preventDefault();
 
 });
