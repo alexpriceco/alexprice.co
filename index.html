@@ -1,41 +1,75 @@
 ---
 layout: default
-short: "true"
+jquery: "true"
 ---
 
-<section id="hero">
-	<h1>Howdy! 👋😁</h1>
-	<div class="body-copy">I'm <strong>Alex Price</strong>:
-		a student, product designer, and front-end
-		developer. I always have carrots and almonds on-hand, read voraciously,
-		and, most importantly, <i>build websites</i>.
-	</div>
+<section id="hero" class="red">
+	<h1>👋 Howdy! <br class="mobile"> I'm Alex Price.</h1>
+	<h2>
+		I build
+		<!-- <a href="">websites</a>, -->websites,
+		<a href="http://geshergroup.org/about.html#alexprice">teams</a>,
+		<a href="http://formulaslug.com">electric racecars</a>,
+		<a href="http://vchainsolutions.com">edtech software</a>, and a
+		<a href="#placeholder">few other things</a>.
+	</h2>
 
 	<div class="body-copy">I grew up in Austin TX, and moved to Santa Cruz CA
 		for university. I currently work at
 		<a href="http://vchainsolutions.com">VChain Solutions</a>, building
-		supply chain education software, but am open to new clients.
+		supply chain education software, but am open to new clients. I’m looking
+		for work with bots (read: ai), or transportation tech, in an engineering
+		or design role.
 	</div>
-
-	<blockquote>I'm putting together a few case studies right
-		now, but you can check out live projects for
-		<a href="http://formulaslug.com">Formula Slug</a>,
-		<a href="http://geshergroup.org">Gesher Group</a>, and
-		<a href="http://alexprice.co/clients/yellow-petal/">
-			Yellow Petal Photography</a>.
-	</blockquote>
 </section>
 
-<section id="contact" class="red" style="min-height:40vh">
+<!-- <div class="triangle southwest white"></div>
+
+<section class="white project" id="evaline">
+	<h1>Project Gemini</h1>
+	<div class="body-copy">
+		Example text I’m typing about this thing that doesn’t exist. there is
+		this great big black rectangle to the right of this text block, it’s
+		fairly dark, but has good padding.
+		<br><br>
+		A large part of this project has to do with text, but as you can see,
+		the vast majority of it was regarding advanced mathematics, and
+		origin-based rectangles.
+	</div>
+</section> -->
+
+<div class="triangle southwest black"></div>
+
+<section class="black project" id="placeholder">
+	<h1>Some of my work</h1>
+	<div class="body-copy">
+		I'm currently re-building my homepage. If you're interested in looking
+		at some projects that I've done in the past, check out Formula Slug's
+		homepage (<a href="http://formulaslug.com">formulaslug.com</a>) and Gesher
+		Group's site (<a href="http://geshergroup.org">geshergroup.org</a>).
+		<br><br>
+		I have a few other client projects (and personal projects) that I'll be
+		showcasing in the future—if you're interested in samples sooner rather
+		than later, get in touch below.
+	</div>
+</section>
+
+<div class="triangle northwest black"></div>
+
+<section id="contact" class="red">
 	<h1>Let's meet for coffee.</h1>
 	<h2>
 		If you're working for a great company, need another driven, passionate
 		teammate, or have a crazy idea, HMU.
 	</h2>
 
-	<form>
-		<input placeholder="jane.doe@company.io" class="left">
-		<button class="right">SEND <i class="fa fa-hand-o-right" aria-hidden="true"></i></button>
+	<div id="contact-form-messenger"></div>
+	<form id="contact-form" method="post" action="php/mail.php">
+		<input placeholder="Jane Doe" class="left" type="text" id="name" name="name"><br><br>
+		<input placeholder="jane.doe@company.io" class="left" type="email" id="email" name="email">
+		<button class="right" type="submit">
+			SEND <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+		</button>
 	</form>
 
 	<div class="body-copy">

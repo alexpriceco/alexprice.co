@@ -20,6 +20,7 @@ li {
 // Headings
 h1, h2, h3, h4, h5, h6 {
     font-weight: $base-font-weight;
+    line-height: $base-line-height
 }
 
 
@@ -34,6 +35,21 @@ a, a:visited {
         background-color: $d-white;
     }
 }
+
+
+section.red, section.black {
+    a, a:visited {
+        color:$white;
+        background-color: rgba($white,0.2);
+
+        &:not(.unstyled):hover {
+            color:$white;
+            background-color: rgba($white,0);
+            border-bottom: 2px solid rgba($white,0.4)
+        }
+    }
+}
+
 .icon-links {
     font-size:1.2em;
 }
@@ -48,7 +64,7 @@ body {
     -o-font-feature-settings: "kern" 1;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
-    background-color: $white;
+    background-color: $red;
     text-align: center;
 
     > * {
@@ -59,15 +75,38 @@ body {
 
 section {
     width:50vw;
-    padding: 0 25vw 2em 25vw;
+    padding: 4vw 25vw 4vw 25vw;
     vertical-align: middle;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+    &.project {
+        width:60vw;
+        padding: 4vw 20vw;
+
+        > .body-copy {
+            max-width:40%;
+            margin-left: 0;
+        }
+    }
+
+    h1 {
+        margin-left: 0;
+    }
+
+    * {
+        text-align: left;
+        justify-content: flex-start;
+        align-content: flex-start;
+    }
 
     > .body-copy {
         line-height: $spacing-unit;
         margin:1em auto;
-    }
-    &:first-of-type {
-        margin-top: 10vh;
     }
     &.inline {
         display: inline-block;
@@ -77,16 +116,20 @@ section {
 }
 
 footer {
-    width:100%;
+    position: absolute;
+    bottom:2em;
+    left:30vw;
+    width:40vw;
     padding: 0;
     text-align: center;
-    white-space: nowrap;
     display: flex;
-    justify-content: space-around;;
+    justify-content: space-around;
     margin-top: 2em;
 
-    > a:hover {
+
+    > a, a:visited, a:hover {
         background-color: transparent !important;
+        border-bottom: none;
     }
 
     > .icon {
@@ -218,7 +261,16 @@ h2 {
     padding: 1em 0;
     font-family: $base-font-family;
     font-size:1.5em;
-    line-height: 1.5em;
+    line-height: 1.7em;
+
+    > a, a:visited {
+        font-weight: normal;
+        background-color: rgba($white, 0.2);
+    }
+
+    > a:hover {
+        background-color: transparent;
+    }
 }
 
 
@@ -433,19 +485,37 @@ button {
     }
 }
 
-.triangle.before {
+.triangle.northwest {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 3em 0 0 100vw;
-    border-color: transparent  transparent transparent $red;
+    border-width: 4vw 100vw 0 0;
+    margin-bottom:-4vw;
+    position: absolute;
+    z-index: 1000;
+    border-color: $red transparent transparent transparent;
+
+    &.black {
+        border-color: $d-gray transparent transparent transparent;
+    }
 }
-.triangle.after {
+.triangle.southwest {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 3em 100vw 0 0;
-    border-color: $red transparent $red $red;
+    border-width: 4vw 0 0 100vw;
+    margin-top:-4vw;
+    position: absolute;
+    z-index: 1000;
+    border-color: $red transparent transparent transparent;
+
+    &.white {
+        border-color: transparent transparent transparent $white;
+    }
+
+    &.black {
+        border-color: transparent transparent transparent $d-gray;
+    }
 }
 
 @keyframes load-right {
@@ -475,17 +545,8 @@ button {
 
 // Fixes
 section.red {
-
     @include gradient($red, $d-red);
     color:$white;
-
-    a, a:visited {
-        color:$d-white;
-    }
-    a:hover {
-        color:$white;
-    }
-
 
     h1, h2 {
         color:$white;
@@ -496,6 +557,22 @@ section.red {
     }
     h2 {
         color:$white;
+    }
+}
+section.black {
+    color:$white;
+    background-color:$d-gray;
+
+    h1, h2, h3 {
+        color:$white;
+    }
+}
+section.white {
+    color:$d-gray;
+    background-color:$white;
+
+    h1, h2, h3 {
+        color:$d-gray;
     }
 }
 .v-align {
@@ -514,32 +591,54 @@ section.red {
     display: inline-block;
 }
 
+br.mobile {
+    display: none;
+}
+
+#contact {
+    min-height:80vh;
+}
+
 // Mobile
 @media all and (min-width: 321px) and (max-width: 768px) {
-	section {
+    section {
         width:100vw;
-		padding:10vw 0;
-      &.red {
-      	margin:0;
-      }
-      &.inline {
-          display: block;
-          text-align: center;
-          vertical-align: top;
-          > .document-container {
-              display:inline-block;
-          }
-          h1, h2 {
-              text-align: left;
-              -webkit-hyphens: auto;
-              -moz-hyphens: auto;
-              -ms-hyphens: auto;
-              hyphens: auto;
-              width:80vw;
-              margin:0 auto;
-          }
-      }
-	}
+        padding:10vw 0;
+
+        &.red {
+            margin:0;
+        }
+
+        &.inline {
+            display: block;
+            text-align: center;
+            vertical-align: top;
+
+            > .document-container {
+                display:inline-block;
+            }
+
+            h1, h2 {
+                text-align: left;
+                -webkit-hyphens: auto;
+                -moz-hyphens: auto;
+                -ms-hyphens: auto;
+                hyphens: auto;
+                width:80vw;
+                margin:0 auto;
+            }
+        }
+
+        &.project {
+            width:100vw;
+            padding: 10vw 0;
+
+            > .body-copy {
+                max-width:80vw;
+                margin-left: 10vw;
+            }
+        }
+    }
     .body-copy {
       font-size: 1.2em;
       width:80vw;
@@ -548,8 +647,13 @@ section.red {
     }
 
     footer {
+        align-items: flex-end;
+        left:10vw;
         width:80vw;
-        margin: 0 10vw;
+    }
+
+    section:last-of-type {
+        padding-bottom: 20vw;
     }
 
     button {
@@ -569,8 +673,13 @@ section.red {
 	h1 {
         word-wrap: break-word;
         width:80vw;
-        margin:0 auto;
+        margin-left:10vw;
 		font-size: 2em;
+        line-height: 1.5em;
+
+        section & {
+            margin-left:10vw;
+        }
 	}
 	h2 {
         word-wrap: break-all;
@@ -578,4 +687,16 @@ section.red {
         margin:0 2em;
 		font-size:1.2em;
 	}
+    .triangle.northwest {
+        border-width: 10vw 100vw 0 0;
+        margin-bottom:-10vw;
+    }
+    .triangle.southwest {
+        border-width: 10vw 0 0 100vw;
+        margin-top:-10vw;
+    }
+
+    br.mobile {
+        display: block;
+    }
 }

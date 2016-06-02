@@ -29,6 +29,15 @@
     </script>
 {% endif %}
 
+{% if page.mail == "true" %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ "/js/mail.js" | prepend: site.baseurl }}"></script>
+{% endif %}
+
+{% if page.jquery == "true" %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+{% endif %}
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic|Libre+Baskerville:700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl }}">
 </html>
