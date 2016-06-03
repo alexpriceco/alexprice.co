@@ -579,20 +579,21 @@ section.white {
         color:$d-gray;
     }
 }
-.v-align {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-.fullscreen {
+.full-center-parent {
+    display: flex;
+    justify-content: baseline;
+    flex-wrap: wrap;
+    // align-content: flex-start;
+    height:90vh;
     width:100vw;
-    height:100vh;
+    h2, div {
+        width:100%;
+        display: block;
+    }
 }
-.v-center {
-    @extend .v-align;
-    transform: translateY(-80%);
-    text-align: left;
-    display: inline-block;
+.full-center {
+    flex-wrap: wrap;
+    justify-content: baseline;
 }
 
 br.mobile {
