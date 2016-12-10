@@ -85,8 +85,8 @@ section {
     align-content: center;
 
     &.project {
-        width:80vw;
-        padding: 10em 10vw;
+        width:70vw;
+        padding: 10em 15vw;
         justify-content: space-between;
 
         > article.text {
@@ -103,7 +103,9 @@ section {
         > article.preview {
             width: 30vw;
             min-height: 30vw;
-            background-image: url(../media/projects/placeholder.png);
+            background-image: url(../media/projects/preview.png);
+            background-repeat: no-repeat;
+            background-position: center center;
         }
         // > .body-copy {
         //     max-width: 60%;
