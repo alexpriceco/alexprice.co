@@ -9,7 +9,7 @@ function postMessageToSlack(name, message) {
         processData: false,
         type: 'POST',
         url: url
-    });
+    })
 }
 
 
