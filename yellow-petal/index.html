@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Yellow Petal Photography</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+</head>
+
+
+  <body>
+
+    <div class="content">
+        <div class="hero-wrapper">
+        	<div class="hero">
+        		<div class="title-1">Yellow Petal <br>Photography</div>
+        		<div class="title-3">
+        			commercial photography
+        		</div>
+        		<br>
+        		<span>Austin &amp; Bay Area</span>
+        	</div>
+        </div>
+
+        <section class="text">
+        	<div class="title-2">selected work</div>
+        	<div class="body-copy">This is where copy goes about the sorts of clients you've worked with: maybe you have an emphasis on fashion photography, but you're trying to expand into other verticals?</div>
+        </section>
+
+        <section class="slider-wrapper">
+            <div style="background-image: url('media/01.jpg')"></div>
+            <div style="background-image: url('media/02.jpg')"></div>
+            <div style="background-image: url('media/03.jpg')"></div>
+            <div style="background-image: url('media/04.jpg')"></div>
+            <div style="background-image: url('media/05.jpg')"></div>
+            <div style="background-image: url('media/06.jpg')"></div>
+            <div style="background-image: url('media/07.jpg')"></div>
+            <div style="background-image: url('media/08.jpg')"></div>
+        </section>
+
+        <div class="arrows"></div>
+
+        <section class="text" id="contact">
+        	<div class="title-2">let's work together</div>
+        	<div class="body-copy">If you're interested in more samples, or would like to work together, <a href="mailto:hello@yellowpetal.photography">send me an email</a>, or <a href="tel:1234567890">give me a call</a> below.</div>
+            <a class="button">Start a project</a>
+        </section>
+    </div>
+
+<footer>
+    <a href="mailto:hello@yellowpetal.photography">hello@yellowpetalpix.com</a><br>
+    <a href="tel:1234567890">123.456.7890</a>
+</footer>
+
+<script   src="https://code.jquery.com/jquery-3.1.1.slim.min.js"   integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="   crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.slider-wrapper').slick({
+		infinite:true,
+		slidesToShow:1,
+		centerMode: true,
+  		cssEase: 'ease-in-out',
+  		appendArrows: $('.arrows'),
+  		prevArrow: '<div class="slick-arrow">previous</div>',
+  		nextArrow: '<div class="slick-arrow">next</div>'
+	})
+})
+</script>
+
+  </body>
+
+</html>

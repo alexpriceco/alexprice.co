@@ -30,7 +30,7 @@ a, a:visited {
     text-decoration: none;
 
     &:not(.unstyled):hover {
-        color: $black-alt;
+        color: $black;
         background-color: $white;
     }
 }
@@ -57,7 +57,7 @@ section.red, section.black {
 // Basic styling
 body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $black-alt;
+    color: $black;
     @include slanted-gradient($red-alt, $red);
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
@@ -90,9 +90,29 @@ section {
         justify-content: space-between;
 
         > article.text {
-            width: 30vw;
+            width: 35vw;
+            position: relative;
+
+            ul li:first-of-type::before {
+                position: absolute;
+                top: -2em;
+                left: -10%;
+                content: "";
+                z-index: 0;
+                width: 140%;
+                height: 20em;
+                // background: -moz-radial-gradient(center, ellipse cover, rgba($black,0.6) 0%, rgba($black,0) 70%);
+                // background: -webkit-radial-gradient(center, ellipse cover, rgba($black,0.6) 0%, rgba($black,0) 70%);
+                background: radial-gradient(ellipse closest-side, rgba($black,0.3) 0%, rgba($black,0) 70%), radial-gradient(ellipse closest-side, rgba($black,0.2) 0%, rgba($black,0) 50%);
+            }
+
+            div, li, h1 {
+                 z-index: 100;
+                 position: relative;
+            }
 
             li {
+                display: table;
                 margin: 0;
                 padding: 0;
                 list-style: none;
@@ -104,6 +124,7 @@ section {
             width: 30vw;
             min-height: 30vw;
             background-image: url(../media/projects/preview.png);
+            background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
         }
@@ -138,6 +159,11 @@ section {
         padding:0;
         vertical-align: top;
     }
+}
+
+#projects {
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 footer {
@@ -211,7 +237,7 @@ footer {
     text-align: center;
     border:none;
     position: relative;
-    background-color:$black-alt;
+    background-color:$black;
     color:$white;
     display:inline-block;
     @include ease(150ms);
@@ -241,7 +267,7 @@ footer {
 }
 
 .empty {
-    color:$black-alt;
+    color:$black;
     opacity: 0.5;
 }
 
@@ -275,7 +301,6 @@ p {
 
 h1 {
     color: $black;
-    padding-top:2em;
     font-size: 2em;
     margin-top: 0;
     font-family: $rubik;
@@ -316,44 +341,6 @@ img {
 }
 
 
-// Blockquotes
-blockquote {
-    background-color: $white;
-    border-left: .5em solid $black-alt;
-    padding:1em;
-    margin-bottom:1em;
-
-    > :last-child {
-        margin-bottom: 0;
-    }
-}
-
-
-// Code formatting
-pre,
-code {
-    font-size: 15px;
-    border: 1px solid $black-alt;
-    border-radius: 3px;
-    background-color: #eef;
-}
-
-code {
-    padding: 1px 5px;
-}
-
-pre {
-    padding: 8px 12px;
-    overflow-x: auto;
-
-    > code {
-        border: 0;
-        padding-right: 0;
-        padding-left: 0;
-    }
-}
-
-
 // Form Elements
 input {
     background-color: $white;
@@ -383,7 +370,7 @@ form {
 button {
     padding:0.5em 2em;
     margin-left:1em;
-    background-color: $black-alt;
+    background-color: $black;
     font-family: $base-font-family;
     font-size: 1em;
     color:$white;
@@ -505,11 +492,11 @@ section.black {
     }
 }
 section.white {
-    color:$black-alt;
+    color:$black;
     background-color:$white;
 
     h1, h2, h3 {
-        color:$black-alt;
+        color:$black;
     }
 }
 .full-center-parent {
@@ -539,6 +526,18 @@ br.mobile {
 
 #contact {
     min-height:80vh;
+}
+
+// Vertical center pages (404 and 403)
+body.black {
+    @extend section.black;
+    @include slanted-gradient($black, $black);
+    background-color: $black;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
 }
 
 // Mobile

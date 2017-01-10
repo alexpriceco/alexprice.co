@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 
     <title>Alex Price &amp; Co.</title>
     <meta name="description" content="Interface designer from Austin, living in Santa Cruz, making EV charging easier.">
@@ -56,61 +56,66 @@
         </h2>
     </section>
 
-    <section class="black project" id="placeholder">
+    <section class="black project" id="projects">
         <article class="text">
             <h1>Things I've built</h1>
             <div class="body-copy">
                 <ul id="projects-list">
-                    <li onmouseover="changePreview('vexvolt')">
+                    <li></li>
+                    <li onmouseout="changePreview('')" onmouseover="changePreview('vexvolt.png')">
                         &#x1F449;&#x1F3FB;&nbsp;
                         <a href="https://alexprice.co/volt/">
                             hardware landing page
                         </a>
                     </li>
-                    <li onmouseover="changePreview('evaline')">
+                    <li onmouseout="changePreview('')" onmouseover="changePreview('evaline.png')">
                         &#x1F449;&#x1F3FB;&nbsp;
                         <a href="http://evaline.io">
                             software landing page
                         </a>
                     </li>
-                    <li onmouseover="changePreview('gesher')">
+                    <li onmouseout="changePreview('')" onmouseover="changePreview('gesher.png')">
                         &#x1F449;&#x1F3FB;&nbsp;
                         <a href="http://geshergroup.org">
                             nonprofit website
                         </a>
                     </li>
-                    <li onmouseover="changePreview('branding')">
+                    <li onmouseout="changePreview('')" onmouseover="changePreview('branding.png')">
                         &#x1F449;&#x1F3FB;&nbsp;
-                        <a href="https://www.dropbox.com/sh/rfh8uaapsx7w6vu/AABSFtvtLWi3PQQ3phdeGSaFa?dl=0">
+                        <a href="https://www.dropbox.com/sh/rfh8uaapsx7w6vu/AABSFtvtLWi3PQQ3phdeGSaFa">
                             branding work
                         </a>
                     </li>
-                    <li onmouseover="changePreview('dnd')">
+                    <li onmouseout="changePreview('')" onmouseover="changePreview('dnd.png')">
                         &#x1F449;&#x1F3FB;&nbsp;
                         <a href="https://alexprice.co/dnd/">
-                            mobile web app development
+                            mobile app development
                         </a>
                     </li>
-                    <li onmouseover="changePreview('webapp')">
+                    <li onmouseout="changePreview('')" onmouseover="changePreview('webapp.png')">
                         &#x1F449;&#x1F3FB;&nbsp;
-                        <a href="https://www.dropbox.com/sh/kfqjb6ofrpahysn/AACEgXTUMkrcU9aPCNc-jjJOa?dl=0">
-                            desktop web app design
+                        <a href="https://www.dropbox.com/sh/kfqjb6ofrpahysn/AACEgXTUMkrcU9aPCNc-jjJOa">
+                            desktop app design
+                        </a>
+                    </li>
+                    <li>
+                        &#x1F449;&#x1F3FB;&nbsp;
+                        <a href="https://www.dropbox.com/s/t9xq9j2r88m85jj/Alexander%20Price%20-%20Resume.pdf">
+                            more work in my CV
                         </a>
                     </li>
                 <ul>
-                If you're looking for a web designer that cares about your business's success,
-                <a href="#contact">hire me</a>. &#x1F64C;&#x1F3FB;
+                If you're looking for a designer that cares about your business's success,
+                <a href="#contact" onmouseout="changePreview('')" onmouseover="changePreview('hire.gif')">hire me</a>. &#x1F64C;&#x1F3FB;
             </div>
         </article>
-
-        <article id="preview" class="preview"></article>
     </section>
 
     <section id="contact" class="red">
-        <h1>Let's meet for coffee.</h1>
+        <h1>Contracts and conversations.</h1>
         <h2>
-            If you're working for a great company, need another driven, passionate
-            teammate, or have a crazy idea, HMU.
+            Name, email, send. I'll email you back, and we can find opportunities
+            for me to improve your business.
         </h2>
 
         <div id="contact-form-messenger"></div>
@@ -190,13 +195,19 @@
 
     </section>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/mail.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans|Rubik:400' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <script type="text/javascript">
     function changePreview(target) {
-        // $('#preview').style.backgroundImage = "url('../media/projects/" + target + ".png')"
+        url = (target != '') ? 'media/projects/' + target : ''
+        $('#projects').css('background-image', 'url(' + url + ')')
+    }
+
+    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+        document.write('<div style="display:none"><img src="media/projects/vexvolt.png"><img src="media/projects/evaline.png"><img src="media/projects/gesher.png"><img src="media/projects/webapp.png"><img src="media/projects/branding.png"><img src="media/projects/dnd.png"></div>');
     }
 </script>
 </html>
