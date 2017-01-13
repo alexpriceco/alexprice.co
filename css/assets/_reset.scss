@@ -37,9 +37,11 @@ input:focus
 input,
 textarea
 {
+	-webkit-appearance: none;
 	-webkit-box-sizing:content-box;
 	-moz-box-sizing:content-box;
 	box-sizing:content-box;
+	border-radius: 0;
 }
 
 /* These elements are usually rendered a certain way by the browser */
