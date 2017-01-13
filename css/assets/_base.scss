@@ -636,6 +636,10 @@ section.white {
 .full-center {
     flex-wrap: wrap;
     justify-content: baseline;
+
+    > h2 {
+      margin: 0;
+    }
 }
 
 br.mobile {
