@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 // Links
 a, a:visited {
     @include ease(105ms);
-    color: $red;
+    color: $pbc;
     text-decoration: none;
 
     &:not(.unstyled):hover {
@@ -38,6 +38,7 @@ a, a:visited {
 
 section.red, section.black {
     background: transparent;
+
     a, a:visited {
         color:$white;
         background-color: rgba($white,0.2);
@@ -50,6 +51,25 @@ section.red, section.black {
     }
 }
 
+section.black {
+  a.stripped, a.stripped:hover {
+    border-bottom: none;
+    background-color: transparent;
+  }
+
+  .button {
+    background-color: rgba($white,0.4);
+    color: $white;
+    margin-top: 1em;
+    -webkit-backdrop-filter: blur(4px);
+
+    &:hover {
+      background-color: $pbc;
+      color: $white;
+    }
+  }
+}
+
 .icon-links {
     font-size:1.2em;
 }
@@ -58,14 +78,14 @@ section.red, section.black {
 body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
     color: $black;
-    @include slanted-gradient($red-alt, $red);
+    @include slanted-gradient($pbc-alt, $pbc);
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
     -o-font-feature-settings: "kern" 1;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
-    background-color: $red;
+    background-color: $pbc;
     text-align: center;
 
     > * {
@@ -152,6 +172,7 @@ section {
 
     &:first-of-type {
         padding-bottom: 10vh;
+        padding-top: 10vh;
     }
 
     &.inline {
@@ -164,6 +185,76 @@ section {
 #projects {
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    @include ease(0);
+
+    &.showreel {
+      &::after {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 90vh;
+        width: 100vw;
+        opacity: 0.4;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        @include ease(0);
+        -webkit-animation: none;
+        -moz-animation: none;
+        animation: none;
+      }
+    }
+}
+
+@-webkit-keyframes showreel {
+  0% { background-image: url('../media/projects/vexvolt.png'); }
+  12% { background-image: url('../media/projects/evaline.png'); }
+  25% { background-image: url('../media/projects/gesher.png'); }
+  37% { background-image: url('../media/projects/webapp.png'); }
+  50% { background-image: url('../media/projects/branding.png'); }
+  62% { background-image: url('../media/projects/dnd.png'); }
+  77% { background-image: url('../media/projects/hire.gif'); }
+  100%{ background-image: url('../media/projects/hire.gif'); }
+}
+@-moz-keyframes showreel {
+  0% { background-image: url('../media/projects/vexvolt.png'); }
+  12% { background-image: url('../media/projects/evaline.png'); }
+  25% { background-image: url('../media/projects/gesher.png'); }
+  37% { background-image: url('../media/projects/webapp.png'); }
+  50% { background-image: url('../media/projects/branding.png'); }
+  62% { background-image: url('../media/projects/dnd.png'); }
+  77% { background-image: url('../media/projects/hire.gif'); }
+  100%{ background-image: url('../media/projects/hire.gif'); }
+}
+@keyframes showreel {
+  0% { background-image: url('../media/projects/vexvolt.png'); }
+  12% { background-image: url('../media/projects/evaline.png'); }
+  25% { background-image: url('../media/projects/gesher.png'); }
+  37% { background-image: url('../media/projects/webapp.png'); }
+  50% { background-image: url('../media/projects/branding.png'); }
+  62% { background-image: url('../media/projects/dnd.png'); }
+  77% { background-image: url('../media/projects/hire.gif'); }
+  100%{ background-image: url('../media/projects/hire.gif'); }
+}
+
+#projects-list {
+  li {
+    > .pointer-finger {
+      display: inline-block;
+      @include ease(60ms);
+      transform: translate3d(0,0,0);
+    }
+    > a { margin-left: 0.5em;}
+    &:hover {
+      > .pointer-finger {
+        display: inline-block;
+        transform: translate3d(0.2em,0,0);
+      }
+    }
+  }
 }
 
 footer {
@@ -247,7 +338,7 @@ footer {
     }
 
     &:hover {
-        background-color:$red;
+        background-color:$pbc;
     }
 
     > .fa-hand-o-right {
@@ -291,8 +382,9 @@ h1, h2, h3, h4, h5, h6,
 blockquote, pre, ul, ol,
 dl, figure,
 %vertical-rhythm {
-    margin: $spacing-unit auto auto auto;
+    // margin: $spacing-unit auto auto auto;
     line-height: $spacing-unit;
+    margin: $spacing-unit auto auto 0;
 }
 
 p {
@@ -396,6 +488,36 @@ button {
 .right {
     width:auto;
     float:right;
+}
+
+.button, button {
+  -webkit-transform: translate3d(0,0,0);
+
+  &:hover {
+    transform: translate3d(0,-0.1em,0);
+  }
+
+  &:active {
+    transform: translate3d(0,0.1em,0);
+  }
+}
+
+.desktop-hint {
+  display: inline-block;
+  transform: translateY(-1em);
+  margin-left: 1em;
+  padding-left: 1.6em;
+
+  > i {
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  &::before {
+    content: '😉';
+    position: absolute;
+    left: 0;
+  }
 }
 
 // Wrapper
@@ -542,6 +664,20 @@ body.black {
 
 // Mobile
 @media all and (min-width: 321px) and (max-width: 768px) {
+    .desktop-hint { display: none; }
+
+    #projects {
+      overflow: hidden;
+
+      &.showreel {
+        &::after {
+          -webkit-animation: showreel 8s infinite step-end;
+          -moz-animation: showreel 8s infinite step-end;
+          animation: showreel 8s infinite step-end;
+        }
+      }
+    }
+
     section {
         width:100vw;
         padding:10vw 0;
@@ -649,4 +785,11 @@ body.black {
     br.mobile {
         display: block;
     }
+}
+
+// Bigass screens
+@media all and (min-width: 1600px) {
+  section {
+    min-height: 60vh;
+  }
 }

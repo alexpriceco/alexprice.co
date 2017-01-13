@@ -13,8 +13,8 @@ $spacing-unit:     30px;
 $black: #111111;
 $black-alt: #3E444C;
 $white: #F7F8FA;
-$red: #FE6A6D;
-$red-alt: #DD5D5F;
+$pbc: #1969FF;
+$pbc-alt: #2176FF;
 
 
 
@@ -52,6 +52,15 @@ $on-laptop:        800px;
     -ms-animation: $rules;
     -o-animation: $rules;
     animation: $rules;
+}
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
 }
 
 @mixin slanted-gradient($top, $bottom) {

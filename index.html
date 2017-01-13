@@ -63,50 +63,51 @@
                 <ul id="projects-list">
                     <li></li>
                     <li onmouseout="changePreview('')" onmouseover="changePreview('vexvolt.png')">
-                        &#x1F449;&#x1F3FB;&nbsp;
+                        <div class="pointer-finger">&#x1F449;&#x1F3FB;&nbsp;</div>
                         <a href="https://alexprice.co/volt/">
-                            hardware landing page
+                            Hardware landing page
                         </a>
                     </li>
                     <li onmouseout="changePreview('')" onmouseover="changePreview('evaline.png')">
-                        &#x1F449;&#x1F3FB;&nbsp;
+                        <div class="pointer-finger">&#x1F449;&#x1F3FB;&nbsp;</div>
                         <a href="http://evaline.io">
-                            software landing page
+                            Software landing page
                         </a>
                     </li>
                     <li onmouseout="changePreview('')" onmouseover="changePreview('gesher.png')">
-                        &#x1F449;&#x1F3FB;&nbsp;
+                        <div class="pointer-finger">&#x1F449;&#x1F3FB;&nbsp;</div>
                         <a href="http://geshergroup.org">
-                            nonprofit website
+                            Nonprofit website
                         </a>
                     </li>
                     <li onmouseout="changePreview('')" onmouseover="changePreview('branding.png')">
-                        &#x1F449;&#x1F3FB;&nbsp;
+                        <div class="pointer-finger">&#x1F449;&#x1F3FB;&nbsp;</div>
                         <a href="https://www.dropbox.com/sh/rfh8uaapsx7w6vu/AABSFtvtLWi3PQQ3phdeGSaFa">
-                            branding work
+                            Branding work
                         </a>
                     </li>
                     <li onmouseout="changePreview('')" onmouseover="changePreview('dnd.png')">
-                        &#x1F449;&#x1F3FB;&nbsp;
+                        <div class="pointer-finger">&#x1F449;&#x1F3FB;&nbsp;</div>
                         <a href="https://alexprice.co/dnd/">
-                            mobile app development
+                            Mobile app development
                         </a>
                     </li>
                     <li onmouseout="changePreview('')" onmouseover="changePreview('webapp.png')">
-                        &#x1F449;&#x1F3FB;&nbsp;
+                        <div class="pointer-finger">&#x1F449;&#x1F3FB;&nbsp;</div>
                         <a href="https://www.dropbox.com/sh/kfqjb6ofrpahysn/AACEgXTUMkrcU9aPCNc-jjJOa">
-                            desktop app design
+                            Desktop app design
                         </a>
                     </li>
                     <li>
-                        &#x1F449;&#x1F3FB;&nbsp;
+                        <div class="pointer-finger">&#x1F449;&#x1F3FB;&nbsp;</div>
                         <a href="https://www.dropbox.com/s/t9xq9j2r88m85jj/Alexander%20Price%20-%20Resume.pdf">
-                            more work in my CV
+                            More work in my CV
                         </a>
                     </li>
                 <ul>
-                If you're looking for a designer that cares about your business's success,
-                <a href="#contact" onmouseout="changePreview('')" onmouseover="changePreview('hire.gif')">hire me</a>. &#x1F64C;&#x1F3FB;
+                If you're looking for a designer that cares about your business's success, you can always...<br>
+                <a class="stripped" href="#contact" data-scroll onmouseout="changePreview('')" onmouseover="changePreview('hire.gif')"><div class="button">Hire me &#x1F64C;&#x1F3FB;</div></a>
+                <div class="desktop-hint"><i>Mouseover me?</i></div>
             </div>
         </article>
     </section>
@@ -196,18 +197,33 @@
     </section>
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/mail.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans|Rubik:400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<script type="text/javascript">
-    function changePreview(target) {
-        url = (target != '') ? 'media/projects/' + target : ''
-        $('#projects').css('background-image', 'url(' + url + ')')
-    }
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script type='text/javascript' src='js/mail.js'></script>
+<script type='text/javascript' src='js/smooth-scroll.js'></script>
+<script type='text/javascript' src='js/in-view.min.js'></script>
+<script type='text/javascript'>
+  smoothScroll.init()
 
-    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-        document.write('<div style="display:none"><img src="media/projects/vexvolt.png"><img src="media/projects/evaline.png"><img src="media/projects/gesher.png"><img src="media/projects/webapp.png"><img src="media/projects/branding.png"><img src="media/projects/dnd.png"></div>');
-    }
+  function changePreview(target) {
+    url = (target != '') ? 'media/projects/' + target : ''
+    $('#projects').css('background-image', 'url(' + url + ')')
+  }
+
+  inView.offset(($(window).height()/2))
+  inView('#projects').on('enter', function(el) {
+    $('#projects').addClass('showreel')
+  }).on('exit', function(el) {
+    $('#projects').removeClass('showreel')
+  })
+
+  function focusOnTyping() {
+    document.getElementById('name').focus()
+  }
+
+  if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+    document.write('<div style="display:none"><img src="media/projects/vexvolt.png"><img src="media/projects/evaline.png"><img src="media/projects/gesher.png"><img src="media/projects/webapp.png"><img src="media/projects/branding.png"><img src="media/projects/dnd.png"><img src="media/projects/hire.gif"></div>');
+  }
 </script>
+<link rel='stylesheet' href='css/font-awesome.min.css'>
 </html>
