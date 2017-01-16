@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 </head>
 
-<body class="full-center-parent" style="background:whitesmoke !important;">
+<body class="full-center-parent">
 
     <section class="full-center body-copy">
         <h2 id="day"></h2>
@@ -28,36 +28,24 @@
 </body>
 
 <script type="text/javascript">
-    function customDate() {
-        var d = new Date();
-        var t = d.getHours();
+  function customDate() {
+    var t = new Date().getHours()
+    var greeting = "Hello"
 
-        var greeting = "Hello";
+		document.body.className = (t>= 18 || t<=6) ? 'full-center-parent darkmode' : 'full-center-parent'
 
-        if(t<=0 && t<6) {
-            greeting = "Schlaft gut";
-        }
-        else if (6<=t && t<11) {
-            greeting = "Good morning";
-        }
-        else if (11<=t && t<15) {
-            greeting = "Good day";
-        }
-        else if (15<=t && t<18) {
-            greeting = "Good afternoon";
-        }
-        else if (18<=t) {
-            greeting = "Good evening";
-        }
-        else {
-            greeting = "Hello";
-        }
+    if (t<=0 && t<6) { greeting = "Schlaft gut" }
+		else if (6<=t && t<11) { greeting = "Good morning" }
+		else if (11<=t && t<15) { greeting = "Good day" }
+		else if (15<=t && t<18) { greeting = "Good afternoon" }
+		else if (18<=t) { greeting = "Good evening" }
+		else { greeting = "Hello" }
 
-        greeting += ", Alexander."
+    greeting += ", Alexander."
+    document.getElementById("day").innerHTML = greeting
+  }
 
-        document.getElementById("day").innerHTML = greeting;
-    }
-    customDate();
+  customDate()
 </script>
 
 </html>

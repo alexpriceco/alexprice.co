@@ -395,7 +395,7 @@ h1 {
     color: $black;
     font-size: 2em;
     margin-top: 0;
-    font-family: $rubik;
+    font-family: $title-font-family;
 }
 
 h2 {
@@ -420,7 +420,7 @@ h3 {
     color: $black;
     font-size: 1em;
     padding: 1em 0;
-    font-family: $rubik;
+    font-family: $title-font-family;
     line-height:1.7em;
     letter-spacing: 2px;
 }
@@ -622,12 +622,13 @@ section.white {
     }
 }
 .full-center-parent {
+    background: $white;
     display: flex;
     justify-content: baseline;
     flex-wrap: wrap;
-    // align-content: flex-start;
     height:90vh;
     width:100vw;
+
     h2, div {
         width:100%;
         display: block;
@@ -640,6 +641,17 @@ section.white {
     > h2 {
       margin: 0;
     }
+}
+
+.darkmode {
+  background: $black;
+  h1, h2, h3, h4, h5, h6, span, p {
+    color: $white;
+  }
+
+  .icon-links a {
+    &:hover { color: $white; background-color: $black; }
+  }
 }
 
 br.mobile {
