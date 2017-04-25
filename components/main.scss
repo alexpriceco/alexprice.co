@@ -1,0 +1,98 @@
+@import 'vars';
+@import 'normalize';
+
+body {
+  color: $grey-100;
+  background: $white-20;
+  font-family: $base-font-family;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+
+  display: flex;
+  flex-direction: row;
+  min-width: 100vw;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+
+  border-left: 0.05em solid $grey-20;
+  border-right: 0.05em solid $grey-20;
+
+  &.home {
+    max-width: 24em;
+    padding: 1.5em;
+  }
+
+  article {
+    width: 100%;
+
+    &:not(:first-of-type) {
+      margin-top: 1.5em;
+    }
+  }
+}
+
+h1 {
+  display: inline-block;
+  background: $blue-50;
+  color: $white-10;
+  font-weight: 400;
+  padding: 0.1em 0.2em;
+  margin: 0.5em 0;
+}
+
+p {
+  margin: 0;
+}
+
+ol {
+  counter-reset: listCount;
+  list-style: none;
+  padding: 0;
+
+  li:before {
+    counter-increment: listCount;
+    content: '[' counter(listCount) ']';
+    margin-right: 0.5em;
+    color: $grey-50;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+
+    > *:last-of-type {
+      white-space: nowrap;
+      color: $blue-50;
+    }
+
+    &:nth-of-type(odd) > div:nth-last-of-type(1) {
+      margin-right: 1em;
+      overflow: hidden;
+      height: 1em;
+
+      &::after { content: '. . . . . . . . . . . . . . . . . . . . . . . . . ' }
+    }
+
+    > div:last-of-type {
+      text-align: right;
+      display: flex;
+      flex-grow: 2;
+    }
+
+    &:hover, &.selected {
+      &:before { color: $grey-100; }
+    }
+  }
+}
