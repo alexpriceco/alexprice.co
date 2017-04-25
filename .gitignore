@@ -1,5 +1,8 @@
-/clients
-/_site
-/school
-.sass-cache
 .DS_Store
+node_modules/
+.next
+yarn-error.log
+
+*.log
+
+npm-debug.log

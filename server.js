@@ -19,7 +19,7 @@ app.prepare()
       return
     }
 
-    app.render(req, res, '/character', params)
+    app.render(req, res, '/', params)
   })
   .listen(3000, (err) => {
     if (err) throw err

@@ -2,8 +2,6 @@
 @import 'normalize';
 
 body {
-  color: $grey-100;
-  background: $white-20;
   font-family: $base-font-family;
   font-weight: 400;
   font-size: 24px;
@@ -17,20 +15,96 @@ body {
   align-items: center;
 }
 
+div.body {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
 section {
-  min-height: 100vh;
+  color: $grey-100;
+  background: $white-20;
+  flex-grow: 1;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: left;
 
-  border-left: 0.05em solid $grey-20;
-  border-right: 0.05em solid $grey-20;
-
   &.home {
+    overflow-y: scroll;
     max-width: 24em;
+    padding: 0 1.5em;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    justify-content: flex-start;
+    border-left: 0.05em solid $grey-20;
+    border-right: 0.05em solid $grey-20;
+
+    > article {
+      div.icon, div.icon svg {
+        display: inline-block;
+        width: 0.8em;
+        height: 0.8em;
+
+        use { fill: $blue-50; }
+      }
+
+      &:first-of-type { margin-top: 4em; }
+      &:last-of-type { margin-bottom: 4em; }
+    }
+  }
+
+  &.logs-col {
     padding: 1.5em;
+    min-width: 4em;
+    color: $grey-50;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &:first-of-type {
+      left: 0;
+      top: 0;
+      justify-self: flex-start;
+    }
+
+    &:last-of-type {
+      top: 0;
+      right: 0;
+      justify-self: flex-end;
+      align-items: flex-end;
+      .system-log { text-align: right; }
+    }
+
+    .system-log {
+      font-size: 0.6em;
+      line-height: 1.4em;
+
+      .nightmode-toggle {
+        cursor: pointer;
+        @include ease(64ms);
+        display: inline-block;
+        &:hover { color: $grey-100; }
+      }
+
+      .icon, .icon svg {
+        display: flex;
+        justify-content: flex-end;
+        align-content: flex-end;
+        align-self: flex-end;
+        justify-self: flex-end;
+        width: 4em;
+        height: 4em;
+        use { fill: $grey-30; }
+
+        &div { position: relative; }
+        &svg { position: absolute; bottom: 0; right: 0; }
+      }
+    }
   }
 
   article {
@@ -51,8 +125,14 @@ h1 {
   margin: 0.5em 0;
 }
 
-p {
-  margin: 0;
+a, a:visited {
+  @include ease(64ms);
+  color: $blue-50;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+
+  &:hover { border-bottom: 1px solid $blue-50; }
 }
 
 ol {
@@ -61,6 +141,7 @@ ol {
   padding: 0;
 
   li:before {
+    @include ease(64ms);
     counter-increment: listCount;
     content: '[' counter(listCount) ']';
     margin-right: 0.5em;
@@ -71,10 +152,13 @@ ol {
     display: flex;
     flex-direction: row;
     cursor: pointer;
+    @include ease(64ms);
 
-    > *:last-of-type {
+    > span.indicator {
+      @include ease(64ms);
       white-space: nowrap;
       color: $blue-50;
+      border-bottom: 1px solid transparent;
     }
 
     &:nth-of-type(odd) > div:nth-last-of-type(1) {
@@ -93,6 +177,33 @@ ol {
 
     &:hover, &.selected {
       &:before { color: $grey-100; }
+    }
+
+    &:hover > span.indicator { border-bottom: 1px solid $blue-50; }
+    &.selected:hover > span.indicator { border-bottom: 1px solid transparent; }
+  }
+}
+
+div.body.nightmode--true {
+  background: $grey-100;
+  color: $white-10;
+
+  section {
+    background: $grey-100;
+    color: $white-10;
+    border-color: $grey-90;
+  }
+
+  .system-log {
+    color: $grey-50;
+
+    .nightmode-toggle:hover { color: $grey-30; }
+    .icon, .icon svg use { fill: $grey-70; }
+  }
+
+  li {
+    &:hover, &.selected {
+      &:before { color: $grey-20; }
     }
   }
 }

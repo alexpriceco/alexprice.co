@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
+
+import Icon from '../components/general/icon'
 import Style from '../components/general/style'
 import sheet from '../components/main.scss'
 
@@ -7,6 +9,9 @@ export default class Home extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
+      launch_time: '',
+      location: '',
+      local_weather: 'COMING SOON',
       nightmode: false,
       longitude: '',
       latitude: '',
@@ -49,10 +54,23 @@ export default class Home extends Component {
   }
 
   componentDidMount () {
+    this.setState({ launch_time: new Date().toISOString() })
+
+    // Determine if should default to nightmode
+    if (new Date().getHours() < 6) this.setState({ nightmode: true })
+    else if (new Date().getHours() > 19) this.setState({ nightmode: true })
+    else this.setState({ nightmode: false })
+
     let DARK_SKY_KEY = 'ff0715e86494e35b1ae6adf7e4ebe667'
 
     this.get('https://jsonip.com').then((res) => {
       this.get(`https://freegeoip.net/json/${res.ip}`).then((res) => {
+        if (res.city && res.region_name) {
+          this.setState({ location: `${res.region_name}, ${res.city}` })
+        } else {
+          this.setState({ location: `${res.latitude}, ${res.longitude}` })
+        }
+
         this.setState({
           latitude: res.latitude,
           longitude: res.longitude
@@ -72,7 +90,7 @@ export default class Home extends Component {
   }
 
   render () {
-    const { selectedProject } = this.state
+    const { selectedProject, nightmode } = this.state
 
     return (
       <div>
@@ -99,14 +117,35 @@ export default class Home extends Component {
           <Style sheet={sheet} />
         </Head>
 
-        <div className='body'>
+        <div className={`body nightmode--${nightmode}`}>
+          <section className='logs-col'>
+            <div className='system-log'>
+              SYSTEM_LOADING... DONE. <br />
+              Welcome, guest. [ UPDATE NAME? ]
+            </div>
+
+            <div className='system-log'>
+              LAUNCH_TIME: {this.state.launch_time} <br />
+              LIGHTING_MODE:&nbsp;
+              <div className='nightmode-toggle'
+                onClick={() => this.setState({ nightmode: !nightmode })}>
+                {nightmode ? '[DAY]' : '[ DAY ]'}
+              </div>
+              &nbsp;
+              <div className='nightmode-toggle'
+                onClick={() => this.setState({ nightmode: !nightmode })}>
+                {nightmode ? '[ NIGHT ]' : '[NIGHT]'}
+              </div>
+            </div>
+          </section>
+
           <section className='home'>
             <article>
               <h1>About</h1>
-              <p>I’m a Product Designer in Santa Cruz working on workplace
+              <div>I’m a Product Designer in Santa Cruz working on workplace
                 electric vehicle charging, a student-operated software team at UC
                 Santa Cruz, and a D&D app called Playbook.
-              </p>
+              </div>
             </article>
 
             <article>
@@ -118,7 +157,7 @@ export default class Home extends Component {
                 >
                   <div>Evaline</div>
                   <div className='dotted' />
-                  <span>
+                  <span className='indicator'>
                     {selectedProject === 'evaline' ? 'SELECTED >' : 'MORE'}
                   </span>
                 </li>
@@ -128,7 +167,7 @@ export default class Home extends Component {
                   onClick={() => this.setState({ selectedProject: 'playbook' })}
                 >
                   <div>Playbook</div>
-                  <span>
+                  <span className='indicator'>
                     {selectedProject === 'playbook' ? 'SELECTED >' : 'MORE'}
                   </span>
                 </li>
@@ -139,7 +178,7 @@ export default class Home extends Component {
                 >
                   <div>Expense</div>
                   <div className='dotted' />
-                  <span>
+                  <span className='indicator'>
                     {selectedProject === 'expense' ? 'SELECTED >' : 'MORE'}
                   </span>
                 </li>
@@ -149,7 +188,7 @@ export default class Home extends Component {
                   onClick={() => this.setState({ selectedProject: 'vexvolt' })}
                 >
                   <div>VEXVolt</div>
-                  <span>
+                  <span className='indicator'>
                     {selectedProject === 'vexvolt' ? 'SELECTED >' : 'MORE'}
                   </span>
                 </li>
@@ -160,7 +199,7 @@ export default class Home extends Component {
                 >
                   <div>Marketing</div>
                   <div className='dotted' />
-                  <span>
+                  <span className='indicator'>
                     {selectedProject === 'marketing' ? 'SELECTED >' : 'MORE'}
                   </span>
                 </li>
@@ -169,10 +208,21 @@ export default class Home extends Component {
 
             <article>
               <h1>Contact</h1>
-              <p>You can email me at alex@alexprice.co, or schedule a meeting at
-                alexprice.co/meet. I’m also on Twitter, and Instagram.
-              </p>
+              <div>You can email me at <a href='mailto:alex@alexprice.co' title='Shoot me an email'>alex@alexprice.co</a>,
+              or <a href='https://alexprice.co/meet'>schedule a meeting</a>. I’m also on <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /> LinkedIn</a>, <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /> Instagram</a>, and <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /> Github</a>.
+              </div>
             </article>
+          </section>
+
+          <section className='logs-col'>
+            <div className='system-log'>
+              APPROX_LOCATION: {this.state.location} <br />
+              WEATHER_CONDITIONS: {this.state.local_weather}
+            </div>
+
+            <div className='system-log'>
+              <Icon name='logo' className='logo' />
+            </div>
           </section>
         </div>
       </div>
