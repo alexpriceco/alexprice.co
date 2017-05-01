@@ -1,5 +1,6 @@
 @import 'vars';
 @import 'normalize';
+@import 'animations';
 
 body {
   font-family: $base-font-family;
@@ -13,6 +14,13 @@ body {
   min-height: 100vh;
   justify-content: center;
   align-items: center;
+
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 div.body {
@@ -27,6 +35,7 @@ div.body {
 section {
   color: $grey-100;
   background: $white-20;
+  z-index: 50;
   flex-grow: 1;
   height: 100vh;
   display: flex;
@@ -42,10 +51,29 @@ section {
     top: 0;
     transform: translateX(-50%);
     justify-content: flex-start;
-    border-left: 0.05em solid $grey-20;
-    border-right: 0.05em solid $grey-20;
+
+    &:not(.selected--) {
+      left: 0;
+      transform: none;
+    }
 
     > article {
+      border: 0.1em solid $grey-20;
+
+      &:nth-of-type(1) { @include animation-delay(0.2s); }
+      &:nth-of-type(2) { @include animation-delay(0.4s); }
+      &:nth-of-type(3) { @include animation-delay(0.6s); }
+      &:nth-of-type(4) { @include animation-delay(0.8s); }
+      -webkit-animation-fill-mode: both;
+      -webkit-animation-duration: 0.2s;
+      animation-fill-mode: both;
+      animation-duration: 0.2s;
+      -webkit-animation-name: activate;
+      animation-name: activate;
+
+      > * { margin: 0; padding: 1em; }
+      > h1 { width: 100%; }
+
       div.icon, div.icon svg {
         display: inline-block;
         width: 0.8em;
@@ -59,30 +87,49 @@ section {
     }
   }
 
-  &.logs-col {
-    padding: 1.5em;
-    min-width: 4em;
+  &.system-logs {
+    position: absolute;
+    background: transparent;
     color: $grey-50;
-    justify-content: space-between;
-    align-items: flex-start;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
 
-    &:first-of-type {
-      left: 0;
-      top: 0;
-      justify-self: flex-start;
+    > .system-log:nth-of-type(1) {
+      left: 1.5em;
+      top: 1.5em;
     }
 
-    &:last-of-type {
-      top: 0;
-      right: 0;
-      justify-self: flex-end;
-      align-items: flex-end;
-      .system-log { text-align: right; }
+    > .system-log:nth-of-type(2) {
+      right: 1.5em;
+      top: 1.5em;
+      text-align: right;
+    }
+
+    > .system-log:nth-of-type(3) {
+      right: 1.5em;
+      bottom: 1.5em;
+      text-align: right;
+    }
+
+    > .system-log:nth-of-type(4) {
+      left: 1.5em;
+      bottom: 1.5em;
     }
 
     .system-log {
       font-size: 0.6em;
       line-height: 1.4em;
+      z-index: 100;
+      position: absolute;
+      @include animation-delay(1s);
+      -webkit-animation-fill-mode: both;
+      -webkit-animation-duration: 0.2s;
+      animation-fill-mode: both;
+      animation-duration: 0.2s;
+      -webkit-animation-name: activate;
+      animation-name: activate;
 
       .nightmode-toggle {
         cursor: pointer;
@@ -98,11 +145,10 @@ section {
         align-self: flex-end;
         justify-self: flex-end;
         width: 4em;
-        height: 4em;
+        height: 2em;
         use { fill: $grey-30; }
-
-        &div { position: relative; }
-        &svg { position: absolute; bottom: 0; right: 0; }
+        &svg { position: relative; }
+        svg > g { position: absolute; bottom: 0; right: 0; }
       }
     }
   }
@@ -110,16 +156,14 @@ section {
   article {
     width: 100%;
 
-    &:not(:first-of-type) {
-      margin-top: 1.5em;
-    }
+    &:not(:first-of-type) { margin-top: 1.5em; }
   }
 }
 
 h1 {
   display: inline-block;
-  background: $blue-50;
-  color: $white-10;
+  border-bottom: 0.1em solid $grey-20;
+  color: $grey-100;
   font-weight: 400;
   padding: 0.1em 0.2em;
   margin: 0.5em 0;
@@ -191,7 +235,15 @@ div.body.nightmode--true {
   section {
     background: $grey-100;
     color: $white-10;
-    border-color: $grey-90;
+
+    &.system-logs { background: transparent; }
+
+    article { border-color: $grey-80; }
+
+    h1 {
+      color: $white-10;
+      border-color: $grey-80;
+    }
   }
 
   .system-log {
@@ -205,5 +257,24 @@ div.body.nightmode--true {
     &:hover, &.selected {
       &:before { color: $grey-20; }
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section { width: 100vw; }
+  .system-log > .logo {
+    width: 100vw;
+    height: 4em;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 1.5em;
+    background-color: $white-20;
+    border-bottom: $grey-20;
+  }
+
+  div.body.nightmode--true .system-log > .logo {
+    background-color: $grey-100;
+    border-bottom: $grey-80;
   }
 }

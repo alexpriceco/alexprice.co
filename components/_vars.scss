@@ -86,6 +86,24 @@ $on-laptop:        800px;
   animation: $rules;
 }
 
+@mixin transition-delay($ms) {
+    -webkit-transition-delay: $ms;
+       -moz-transition-delay: $ms;
+            transition-delay: $ms;
+}
+
+@mixin box-shadow($top, $left, $blur, $spread, $color) {
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  -moz-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
+}
+
+@mixin animation-delay($s) {
+  -moz-animation-delay: $s;
+  -webkit-animation-delay: $s;
+  animation-delay: $s;
+}
+
 @mixin prefix($property, $value, $prefixes: ()) {
   @each $prefix in $prefixes {
     #{'-' + $prefix + '-' + $property}: $value;
@@ -93,6 +111,12 @@ $on-laptop:        800px;
 
   // Output standard non-prefixed declaration
   #{$property}: $value;
+}
+
+@mixin keyframes($name) {
+  @-moz-keyframes #{$name} { @content; }
+  @-webkit-keyframes #{$name} { @content; }
+  @keyframes #{$name} { @content; }
 }
 
 @mixin box-shadow($top, $left, $blur, $spread, $color) {

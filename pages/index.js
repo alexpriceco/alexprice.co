@@ -9,13 +9,13 @@ export default class Home extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      launch_time: '',
-      location: '',
-      local_weather: 'COMING SOON',
+      launch_time: 'CALCULATING...',
+      location: 'CALCULATING...',
+      local_weather: 'API_UNAVAILABLE',
       nightmode: false,
       longitude: '',
       latitude: '',
-      selected: ''
+      selectedProject: ''
     }
   }
 
@@ -53,8 +53,16 @@ export default class Home extends Component {
     })
   }
 
+  componentDidUpdate () {
+    const { nightmode } = this.state
+    document.body.style.backgroundColor = nightmode ? '#111111' : '#F8F8F8'
+  }
+
   componentDidMount () {
     this.setState({ launch_time: new Date().toISOString() })
+
+    const { nightmode } = this.state
+    document.body.style.backgroundColor = nightmode ? '#111111' : '#F8F8F8'
 
     // Determine if should default to nightmode
     if (new Date().getHours() < 6) this.setState({ nightmode: true })
@@ -66,7 +74,7 @@ export default class Home extends Component {
     this.get('https://jsonip.com').then((res) => {
       this.get(`https://freegeoip.net/json/${res.ip}`).then((res) => {
         if (res.city && res.region_name) {
-          this.setState({ location: `${res.region_name}, ${res.city}` })
+          this.setState({ location: `${res.city}, ${res.region_name}` })
         } else {
           this.setState({ location: `${res.latitude}, ${res.longitude}` })
         }
@@ -77,7 +85,7 @@ export default class Home extends Component {
         })
 
         let darkSkyURL = `https://api.darksky.net/forecast/${DARK_SKY_KEY}/` +
-          res.latitude + ',' + res.longitude
+          `${res.latitude},${res.longitude}`
 
         console.log(darkSkyURL) // TODO: build a Node server to process this req
         // this.get(darkSkyURL).then((res) => {
@@ -118,7 +126,7 @@ export default class Home extends Component {
         </Head>
 
         <div className={`body nightmode--${nightmode}`}>
-          <section className='logs-col'>
+          <section className='system-logs'>
             <div className='system-log'>
               SYSTEM_LOADING... DONE. <br />
               Welcome, guest. [ UPDATE NAME? ]
@@ -126,30 +134,32 @@ export default class Home extends Component {
 
             <div className='system-log'>
               LAUNCH_TIME: {this.state.launch_time} <br />
-              LIGHTING_MODE:&nbsp;
+              DARKMODE_ACTIVE:&nbsp;
               <div className='nightmode-toggle'
                 onClick={() => this.setState({ nightmode: !nightmode })}>
-                {nightmode ? '[DAY]' : '[ DAY ]'}
+                {nightmode ? '[-]' : '[ ]'}
               </div>
-              &nbsp;
-              <div className='nightmode-toggle'
-                onClick={() => this.setState({ nightmode: !nightmode })}>
-                {nightmode ? '[ NIGHT ]' : '[NIGHT]'}
-              </div>
+            </div>
+
+            <div className='system-log'>
+              <Icon name='logo' className='logo' />
+            </div>
+
+            <div className='system-log'>
+              APPROX_LOCATION: {this.state.location} <br />
+              WEATHER_CONDITIONS: {this.state.local_weather}
             </div>
           </section>
 
-          <section className='home'>
+          <section className={`home selected--${this.state.selectedProject}`}>
             <article>
               <h1>About</h1>
-              <div>I’m a Product Designer in Santa Cruz working on workplace
-                electric vehicle charging, a student-operated software team at UC
-                Santa Cruz, and a D&D app called Playbook.
+              <div>I’m a Product Designer in Santa Cruz working on workplace electric vehicle charging, a student-operated software team at UC Santa Cruz, and a D&D app called Playbook.
               </div>
             </article>
 
             <article>
-              <h1>Work</h1>
+              <h1>Projects</h1>
               <ol>
                 <li
                   className={selectedProject === 'evaline' ? 'selected' : ''}
@@ -212,17 +222,6 @@ export default class Home extends Component {
               or <a href='https://alexprice.co/meet'>schedule a meeting</a>. I’m also on <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /> LinkedIn</a>, <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /> Instagram</a>, and <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /> Github</a>.
               </div>
             </article>
-          </section>
-
-          <section className='logs-col'>
-            <div className='system-log'>
-              APPROX_LOCATION: {this.state.location} <br />
-              WEATHER_CONDITIONS: {this.state.local_weather}
-            </div>
-
-            <div className='system-log'>
-              <Icon name='logo' className='logo' />
-            </div>
           </section>
         </div>
       </div>

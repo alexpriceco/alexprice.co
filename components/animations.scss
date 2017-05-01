@@ -1,0 +1,13 @@
+@import 'vars';
+
+@include keyframes('activate') {
+  0% { opacity: 0; }
+  30% { opacity: 0; }
+  34% { opacity: 1; }
+  38% { opacity: 0; }
+  60% { opacity: 0; }
+  64% { opacity: 1; }
+  68% { opacity: 0; }
+  96% { opacity: 0; }
+  100% { opacity: 1; }
+}
