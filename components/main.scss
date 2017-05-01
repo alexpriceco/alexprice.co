@@ -51,10 +51,35 @@ section {
     top: 0;
     transform: translateX(-50%);
     justify-content: flex-start;
+    &::-webkit-scrollbar { display: none; }
+    -webkit-overflow-scrolling: touch; }
 
     &:not(.selected--) {
       left: 0;
       transform: none;
+    }
+
+    > .icon {
+      width: 4em;
+      height: 2em;
+      margin-top: 4em;
+      margin-bottom: 1em;
+      @include animation-delay(0.7s);
+      -webkit-animation-fill-mode: both;
+      -webkit-animation-duration: 0.2s;
+      animation-fill-mode: both;
+      animation-duration: 0.2s;
+      -webkit-animation-name: activate;
+      animation-name: activate;
+
+      svg {
+        width: 3em;
+        height: 2em;
+        position: relative;
+        use { fill: $grey-30; }
+
+        > g { position: absolute; bottom: 0; right: 0; }
+      }
     }
 
     > article {
@@ -82,7 +107,6 @@ section {
         use { fill: $blue-50; }
       }
 
-      &:first-of-type { margin-top: 4em; }
       &:last-of-type { margin-bottom: 4em; }
     }
   }
@@ -262,7 +286,8 @@ div.body.nightmode--true {
 
 @media only screen and (max-width: 600px) {
   section { width: 100vw; }
-  .system-log > .logo {
+  .system-log > .logo,
+  .home > .logo {
     width: 100vw;
     height: 4em;
     position: fixed;
@@ -271,6 +296,11 @@ div.body.nightmode--true {
     left: 1.5em;
     background-color: $white-20;
     border-bottom: $grey-20;
+  }
+
+  section.home {
+    > .icon { margin: 1em auto; }
+    article:first-of-type { margin-top: 4em; }
   }
 
   div.body.nightmode--true .system-log > .logo {

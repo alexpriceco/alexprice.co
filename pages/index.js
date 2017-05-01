@@ -15,7 +15,8 @@ export default class Home extends Component {
       nightmode: false,
       longitude: '',
       latitude: '',
-      selectedProject: ''
+      selectedProject: '',
+      loading: true
     }
   }
 
@@ -152,6 +153,8 @@ export default class Home extends Component {
           </section>
 
           <section className={`home selected--${this.state.selectedProject}`}>
+            <Icon name='logo' className='logo' key='logo' />
+
             <article>
               <h1>About</h1>
               <div>I’m a Product Designer in Santa Cruz working on workplace electric vehicle charging, a student-operated software team at UC Santa Cruz, and a D&D app called Playbook.
@@ -218,8 +221,8 @@ export default class Home extends Component {
 
             <article>
               <h1>Contact</h1>
-              <div>You can email me at <a href='mailto:alex@alexprice.co' title='Shoot me an email'>alex@alexprice.co</a>,
-              or <a href='https://alexprice.co/meet'>schedule a meeting</a>. I’m also on <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /> LinkedIn</a>, <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /> Instagram</a>, and <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /> Github</a>.
+              <div>You can <a href='https://alexprice.co/meet'>schedule a meeting</a>, or email me at <a href='mailto:alex@alexprice.co' title='Shoot me an email'>alex@alexprice.co</a>.
+              I’m also on <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /> Github</a>, <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /> LinkedIn</a>, and <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /> Instagram</a>.
               </div>
             </article>
           </section>
