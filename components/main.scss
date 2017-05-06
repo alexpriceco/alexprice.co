@@ -5,8 +5,8 @@
 body {
   font-family: $base-font-family;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 28px;
 
   display: flex;
   flex-direction: row;
@@ -34,7 +34,6 @@ div.body {
 
 section {
   color: $grey-100;
-  background: $white-20;
   z-index: 50;
   flex-grow: 1;
   height: 100vh;
@@ -52,7 +51,9 @@ section {
     transform: translateX(-50%);
     justify-content: flex-start;
     &::-webkit-scrollbar { display: none; }
-    -webkit-overflow-scrolling: touch; }
+    -webkit-overflow-scrolling: touch;
+    @include ease(128ms);
+  }
 
     &:not(.selected--) {
       left: 0;
@@ -64,13 +65,6 @@ section {
       height: 2em;
       margin-top: 4em;
       margin-bottom: 1em;
-      @include animation-delay(0.7s);
-      -webkit-animation-fill-mode: both;
-      -webkit-animation-duration: 0.2s;
-      animation-fill-mode: both;
-      animation-duration: 0.2s;
-      -webkit-animation-name: activate;
-      animation-name: activate;
 
       svg {
         width: 3em;
@@ -84,17 +78,7 @@ section {
 
     > article {
       border: 0.1em solid $grey-20;
-
-      &:nth-of-type(1) { @include animation-delay(0.2s); }
-      &:nth-of-type(2) { @include animation-delay(0.4s); }
-      &:nth-of-type(3) { @include animation-delay(0.6s); }
-      &:nth-of-type(4) { @include animation-delay(0.8s); }
-      -webkit-animation-fill-mode: both;
-      -webkit-animation-duration: 0.2s;
-      animation-fill-mode: both;
-      animation-duration: 0.2s;
-      -webkit-animation-name: activate;
-      animation-name: activate;
+      span.divider { color: $grey-30; }
 
       > * { margin: 0; padding: 1em; }
       > h1 { width: 100%; }
@@ -111,78 +95,103 @@ section {
     }
   }
 
-  &.system-logs {
-    position: absolute;
-    background: transparent;
-    color: $grey-50;
-    height: 100vh;
-    width: 100vw;
-    left: 0;
-    top: 0;
+.system-logs {
+  position: absolute;
+  background: transparent;
+  color: $grey-50;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
 
-    > .system-log:nth-of-type(1) {
-      left: 1.5em;
-      top: 1.5em;
-    }
-
-    > .system-log:nth-of-type(2) {
-      right: 1.5em;
-      top: 1.5em;
-      text-align: right;
-    }
-
-    > .system-log:nth-of-type(3) {
-      right: 1.5em;
-      bottom: 1.5em;
-      text-align: right;
-    }
-
-    > .system-log:nth-of-type(4) {
-      left: 1.5em;
-      bottom: 1.5em;
-    }
-
-    .system-log {
-      font-size: 0.6em;
-      line-height: 1.4em;
-      z-index: 100;
-      position: absolute;
-      @include animation-delay(1s);
-      -webkit-animation-fill-mode: both;
-      -webkit-animation-duration: 0.2s;
-      animation-fill-mode: both;
-      animation-duration: 0.2s;
-      -webkit-animation-name: activate;
-      animation-name: activate;
-
-      .nightmode-toggle {
-        cursor: pointer;
-        @include ease(64ms);
-        display: inline-block;
-        &:hover { color: $grey-100; }
-      }
-
-      .icon, .icon svg {
-        display: flex;
-        justify-content: flex-end;
-        align-content: flex-end;
-        align-self: flex-end;
-        justify-self: flex-end;
-        width: 4em;
-        height: 2em;
-        use { fill: $grey-30; }
-        &svg { position: relative; }
-        svg > g { position: absolute; bottom: 0; right: 0; }
-      }
-    }
+  > .system-log:nth-of-type(1) {
+    left: 1.5em;
+    top: 1.5em;
   }
 
-  article {
-    width: 100%;
+  > .system-log:nth-of-type(2) {
+    right: 1.5em;
+    top: 1.5em;
+    text-align: right;
+  }
 
-    &:not(:first-of-type) { margin-top: 1.5em; }
+  > .system-log:nth-of-type(3) {
+    right: 1.5em;
+    bottom: 1.5em;
+    text-align: right;
+  }
+
+  > .system-log:nth-of-type(4) {
+    left: 1.5em;
+    bottom: 1.5em;
+  }
+
+  .system-log {
+    font-size: 0.64em;
+    line-height: 1.4em;
+    z-index: 100;
+    position: absolute;
+    @include animation-delay(1s);
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 0.2s;
+    animation-fill-mode: both;
+    animation-duration: 0.2s;
+    -webkit-animation-name: activate;
+    animation-name: activate;
+
+    .nightmode-toggle {
+      cursor: pointer;
+      @include ease(64ms);
+      display: inline-block;
+      &:hover { color: $grey-100; }
+    }
+
+    .icon, .icon svg {
+      display: flex;
+      justify-content: flex-end;
+      align-content: flex-end;
+      align-self: flex-end;
+      justify-self: flex-end;
+      width: 4em;
+      height: 2em;
+      use { fill: $grey-30; }
+      &svg { position: relative; }
+      svg > g {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
   }
 }
+
+section.home.animate-in {
+  > .icon {
+    @include animation-delay(0.7s);
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 0.2s;
+    animation-fill-mode: both;
+    animation-duration: 0.2s;
+    -webkit-animation-name: activate;
+    animation-name: activate;
+  }
+
+  > article {
+    &:nth-of-type(1) { @include animation-delay(0.2s); }
+    &:nth-of-type(2) { @include animation-delay(0.4s); }
+    &:nth-of-type(3) { @include animation-delay(0.6s); }
+    &:nth-of-type(4) { @include animation-delay(0.8s); }
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: 0.2s;
+    animation-fill-mode: both;
+    animation-duration: 0.2s;
+    -webkit-animation-name: activate;
+    animation-name: activate;
+  }
+}
+
+article { width: 100%; }
+article:nth-of-type(n+1) { margin-top: 1.5em; }
 
 h1 {
   display: inline-block;
@@ -257,18 +266,23 @@ div.body.nightmode--true {
   color: $white-10;
 
   section {
-    background: $grey-100;
     color: $white-10;
 
     &.system-logs { background: transparent; }
-
+    &.home article {
+      div.icon, div.icon svg use { fill: $red-50; }
+    }
     article { border-color: $grey-80; }
+    article span.divider { color: $grey-60; }
 
     h1 {
       color: $white-10;
       border-color: $grey-80;
     }
   }
+
+  ol li > span.indicator { color: $red-50; }
+  ol li:hover > span.indicator { border-bottom-color: $red-50; }
 
   .system-log {
     color: $grey-50;
@@ -282,6 +296,11 @@ div.body.nightmode--true {
       &:before { color: $grey-20; }
     }
   }
+
+  a, a:visited {
+    color: $red-50;
+    &:hover { border-bottom-color: $red-50; }
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -294,8 +313,6 @@ div.body.nightmode--true {
     z-index: 100;
     top: 0;
     left: 1.5em;
-    background-color: $white-20;
-    border-bottom: $grey-20;
   }
 
   section.home {

@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:400');
 $base-font-family: "Inconsolata", serif;
 $title-font-family: "Inconsolata", serif;
-$base-font-size:   24px;
+$base-font-size:   20px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
-$spacing-unit:     30px;
+$spacing-unit:     24px;
 
-$grey-100:#111111;
+$grey-100:#070709;
 $grey-90: #252525;
 $grey-80: #303030;
 $grey-70: #3F3F3F;
@@ -23,6 +23,8 @@ $white-10:#FFFFFF;
 
 $blue-50: #2176FF;
 $blue-60: #0061FE;
+
+$red-50: #FF3030;
 
 // Width of the content area
 $content-width:    800px;

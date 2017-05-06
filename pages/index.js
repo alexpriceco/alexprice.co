@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
 
+import { CSSTransitionGroup } from 'react-transition-group'
 import Icon from '../components/general/icon'
 import Style from '../components/general/style'
 import sheet from '../components/main.scss'
@@ -13,10 +14,11 @@ export default class Home extends Component {
       location: 'CALCULATING...',
       local_weather: 'API_UNAVAILABLE',
       nightmode: false,
+      username: 'guest',
       longitude: '',
       latitude: '',
       selectedProject: '',
-      loading: true
+      firstLoad: true
     }
   }
 
@@ -61,6 +63,7 @@ export default class Home extends Component {
 
   componentDidMount () {
     this.setState({ launch_time: new Date().toISOString() })
+    setTimeout(() => { this.setState({ firstLoad: false }) }, 1500)
 
     const { nightmode } = this.state
     document.body.style.backgroundColor = nightmode ? '#111111' : '#F8F8F8'
@@ -104,7 +107,7 @@ export default class Home extends Component {
     return (
       <div>
         <Head>
-          <title>Alex Price > Product Designer</title>
+          <title>Alexander Price // Product Designer</title>
           <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           <link rel='apple-touch-icon' sizes='57x57' href='../static/favicon/apple-icon-57x57.png' />
           <link rel='apple-touch-icon' sizes='60x60' href='../static/favicon/apple-icon-60x60.png' />
@@ -130,7 +133,7 @@ export default class Home extends Component {
           <section className='system-logs'>
             <div className='system-log'>
               SYSTEM_LOADING... DONE. <br />
-              Welcome, guest. [ UPDATE NAME? ]
+              Welcome, {this.state.username}. [ FUNCTION UNAVAILABLE ]
             </div>
 
             <div className='system-log'>
@@ -147,17 +150,37 @@ export default class Home extends Component {
             </div>
 
             <div className='system-log'>
-              APPROX_LOCATION: {this.state.location} <br />
-              WEATHER_CONDITIONS: {this.state.local_weather}
+              LOCATION: {this.state.location} <br />
+              CONDITIONS: {this.state.local_weather}
             </div>
           </section>
 
-          <section className={`home selected--${this.state.selectedProject}`}>
-            <Icon name='logo' className='logo' key='logo' />
+          <CSSTransitionGroup
+            component='section'
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}
+            transitionName={'core-animation'}
+            className={`home selected--${this.state.selectedProject} ${
+              this.state.firstLoad ? ' animate-in' : ''}`}
+            key={`selected--${this.state.selectedProject}`}
+          >
+            <Icon name='logo' className='logo' />
 
             <article>
               <h1>About</h1>
               <div>I’m a Product Designer in Santa Cruz working on workplace electric vehicle charging, a student-operated software team at UC Santa Cruz, and a D&D app called Playbook.
+              </div>
+              <div style={{paddingTop: 0}}>
+                <a href='https://github.com/alexpriceco'
+                  title='My Github profile'>
+                  <Icon name='github' />
+                </a><span className='divider'> // </span>
+                <a href='https://linkedin.com/in/alexpriceco'
+                  title='My LinkedIn profile'><Icon name='linkedin' />
+                </a><span className='divider'> // </span>
+                <a href='https://instagram.com/alexpriceco'
+                  title='My Instagram photos'><Icon name='instagram' />
+                </a>
               </div>
             </article>
 
@@ -219,13 +242,13 @@ export default class Home extends Component {
               </ol>
             </article>
 
-            <article>
+            {/* <article>
               <h1>Contact</h1>
               <div>You can <a href='https://alexprice.co/meet'>schedule a meeting</a>, or email me at <a href='mailto:alex@alexprice.co' title='Shoot me an email'>alex@alexprice.co</a>.
-              I’m also on <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /> Github</a>, <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /> LinkedIn</a>, and <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /> Instagram</a>.
+              You can also find me here: <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /></a> • <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /></a> • <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /></a>
               </div>
-            </article>
-          </section>
+            </article> */}
+          </CSSTransitionGroup>
         </div>
       </div>
     )
