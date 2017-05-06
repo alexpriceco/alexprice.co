@@ -58,7 +58,7 @@ export default class Home extends Component {
 
   componentDidUpdate () {
     const { nightmode } = this.state
-    document.body.style.backgroundColor = nightmode ? '#111111' : '#F8F8F8'
+    document.body.style.backgroundColor = nightmode ? '#070709' : '#F8F8F8'
   }
 
   componentDidMount () {
@@ -99,6 +99,55 @@ export default class Home extends Component {
     }).catch((err) => {
       console.log('JSON IP failed to load, with error:', err)
     })
+  }
+
+  renderProject (project) {
+    switch (project) {
+      case 'evaline':
+        return (
+          <article className={`project--${project}`} key={project}>
+            <h1>Evaline</h1>
+          </article>
+        )
+      case 'expense':
+        return (
+          <article className={`project--${project}`} key={project}>
+            <h1>Expense</h1>
+            <div>Expense is an expense management tool designed to be lightweight, simple, and really easy to use. My team for this project was 100% student run, and we were looking for a way to quickly receive expense reports, and approve or deny them.
+
+            The final product will collect photos and metadata about expenses, store the receipt and data in Firebase, ping the team’s finance group for approval in Slack, and appropriately react to the response.</div>
+            <div style={{paddingTop: 0}}>
+              <span className='divider'> // </span>
+              <a href='https://github.com/gesher-group/expense' title='Source'>
+                SOURCE_<Icon name='github' />
+              </a>
+              <span className='divider'> // </span>
+              <a href='https://linkedin.com/in/alexpriceco' title='Demo'>
+                DEMO_<Icon name='link' />
+              </a>
+            </div>
+          </article>
+        )
+      case 'playbook':
+        return (
+          <article className={`project--${project}`} key={project}>
+            <h1>Playbook</h1>
+          </article>
+        )
+      case 'vexvolt':
+        return (
+          <article className={`project--${project}`} key={project}>
+            <h1>VEXVolt</h1>
+          </article>
+        )
+      case 'marketing':
+        return (
+          <article className={`project--${project}`} key={project}>
+            <h1>Marketing</h1>
+          </article>
+        )
+      default: return (<div key='no-selected-project' />)
+    }
   }
 
   render () {
@@ -160,9 +209,9 @@ export default class Home extends Component {
             transitionEnterTimeout={1000}
             transitionLeaveTimeout={1000}
             transitionName={'core-animation'}
-            className={`home selected--${this.state.selectedProject} ${
+            className={`home selected--${selectedProject} ${
               this.state.firstLoad ? ' animate-in' : ''}`}
-            key={`selected--${this.state.selectedProject}`}
+            key={`selected--${selectedProject}`}
           >
             <Icon name='logo' className='logo' />
 
@@ -172,14 +221,14 @@ export default class Home extends Component {
               </div>
               <div style={{paddingTop: 0}}>
                 <a href='https://github.com/alexpriceco'
-                  title='My Github profile'>
+                  title='Github profile'>
                   <Icon name='github' />
                 </a><span className='divider'> // </span>
                 <a href='https://linkedin.com/in/alexpriceco'
-                  title='My LinkedIn profile'><Icon name='linkedin' />
+                  title='LinkedIn profile'><Icon name='linkedin' />
                 </a><span className='divider'> // </span>
                 <a href='https://instagram.com/alexpriceco'
-                  title='My Instagram photos'><Icon name='instagram' />
+                  title='Instagram photos'><Icon name='instagram' />
                 </a>
               </div>
             </article>
@@ -248,6 +297,18 @@ export default class Home extends Component {
               You can also find me here: <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /></a> • <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /></a> • <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /></a>
               </div>
             </article> */}
+          </CSSTransitionGroup>
+
+          <CSSTransitionGroup
+            component='section'
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}
+            transitionName={'core-animation'}
+            className={`project-parent selected--${selectedProject} ${
+              this.state.firstLoad ? ' animate-in' : ''}`}
+            key='project-parent'
+          >
+            { this.renderProject(selectedProject) }
           </CSSTransitionGroup>
         </div>
       </div>
