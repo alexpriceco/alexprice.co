@@ -35,11 +35,15 @@ section.CI {
   flex-direction: column-reverse;
   margin-bottom: 2em;
 
-  > div.message { color: $text-grey-dark; }
-  > div:first-of-type { color: $text-grey-light; }
+  > .message {
+    color: $text-grey-dark;
+
+    &:nth-of-type(1) { color: $text-grey-light; }
+  }
 }
 
 section.options {
+  margin-top: 1em;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;

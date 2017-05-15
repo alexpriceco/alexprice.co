@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import Head from 'next/head'
 
+import Options from '../components/options'
 import Icon from '../components/general/icon'
 import Style from '../components/general/style'
 import sheet from '../components/main.scss'
@@ -10,7 +10,7 @@ export default class Home extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      messageStream: [],
+      flow: [],
       launch_time: 'CALCULATING...',
       location: 'CALCULATING...',
       local_weather: 'API_UNAVAILABLE',
@@ -18,27 +18,7 @@ export default class Home extends Component {
       username: 'GUEST',
       longitude: '',
       latitude: '',
-      firstLoad: true,
-      welcomed: false
-    }
-
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-  }
-
-  componentWillUnmount () {
-    document.removeEventListener('keydown', this.handleKeyPress)
-  }
-
-  handleKeyPress (e) {
-    if (this.state.options.length > 1) {
-      const options = this.options.getElementsByClassName('option')
-      let numOptions = options.length - 1
-      let selectedOption = this.state.selectedOption || 0
-
-      if (e.keyCode === 37 && selectedOption > 0) selectedOption--
-      if (e.keyCode === 39 && selectedOption < numOptions) selectedOption++
-
-      options[selectedOption].focus()
+      firstLoad: true
     }
   }
 
@@ -63,9 +43,7 @@ export default class Home extends Component {
       req.onload = () => {
         if (req.status >= 200 && req.status < 400) {
           resolve(JSON.parse(req.responseText))
-        } else {
-          reject(new Error('Something\'s wrong with the server.'))
-        }
+        } else reject(new Error('Something\'s wrong with the server.'))
       }
 
       req.onerror = () => {
@@ -82,36 +60,32 @@ export default class Home extends Component {
   }
 
   componentDidMount () {
-    document.addEventListener('keydown', this.handleKeyPress)
     setTimeout(() => this.setState({ firstLoad: false }), 1000)
     this.getWeather()
 
     this.setState({ launch_time: new Date().toISOString() })
-    this.addMessage(`Welcome, ${this.state.username}.`)
+    this.updateFlow(`Welcome, ${this.state.username}.`)
 
     setTimeout(() => {
       const { location } = this.state
       if (location !== `CALCULATING...`) {
         const suggestion = 'stretch your legs'
         const condition = 'sunny'
-        this.addMessage(`Make sure to ${suggestion} today in ${condition} ${location}.`)
+        this.updateFlow(`Make sure to ${suggestion} today in ${condition} ${location}.`)
       }
 
-      setTimeout(() => this.addMessage(`\nHow may I assist you?`), 250)
-      this.setOptions([
-        {
-          label: 'About',
-          onClick: {
-
-          }
-        },
-        {
-          label: 'Projects',
-          onClick: {
-
-          }
-        }
-      ])
+      setTimeout(() => {
+        this.updateFlow(`\nHow may I assist you?`)
+        this.updateFlow(
+          [{
+            label: 'About',
+            onClick: () => console.debug('About')
+          }, {
+            label: 'Projects',
+            onClick: () => console.debug('Projects')
+          }]
+        )
+      }, 250)
     }, 500)
 
     // const { nightmode } = this.state
@@ -124,8 +98,6 @@ export default class Home extends Component {
   }
 
   getWeather () {
-    // let DARK_SKY_KEY = 'ff0715e86494e35b1ae6adf7e4ebe667'
-
     this.get('https://jsonip.com').then((res) => {
       this.get(`https://freegeoip.net/json/${res.ip}`).then((res) => {
         if (res.city && res.region_name) {
@@ -139,67 +111,51 @@ export default class Home extends Component {
           longitude: res.longitude
         })
 
+        // const DARK_SKY_KEY = 'ff0715e86494e35b1ae6adf7e4ebe667'
         // const darkSkyURL = `https://api.darksky.net/forecast/${DARK_SKY_KEY}/` +
-          // `${res.latitude},${res.longitude}`
-
+        //   `${res.latitude},${res.longitude}`
         // this.get(darkSkyURL).then((res) => console.log(res))
       })
-    }).catch((err) => {
-      console.log('JSON IP failed to load, with error:', err)
-    })
+    }).catch((err) => console.warn('JSON IP failed to load, with error:', err))
   }
 
-  setOptions (options) {
-    this.setState({ options })
-  }
-
-  addMessage (message) {
-    let messageStream = this.state.messageStream
-    messageStream.push(message)
-    this.setState({ messageStream })
+  updateFlow (item) {
+    let flow = this.state.flow
+    flow.push(item)
+    this.setState({ flow })
   }
 
   renderCI () {
-    let messageStream = []
+    const { flow } = this.state
+    let updateFlow = []
 
-    for (let m in this.state.messageStream) {
-      let msg = this.state.messageStream[m]
-      if (msg.split(/\n/g).length === 1) {
-        messageStream.unshift(<div className='message' key={m}>{msg}</div>)
-      } else {
-        for (let i in msg.split(/\n/g)) {
-          messageStream.unshift(<div className='message' key={`${m}--${i}`}>
-            <p />{msg.split(/\n/g)[i]}
-          </div>)
+    for (let i in flow) {
+      let item = flow[i]
+
+      if (typeof item === 'string') {
+        if (item.split(/\n/g).length === 1) {
+          updateFlow.unshift(
+            <div className='message' key={i}>{item}</div>
+          )
+        } else {
+          for (let m in item.split(/\n/g)) {
+            updateFlow.unshift(
+              <div className='message' key={`${i}--${m}`}>
+                <p key={`p--${i}`} />{item.split(/\n/g)[m]}
+              </div>
+            )
+          }
         }
+      } else {
+        updateFlow.unshift(
+          <Options options={item} key={`options--${i}`} />
+        )
       }
     }
 
     return (
-      <section className={`CI nightmode--${this.state.nightmode}`}>
-        { messageStream }
-      </section>
-    )
-  }
-
-  renderOptions () {
-    const { options } = this.state
-    let renderedOptions = []
-
-    for (let o in options) {
-      renderedOptions.push(
-        <button key={`button-${o}`}
-          className='option'
-          autoFocus={parseInt(o) === 0}
-        >
-          {options[o].label}
-        </button>
-      )
-    }
-
-    return (
-      <section className='options' ref={o => { this.options = o }}>
-        {renderedOptions}
+      <section key='flow' className={`CI nightmode--${this.state.nightmode}`}>
+        { updateFlow }
       </section>
     )
   }
@@ -280,7 +236,6 @@ export default class Home extends Component {
         </Head>
 
         { this.renderCI() }
-        { this.renderOptions() }
       </div>
     )
   }
