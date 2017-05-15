@@ -6,14 +6,14 @@ body {
   font-family: $base-font-family;
   font-weight: 400;
   font-size: 20px;
-  line-height: 28px;
+  line-height: 32px;
 
   display: flex;
   flex-direction: row;
   min-width: 100vw;
   min-height: 100vh;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-touch-callout: none;
@@ -21,326 +21,64 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  background: $black;
+  color: $text-grey-light;
 }
 
-div.body {
-  width: 100vw;
+section.CI {
+  width: 24em;
+  height: 60vh;
+  margin: 0 auto;
   display: flex;
+  justify-content: flex-start;
+  flex-direction: column-reverse;
+  margin-bottom: 2em;
+
+  > div.message { color: $text-grey-dark; }
+  > div:first-of-type { color: $text-grey-light; }
+}
+
+section.options {
+  display: flex;
+  justify-content: flex-start;
   flex-direction: row;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-}
 
-section {
-  color: $grey-100;
-  z-index: 50;
-  flex-grow: 1;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-
-  &.home, &.project-parent {
-    overflow-y: scroll;
-    max-width: 24em;
-    padding: 0 1.5em;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    justify-content: flex-start;
-    &::-webkit-scrollbar { display: none; }
-    -webkit-overflow-scrolling: touch;
-    @include ease(128ms);
-  }
-
-  &.home {
-    z-index: 100;
-    &:not(.selected--) {
-      left: 0;
-      transform: none;
-    }
-  }
-
-  &.project-parent {
-    z-index: 80;
-    right: 0;
-    transform: none;
-
-    > article:first-of-type {
-      margin-top: 8.5em;
-    }
-  }
-
-  > .icon {
-    width: 4em;
-    height: 2em;
-    margin-top: 4em;
-    margin-bottom: 1em;
-
-    svg {
-      width: 3em;
-      height: 2em;
-      position: relative;
-      use { fill: $grey-30; }
-
-      > g { position: absolute; bottom: 0; right: 0; }
-    }
-  }
-
-  > article {
-    border: 0.1em solid $grey-20;
-    span.divider { color: $grey-30; }
-
-    > * { margin: 0; padding: 1em; }
-    > h1 { width: 100%; }
-
-    div.icon, div.icon svg {
-      display: inline-block;
-      width: 0.8em;
-      height: 0.8em;
-
-      use { fill: $blue-50; }
-    }
-
-    &:last-of-type { margin-bottom: 4em; }
-  }
-}
-
-.system-logs {
-  position: absolute;
-  background: transparent;
-  pointer-events: none;
-  color: $grey-50;
-  height: 100vh;
-  width: 100vw;
-  z-index: 120;
-  left: 0;
-  top: 0;
-
-  > .system-log { pointer-events: all; }
-
-  > .system-log:nth-of-type(1) {
-    left: 1.5em;
-    top: 1.5em;
-  }
-
-  > .system-log:nth-of-type(2) {
-    right: 1.5em;
-    top: 1.5em;
-    text-align: right;
-  }
-
-  > .system-log:nth-of-type(3) {
-    right: 1.5em;
-    bottom: 1.5em;
-    text-align: right;
-  }
-
-  > .system-log:nth-of-type(4) {
-    left: 1.5em;
-    bottom: 1.5em;
-  }
-
-  .system-log {
-    font-size: 0.64em;
-    line-height: 1.4em;
-    z-index: 100;
-    position: absolute;
-    @include animation-delay(1s);
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-duration: 0.2s;
-    animation-fill-mode: both;
-    animation-duration: 0.2s;
-    -webkit-animation-name: activate;
-    animation-name: activate;
-
-    .nightmode-toggle {
-      cursor: pointer;
-      @include ease(64ms);
-      display: inline-block;
-      &:hover { color: $grey-100; }
-    }
-
-    .icon, .icon svg {
-      display: flex;
-      justify-content: flex-end;
-      align-content: flex-end;
-      align-self: flex-end;
-      justify-self: flex-end;
-      width: 4em;
-      height: 2em;
-      use { fill: $grey-30; }
-      &svg { position: relative; }
-      svg > g {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-      }
-    }
-  }
-}
-
-section.home.animate-in {
-  > .icon {
-    @include animation-delay(0.7s);
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-duration: 0.2s;
-    animation-fill-mode: both;
-    animation-duration: 0.2s;
-    -webkit-animation-name: activate;
-    animation-name: activate;
-  }
-
-  > article {
-    &:nth-of-type(1) { @include animation-delay(0.2s); }
-    &:nth-of-type(2) { @include animation-delay(0.4s); }
-    &:nth-of-type(3) { @include animation-delay(0.6s); }
-    &:nth-of-type(4) { @include animation-delay(0.8s); }
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-duration: 0.2s;
-    animation-fill-mode: both;
-    animation-duration: 0.2s;
-    -webkit-animation-name: activate;
-    animation-name: activate;
-  }
-}
-
-article { width: 100%; background: $white-20; }
-article:nth-of-type(n+1) { margin-top: 1.5em; }
-
-h1 {
-  display: inline-block;
-  border-bottom: 0.1em solid $grey-20;
-  color: $grey-100;
-  font-weight: 400;
-  padding: 0.1em 0.2em;
-  margin: 0.5em 0;
-}
-
-a, a:visited {
-  @include ease(64ms);
-  color: $blue-50;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  white-space: nowrap;
-
-  &:hover { border-bottom: 1px solid $blue-50; }
-}
-
-ol {
-  counter-reset: listCount;
-  list-style: none;
-  padding: 0;
-
-  li:before {
-    @include ease(64ms);
-    counter-increment: listCount;
-    content: '[' counter(listCount) ']';
-    margin-right: 0.5em;
-    color: $grey-50;
-  }
-
-  li {
-    display: flex;
-    flex-direction: row;
+  > button.option {
+    -webkit-font-smoothing: subpixel-antialiased;
+    padding: 0 1em;
+    position: relative;
+    margin-right: 1em;
+    color: $cyan-light;
     cursor: pointer;
-    @include ease(64ms);
 
-    > span.indicator {
+    &::first-letter { border-bottom: 1px solid $cyan-light; }
+
+    &::before, &::after {
       @include ease(64ms);
-      white-space: nowrap;
-      color: $blue-50;
-      border-bottom: 1px solid transparent;
+      position: absolute;
+      top: 0;
     }
 
-    &:nth-of-type(odd) > div:nth-last-of-type(1) {
-      margin-right: 1em;
-      overflow: hidden;
-      height: 1em;
-
-      &::after { content: '. . . . . . . . . . . . . . . . . . . . . . . . . ' }
+    &::before {
+      content: '[';
+      left: 0;
     }
 
-    > div:last-of-type {
-      text-align: right;
-      display: flex;
-      flex-grow: 2;
+    &::after {
+      content: ']';
+      right: 0;
     }
 
-    &:hover, &.selected {
-      &:before { color: $grey-100; }
+    &:hover:not(:active) {
+      &::before { transform: translateX(-0.1em); }
+      &::after { transform: translateX(0.1em); }
     }
 
-    &:hover > span.indicator { border-bottom: 1px solid $blue-50; }
-    &.selected:hover > span.indicator { border-bottom: 1px solid transparent; }
-  }
-}
-
-div.body.nightmode--true {
-  background: $grey-100;
-  color: $white-10;
-
-  section {
-    color: $white-10;
-
-    article {
-      border-color: $grey-80;
-      background: $grey-100;
-      div.icon, div.icon svg use { fill: $red-50; }
+    &:focus, &:active {
+      outline: none;
+      &::before { transform: translateX(0.25em); }
+      &::after { transform: translateX(-0.25em); }
     }
-
-    article span.divider { color: $grey-60; }
-    &.system-logs { background: transparent; }
-
-    h1 {
-      color: $white-10;
-      border-color: $grey-80;
-    }
-  }
-
-  ol li > span.indicator { color: $red-50; }
-  ol li:hover > span.indicator { border-bottom-color: $red-50; }
-
-  .system-log {
-    color: $grey-60;
-
-    .nightmode-toggle:hover { color: $grey-40; }
-    .icon, .icon svg use { fill: $grey-70; }
-  }
-
-  li {
-    &:hover, &.selected {
-      &:before { color: $grey-30; }
-    }
-  }
-
-  a, a:visited {
-    color: $red-50;
-    &:hover { border-bottom-color: $red-50; }
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  section { width: 100vw; }
-  .system-log > .logo,
-  .home > .logo {
-    width: 100vw;
-    height: 4em;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 1.5em;
-  }
-
-  section.home {
-    > .icon { margin: 1em auto; }
-    article:first-of-type { margin-top: 4em; }
-  }
-
-  div.body.nightmode--true .system-log > .logo {
-    background-color: $grey-100;
-    border-bottom: $grey-80;
   }
 }

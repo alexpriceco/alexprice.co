@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import Head from 'next/head'
 
-import { CSSTransitionGroup } from 'react-transition-group'
 import Icon from '../components/general/icon'
 import Style from '../components/general/style'
 import sheet from '../components/main.scss'
@@ -10,15 +10,35 @@ export default class Home extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
+      messageStream: [],
       launch_time: 'CALCULATING...',
       location: 'CALCULATING...',
       local_weather: 'API_UNAVAILABLE',
       nightmode: false,
-      username: 'guest',
+      username: 'GUEST',
       longitude: '',
       latitude: '',
-      selectedProject: '',
-      firstLoad: true
+      firstLoad: true,
+      welcomed: false
+    }
+
+    this.handleKeyPress = this.handleKeyPress.bind(this)
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('keydown', this.handleKeyPress)
+  }
+
+  handleKeyPress (e) {
+    if (this.state.options.length > 1) {
+      const options = this.options.getElementsByClassName('option')
+      let numOptions = options.length - 1
+      let selectedOption = this.state.selectedOption || 0
+
+      if (e.keyCode === 37 && selectedOption > 0) selectedOption--
+      if (e.keyCode === 39 && selectedOption < numOptions) selectedOption++
+
+      options[selectedOption].focus()
     }
   }
 
@@ -57,23 +77,54 @@ export default class Home extends Component {
   }
 
   componentDidUpdate () {
-    const { nightmode } = this.state
-    document.body.style.backgroundColor = nightmode ? '#070709' : '#F8F8F8'
+    // const { nightmode } = this.state
+    // document.body.style.backgroundColor = nightmode ? '#070709' : '#F8F8F8'
   }
 
   componentDidMount () {
-    this.setState({ launch_time: new Date().toISOString() })
-    setTimeout(() => { this.setState({ firstLoad: false }) }, 1500)
+    document.addEventListener('keydown', this.handleKeyPress)
+    setTimeout(() => this.setState({ firstLoad: false }), 1000)
+    this.getWeather()
 
-    const { nightmode } = this.state
-    document.body.style.backgroundColor = nightmode ? '#111111' : '#F8F8F8'
+    this.setState({ launch_time: new Date().toISOString() })
+    this.addMessage(`Welcome, ${this.state.username}.`)
+
+    setTimeout(() => {
+      const { location } = this.state
+      if (location !== `CALCULATING...`) {
+        const suggestion = 'stretch your legs'
+        const condition = 'sunny'
+        this.addMessage(`Make sure to ${suggestion} today in ${condition} ${location}.`)
+      }
+
+      setTimeout(() => this.addMessage(`\nHow may I assist you?`), 250)
+      this.setOptions([
+        {
+          label: 'About',
+          onClick: {
+
+          }
+        },
+        {
+          label: 'Projects',
+          onClick: {
+
+          }
+        }
+      ])
+    }, 500)
+
+    // const { nightmode } = this.state
+    // document.body.style.backgroundColor = nightmode ? '#111111' : '#F8F8F8'
 
     // Determine if should default to nightmode
-    if (new Date().getHours() < 6) this.setState({ nightmode: true })
-    else if (new Date().getHours() > 19) this.setState({ nightmode: true })
-    else this.setState({ nightmode: false })
+    // if (new Date().getHours() < 6) this.setState({ nightmode: true })
+    // else if (new Date().getHours() > 19) this.setState({ nightmode: true })
+    // else this.setState({ nightmode: false })
+  }
 
-    let DARK_SKY_KEY = 'ff0715e86494e35b1ae6adf7e4ebe667'
+  getWeather () {
+    // let DARK_SKY_KEY = 'ff0715e86494e35b1ae6adf7e4ebe667'
 
     this.get('https://jsonip.com').then((res) => {
       this.get(`https://freegeoip.net/json/${res.ip}`).then((res) => {
@@ -88,17 +139,69 @@ export default class Home extends Component {
           longitude: res.longitude
         })
 
-        let darkSkyURL = `https://api.darksky.net/forecast/${DARK_SKY_KEY}/` +
-          `${res.latitude},${res.longitude}`
+        // const darkSkyURL = `https://api.darksky.net/forecast/${DARK_SKY_KEY}/` +
+          // `${res.latitude},${res.longitude}`
 
-        console.log(darkSkyURL) // TODO: build a Node server to process this req
-        // this.get(darkSkyURL).then((res) => {
-        //   console.log(res)
-        // })
+        // this.get(darkSkyURL).then((res) => console.log(res))
       })
     }).catch((err) => {
       console.log('JSON IP failed to load, with error:', err)
     })
+  }
+
+  setOptions (options) {
+    this.setState({ options })
+  }
+
+  addMessage (message) {
+    let messageStream = this.state.messageStream
+    messageStream.push(message)
+    this.setState({ messageStream })
+  }
+
+  renderCI () {
+    let messageStream = []
+
+    for (let m in this.state.messageStream) {
+      let msg = this.state.messageStream[m]
+      if (msg.split(/\n/g).length === 1) {
+        messageStream.unshift(<div className='message' key={m}>{msg}</div>)
+      } else {
+        for (let i in msg.split(/\n/g)) {
+          messageStream.unshift(<div className='message' key={`${m}--${i}`}>
+            <p />{msg.split(/\n/g)[i]}
+          </div>)
+        }
+      }
+    }
+
+    return (
+      <section className={`CI nightmode--${this.state.nightmode}`}>
+        { messageStream }
+      </section>
+    )
+  }
+
+  renderOptions () {
+    const { options } = this.state
+    let renderedOptions = []
+
+    for (let o in options) {
+      renderedOptions.push(
+        <button key={`button-${o}`}
+          className='option'
+          autoFocus={parseInt(o) === 0}
+        >
+          {options[o].label}
+        </button>
+      )
+    }
+
+    return (
+      <section className='options' ref={o => { this.options = o }}>
+        {renderedOptions}
+      </section>
+    )
   }
 
   renderProject (project) {
@@ -151,8 +254,6 @@ export default class Home extends Component {
   }
 
   render () {
-    const { selectedProject, nightmode } = this.state
-
     return (
       <div>
         <Head>
@@ -178,139 +279,8 @@ export default class Home extends Component {
           <Style sheet={sheet} />
         </Head>
 
-        <div className={`body nightmode--${nightmode}`}>
-          <section className='system-logs'>
-            <div className='system-log'>
-              SYSTEM_LOADING... DONE. <br />
-              Welcome, {this.state.username}. [ FUNCTION UNAVAILABLE ]
-            </div>
-
-            <div className='system-log'>
-              LAUNCH_TIME: {this.state.launch_time} <br />
-              DARKMODE_ACTIVE:&nbsp;
-              <div className='nightmode-toggle'
-                onClick={() => this.setState({ nightmode: !nightmode })}>
-                {nightmode ? '[-]' : '[ ]'}
-              </div>
-            </div>
-
-            <div className='system-log'>
-              <Icon name='logo' className='logo' />
-            </div>
-
-            <div className='system-log'>
-              LOCATION: {this.state.location} <br />
-              CONDITIONS: {this.state.local_weather}
-            </div>
-          </section>
-
-          <CSSTransitionGroup
-            component='section'
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}
-            transitionName={'core-animation'}
-            className={`home selected--${selectedProject} ${
-              this.state.firstLoad ? ' animate-in' : ''}`}
-            key={`selected--${selectedProject}`}
-          >
-            <Icon name='logo' className='logo' />
-
-            <article>
-              <h1>About</h1>
-              <div>I’m a Product Designer in Santa Cruz working on workplace electric vehicle charging, a student-operated software team at UC Santa Cruz, and a D&D app called Playbook.
-              </div>
-              <div style={{paddingTop: 0}}>
-                <a href='https://github.com/alexpriceco'
-                  title='Github profile'>
-                  <Icon name='github' />
-                </a><span className='divider'> // </span>
-                <a href='https://linkedin.com/in/alexpriceco'
-                  title='LinkedIn profile'><Icon name='linkedin' />
-                </a><span className='divider'> // </span>
-                <a href='https://instagram.com/alexpriceco'
-                  title='Instagram photos'><Icon name='instagram' />
-                </a>
-              </div>
-            </article>
-
-            <article>
-              <h1>Projects</h1>
-              <ol>
-                <li
-                  className={selectedProject === 'evaline' ? 'selected' : ''}
-                  onClick={() => this.setState({ selectedProject: 'evaline' })}
-                >
-                  <div>Evaline</div>
-                  <div className='dotted' />
-                  <span className='indicator'>
-                    {selectedProject === 'evaline' ? 'SELECTED >' : 'MORE'}
-                  </span>
-                </li>
-
-                <li
-                  className={selectedProject === 'playbook' ? 'selected' : ''}
-                  onClick={() => this.setState({ selectedProject: 'playbook' })}
-                >
-                  <div>Playbook</div>
-                  <span className='indicator'>
-                    {selectedProject === 'playbook' ? 'SELECTED >' : 'MORE'}
-                  </span>
-                </li>
-
-                <li
-                  className={selectedProject === 'expense' ? 'selected' : ''}
-                  onClick={() => this.setState({ selectedProject: 'expense' })}
-                >
-                  <div>Expense</div>
-                  <div className='dotted' />
-                  <span className='indicator'>
-                    {selectedProject === 'expense' ? 'SELECTED >' : 'MORE'}
-                  </span>
-                </li>
-
-                <li
-                  className={selectedProject === 'vexvolt' ? 'selected' : ''}
-                  onClick={() => this.setState({ selectedProject: 'vexvolt' })}
-                >
-                  <div>VEXVolt</div>
-                  <span className='indicator'>
-                    {selectedProject === 'vexvolt' ? 'SELECTED >' : 'MORE'}
-                  </span>
-                </li>
-
-                <li
-                  className={selectedProject === 'marketing' ? 'selected' : ''}
-                  onClick={() => this.setState({ selectedProject: 'marketing' })}
-                >
-                  <div>Marketing</div>
-                  <div className='dotted' />
-                  <span className='indicator'>
-                    {selectedProject === 'marketing' ? 'SELECTED >' : 'MORE'}
-                  </span>
-                </li>
-              </ol>
-            </article>
-
-            {/* <article>
-              <h1>Contact</h1>
-              <div>You can <a href='https://alexprice.co/meet'>schedule a meeting</a>, or email me at <a href='mailto:alex@alexprice.co' title='Shoot me an email'>alex@alexprice.co</a>.
-              You can also find me here: <a href='https://github.com/alexpriceco' title='My Github profile'><Icon name='github' /></a> • <a href='https://linkedin.com/in/alexpriceco' title='My LinkedIn profile'><Icon name='linkedin' /></a> • <a href='https://instagram.com/alexpriceco' title='My Instagram photos'><Icon name='instagram' /></a>
-              </div>
-            </article> */}
-          </CSSTransitionGroup>
-
-          <CSSTransitionGroup
-            component='section'
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}
-            transitionName={'core-animation'}
-            className={`project-parent selected--${selectedProject} ${
-              this.state.firstLoad ? ' animate-in' : ''}`}
-            key='project-parent'
-          >
-            { this.renderProject(selectedProject) }
-          </CSSTransitionGroup>
-        </div>
+        { this.renderCI() }
+        { this.renderOptions() }
       </div>
     )
   }
