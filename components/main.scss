@@ -50,6 +50,7 @@ section.options {
 
   > button.option {
     -webkit-font-smoothing: subpixel-antialiased;
+    @include ease(128ms);
     padding: 0 1em;
     position: relative;
     margin-right: 1em;
@@ -74,15 +75,29 @@ section.options {
       right: 0;
     }
 
-    &:hover:not(:active) {
+    &:hover:not(:active):not(.selected) {
       &::before { transform: translateX(-0.1em); }
       &::after { transform: translateX(0.1em); }
     }
 
-    &:focus, &:active {
+    &:focus, &:active, &.selected {
       outline: none;
       &::before { transform: translateX(0.25em); }
       &::after { transform: translateX(-0.25em); }
     }
+  }
+
+  &.selected > button.option {
+    color: $text-grey-dark;
+
+    &:not(.selected) {
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+      max-width: 0;
+    }
+
+    &::first-letter { border-bottom: 0 solid $cyan-light; }
+    &.selected { color: $text-grey-dark; }
   }
 }

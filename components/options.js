@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 export default class Options extends Component {
   constructor (props, context) {
     super(props, context)
-    this.state = {}
+    this.state = {
+      selected: -1
+    }
+
     this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
@@ -29,17 +32,19 @@ export default class Options extends Component {
   }
 
   execute (index) {
-    this.props.options[index].onClick
+    this.setState({ selected: index })
+    this.props.options[index].onClick()
   }
 
   render () {
+    const { selected } = this.state
     const { options } = this.props
     let renderedOptions = []
 
     for (let o in options) {
       renderedOptions.push(
         <button key={`button-${o}`}
-          className='option'
+          className={`option${selected === o ? ' selected' : ''}`}
           autoFocus={parseInt(o) === 0}
           onClick={() => this.execute(o)}
         >{options[o].label}
@@ -47,11 +52,9 @@ export default class Options extends Component {
       )
     }
 
-    console.log(this.props)
-
     return (
       <section
-        className='options'
+        className={`options${selected !== -1 ? ' selected' : ''}`}
         ref={o => { this.options = o }}
         key='options'
       >
