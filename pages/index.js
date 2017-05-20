@@ -6,6 +6,8 @@ import Icon from '../components/general/icon'
 import Style from '../components/general/style'
 import sheet from '../components/main.scss'
 
+import Typist from 'react-typist'
+
 export default class Home extends Component {
   constructor (props, context) {
     super(props, context)
@@ -18,7 +20,8 @@ export default class Home extends Component {
       username: 'GUEST',
       longitude: '',
       latitude: '',
-      firstLoad: true
+      firstLoad: true,
+      i: 0
     }
   }
 
@@ -152,24 +155,28 @@ export default class Home extends Component {
     for (let i in flow) {
       let item = flow[i]
 
-      if (typeof item === 'string') {
-        if (item.split(/\n/g).length === 1) {
-          updateFlow.unshift(
-            <div className='message' key={i}>{item}</div>
-          )
-        } else {
-          for (let m in item.split(/\n/g)) {
+      if (i <= this.state.i) {
+        if (typeof item === 'string') {
+          if (item.split(/\n/g).length === 1) {
             updateFlow.unshift(
-              <div className='message' key={`${i}--${m}`}>
-                <p key={`p--${i}`} />{item.split(/\n/g)[m]}
-              </div>
+              <Typist cursor={{ show: false }} avgTypingDelay={40}
+                onTypingDone={() => this.setState({ index: this.state.i++ })}
+                className='message' key={i}>{item}</Typist>
             )
+          } else {
+            for (let m in item.split(/\n/g)) {
+              updateFlow.unshift(
+                <Typist cursor={{ show: false }}
+                  onTypingDone={() => this.setState({ index: this.state.i++ })}
+                  className='message' key={`${i}--${m}`}>
+                  <p key={`p--${i}`} />{item.split(/\n/g)[m]}
+                </Typist>
+              )
+            }
           }
+        } else {
+          updateFlow.unshift(<Options options={item} key={`options--${i}`} />)
         }
-      } else {
-        updateFlow.unshift(
-          <Options options={item} key={`options--${i}`} />
-        )
       }
     }
 
@@ -195,7 +202,7 @@ export default class Home extends Component {
             <div>Expense is an expense management tool designed to be lightweight, simple, and really easy to use. My team for this project was 100% student run, and we were looking for a way to quickly receive expense reports, and approve or deny them.
 
             The final product will collect photos and metadata about expenses, store the receipt and data in Firebase, ping the team’s finance group for approval in Slack, and appropriately react to the response.</div>
-            <div style={{paddingTop: 0}}>
+            <div style={{ paddingTop: 0 }}>
               <span className='divider'> // </span>
               <a href='https://github.com/gesher-group/expense' title='Source'>
                 SOURCE_<Icon name='github' />

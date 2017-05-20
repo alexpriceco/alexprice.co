@@ -37,12 +37,16 @@ $on-laptop:        800px;
     }
 }
 
-// Animation easing
 @mixin ease($ms) {
   -webkit-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
   -moz-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
-  -o-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
   transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+
+@mixin delay($ms) {
+  -webkit-transition-delay: $ms;
+  -moz-transition-delay: $ms;
+  transition-delay: $ms;
 }
 
 @mixin tiled($bg-color, $opacity) {
