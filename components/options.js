@@ -58,6 +58,7 @@ export default class Options extends Component {
         ref={o => { this.options = o }}
         key='options'
       >
+        {selected !== -1 ? ' SELECTED // ' : ''}
         { renderedOptions }
       </section>
     )

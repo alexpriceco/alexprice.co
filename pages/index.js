@@ -75,16 +75,8 @@ export default class Home extends Component {
       }
 
       setTimeout(() => {
-        this.updateFlow(`\nHow may I assist you?`)
-        this.updateFlow(
-          [{
-            label: 'About',
-            onClick: () => console.debug('About')
-          }, {
-            label: 'Projects',
-            onClick: () => console.debug('Projects')
-          }]
-        )
+        this.updateFlow(`How may I assist you?`)
+        this.displayMenu()
       }, 250)
     }, 500)
 
@@ -95,6 +87,34 @@ export default class Home extends Component {
     // if (new Date().getHours() < 6) this.setState({ nightmode: true })
     // else if (new Date().getHours() > 19) this.setState({ nightmode: true })
     // else this.setState({ nightmode: false })
+  }
+
+  displayMenu () {
+    this.updateFlow(
+      [{
+        label: 'About',
+        onClick: () => this.displaySection('about')
+      }, {
+        label: 'Projects',
+        onClick: () => console.debug('Projects')
+      }]
+    )
+  }
+
+  displaySection (section) {
+    switch (section) {
+      case 'about':
+        this.updateFlow(`Alexander Price is a Product Designer in Santa Cruz working on workplace electric vehicle charging, a student-operated software team at UC Santa Cruz, and a D&D app called Playbook.`)
+        this.updateFlow(
+          [{ label: 'CV', onClick: () => console.debug('CV') }, {
+            label: 'Evaline',
+            onClick: () => { window.location.href = 'http://evaline.io' }
+          }]
+        )
+        break
+      default:
+
+    }
   }
 
   getWeather () {
