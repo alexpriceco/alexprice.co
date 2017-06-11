@@ -9,6 +9,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "jekyll build --watch"
+    "dev": "jekyll s --watch"
   }
 }
