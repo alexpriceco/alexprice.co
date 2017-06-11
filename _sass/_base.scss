@@ -1,0 +1,34 @@
+a, a:visited {
+  text-decoration: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  font-family: $default-font;
+  display: grid;
+
+  &.dark {
+    background: $black00;
+  }
+
+  &.light {
+    background: $white10;
+  }
+}
+
+footer {
+  width: calc(100vw - 3em);
+  padding: 1.5em;
+  background: $black00;
+  font-family: $monospace-font;
+
+  color: $black50;
+  a, a:visited { color: $black50; }
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
