@@ -1,0 +1,23 @@
+@mixin keyframes($name) {
+  @-moz-keyframes #{$name} { @content; }
+  @-webkit-keyframes #{$name} { @content; }
+  @keyframes #{$name} { @content; }
+}
+
+@include keyframes('fadeInUp') {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 2em, 0);
+    -webkit-transform: translate3d(0, 2em, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+}

@@ -1,0 +1,44 @@
+
+// Animation easing 💃🕺 so smoove
+@mixin ease($ms) {
+    -webkit-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+       -moz-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+            transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+
+@mixin transition-delay($ms) {
+    -webkit-transition-delay: $ms;
+       -moz-transition-delay: $ms;
+            transition-delay: $ms;
+}
+
+@mixin animation-delay($ms) {
+    -webkit-animation-delay: $ms;
+       -moz-animation-delay: $ms;
+            animation-delay: $ms;
+}
+
+@mixin box-shadow($top, $left, $blur, $spread, $color) {
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  -moz-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
+}
+
+@mixin animation-delay($s) {
+  -moz-animation-delay: $s;
+  -webkit-animation-delay: $s;
+  animation-delay: $s;
+}
+
+@mixin transition($rules) {
+  -webkit-transition: $rules;
+     -moz-transition: $rules;
+          transition: $rules;
+}
+
+@mixin animate($s) {
+  -webkit-animation-duration: $s;
+  animation-duration: $s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}

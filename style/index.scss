@@ -1,9 +1,49 @@
 @import 'reset';
+@import 'mixins';
+@import 'animations';
+@import url('https://fonts.googleapis.com/css?family=Fjord+One|Istok+Web');
 
-$black: #101010;
-$white: #FFFFFF;
+$black:  #101010;
+$grey75: #C3C3C3;
+$white:  #FFFFFF;
+$title-font-family: 'Istok Web', sans-serif;
+$body-font-family: 'Fjord One', serif;
 
 body {
-  background: $black;
   color: $white;
+  background: $black;
+  font-family: $body-font-family;
+  font-size: 20px;
+  line-height: 1.75em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $title-font-family;
+}
+
+h1 {
+  font-size: 1.5em;
+  line-height: 1.875em;
+}
+
+p {
+  color: $grey75;
+  max-width: 20em;
+}
+
+header {
+  padding: 2em;
+  height: calc(100vh - 4em);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  > * {
+    @include animation-delay(0.25s);
+    @include animate(0.5s);
+    @extend .fadeInUp;
+  }
 }
