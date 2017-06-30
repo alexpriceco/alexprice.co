@@ -18,7 +18,7 @@
             animation-delay: $ms;
 }
 
-@mixin box-shadow($top, $left, $blur, $spread, $color) {
+@mixin shadow($top, $left, $blur, $spread, $color) {
   -webkit-box-shadow: $top $left $blur $spread $color;
   -moz-box-shadow: $top $left $blur $spread $color;
   box-shadow: $top $left $blur $spread $color;

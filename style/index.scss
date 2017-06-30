@@ -3,7 +3,10 @@
 @import 'animations';
 @import url('https://fonts.googleapis.com/css?family=Fjord+One|Istok+Web');
 
+$shadow: #000000;
 $black:  #101010;
+$grey90: #1C1C1C;
+$grey85: #262626;
 $grey75: #C3C3C3;
 $white:  #FFFFFF;
 $title-font-family: 'Istok Web', sans-serif;
@@ -31,7 +34,18 @@ h1 {
 p {
   color: $grey75;
   max-width: 20em;
+
+  .no-break { white-space:nowrap; }
+
+  a {
+    color: $grey75;
+    @include ease(0.25s);
+    text-decoration: underline;
+    &:hover { color: $white; }
+  }
 }
+
+svg { fill: red; }
 
 header {
   padding: 2em;
@@ -46,4 +60,83 @@ header {
     @include animate(0.5s);
     @extend .fadeInUp;
   }
+}
+
+.button-row {
+  margin-top: 1em;
+
+  > a {
+    cursor: pointer;
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    @include shadow(0, 0, 0.5em, 0, rgba($shadow, 0));
+    @include ease(0.25s);
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0.25em 2em;
+    height: 2em;
+    background: $grey90;
+    color: $grey75;
+
+    svg {
+      height: 1em;
+      width: 1em;
+      fill: $grey75;
+    }
+
+    & + a { margin-left: 0.25em; }
+
+    &:hover {
+      @include shadow(0, 0.1em, 0.5em, 0, $shadow);
+      transform: translate3d(0, -0.1em, 0);
+      -webkit-transform: translate3d(0, -0.1em, 0);
+      background: $grey85;
+    }
+
+    &:active {
+      @include ease(0.1s);
+      @include shadow(0, 0, 0.25em, 0, $shadow);
+      transform: translate3d(0, 0.1em, 0);
+      -webkit-transform: translate3d(0, 0.1em, 0);
+      background: $grey85;
+    }
+
+    @extend .fadeInUp;
+    animation-duration: 0.25s;
+    animation-fill-mode: backwards;
+    -webkit-animation-duration: 0.25s;
+    -webkit-animation-fill-mode: backwards;
+    &:nth-of-type(1) { @include animation-delay(0.35s) }
+    &:nth-of-type(2) { @include animation-delay(0.40s) }
+    &:nth-of-type(3) { @include animation-delay(0.45s) }
+    &:nth-of-type(4) { @include animation-delay(0.50s) }
+  }
+
+  > a.instagram, a.dribbble, a.github {
+    &::after {
+      opacity: 0;
+      font-size: 0.8em;
+      @include ease(0.25s);
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $grey85;
+      color: $white;
+    }
+
+    &:hover::after { opacity: 1; }
+  }
+
+  > a.instagram::after { content: 'photos' }
+  > a.dribbble::after { content: 'work' }
+  > a.github::after { content: 'code' }
+}
+
+@media (min-width: 900px) {
+  header { padding: 0 10vw; }
 }
