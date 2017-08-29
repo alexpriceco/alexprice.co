@@ -197,7 +197,7 @@ header {
     &:nth-of-type(4) { @include animation-delay(0.50s) }
   }
 
-  > a.instagram, a.dribbble, a.github {
+  > a.instagram, a.dribbble, a.github, a.jira, a.confluence {
     &::after {
       opacity: 0;
       font-size: 0.8em;
@@ -216,6 +216,8 @@ header {
     &:hover::after { opacity: 1; }
   }
 
+  > a.jira::after { content: 'jira' }
+  > a.confluence::after { content: 'confluence' }
   > a.instagram::after { content: 'photos' }
   > a.dribbble::after { content: 'work' }
   > a.github::after { content: 'code' }
