@@ -18,6 +18,12 @@
             animation-delay: $ms;
 }
 
+@mixin transform($properties) {
+    -webkit-transform: $properties;
+       -moz-transform: $properties;
+            transform: $properties;
+}
+
 @mixin shadow($top, $left, $blur, $spread, $color) {
   -webkit-box-shadow: $top $left $blur $spread $color;
   -moz-box-shadow: $top $left $blur $spread $color;

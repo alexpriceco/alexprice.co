@@ -66,6 +66,72 @@ img {
   svg { fill: $white; }
 }
 
+p.project {
+  position: relative;
+
+  &::before {
+    content: '';
+    height: calc(100% - 1em);
+    width: 0.25em;
+    background: red;
+    border-radius: 1em;
+    position: absolute;
+    left: -2em;
+    top: 0.5em;
+  }
+
+  &.gel::before { background: #4AF4FF; }
+  &.volt::before { background: #F7AE19; }
+  &.playbook::before { background: #B80B0B; }
+}
+
+.contract {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  a, a:visited {
+    height: 3em;
+    color: $black;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    will-change: transform, opacity;
+
+    &::before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: $white;
+      border-radius: 0.25em;
+      @include ease(300ms);
+    }
+
+    &:hover::before {
+      opacity: 0.95;
+      @include transform(scale(1.02, 1));
+    }
+
+    > div {
+      @include ease(300ms);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+}
+
 @media (min-width: 900px) {
   header {
     padding: 0 10vw;
