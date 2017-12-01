@@ -156,10 +156,15 @@ p.project {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-top: 3em; }
   .contract p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em; }
+    color: #808080;
+    line-height: 1.5em;
+    text-align: center;
+    font-style: italic;
+    margin-top: 1em;
+    margin-bottom: 0; }
   .contract a, .contract a:visited {
     height: 3em;
     color: #000000;
