@@ -181,6 +181,21 @@ a.connection {
   }
 }
 
+body.d {
+  background: $white;
+  color: $black;
+
+  .point svg { fill: $black; }
+  a.connection span:first-of-type { color: $black; }
+  .contract {
+    a, a.visited {
+      color: $white;
+      svg { fill: $white; }
+      &::before { background: $black; }
+    }
+  }
+}
+
 @media (min-width: 900px) {
   header {
     padding: 0 10vw;

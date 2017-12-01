@@ -31,7 +31,7 @@
 	  <meta name='theme-color' content='#101010 '>
 	</head>
 
-	<body>
+	<body id='body'>
 	  <section>
 			<img src='./media/profile.jpeg' title='👤 Hey, that&#8216;s me!' />
 			<h1>Alex Price</h1>
@@ -111,7 +111,7 @@
 			const times = SunCalc.getTimes(new Date(), coords.lat, coords.lon)
 			if (new Date() > times.sunrise && new Date() < times.sunset) {
 				document.getElementById('body').classList.toggle('d')
-			} else document.getElementById('body').classList.toggle('d')
+			}
 		}
 
 		if (storageAvailable('localStorage')) {

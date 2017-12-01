@@ -360,6 +360,20 @@ a.connection {
   a.connection:hover * {
     opacity: 0.8; }
 
+body.d {
+  background: #FFFFFF;
+  color: #000000; }
+  body.d .point svg {
+    fill: #000000; }
+  body.d a.connection span:first-of-type {
+    color: #000000; }
+  body.d .contract a, body.d .contract a.visited {
+    color: #FFFFFF; }
+    body.d .contract a svg, body.d .contract a.visited svg {
+      fill: #FFFFFF; }
+    body.d .contract a::before, body.d .contract a.visited::before {
+      background: #000000; }
+
 @media (min-width: 900px) {
   header {
     padding: 0 10vw;
