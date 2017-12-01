@@ -132,6 +132,32 @@ p.project {
   }
 }
 
+a.connection {
+  text-decoration: none;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  color: $grey;
+
+  @include ease(200ms);
+  @include transform(translateZ(0));
+
+  span {
+    margin: 0.5em;
+    color: $white;
+  }
+
+  svg {
+    fill: $grey;
+    height: 1em;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 @media (min-width: 900px) {
   header {
     padding: 0 10vw;

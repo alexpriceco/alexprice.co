@@ -194,6 +194,28 @@ p.project {
       top: 50%;
       transform: translate3d(-50%, -50%, 0); }
 
+a.connection {
+  text-decoration: none;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  color: #808080;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  transform: translateZ(0); }
+  a.connection span {
+    margin: 0.5em;
+    color: #FFFFFF; }
+  a.connection svg {
+    fill: #808080;
+    height: 1em; }
+  a.connection:hover {
+    opacity: 0.8; }
+
 @media (min-width: 900px) {
   header {
     padding: 0 10vw;
