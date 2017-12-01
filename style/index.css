@@ -3,7 +3,7 @@
     v2.0b1 | 201101
     NOTE:WORK IN PROGRESS
     USE WITH CAUTION AND TEST WITH ABANDON */
-@import url("https://fonts.googleapis.com/css?family=Fjord+One|Istok+Web");
+@import url("https://fonts.googleapis.com/css?family=Istok+Web");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -84,223 +84,55 @@ table {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0); } }
-.fadeInUp, header > *, .button-row > a {
+.fadeInUp {
   animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp; }
 
+* {
+  box-sizing: border-box; }
+
+h1 {
+  font-size: 1.75em;
+  font-weight: 600;
+  margin-top: 1em;
+  margin-bottom: 0.5em; }
+
 body {
   color: #FFFFFF;
-  background: #101010;
-  font-family: "Fjord One", serif;
+  background: #000000;
+  font-family: "Istok Web", sans-serif;
   font-size: 20px;
   line-height: 1.75em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-header {
-  position: fixed; }
-
-body > section {
+section {
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 25vh 0; }
-  body > section article {
-    min-height: 50vh;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-end; }
-    body > section article > div > div.page {
-      max-width: 18em;
-      background: #FFFFFF;
-      color: #101010;
-      padding: 1em;
-      border-radius: 0.125em 0.125em 0 0; }
-    body > section article > div > div:first-of-type {
-      padding: 2em; }
-      body > section article > div > div:first-of-type p {
-        color: #6b6b6b; }
-    body > section article > div > div.buttons {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between; }
-      body > section article > div > div.buttons div[class^=button] {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
-        padding: 0.5em 0;
-        margin-top: 0.25em;
-        background: #FFFFFF;
-        color: #101010;
-        cursor: pointer;
-        -webkit-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-        -moz-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-        transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0); }
-        body > section article > div > div.buttons div[class^=button]:nth-of-type(n + 2) {
-          margin-left: 0.25em; }
-        body > section article > div > div.buttons div[class^=button]:first-of-type {
-          border-bottom-left-radius: 0.125em; }
-        body > section article > div > div.buttons div[class^=button]:last-of-type {
-          border-bottom-right-radius: 0.125em; }
-        body > section article > div > div.buttons div[class^=button]:hover {
-          color: #1C1C1C;
-          background: #F8F8F8;
-          -webkit-transform: translate3d(0, -0.0625em, 0);
-          -moz-transform: translate3d(0, -0.0625em, 0);
-          transform: translate3d(0, -0.0625em, 0); }
-          body > section article > div > div.buttons div[class^=button]:hover:active {
-            color: #FFFFFF;
-            background: #6b6b6b;
-            -webkit-transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-            -moz-transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-            transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-            -webkit-transform: translate3d(0, 0.0625em, 0);
-            -moz-transform: translate3d(0, 0.0625em, 0);
-            transform: translate3d(0, 0.0625em, 0); }
+  padding: 3em; }
+  section > * {
+    width: 100%;
+    max-width: 12.5em;
+    text-align: left; }
+  section > h1 {
+    max-width: 7.14em; }
+  section p {
+    margin-bottom: 1.5em; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Istok Web", sans-serif; }
+img {
+  border-radius: 0.25em; }
 
-h1 {
-  font-size: 1.5em;
-  line-height: 1.875em; }
-
-h2 {
-  font-size: 1.375em;
-  line-height: 1.5em; }
-
-p {
-  color: #C3C3C3;
-  max-width: 20em; }
-  p .no-break {
-    white-space: nowrap; }
-  p a {
-    color: #C3C3C3;
-    -webkit-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    text-decoration: underline; }
-    p a:hover {
-      color: #FFFFFF; }
-
-svg {
-  fill: red; }
-
-header {
-  padding: 2em;
-  height: calc(100vh - 4em);
+.point {
+  margin-top: 1em;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  flex-direction: column; }
-  header > * {
-    -moz-animation-delay: 0.25s;
-    -webkit-animation-delay: 0.25s;
-    animation-delay: 0.25s;
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both; }
-
-.button-row {
-  margin-top: 1em; }
-  .button-row > a {
-    cursor: pointer;
-    position: relative;
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0);
-    -moz-box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0);
-    box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0);
-    -webkit-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 0.25em 2em;
-    height: 2em;
-    background: #1C1C1C;
-    color: #C3C3C3;
-    animation-duration: 0.25s;
-    animation-fill-mode: backwards;
-    -webkit-animation-duration: 0.25s;
-    -webkit-animation-fill-mode: backwards; }
-    .button-row > a svg {
-      height: 1em;
-      width: 1em;
-      fill: #C3C3C3; }
-    .button-row > a + a {
-      margin-left: 0.25em; }
-    .button-row > a:hover {
-      -webkit-box-shadow: 0 0.1em 0.5em 0 #000000;
-      -moz-box-shadow: 0 0.1em 0.5em 0 #000000;
-      box-shadow: 0 0.1em 0.5em 0 #000000;
-      transform: translate3d(0, -0.1em, 0);
-      -webkit-transform: translate3d(0, -0.1em, 0);
-      background: #262626; }
-    .button-row > a:active {
-      -webkit-transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-      -moz-transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-      transition: all 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-      -webkit-box-shadow: 0 0 0.25em 0 #000000;
-      -moz-box-shadow: 0 0 0.25em 0 #000000;
-      box-shadow: 0 0 0.25em 0 #000000;
-      transform: translate3d(0, 0.1em, 0);
-      -webkit-transform: translate3d(0, 0.1em, 0);
-      background: #262626; }
-    .button-row > a:nth-of-type(1) {
-      -moz-animation-delay: 0.35s;
-      -webkit-animation-delay: 0.35s;
-      animation-delay: 0.35s; }
-    .button-row > a:nth-of-type(2) {
-      -moz-animation-delay: 0.4s;
-      -webkit-animation-delay: 0.4s;
-      animation-delay: 0.4s; }
-    .button-row > a:nth-of-type(3) {
-      -moz-animation-delay: 0.45s;
-      -webkit-animation-delay: 0.45s;
-      animation-delay: 0.45s; }
-    .button-row > a:nth-of-type(4) {
-      -moz-animation-delay: 0.5s;
-      -webkit-animation-delay: 0.5s;
-      animation-delay: 0.5s; }
-  .button-row > a.instagram::after, .button-row a.dribbble::after, .button-row a.github::after, .button-row a.jira::after, .button-row a.confluence::after {
-    opacity: 0;
-    font-size: 0.8em;
-    -webkit-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #262626;
-    color: #FFFFFF; }
-  .button-row > a.instagram:hover::after, .button-row a.dribbble:hover::after, .button-row a.github:hover::after, .button-row a.jira:hover::after, .button-row a.confluence:hover::after {
-    opacity: 1; }
-  .button-row > a.jira::after {
-    content: "jira"; }
-  .button-row > a.confluence::after {
-    content: "confluence"; }
-  .button-row > a.instagram::after {
-    content: "photos"; }
-  .button-row > a.dribbble::after {
-    content: "work"; }
-  .button-row > a.github::after {
-    content: "code"; }
+  align-items: center; }
+  .point svg {
+    fill: #FFFFFF; }
 
 @media (min-width: 900px) {
   header {

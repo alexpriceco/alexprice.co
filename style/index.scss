@@ -1,226 +1,69 @@
 @import 'reset';
 @import 'mixins';
 @import 'animations';
-@import url('https://fonts.googleapis.com/css?family=Fjord+One|Istok+Web');
+@import url('https://fonts.googleapis.com/css?family=Istok+Web');
 
-$shadow: #000000;
-$black:  #101010;
-$grey90: #1C1C1C;
-$grey85: #262626;
-$grey75: #6b6b6b;
-$grey15: #C3C3C3;
-$grey00: #F8F8F8;
+$black:  #000000;
 $white:  #FFFFFF;
-$title-font-family: 'Istok Web', sans-serif;
-$body-font-family: 'Fjord One', serif;
+$grey: #808080;
+$font-family: 'Istok Web', sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.75em;
+  font-weight: 600;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
 
 body {
   color: $white;
   background: $black;
-  font-family: $body-font-family;
+  font-family: $font-family;
   font-size: 20px;
   line-height: 1.75em;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-header {
-  position: fixed;
-}
-
-body > section {
+section {
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 25vh 0;
-
-  article {
-    min-height: 50vh;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-end;
-
-    > div {
-      > div.page {
-        max-width: 18em;
-        background: $white;
-        color: $black;
-        padding: 1em;
-        border-radius: 0.125em 0.125em 0 0;
-      }
-
-      > div:first-of-type {
-        p { color: $grey75; }
-        padding: 2em;
-      }
-
-      > div.buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        div[class^=button] {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          flex-grow: 1;
-
-          padding: 0.5em 0;
-          margin-top: 0.25em;
-          background: $white;
-          color: $black;
-          cursor: pointer;
-
-          @include ease(0.25s);
-          @include translate3d(0, 0, 0);
-
-          &:nth-of-type(n + 2) { margin-left: 0.25em; }
-          &:first-of-type { border-bottom-left-radius: 0.125em; }
-          &:last-of-type { border-bottom-right-radius: 0.125em; }
-
-          &:hover {
-            color: $grey90;
-            background: $grey00;
-            @include translate3d(0, -0.0625em, 0);
-
-            &:active {
-              color: $white;
-              background: $grey75;
-              @include ease(0.1s);
-              @include translate3d(0, 0.0625em, 0);
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $title-font-family;
-}
-
-h1 {
-  font-size: 1.5em;
-  line-height: 1.875em;
-}
-
-h2 {
-  font-size: 1.375em;
-  line-height: 1.5em;
-}
-
-p {
-  color: $grey15;
-  max-width: 20em;
-
-  .no-break { white-space:nowrap; }
-
-  a {
-    color: $grey15;
-    @include ease(0.25s);
-    text-decoration: underline;
-    &:hover { color: $white; }
-  }
-}
-
-svg { fill: red; }
-
-header {
-  padding: 2em;
-  height: calc(100vh - 4em);
-  display: flex;
   justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  padding: 3em;
 
   > * {
-    @include animation-delay(0.25s);
-    @include animate(0.5s);
-    @extend .fadeInUp;
+    width: 100%;
+    max-width: 12.5em;
+    text-align: left;
+  }
+
+  > h1 {
+    max-width: 7.14em;
+  }
+
+  p {
+    margin-bottom: 1.5em;
   }
 }
 
-.button-row {
+img {
+  border-radius: 0.25em;
+}
+
+.point {
   margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  > a {
-    cursor: pointer;
-    position: relative;
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
-    @include shadow(0, 0, 0.5em, 0, rgba($shadow, 0));
-    @include ease(0.25s);
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 0.25em 2em;
-    height: 2em;
-    background: $grey90;
-    color: $grey15;
-
-    svg {
-      height: 1em;
-      width: 1em;
-      fill: $grey15;
-    }
-
-    & + a { margin-left: 0.25em; }
-
-    &:hover {
-      @include shadow(0, 0.1em, 0.5em, 0, $shadow);
-      transform: translate3d(0, -0.1em, 0);
-      -webkit-transform: translate3d(0, -0.1em, 0);
-      background: $grey85;
-    }
-
-    &:active {
-      @include ease(0.1s);
-      @include shadow(0, 0, 0.25em, 0, $shadow);
-      transform: translate3d(0, 0.1em, 0);
-      -webkit-transform: translate3d(0, 0.1em, 0);
-      background: $grey85;
-    }
-
-    @extend .fadeInUp;
-    animation-duration: 0.25s;
-    animation-fill-mode: backwards;
-    -webkit-animation-duration: 0.25s;
-    -webkit-animation-fill-mode: backwards;
-    &:nth-of-type(1) { @include animation-delay(0.35s) }
-    &:nth-of-type(2) { @include animation-delay(0.40s) }
-    &:nth-of-type(3) { @include animation-delay(0.45s) }
-    &:nth-of-type(4) { @include animation-delay(0.50s) }
-  }
-
-  > a.instagram, a.dribbble, a.github, a.jira, a.confluence {
-    &::after {
-      opacity: 0;
-      font-size: 0.8em;
-      @include ease(0.25s);
-      position: absolute;
-      left: 0; top: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: $grey85;
-      color: $white;
-    }
-
-    &:hover::after { opacity: 1; }
-  }
-
-  > a.jira::after { content: 'jira' }
-  > a.confluence::after { content: 'confluence' }
-  > a.instagram::after { content: 'photos' }
-  > a.dribbble::after { content: 'work' }
-  > a.github::after { content: 'code' }
+  svg { fill: $white; }
 }
 
 @media (min-width: 900px) {
