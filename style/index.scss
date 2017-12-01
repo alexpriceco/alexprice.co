@@ -42,6 +42,14 @@ section {
     width: 100%;
     max-width: 12.5em;
     text-align: left;
+    @extend .fadeInUp;
+    @include animate(0.5s);
+
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}) {
+        @include animation-delay((0.05s * $i));
+      }
+    }
   }
 
   > h1 {
