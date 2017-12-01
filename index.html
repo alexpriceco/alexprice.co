@@ -86,6 +86,46 @@
 		</section>
 	</body>
 
+	<script src='./js/store-location.js'></script>
+	<script src='./js/sun-calc.min.js'></script>
+	<script>
+		async function getFreshCoords () {
+			return new Promise((resolve, reject) => {
+				let request = new XMLHttpRequest()
+				request.open('GET', 'http://ip-api.com/json', true)
+				request.onload = () => {
+					if (request.status >= 200 && request.status < 400) {
+						const res = JSON.parse(request.responseText)
+						resolve({
+							lat: res.lat,
+							lon: res.lon
+						})
+					} else reject()
+				}
+
+				request.send()
+			})
+		}
+
+		function calculateDaytime (coords) {
+			const times = SunCalc.getTimes(new Date(), coords.lat, coords.lon)
+			if (new Date() > times.sunrise && new Date() < times.sunset) {
+				document.getElementById('body').classList.toggle('d')
+			} else document.getElementById('body').classList.toggle('d')
+		}
+
+		if (storageAvailable('localStorage')) {
+			getStoredCoords().then((coords) => {
+				if (coords.lat) calculateDaytime(coords)
+				else {
+					getFreshCoords().then((freshCoords) => {
+						setFreshCoords(freshCoords)
+						calculateDaytime(freshCoords)
+					})
+				}
+			})
+		} else getFreshCoords().then((freshCoords) => calculateDaytime(freshCoords))
+	</script>
 
 	<script src='./js/in-view.min.js'></script>
 	<script>
