@@ -42,14 +42,16 @@ section {
     width: 100%;
     max-width: 12.5em;
     text-align: left;
-    @extend .fadeInUp;
-    @include animate(0.5s);
 
+    @include animate(0.5s);
     @for $i from 1 through 8 {
       &:nth-child(#{$i}) {
-        @include animation-delay((0.05s * $i));
+        @include animation-delay((0.04s * $i));
       }
     }
+
+    &.v { @extend .fadeInUp; }
+    &:not(.v) { @extend .fadeOut; }
   }
 
   > h1 {
@@ -71,7 +73,10 @@ img {
   justify-content: center;
   align-items: center;
 
-  svg { fill: $white; }
+  svg {
+    fill: $white;
+    @extend .bob;
+  }
 }
 
 p.project {
@@ -156,7 +161,7 @@ a.connection {
   @include ease(200ms);
   @include transform(translateZ(0));
 
-  span {
+  span:first-of-type {
     margin: 0.5em;
     color: $white;
   }
@@ -166,7 +171,12 @@ a.connection {
     height: 1em;
   }
 
-  &:hover {
+  * {
+    @include ease(200ms);
+    @include transform(translateZ(0));
+  }
+
+  &:hover * {
     opacity: 0.8;
   }
 }
