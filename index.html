@@ -109,7 +109,7 @@
 
 		function calculateDaytime (coords) {
 			const times = SunCalc.getTimes(new Date(), coords.lat, coords.lon)
-			if (new Date() > times.sunrise && new Date() < times.sunset) {
+			if (new Date() > times.dawn && new Date() < times.dusk) {
 				document.getElementById('body').classList.toggle('d')
 			}
 		}
