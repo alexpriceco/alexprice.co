@@ -83,23 +83,39 @@ img {
   }
 }
 
-p.project {
-  position: relative;
+.projects:hover a p {
+  opacity: 0.5;
+}
 
-  &::before {
-    content: '';
-    height: calc(100% - 1em);
-    width: 0.25em;
-    background: red;
-    border-radius: 1em;
-    position: absolute;
-    left: -2em;
-    top: 0.5em;
+.projects a {
+  position: relative;
+  padding: 0;
+  margin: 0;
+
+  text-decoration: none;
+  color: $white;
+
+  p {
+    margin: 0;
+    padding-bottom: 1em;
+
+    &::before {
+      content: '';
+      height: calc(100% - 2em);
+      width: 0.25em;
+      background: red;
+      border-radius: 1em;
+      position: absolute;
+      left: -2em;
+      top: 0.5em;
+    }
+
+    &.gel::before { background: #4AF4FF; }
+    &.volt::before { background: #F7AE19; }
+    &.playbook::before { background: #B80B0B; }
   }
 
-  &.gel::before { background: #4AF4FF; }
-  &.volt::before { background: #F7AE19; }
-  &.playbook::before { background: #B80B0B; }
+  &:hover p { opacity: 1; }
 }
 
 .contract {

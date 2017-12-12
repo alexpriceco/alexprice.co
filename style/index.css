@@ -268,23 +268,35 @@ img {
   .point svg {
     fill: #FFFFFF; }
 
-p.project {
-  position: relative; }
-  p.project::before {
-    content: '';
-    height: calc(100% - 1em);
-    width: 0.25em;
-    background: red;
-    border-radius: 1em;
-    position: absolute;
-    left: -2em;
-    top: 0.5em; }
-  p.project.gel::before {
-    background: #4AF4FF; }
-  p.project.volt::before {
-    background: #F7AE19; }
-  p.project.playbook::before {
-    background: #B80B0B; }
+.projects:hover a p {
+  opacity: 0.5; }
+
+.projects a {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: #FFFFFF; }
+  .projects a p {
+    margin: 0;
+    padding-bottom: 1em; }
+    .projects a p::before {
+      content: '';
+      height: calc(100% - 2em);
+      width: 0.25em;
+      background: red;
+      border-radius: 1em;
+      position: absolute;
+      left: -2em;
+      top: 0.5em; }
+    .projects a p.gel::before {
+      background: #4AF4FF; }
+    .projects a p.volt::before {
+      background: #F7AE19; }
+    .projects a p.playbook::before {
+      background: #B80B0B; }
+  .projects a:hover p {
+    opacity: 1; }
 
 .contract {
   display: flex;
