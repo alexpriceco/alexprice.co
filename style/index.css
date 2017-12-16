@@ -391,8 +391,29 @@ body.d {
       background: #000000; }
 
 @media (min-width: 900px) {
-  header {
-    padding: 0 10vw;
-    height: 100%; } }
+  body {
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex; }
+
+  section:nth-of-type(n + 2) {
+    margin-top: 25vh;
+    max-width: 50vw; }
+
+  section:nth-of-type(2n) {
+    position: relative; }
+    section:nth-of-type(2n)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      height: 16em;
+      width: 1px;
+      opacity: 0.1;
+      background: #FFFFFF;
+      transform: translateY(-50%); }
+
+  body.d section:nth-of-type(2n)::after {
+    background: #000000; } }
 
 /*# sourceMappingURL=index.css.map */
