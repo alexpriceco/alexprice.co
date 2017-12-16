@@ -279,7 +279,10 @@ img {
   color: #FFFFFF; }
   .projects a p {
     margin: 0;
-    padding-bottom: 1em; }
+    padding-bottom: 1em;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }
     .projects a p::before {
       content: '';
       height: calc(100% - 2em);
@@ -345,6 +348,9 @@ img {
       top: 50%;
       transform: translate3d(-50%, -50%, 0); }
 
+.connections:hover a * {
+  opacity: 0.6; }
+
 a.connection {
   text-decoration: none;
   justify-content: flex-start;
@@ -372,7 +378,7 @@ a.connection {
     -moz-transform: translateZ(0);
     transform: translateZ(0); }
   a.connection:hover * {
-    opacity: 0.8; }
+    opacity: 1; }
 
 body.d {
   background: #FFFFFF;
