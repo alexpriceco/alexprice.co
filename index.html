@@ -31,7 +31,7 @@
 	  <meta name='theme-color' content='#101010 '>
 	</head>
 
-	<body id='body'>
+	<body id='body' class='d'>
 	  <section>
 			<img src='./media/profile.jpeg' title='👤 Hey, that&#8216;s me!' />
 			<h1>Alex Price</h1>
@@ -94,63 +94,75 @@
 		</section>
 	</body>
 
-	<script src='./js/store-location.js'></script>
+  <script src='./js/store-location.js'></script>
 	<script src='./js/sun-calc.min.js'></script>
 	<script>
-		async function getFreshCoords () {
-			return new Promise((resolve, reject) => {
-				let request = new XMLHttpRequest()
-				request.open('GET', 'http://ip-api.com/json', true)
-				request.onload = () => {
-					if (request.status >= 200 && request.status < 400) {
-						const res = JSON.parse(request.responseText)
-						resolve({
-							lat: res.lat,
-							lon: res.lon
-						})
-					} else reject()
-				}
+    async function getFreshCoords () {
+      /* global XMLHttpRequest */
+      return new Promise((resolve, reject) => {
+        let request = new XMLHttpRequest()
+        request.open('GET', 'http://ip-api.com/json', true)
+        request.onload = () => {
+          if (request.status >= 200 && request.status < 400) {
+            const res = JSON.parse(request.responseText)
+            resolve({
+              lat: res.lat,
+              lon: res.lon
+            })
+          } else {
+            const e = new Error(`Request status is ${request.status}`)
+            return reject(e)
+          }
+        }
 
-				request.send()
-			})
-		}
+        request.send()
+      })
+    }
 
-		function calculateDaytime (coords) {
-			const times = SunCalc.getTimes(new Date(), coords.lat, coords.lon)
-			if (new Date() > times.dawn && new Date() < times.dusk) {
-				document.getElementById('body').classList.toggle('d')
-			}
-		}
+    /* global SunCalc */
+    function calculateDaytime (coords) {
+      const times = SunCalc.getTimes(new Date(), coords.lat, coords.lon)
+      if (new Date() > times.dawn && new Date() < times.dusk) {
+        document.getElementById('body').classList.toggle('d')
+      }
+    }
 
-		if (storageAvailable('localStorage')) {
-			getStoredCoords().then((coords) => {
-				if (coords.lat) calculateDaytime(coords)
-				else {
-					getFreshCoords().then((freshCoords) => {
-						setFreshCoords(freshCoords)
-						calculateDaytime(freshCoords)
-					})
-				}
-			})
-		} else getFreshCoords().then((freshCoords) => calculateDaytime(freshCoords))
-	</script>
+    /* global
+      storageAvailable,
+      getStoredCoords,
+      setFreshCoords,
+    */
+    if (storageAvailable('localStorage')) {
+      getStoredCoords().then((coords) => {
+        if (coords.lat) calculateDaytime(coords)
+        else {
+          getFreshCoords().then((freshCoords) => {
+            setFreshCoords(freshCoords)
+            calculateDaytime(freshCoords)
+          })
+        }
+      })
+    } else getFreshCoords().then((freshCoords) => calculateDaytime(freshCoords))
+    </script>
 
-	<script src='./js/in-view.min.js'></script>
-	<script>
-		inView.offset({
-			bottom: -200,
-			top: -200
-		})
+    <script src='./js/in-view.min.js'></script>
+    <script>
+    /* global inView */
+    inView.offset({
+      bottom: -200,
+      top: -200
+    })
 
-		inView('section > *').on('enter', (e) => { e.classList.toggle('v') })
-		inView('section > *').on('exit', (e) => { e.classList.toggle('v') })
-	</script>
+    inView('section > *').on('enter', (e) => { e.classList.toggle('v') })
+    inView('section > *').on('exit', (e) => { e.classList.toggle('v') })
+  </script>
 
-	<script async src='https://www.googletagmanager.com/gtag/js?id=UA-63630411-1'></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date())
-	  gtag('config', 'UA-63630411-1')
+  <script async src='https://www.googletagmanager.com/gtag/js?id=UA-63630411-1'></script>
+  <script>
+    /* global dataLayer */
+    window.dataLayer = window.dataLayer || []
+    function gtag () { dataLayer.push(arguments) }
+    gtag('js', new Date())
+    gtag('config', 'UA-63630411-1')
 	</script>
 </html>
