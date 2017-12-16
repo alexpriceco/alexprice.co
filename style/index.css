@@ -379,6 +379,8 @@ body.d {
   color: #000000; }
   body.d .point svg {
     fill: #000000; }
+  body.d .projects a {
+    color: #000000; }
   body.d a.connection span:first-of-type {
     color: #000000; }
   body.d .contract a, body.d .contract a.visited {

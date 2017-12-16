@@ -206,6 +206,7 @@ body.d {
   color: $black;
 
   .point svg { fill: $black; }
+  .projects a { color: $black; }
   a.connection span:first-of-type { color: $black; }
   .contract {
     a, a.visited {
