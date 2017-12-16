@@ -137,12 +137,16 @@ img {
 
   a, a:visited {
     height: 3em;
+    width: 100%;
+
     color: $black;
     text-decoration: none;
-    width: 100%;
     text-align: center;
     position: relative;
-    will-change: transform, opacity;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &::before {
       content: '';
@@ -154,19 +158,11 @@ img {
       background: $white;
       border-radius: 0.25em;
       @include ease(300ms);
+      z-index: -1;
     }
 
     &:hover::before {
-      opacity: 0.95;
       @include transform(scale(1.02, 1));
-    }
-
-    > div {
-      @include ease(300ms);
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate3d(-50%, -50%, 0);
     }
   }
 }
