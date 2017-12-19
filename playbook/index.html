@@ -117,16 +117,14 @@
 		function submitEmail () {
 			const email = '*' + emailValue + '*'
 			const data = JSON.stringify({
-				"text": email + " signed up for the beta!"
+				text: email + ' signed up for the beta!'
 			})
 
-			const request = new XMLHttpRequest()
+			const req = new XMLHttpRequest()
 			const slackWebhook = 'https://hooks.slack.com/services/' +
 				'T076KJELT/B8FSZ5TBJ/kTMddEu7qHJZbXdRfzLxXlHa'
-
-			request.open('POST', slackWebhook, true)
-			request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
-			request.send(data)
+			req.open('POST', slackWebhook, true)
+			req.send(data)
 		}
 	</script>
 
