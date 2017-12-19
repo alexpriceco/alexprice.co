@@ -76,6 +76,8 @@
 	</body>
 
 	<script>
+		var emailValue = ''
+
 		function setStep (n) {
 			const articles = document
 				.getElementById('container')
@@ -85,7 +87,7 @@
 			articles[n].classList = 'visible'
 
 			if (n === 1) document.getElementById('email').focus()
-			if (n === 2) console.info(document.getElementById('email').value)
+			if (n === 2) submitEmail()
 		}
 
 		function validateEmail () {
@@ -93,6 +95,7 @@
 			const button = document.getElementById('submitButton')
 			if (value.match(/.+@.+\..+/) !== null) valid = true
 			else valid = false
+			emailValue = value
 
 			if (valid) button.classList = 'button'
 			else button.classList = 'button disabled'
@@ -109,6 +112,21 @@
 			}
 
 			emailInput.oninput = () => validateEmail()
+		}
+
+		function submitEmail () {
+			const email = '*' + emailValue + '*'
+			const data = JSON.stringify({
+				"text": email + " signed up for the beta!"
+			})
+
+			const request = new XMLHttpRequest()
+			const slackWebhook = 'https://hooks.slack.com/services/' +
+				'T076KJELT/B8FSZ5TBJ/kTMddEu7qHJZbXdRfzLxXlHa'
+
+			request.open('POST', slackWebhook, true)
+			request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+			request.send(data)
 		}
 	</script>
 
