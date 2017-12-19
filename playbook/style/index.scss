@@ -4,9 +4,11 @@
 @import url('https://fonts.googleapis.com/css?family=Gentium+Basic:400,700');
 
 $red: #B71240;
+$red2: #B31A42;
 $black:  #000000;
 $white:  #F4EBDC;
-$off-white: #66450F;
+$off-white: #E8D9C1;
+$off-white2: #9E8D72;
 $font-family: 'Gentium Basic', sans-serif;
 
 * {
@@ -36,10 +38,101 @@ h1 {
   font-weight: 600;
   margin-top: 1em;
   margin-bottom: 0.5em;
+  line-height: normal;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  border: 0;
+
+  margin: 0;
+  padding: 0;
+  background: $off-white;
+
+  &:first-of-type {
+    margin-top: 1.5em;
+  }
+}
+
+input {
+  font-family: $font-family;
+  background: transparent;
+  position: relative;
+  font-size: 1em;
+  padding: 1em 0;
+  width: 100%;
+  border: 0;
+  margin: 0;
+
+  @include ease(200ms);
+
+  &::placeholder {
+    color: $off-white2;
+    opacity: 1;
+  }
+
+  &:focus {
+    padding: 1em;
+    outline: none;
+    background: $off-white;
+
+    &::placeholder {
+      color: $black;
+      opacity: 0.5;
+    }
+  }
 }
 
 section {
-  max-width: 16em;
+  width: 16em;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  article {
+    opacity: 0;
+    min-width: 16em;
+    pointer-events: none;
+    @include ease(200ms);
+    overflow: visible;
+    z-index: 100;
+
+    &:nth-of-type(1) {
+      &.up { @include transform(translate3d(0, -1em, 0)) }
+      &.down { @include transform(translate3d(0, 1em, 0)) }
+      &.visible {
+        opacity: 1;
+        pointer-events: all;
+        @include transform(translate3d(0, 0, 0))
+      }
+    }
+
+    &:nth-of-type(2) {
+      &.up { @include transform(translate3d(-16em, -1em, 0)) }
+      &.down { @include transform(translate3d(-16em, 1em, 0)) }
+      &.visible {
+        opacity: 1;
+        pointer-events: all;
+        @include transition-delay(100ms);
+        @include transform(translate3d(-16em, 0, 0))
+      }
+    }
+
+    &:nth-of-type(3) {
+      &.up { @include transform(translate3d(-32em, -1em, 0)) }
+      &.down { @include transform(translate3d(-32em, 1em, 0)) }
+      &.visible {
+        opacity: 1;
+        pointer-events: all;
+        @include transition-delay(100ms);
+        @include transform(translate3d(-32em, 0, 0))
+      }
+    }
+  }
 }
 
 .button {
@@ -56,10 +149,12 @@ section {
 
   &:hover {
     transform: translateY(-2px);
+    background: $red2;
     @include shadow(2px, 0, 1em, 0.5em, rgba($black, 0.05));
   }
 
   &.disabled {
+    pointer-events: none;
     opacity: 0.5;
   }
 }
