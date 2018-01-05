@@ -2,238 +2,30 @@
 @import 'mixins';
 @import 'animations';
 @import url('https://fonts.googleapis.com/css?family=Istok+Web');
+$font-family: 'Istok Web', sans-serif;
 
 $black:  #000000;
 $white:  #FFFFFF;
-$grey: #808080;
-$font-family: 'Istok Web', sans-serif;
+$grey:   #1B1B1B;
+$blue1:  #2176FF;
+$blue2:  #1969FF;
 
 * {
   box-sizing: border-box;
 }
 
-h1 {
-  font-size: 1.75em;
-  font-weight: 600;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-}
-
 body {
-  color: $white;
-  background: $black;
   font-family: $font-family;
-  font-size: 20px;
-  line-height: 1.75em;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-section {
-  min-height: 80vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3em;
-
-  &:first-of-type, &:last-of-type {
-    min-height: 100vh;
-  }
-
-  > * {
-    width: 100%;
-    max-width: 12.5em;
-    text-align: left;
-
-    @include animate(0.5s);
-    @for $i from 1 through 8 {
-      &:nth-child(#{$i}) {
-        @include animation-delay((0.04s * $i));
-      }
-    }
-
-    &.v { @extend .fadeInUp; }
-    &:not(.v) { @extend .fadeOut; }
-  }
-
-  > h1 {
-    max-width: 7.14em;
-  }
-
-  p {
-    margin-bottom: 1.5em;
-  }
-}
-
-img {
-  border-radius: 0.25em;
-}
-
-.point {
-  margin-top: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    fill: $white;
-    @extend .bob;
-  }
-}
-
-.projects:hover a p {
-  opacity: 0.5;
-}
-
-.projects a {
-  position: relative;
-  padding: 0;
-  margin: 0;
-
-  text-decoration: none;
+  background: #142A58;
   color: $white;
+  min-height: 100vh;
 
-  p {
-    margin: 0;
-    padding-bottom: 1em;
-    @include ease(200ms);
-
-    &::before {
-      content: '';
-      height: calc(100% - 2em);
-      width: 0.25em;
-      background: red;
-      border-radius: 1em;
-      position: absolute;
-      left: -2em;
-      top: 0.5em;
-    }
-
-    &.volt::before { background: #F7AE19; }
-    &.playbook::before { background: #CE2853; }
-    &.previously::before { background: rgba($white, 0.5); }
-  }
-
-  &:hover p { opacity: 1; }
-}
-
-.projects .preview-wrapper {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100vh;
-}
-
-.contract {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 3em;
-
-  p {
-    color: $grey;
-    line-height: 1.5em;
-    text-align: center;
-    font-style: italic;
-    margin-top: 1em;
-    margin-bottom: 0;
-  }
-
-  a, a:visited {
-    height: 3em;
-    width: 100%;
-
-    color: $black;
-    text-decoration: none;
-    text-align: center;
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &::before {
-      content: '';
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: $white;
-      border-radius: 0.25em;
-      @include ease(300ms);
-      z-index: -1;
-    }
-
-    &:hover::before {
-      @include transform(scale(1.02, 1));
-    }
-  }
-}
-
-.connections:hover a * {
-  opacity: 0.6;
-}
-
-a.connection {
-  text-decoration: none;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: row;
-  display: flex;
-  color: $grey;
-
-  @include ease(200ms);
-  @include transform(translateZ(0));
-
-  span:first-of-type {
-    margin: 0.5em;
-    color: $white;
-  }
-
-  svg {
-    fill: $grey;
-    height: 1em;
-  }
-
-  * {
-    @include ease(200ms);
-    @include transform(translateZ(0));
-  }
-
-  &:hover * {
-    opacity: 1;
-  }
-}
-
-body.d {
-  background: $white;
-  color: $black;
-
-  .point svg { fill: $black; }
-  .projects a { color: $black; }
-  .projects p.previously::before { background: rgba($black, 0.5); }
-  a.connection span:first-of-type { color: $black; }
-  .contract {
-    a, a.visited {
-      color: $white;
-      svg { fill: $white; }
-      &::before { background: $black; }
-    }
-  }
-}
-
-@media (min-width: 900px) {
-  body {
-    flex-direction: row;
-    flex-wrap: wrap;
-    display: flex;
-  }
-
-  body.d section:nth-of-type(2n)::after {
-    background: $black;
-  }
+  $radial-start: rgba($black, 0.5) 0%;
+  $radial-stop: rgba($black, 1) 140%;
+  background: -webkit-radial-gradient(50% 90%, $radial-start, $radial-stop),
+              -webkit-linear-gradient(-45deg, $blue1 0%, $blue2 100%);
+  background: -moz-radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
+              -moz-linear-gradient(-45deg, $blue1 0%,  $blue2 100%);
+  background: radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
+              linear-gradient(135deg, $blue1 0%, $blue2 100%);
 }
