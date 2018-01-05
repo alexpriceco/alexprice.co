@@ -111,12 +111,19 @@ img {
       top: 0.5em;
     }
 
-    &.gel::before { background: #4AF4FF; }
     &.volt::before { background: #F7AE19; }
-    &.playbook::before { background: #B80B0B; }
+    &.playbook::before { background: #CE2853; }
+    &.previously::before { background: rgba($white, 0.5); }
   }
 
   &:hover p { opacity: 1; }
+}
+
+.projects .preview-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
 }
 
 .contract {
@@ -208,6 +215,7 @@ body.d {
 
   .point svg { fill: $black; }
   .projects a { color: $black; }
+  .projects p.previously::before { background: rgba($black, 0.5); }
   a.connection span:first-of-type { color: $black; }
   .contract {
     a, a.visited {
@@ -223,28 +231,6 @@ body.d {
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
-  }
-
-  section:nth-of-type(n + 2) {
-    margin-top: 25vh;
-    max-width: 50vw;
-  }
-
-  section:nth-of-type(2n) {
-    position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 50%;
-
-      height: 16em;
-      width: 1px;
-      opacity: 0.1;
-      background: $white;
-
-      transform: translateY(-50%);
-    }
   }
 
   body.d section:nth-of-type(2n)::after {

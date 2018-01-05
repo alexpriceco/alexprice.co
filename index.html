@@ -41,11 +41,10 @@
 					<path transform='translate(-1, -1)' d='M 20.6972 0L 3.30278 0C 2.31337 0 1.92484 1.28323 2.74808 1.83205L 11.4453 7.6302C 11.7812 7.85413 12.2188 7.85413 12.5547 7.6302L 21.2519 1.83205C 22.0752 1.28323 21.6866 0 20.6972 0Z'/>
 				</svg>
 			</div>
-
 		</section>
 
 		<section id='currently'>
-			<h1>Currently</h1>
+			<h1>What I do.</h1>
 			<div class='projects'>
 				<a href='https://alexprice.co/volt'>
 					<p class='volt'>Working on VEXvolt, a patented tool for VEX robotics competitors.</p>
@@ -53,13 +52,19 @@
 				<a href='https://alexprice.co/playbook'>
 					<p class='playbook'>Building the alpha of Playbook, a digital DnD character sheet.</p>
 				</a>
-				<a href='https://github.com/alexpriceco/gel'>
-					<p class='gel'>Hacking together Gel, a minimalist time-use analysis tool.</p>
+				<a href='./media/Alexander Price, Product Designer.pdf'>
+					<p class='previously'>Take a look at my CV.</p>
 				</a>
+			</div>
+
+			<div class='point'>
+				<svg viewBox='0 0 20 8' role='img' height='8' width='20'>
+					<path transform='translate(-1, -1)' d='M 20.6972 0L 3.30278 0C 2.31337 0 1.92484 1.28323 2.74808 1.83205L 11.4453 7.6302C 11.7812 7.85413 12.2188 7.85413 12.5547 7.6302L 21.2519 1.83205C 22.0752 1.28323 21.6866 0 20.6972 0Z'/>
+				</svg>
 			</div>
 		</section>
 
-		<section>
+		<section id='connections'>
 			<h1>Find me here</h1>
       <div class='connections'>
         <a class='connection' target='_newtwitter' href='https://twitter.com/alexpriceco' title='💬 twitter.com'>
@@ -145,6 +150,15 @@
         }
       })
     } else getFreshCoords().then((freshCoords) => calculateDaytime(freshCoords))
+
+		const currently = document.getElementById('currently')
+		if (currently) {
+			currently.onclick = function (event) {
+				const options = { behavior: `smooth` }
+				const connections = document.getElementById(`connections`)
+				if (event.target === this) connections.scrollIntoView(options)
+			}
+		}
     </script>
 
     <script src='./js/in-view.min.js'></script>

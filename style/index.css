@@ -292,14 +292,20 @@ img {
       position: absolute;
       left: -2em;
       top: 0.5em; }
-    .projects a p.gel::before {
-      background: #4AF4FF; }
     .projects a p.volt::before {
       background: #F7AE19; }
     .projects a p.playbook::before {
-      background: #B80B0B; }
+      background: #CE2853; }
+    .projects a p.previously::before {
+      background: rgba(255, 255, 255, 0.5); }
   .projects a:hover p {
     opacity: 1; }
+
+.projects .preview-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh; }
 
 .contract {
   display: flex;
@@ -381,6 +387,8 @@ body.d {
     fill: #000000; }
   body.d .projects a {
     color: #000000; }
+  body.d .projects p.previously::before {
+    background: rgba(0, 0, 0, 0.5); }
   body.d a.connection span:first-of-type {
     color: #000000; }
   body.d .contract a, body.d .contract a.visited {
@@ -395,23 +403,6 @@ body.d {
     flex-direction: row;
     flex-wrap: wrap;
     display: flex; }
-
-  section:nth-of-type(n + 2) {
-    margin-top: 25vh;
-    max-width: 50vw; }
-
-  section:nth-of-type(2n) {
-    position: relative; }
-    section:nth-of-type(2n)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      height: 16em;
-      width: 1px;
-      opacity: 0.1;
-      background: #FFFFFF;
-      transform: translateY(-50%); }
 
   body.d section:nth-of-type(2n)::after {
     background: #000000; } }
