@@ -1,5 +1,7 @@
-# alexprice.co
+![Intro](https://i.imgur.com/RWpK60M.png)
 
-_`This is my personal site. I use it as an online business card, showcase, and thesis statement.`_
+👋 I'm a digital product designer from ATX.<br />
+🚗 I have a background in EVs, robotics, and supply chain edtech.<br />
+🎲 I work on [Playbook](https://alexpriceco/playbook), and play D&D on the weekends.
 
-I'm a designer from Austin, working on EV charger management. I play D&D on the weekends, and am building Playbook to help make that easier.
+_You can find me on [Twitter](https://twitter.com/alexpriceco) (¯\\\_(ツ)\_/¯), [Instagram](https://instagram.com/alexpriceco) (working shots), [Dribbble](https://dribbble.com/alexpriceco) (design), and [Github](https://github.com/alexpriceco) (code)._
