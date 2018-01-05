@@ -202,7 +202,7 @@ h1 {
 
 h2 {
   font-size: 1.5em;
-  line-height: 1.8em; }
+  line-height: 1.75em; }
 
 div.main {
   display: flex;
@@ -261,10 +261,12 @@ section.projects {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 52em; }
+  max-width: 52em;
+  margin-left: 2em; }
+  section.projects:hover article * {
+    opacity: 0.6; }
   section.projects article {
-    padding: 2em;
-    padding-right: 8em;
+    padding: 2em 8em 2em 2.5em;
     position: relative;
     margin-left: 1em;
     max-width: 25em;
@@ -275,12 +277,54 @@ section.projects {
     box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
     margin-bottom: 1em;
     overflow: hidden; }
+    section.projects article * {
+      -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      -webkit-transform: translate3d(0, 0, 1px);
+      -moz-transform: translate3d(0, 0, 1px);
+      transform: translate3d(0, 0, 1px); }
+    section.projects article:hover * {
+      opacity: inherit; }
+    section.projects article:nth-of-type(2n - 1) {
+      margin-left: 0; }
     section.projects article h2 {
       margin-bottom: 0.666667em; }
     section.projects article p {
       opacity: 0.8;
       max-width: 14.5em;
-      line-height: 1.5em; }
+      line-height: 1.5em;
+      -webkit-transform: translate3d(0, 0, 1px); }
+      section.projects article p a, section.projects article p a:visited {
+        position: relative;
+        display: inline-block;
+        color: #FFFFFF;
+        -webkit-transform: translate3d(0, 0, 1px);
+        text-decoration: none;
+        margin-top: 1em; }
+        section.projects article p a::after, section.projects article p a:visited::after {
+          -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+          -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+          transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.8);
+          opacity: 0; }
+        section.projects article p a::before, section.projects article p a:visited::before {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.2); }
+        section.projects article p a:hover::after, section.projects article p a:visited:hover::after {
+          width: 100%;
+          opacity: 1; }
     section.projects article img {
       object-fit: cover;
       position: absolute;

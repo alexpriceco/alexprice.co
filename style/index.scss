@@ -32,7 +32,7 @@ h1 {
 
 h2 {
   font-size: 1.5em;
-  line-height: 1.8em;
+  line-height: 1.75em;
 }
 
 div.main {
@@ -111,10 +111,14 @@ section.projects {
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 52em;
+  margin-left: 2em;
+
+  &:hover article * {
+    opacity: 0.6;
+  }
 
   article {
-    padding: 2em;
-    padding-right: 8em;
+    padding: 2em 8em 2em 2.5em;
     position: relative;
     margin-left: 1em;
     max-width: 25em;
@@ -126,14 +130,57 @@ section.projects {
     margin-bottom: 1em;
     overflow: hidden;
 
-    h2 {
-      margin-bottom: 0.666667em;
+
+    * {
+      @include ease(200ms);
+      @include transform(translate3d(0, 0, 1px));
     }
+
+    &:hover * { opacity: inherit; }
+    &:nth-of-type(2n - 1) { margin-left: 0; }
+    h2 { margin-bottom: 0.666667em; }
 
     p {
       opacity: 0.8;
       max-width: 14.5em;
       line-height: 1.5em;
+      -webkit-transform: translate3d(0, 0, 1px);
+
+      a, a:visited {
+        position: relative;
+        display: inline-block;
+        color: $white;
+        -webkit-transform: translate3d(0, 0, 1px);
+        text-decoration: none;
+        margin-top: 1em;
+
+        &::after {
+          @include ease(200ms);
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: rgba($white, 0.8);
+          opacity: 0;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: rgba($white, 0.2);
+        }
+
+        &:hover::after {
+          width: 100%;
+          opacity: 1;
+        }
+      }
     }
 
     img {
