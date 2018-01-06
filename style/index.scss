@@ -37,6 +37,7 @@ h2 {
 
 div.main {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 
@@ -247,6 +248,7 @@ section.contact {
 
       &:hover::before {
         @include transform(scale(1.02, 1));
+        background: $blue2;
       }
     }
   }
@@ -254,4 +256,46 @@ section.contact {
 
 footer {
   padding: 2em;
+}
+
+// phone
+@media (max-width: 599px) {
+  body{ background: red; }
+}
+
+// tablet-portrait-up {
+@media (min-width: 600px) {
+  body{ background: orange; }
+}
+
+// tablet-landscape-up {
+@media (min-width: 900px) and (max-width: 1599px) {
+  div.main > div { flex-direction: column; }
+
+  header {
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+    max-width: 51em;
+    margin: 0 0 8em 0;
+
+    h2 { max-width: 16em; }
+    article.social { margin: 0 0 1em 0; }
+  }
+
+  section.projects { margin: 0; }
+}
+
+// desktop-up {
+@media (min-width: 1600px) {
+  div.main > div { flex-direction: row; }
+
+  header {
+    flex-direction: column;
+    max-width: 26em;
+    margin-right: 2em;
+  }
+
+  section.projects { margin-left: 2em; }
 }
