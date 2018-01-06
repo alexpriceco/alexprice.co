@@ -193,6 +193,65 @@ section.projects {
   }
 }
 
+section.contact {
+  min-height: 50vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  h2 { max-width: 16em; }
+  > div {
+    position: relative;
+    padding-left: 8em;
+
+    img {
+      object-fit: cover;
+      border-radius: 2px;
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      width: 6em;
+    }
+
+    a, a:visited {
+      margin-top: 1em;
+      height: 3em;
+      width: 12em;
+
+      color: $white;
+      text-decoration: none;
+      text-align: center;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg { fill: $white; }
+
+      &::before {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: $blue1;
+        border-radius: 0.25em;
+        @include ease(300ms);
+        z-index: -1;
+      }
+
+      &:hover::before {
+        @include transform(scale(1.02, 1));
+      }
+    }
+  }
+}
+
 footer {
   padding: 2em;
 }
