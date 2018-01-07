@@ -282,11 +282,15 @@ section.projects {
       -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-      -webkit-transform: translate3d(0, 0, 1px);
-      -moz-transform: translate3d(0, 0, 1px);
-      transform: translate3d(0, 0, 1px); }
-    section.projects article:hover * {
-      opacity: inherit; }
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0); }
+    section.projects article:hover h2 {
+      opacity: 1; }
+    section.projects article:hover p {
+      opacity: 0.8; }
+    section.projects article:hover a {
+      opacity: 1; }
     section.projects article:nth-of-type(2n - 1) {
       margin-left: 0; }
     section.projects article h2 {
@@ -387,7 +391,81 @@ section.contact {
         background: #1969FF; }
 
 footer {
-  padding: 2em; }
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+  footer article.social {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }
+    footer article.social a, footer article.social a:visited {
+      -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      color: #FFFFFF;
+      text-decoration: none;
+      margin-right: 1em;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center; }
+      footer article.social a > span, footer article.social a > svg, footer article.social a:visited > span, footer article.social a:visited > svg {
+        -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        opacity: 0.5; }
+      footer article.social a::after, footer article.social a:visited::after {
+        -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        content: '';
+        width: 1px;
+        height: 0.75em;
+        background: rgba(255, 255, 255, 0.25);
+        position: absolute;
+        right: 0.5em;
+        top: 0.125em; }
+      footer article.social a:last-child, footer article.social a:visited:last-child {
+        margin-right: 0; }
+        footer article.social a:last-child::after, footer article.social a:visited:last-child::after {
+          display: none; }
+      footer article.social a:hover > span, footer article.social a:hover > svg, footer article.social a:visited:hover > span, footer article.social a:visited:hover > svg {
+        opacity: 1; }
+    footer article.social svg {
+      -webkit-transform: translate3d(0, 0, 1px);
+      -moz-transform: translate3d(0, 0, 1px);
+      transform: translate3d(0, 0, 1px);
+      fill: #FFFFFF;
+      height: 1em;
+      margin-right: 0.5em; }
+  footer article.mail a, footer article.mail a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    transform: translateZ(0); }
+    footer article.mail a span, footer article.mail a:visited span {
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translateZ(0) scale(1, 1);
+      transform: translateZ(0);
+      border: 1px solid transparent;
+      -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      opacity: 0.5; }
+    footer article.mail a span:nth-child(2), footer article.mail a:visited span:nth-child(2) {
+      opacity: 0.4; }
+    footer article.mail a:hover span, footer article.mail a:visited:hover span {
+      opacity: 1; }
+    footer article.mail a:hover span:nth-child(2), footer article.mail a:visited:hover span:nth-child(2) {
+      opacity: 0.8; }
 
 @media (max-width: 599px) {
   div.main {
@@ -429,7 +507,17 @@ footer {
   section.contact {
     width: calc(100% - 2em); }
     section.contact h2 {
-      font-size: 1em; } }
+      font-size: 1em; }
+
+  footer article.social a::after,
+  footer article.social a:visited::after {
+    right: 0.5em; }
+  footer article.social a svg,
+  footer article.social a:visited svg {
+    margin-right: 2em; }
+  footer article.social a span,
+  footer article.social a:visited span {
+    display: none; } }
 @media (min-width: 600px) and (max-width: 899px) {
   div.main > div {
     width: 100vw;
@@ -455,7 +543,14 @@ footer {
       margin-left: 0; }
     section.projects > div.padding {
       width: 1px;
-      height: 1px; } }
+      height: 1px; }
+
+  footer article.social a,
+  footer article.social a:visited {
+    margin-right: 2em; }
+    footer article.social a::after,
+    footer article.social a:visited::after {
+      right: -1em; } }
 @media (min-width: 900px) and (max-width: 1599px) {
   div.main > div {
     flex-direction: column; }
@@ -473,7 +568,14 @@ footer {
       margin: 0 0 1em 0; }
 
   section.projects {
-    margin: 0; } }
+    margin: 0; }
+
+  footer article.social a,
+  footer article.social a:visited {
+    margin-right: 3em; }
+    footer article.social a::after,
+    footer article.social a:visited::after {
+      right: -1.5em; } }
 @media (min-width: 1600px) {
   div.main > div {
     flex-direction: row; }
@@ -484,6 +586,13 @@ footer {
     margin-right: 2em; }
 
   section.projects {
-    margin-left: 2em; } }
+    margin-left: 2em; }
+
+  footer article.social a,
+  footer article.social a:visited {
+    margin-right: 3em; }
+    footer article.social a::after,
+    footer article.social a:visited::after {
+      right: -1.5em; } }
 
 /*# sourceMappingURL=index.css.map */
