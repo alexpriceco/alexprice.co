@@ -510,6 +510,12 @@ footer {
     section.contact h2 {
       font-size: 1em; }
 
+  footer {
+    flex-direction: column;
+    justify-content: flex-start; }
+    footer article.social {
+      margin-bottom: 1em; }
+
   footer article.social a::after,
   footer article.social a:visited::after {
     right: 0.5em; }
@@ -518,7 +524,10 @@ footer {
     margin-right: 2em; }
   footer article.social a span,
   footer article.social a:visited span {
-    display: none; } }
+    display: none; }
+  footer article.social a:last-child svg,
+  footer article.social a:visited:last-child svg {
+    margin: 0; } }
 @media (min-width: 600px) and (max-width: 899px) {
   div.main > div {
     width: 100vw;

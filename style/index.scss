@@ -398,11 +398,18 @@ footer {
     h2 { font-size: 1em; }
   }
 
+  footer {
+    flex-direction: column;
+    justify-content: flex-start;
+    article.social { margin-bottom: 1em; }
+  }
   footer article.social a,
   footer article.social a:visited {
     &::after { right: 0.5em; }
     svg { margin-right: 2em; }
     span { display: none; }
+
+    &:last-child svg { margin: 0; }
   }
 }
 
