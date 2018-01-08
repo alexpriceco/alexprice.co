@@ -123,10 +123,6 @@ section.projects {
   max-width: 52em;
   margin-left: 2em;
 
-  &:hover article * {
-    opacity: 0.6;
-  }
-
   article {
     cursor: pointer;
     padding: 2em 8em 2em 2.5em;
@@ -146,14 +142,6 @@ section.projects {
     *:not(img.loading) {
       @include ease(200ms);
       @include transform(translate3d(0, 0, 0));
-    }
-
-    &:hover h2 { opacity: 1; }
-    &:hover p { opacity: 0.8; }
-    &:hover img { opacity: 1; }
-    &:hover span {
-      &::after { opacity: 0.5; width: 100%; }
-      opacity: 1;
     }
 
     &:nth-of-type(2n - 1) { margin-left: 0; }
@@ -534,7 +522,10 @@ section#project-view {
 
 // tablet-landscape-up {
 @media (min-width: 900px) and (max-width: 1599px) {
-  div.main > div { flex-direction: column; }
+  div.main > div {
+    flex-direction: column;
+    &:hover article * { opacity: 0.6; }
+  }
 
   header {
     width: 100%;
@@ -552,6 +543,13 @@ section#project-view {
     margin: 0;
     margin-bottom: 2em;
     a:nth-child(2n - 1) { margin-left: 0; }
+    &:hover h2 { opacity: 1; }
+    &:hover p { opacity: 0.8; }
+    &:hover img { opacity: 1; }
+    &:hover span {
+      &::after { opacity: 0.5; width: 100%; }
+      opacity: 1;
+    }
   }
 
   footer article.social a,
@@ -563,7 +561,10 @@ section#project-view {
 
 // desktop-up {
 @media (min-width: 1600px) {
-  div.main > div { flex-direction: row; }
+  div.main > div {
+    flex-direction: row;
+    &:hover article * { opacity: 0.6; }
+  }
 
   header {
     flex-direction: column;
@@ -571,7 +572,16 @@ section#project-view {
     margin-right: 2em;
   }
 
-  section.projects { margin-left: 2em; }
+  section.projects {
+    margin-left: 2em;
+    &:hover h2 { opacity: 1; }
+    &:hover p { opacity: 0.8; }
+    &:hover img { opacity: 1; }
+    &:hover span {
+      &::after { opacity: 0.5; width: 100%; }
+      opacity: 1;
+    }
+  }
 
   footer article.social a,
   footer article.social a:visited {

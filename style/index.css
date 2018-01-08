@@ -272,8 +272,6 @@ section.projects {
   flex-wrap: wrap;
   max-width: 52em;
   margin-left: 2em; }
-  section.projects:hover article * {
-    opacity: 0.6; }
   section.projects article {
     cursor: pointer;
     padding: 2em 8em 2em 2.5em;
@@ -296,17 +294,6 @@ section.projects {
       -webkit-transform: translate3d(0, 0, 0);
       -moz-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); }
-    section.projects article:hover h2 {
-      opacity: 1; }
-    section.projects article:hover p {
-      opacity: 0.8; }
-    section.projects article:hover img {
-      opacity: 1; }
-    section.projects article:hover span {
-      opacity: 1; }
-      section.projects article:hover span::after {
-        opacity: 0.5;
-        width: 100%; }
     section.projects article:nth-of-type(2n - 1) {
       margin-left: 0; }
     section.projects article h2 {
@@ -639,6 +626,8 @@ section#project-view {
 @media (min-width: 900px) and (max-width: 1599px) {
   div.main > div {
     flex-direction: column; }
+    div.main > div:hover article * {
+      opacity: 0.6; }
 
   header {
     width: 100%;
@@ -657,6 +646,17 @@ section#project-view {
     margin-bottom: 2em; }
     section.projects a:nth-child(2n - 1) {
       margin-left: 0; }
+    section.projects:hover h2 {
+      opacity: 1; }
+    section.projects:hover p {
+      opacity: 0.8; }
+    section.projects:hover img {
+      opacity: 1; }
+    section.projects:hover span {
+      opacity: 1; }
+      section.projects:hover span::after {
+        opacity: 0.5;
+        width: 100%; }
 
   footer article.social a,
   footer article.social a:visited {
@@ -667,6 +667,8 @@ section#project-view {
 @media (min-width: 1600px) {
   div.main > div {
     flex-direction: row; }
+    div.main > div:hover article * {
+      opacity: 0.6; }
 
   header {
     flex-direction: column;
@@ -675,6 +677,17 @@ section#project-view {
 
   section.projects {
     margin-left: 2em; }
+    section.projects:hover h2 {
+      opacity: 1; }
+    section.projects:hover p {
+      opacity: 0.8; }
+    section.projects:hover img {
+      opacity: 1; }
+    section.projects:hover span {
+      opacity: 1; }
+      section.projects:hover span::after {
+        opacity: 0.5;
+        width: 100%; }
 
   footer article.social a,
   footer article.social a:visited {
