@@ -3,7 +3,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Alex Price</title>
-		<link rel='stylesheet' href='style/index.css?v=1.6'>
+		<link rel='stylesheet' href='style/index.css?v=1.61'>
 	  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	  <meta name='viewport' content='width=device-width, initial-scale=1'>
 	  <meta name='description' content='Digital product designer. Looking for a job.'>
@@ -79,7 +79,6 @@
 						<img
               id='project--vexvolt'
               src='media/projects/vexvolt-min.jpg'
-              class='loading'
             />
 					</article>
 
@@ -93,7 +92,6 @@
               id='project--playbook'
               src='media/projects/playbook-min.jpg'
               style='object-position: 95% 100%;'
-              class='loading'
             />
 					</article>
 
@@ -107,7 +105,6 @@
               id='project--evaline'
               src='media/projects/evaline-min.jpg'
               style='object-position: 0% 100%;'
-              class='loading'
             />
 					</article>
 
@@ -120,7 +117,6 @@
 						<img
               id='project--nao'
               src='media/projects/nao-min.jpg'
-              class='loading'
             />
 					</article>
 
@@ -131,7 +127,7 @@
 
 		<section class='contact'>
 			<div>
-				<img src='media/me.png' />
+				<img src='media/me-min.jpg' class='loading' />
 				<h2>Let’s build something. I’m open for contract work, and looking for a full-time product design role.</h2>
 				<a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co'>
 					<div>
@@ -184,19 +180,14 @@
 
   <script>
     (() => {
-      const imageNames = ['vexvolt', 'playbook', 'evaline', 'nao']
-      for (let img of imageNames) {
-        const elem = document.getElementById(`project--${img}`)
-        replaceImage(elem, img)
+      for (let img of document.images) {
+        img.classes += ' loading'
+        const newImage = new Image() // eslint-disable-line
+        newImage.onload = () => { img.src = newImage.src }
+        newImage.classes = img.classes.replace(' loading', '')
+        newImage.src = img.src.replace('-min', '')
       }
     })()
-
-    function replaceImage (elem, name) {
-      const newImage = new Image() // eslint-disable-line
-      newImage.onload = () => { elem.src = newImage.src }
-      newImage.src = `media/projects/${name}.jpg`
-      newImage.classes = ''
-    }
   </script>
 
   <script async src='https://www.googletagmanager.com/gtag/js?id=UA-63630411-1'></script>

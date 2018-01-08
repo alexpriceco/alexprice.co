@@ -143,13 +143,14 @@ section.projects {
     margin-bottom: 1em;
     margin-left: 1em;
 
-    *:not(img) {
+    *:not(img.loading) {
       @include ease(200ms);
       @include transform(translate3d(0, 0, 0));
     }
 
     &:hover h2 { opacity: 1; }
     &:hover p { opacity: 0.8; }
+    &:hover img { opacity: 1; }
     &:hover span {
       &::after { opacity: 0.5; width: 100%; }
       opacity: 1;

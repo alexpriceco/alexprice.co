@@ -289,7 +289,7 @@ section.projects {
     text-decoration: none;
     margin-bottom: 1em;
     margin-left: 1em; }
-    section.projects article *:not(img) {
+    section.projects article *:not(img.loading) {
       -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -300,6 +300,8 @@ section.projects {
       opacity: 1; }
     section.projects article:hover p {
       opacity: 0.8; }
+    section.projects article:hover img {
+      opacity: 1; }
     section.projects article:hover span {
       opacity: 1; }
       section.projects article:hover span::after {
