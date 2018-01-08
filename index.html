@@ -3,7 +3,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Alex Price</title>
-		<link rel='stylesheet' href='style/index.css?v=1.61'>
+		<link rel='stylesheet' href='style/index.css?v=1.62'>
 	  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	  <meta name='viewport' content='width=device-width, initial-scale=1'>
 	  <meta name='description' content='Digital product designer. Looking for a job.'>
@@ -70,54 +70,46 @@
 				</header>
 
 				<section class='projects'>
-					<article>
+					<article onclick='openProject(`vexvolt`)'>
 						<h2>VEXvolt</h2>
 						<p>
 							A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.
 						</p>
 						<span>Check out the product</span>
-						<img
-              id='project--vexvolt'
-              src='media/projects/vexvolt-min.jpg'
-            />
+						<img src='media/projects/vexvolt-min.jpg' />
 					</article>
 
-					<article>
+					<article onclick='openProject(`playbook`)'>
 						<h2>Playbook</h2>
 						<p>
 							A simpler D&amp;D character sheet, built with great design, and a focused user experience.
 						</p>
 						<span>Join the Beta</span>
 						<img
-              id='project--playbook'
               src='media/projects/playbook-min.jpg'
               style='object-position: 95% 100%;'
             />
 					</article>
 
-					<article>
+					<article onclick='openProject(`evaline`)'>
 						<h2>Evaline, Inc.</h2>
 						<p>
 							Led product design for three products, then used React and GraphQL to build them.
 						</p>
 						<span>On Dribbble</span>
 						<img
-              id='project--evaline'
               src='media/projects/evaline-min.jpg'
               style='object-position: 0% 100%;'
             />
 					</article>
 
-					<article>
+					<article onclick='openProject(`resume`)'>
 						<h2>Resume</h2>
 						<p>
 							Get a brief overview of some skills I’ve employed, and projects I’ve worked on.
 						</p>
 						<span>Open resume</span>
-						<img
-              id='project--nao'
-              src='media/projects/nao-min.jpg'
-            />
+						<img src='media/projects/nao-min.jpg' />
 					</article>
 
 					<div class='padding'>&nbsp;</div>
@@ -127,7 +119,7 @@
 
 		<section class='contact'>
 			<div>
-				<img src='media/me-min.jpg' class='loading' />
+				<img src='media/me-min.jpg' />
 				<h2>Let’s build something. I’m open for contract work, and looking for a full-time product design role.</h2>
 				<a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co'>
 					<div>
@@ -176,18 +168,48 @@
 				</a>
 			</article>
 		</footer>
+
+    <section id='project-view' class='hidden' onclick='closeAll'>
+      <article id='project--vexvolt'>vexvolt</article>
+      <article id='project--playbook'>playbook</article>
+      <article id='project--evaline'>evaline</article>
+    </section>
 	</body>
 
   <script>
     (() => {
       for (let img of document.images) {
-        img.classes += ' loading'
+        img.className += ' loading'
         const newImage = new Image() // eslint-disable-line
-        newImage.onload = () => { img.src = newImage.src }
-        newImage.classes = img.classes.replace(' loading', '')
+        newImage.onload = () => {
+          img.className = img.className.replace(' loading', '')
+          img.src = newImage.src
+        }
+
         newImage.src = img.src.replace('-min', '')
       }
+
+      document.getElementById('project-view').onclick = closeAll
     })()
+
+    // eslint-disable-next-line
+    function openProject (projectId) {
+      document.getElementById(`project-view`).className = ''
+      const project = document.getElementById(`project--${projectId}`)
+      project.className = 'active'
+      console.debug(projectId, project)
+      // show article
+      // load hi-res images
+        // if images inside of that project id aren't already hi-res
+    }
+
+    // eslint-disable-next-line
+    function closeAll (event) {
+      if (event.target.id !== 'project-view') return
+      const projectView = document.getElementById('project-view')
+      for (let article of projectView.children) { article.className = '' }
+      projectView.className = 'hidden'
+    }
   </script>
 
   <script async src='https://www.googletagmanager.com/gtag/js?id=UA-63630411-1'></script>

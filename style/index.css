@@ -488,6 +488,46 @@ footer {
     footer article.mail a:hover span:nth-child(2), footer article.mail a:visited:hover span:nth-child(2) {
       opacity: 0.8; }
 
+section#project-view {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }
+  section#project-view.hidden {
+    opacity: 0;
+    pointer-events: none; }
+  section#project-view article {
+    position: fixed;
+    top: 4em;
+    left: 50%;
+    pointer-events: all;
+    min-width: 34em;
+    background: #1B1B1B;
+    box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin: 2em;
+    padding: 2em;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    -moz-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0); }
+    section#project-view article:not(.active) {
+      opacity: 0;
+      pointer-events: none;
+      -webkit-transform: translate3d(-50%, 1em, 0);
+      -moz-transform: translate3d(-50%, 1em, 0);
+      transform: translate3d(-50%, 1em, 0); }
+
 @media (max-width: 599px) {
   div.main {
     background: -webkit-radial-gradient(50% 90%, rgba(0, 0, 0, 0.5) 0%, black 250%), -webkit-linear-gradient(-45deg, #2176FF 0%, #1969FF 100%);
