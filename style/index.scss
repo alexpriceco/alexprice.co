@@ -229,41 +229,41 @@ section.contact {
       height: 100%;
       width: 6em;
     }
+  }
+}
 
-    a, a:visited {
-      margin-top: 1em;
-      height: 3em;
-      width: 12em;
+.button {
+  margin-top: 1em;
+  height: 3em;
+  width: 12em;
 
-      color: $white;
-      text-decoration: none;
-      text-align: center;
-      position: relative;
+  color: $white;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      svg { fill: $white; }
+  svg { fill: $white; }
 
-      &::before {
-        content: '';
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: $blue1;
-        border-radius: 0.25em;
-        @include ease(300ms);
-        z-index: -1;
-      }
+  &::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $blue1;
+    border-radius: 0.25em;
+    @include ease(300ms);
+    z-index: -1;
+  }
 
-      &:hover::before {
-        @include transform(scale(1.02, 1));
-        background: $blue2;
-      }
-    }
+  &:hover::before {
+    @include transform(scale(1.02, 1));
+    background: $blue2;
   }
 }
 
@@ -370,9 +370,11 @@ section#project-view {
 
   article {
     position: fixed;
-    top: 4em; left: 50%;
+    top: 2em; left: 50%;
     pointer-events: all;
     min-width: 34em;
+    max-height: calc(100vh - 8em);
+    overflow-y: scroll;
     background: $grey;
     box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
     box-sizing: border-box;
@@ -387,6 +389,28 @@ section#project-view {
       opacity: 0;
       pointer-events: none;
       @include transform(translate3d(-50%, 1em, 0));
+    }
+
+    > *:not(:last-child):not(h1):not(h2) {
+      margin-bottom: 1.5em;
+    }
+
+    p {
+      opacity: 0.8;
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+
+    hr {
+      background: rgba($white, 0.1);
+      border: none;
+      height: 1px;
+      width: calc(100% + 4em);
+      @include transform(translateX(-2em));
+    }
+
+    div.contact {
+      padding-top: 2em;
     }
   }
 }
