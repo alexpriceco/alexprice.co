@@ -505,7 +505,7 @@ footer {
     align-items: flex-end;
     flex-direction: row;
     max-width: 51em;
-    margin: 0 0 8em 0;
+    margin: 8em 0 8em 0;
 
     h2 { max-width: 16em; }
     article.social { margin: 0 0 1em 0; }
@@ -513,6 +513,7 @@ footer {
 
   section.projects {
     margin: 0;
+    margin-bottom: 2em;
     a:nth-child(2n - 1) { margin-left: 0; }
   }
 

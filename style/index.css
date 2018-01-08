@@ -601,14 +601,15 @@ footer {
     align-items: flex-end;
     flex-direction: row;
     max-width: 51em;
-    margin: 0 0 8em 0; }
+    margin: 8em 0 8em 0; }
     header h2 {
       max-width: 16em; }
     header article.social {
       margin: 0 0 1em 0; }
 
   section.projects {
-    margin: 0; }
+    margin: 0;
+    margin-bottom: 2em; }
     section.projects a:nth-child(2n - 1) {
       margin-left: 0; }
 
