@@ -186,15 +186,6 @@ section.projects {
         height: 1px;
         background: rgba($white, 0.2);
       }
-
-      &:hover {
-        opacity: 1;
-
-        &::after {
-          width: 100%;
-          opacity: 1;
-        }
-      }
     }
 
     img {
@@ -368,6 +359,7 @@ footer {
   #close-all {
     position: absolute;
     left: 0; top: 2em;
+
     text-align: center;
     width: 100vw;
     height: 1em;
@@ -379,9 +371,9 @@ footer {
     cursor: pointer;
     @include ease(200ms);
 
-    span.mobile { display: none; }
-    span.desktop { display: block; }
-    span { pointer-events: none; }
+    > div.mobile { display: none; }
+    > div.desktop { display: block; }
+    > div { pointer-events: none; }
 
     animation-delay: 1.5s;
     animation-name: pulse;
@@ -406,24 +398,24 @@ footer {
   }
 
   article {
-    position: fixed;
-    top: 2em; left: 50%;
     pointer-events: all;
     min-width: 34em;
-    max-height: calc(100vh - 10em);
-    overflow-y: scroll;
     background: $grey;
     box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
     box-sizing: border-box;
     border-radius: 2px;
-    margin-top: 4em;
     padding: 4em;
+
+    position: absolute;
+    top: 6em;
+    left: 50%;
 
     @include ease(200ms);
     @include transform(translate3d(-50%, 0, 0));
 
     &:not(.active) {
       opacity: 0;
+      max-height: 0;
       pointer-events: none;
       @include transform(translate3d(-50%, 1em, 0));
     }
@@ -489,7 +481,9 @@ footer {
 
 #body.prevent-scroll {
   height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
+  position: fixed;
 }
 
 // phone
@@ -564,25 +558,17 @@ footer {
   }
 
   #project-view {
+    max-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+
     article {
-      padding: 2em;
-      max-height: calc(100% - 6em);
-      border-radius: 0;
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
-      top: 0;
-      min-width: 0;
-      width: 100vw;
-      margin: 0;
-      margin-top: 0;
-      margin-bottom: 4em;
     }
 
     #close-all {
-      bottom: 2em;
-      top: auto;
-      span.desktop { display: none; }
-      span.mobile { display: block; }
+      top: 2.5em;
+      svg { fill: $white; }
+      > div.desktop { display: none; }
+      > div.mobile { display: block; }
     }
   }
 
@@ -650,13 +636,18 @@ footer {
       margin: 0;
       margin-top: 0;
       margin-bottom: 4em;
+
+      hr:not(:last-child) {
+        width: calc(100% + 4em);
+        @include transform(translateX(-2em));
+      }
     }
 
     #close-all {
       bottom: 2em;
       top: auto;
-      span.desktop { display: none; }
-      span.mobile { display: block; }
+      > div.desktop { display: none; }
+      > div.mobile { display: block; }
     }
   }
 
@@ -689,7 +680,23 @@ footer {
     margin: 0;
     margin-bottom: 2em;
     a:nth-child(2n - 1) { margin-left: 0; }
+  }
 
+  footer article.social a,
+  footer article.social a:visited {
+    margin-right: 3em;
+    &::after { right: -1.5em; }
+  }
+
+  #project-view {
+    article {
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1599px) and (pointer: fine) {
+  section.projects {
     &:hover article * { opacity: 0.6; }
 
     article {
@@ -701,12 +708,6 @@ footer {
         opacity: 1;
       }
     }
-  }
-
-  footer article.social a,
-  footer article.social a:visited {
-    margin-right: 3em;
-    &::after { right: -1.5em; }
   }
 }
 
@@ -730,6 +731,12 @@ footer {
   footer article.social a:visited {
     margin-right: 3em;
     &::after { right: -1.5em; }
+  }
+
+  #project-view {
+    article {
+      margin: 0;
+    }
   }
 }
 

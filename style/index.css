@@ -333,11 +333,6 @@ section.projects {
         width: 100%;
         height: 1px;
         background: rgba(255, 255, 255, 0.2); }
-      section.projects article span:hover {
-        opacity: 1; }
-        section.projects article span:hover::after {
-          width: 100%;
-          opacity: 1; }
     section.projects article img {
       object-fit: cover;
       position: absolute;
@@ -514,11 +509,11 @@ footer {
     -webkit-animation-delay: 1.5s;
     -webkit-animation-name: pulse;
     -webkit-animation-duration: 1s; }
-    #project-view #close-all span.mobile {
+    #project-view #close-all > div.mobile {
       display: none; }
-    #project-view #close-all span.desktop {
+    #project-view #close-all > div.desktop {
       display: block; }
-    #project-view #close-all span {
+    #project-view #close-all > div {
       pointer-events: none; }
     #project-view #close-all:hover {
       opacity: 1; }
@@ -547,19 +542,16 @@ footer {
     opacity: 0;
     pointer-events: none; }
   #project-view article {
-    position: fixed;
-    top: 2em;
-    left: 50%;
     pointer-events: all;
     min-width: 34em;
-    max-height: calc(100vh - 10em);
-    overflow-y: scroll;
     background: #1B1B1B;
     box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
     box-sizing: border-box;
     border-radius: 2px;
-    margin-top: 4em;
     padding: 4em;
+    position: absolute;
+    top: 6em;
+    left: 50%;
     -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -568,6 +560,7 @@ footer {
     transform: translate3d(-50%, 0, 0); }
     #project-view article:not(.active) {
       opacity: 0;
+      max-height: 0;
       pointer-events: none;
       -webkit-transform: translate3d(-50%, 1em, 0);
       -moz-transform: translate3d(-50%, 1em, 0);
@@ -627,7 +620,9 @@ footer {
 
 #body.prevent-scroll {
   height: 100vh;
-  overflow: hidden; }
+  max-height: 100vh;
+  overflow: hidden;
+  position: fixed; }
 
 @media (max-width: 599px) {
   div.main {
@@ -685,25 +680,17 @@ footer {
     section.contact h2 {
       font-size: 1em; }
 
-  #project-view article {
-    padding: 2em;
-    max-height: calc(100% - 6em);
-    border-radius: 0;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    top: 0;
-    min-width: 0;
-    width: 100vw;
-    margin: 0;
-    margin-top: 0;
-    margin-bottom: 4em; }
-  #project-view #close-all {
-    bottom: 2em;
-    top: auto; }
-    #project-view #close-all span.desktop {
-      display: none; }
-    #project-view #close-all span.mobile {
-      display: block; }
+  #project-view {
+    max-height: 100vh;
+    -webkit-overflow-scrolling: touch; }
+    #project-view #close-all {
+      top: 2.5em; }
+      #project-view #close-all svg {
+        fill: #FFFFFF; }
+      #project-view #close-all > div.desktop {
+        display: none; }
+      #project-view #close-all > div.mobile {
+        display: block; }
 
   footer {
     padding-bottom: 4em;
@@ -763,12 +750,17 @@ footer {
     margin: 0;
     margin-top: 0;
     margin-bottom: 4em; }
+    #project-view article hr:not(:last-child) {
+      width: calc(100% + 4em);
+      -webkit-transform: translateX(-2em);
+      -moz-transform: translateX(-2em);
+      transform: translateX(-2em); }
   #project-view #close-all {
     bottom: 2em;
     top: auto; }
-    #project-view #close-all span.desktop {
+    #project-view #close-all > div.desktop {
       display: none; }
-    #project-view #close-all span.mobile {
+    #project-view #close-all > div.mobile {
       display: block; }
 
   footer article.social a,
@@ -798,26 +790,30 @@ footer {
     margin-bottom: 2em; }
     section.projects a:nth-child(2n - 1) {
       margin-left: 0; }
-    section.projects:hover article * {
-      opacity: 0.6; }
-    section.projects article:hover h2 {
-      opacity: 1; }
-    section.projects article:hover p {
-      opacity: 0.8; }
-    section.projects article:hover img {
-      opacity: 1; }
-    section.projects article:hover span {
-      opacity: 1; }
-      section.projects article:hover span::after {
-        opacity: 0.5;
-        width: 100%; }
 
   footer article.social a,
   footer article.social a:visited {
     margin-right: 3em; }
     footer article.social a::after,
     footer article.social a:visited::after {
-      right: -1.5em; } }
+      right: -1.5em; }
+
+  #project-view article {
+    margin: 0; } }
+@media (min-width: 900px) and (max-width: 1599px) and (pointer: fine) {
+  section.projects:hover article * {
+    opacity: 0.6; }
+  section.projects article:hover h2 {
+    opacity: 1; }
+  section.projects article:hover p {
+    opacity: 0.8; }
+  section.projects article:hover img {
+    opacity: 1; }
+  section.projects article:hover span {
+    opacity: 1; }
+    section.projects article:hover span::after {
+      opacity: 0.5;
+      width: 100%; } }
 @media (min-width: 1600px) {
   div.main > div {
     flex-direction: row; }
@@ -835,7 +831,10 @@ footer {
     margin-right: 3em; }
     footer article.social a::after,
     footer article.social a:visited::after {
-      right: -1.5em; } }
+      right: -1.5em; }
+
+  #project-view article {
+    margin: 0; } }
 @media (min-width: 1600px) and (pointer: fine) {
   section.projects:hover article * {
     opacity: 0.6; }

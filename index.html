@@ -94,7 +94,7 @@
 					<article onclick='openProject(`evaline`)'>
 						<h2>Evaline, Inc.</h2>
 						<p>
-							Led product design for three products, then used React and GraphQL to build them.
+							Led product design for three projects, then used React and GraphQL to build them.
 						</p>
 						<span>On Dribbble</span>
 						<img
@@ -109,7 +109,10 @@
 							Get a brief overview of some skills I’ve employed, and projects I’ve worked on.
 						</p>
 						<span>Open resume</span>
-						<img src='media/projects/nao-min.jpg' />
+						<img
+              src='media/projects/nao-min.jpg'
+              style='object-position: 50% 10%;'
+            />
 					</article>
 
 					<div class='padding'>&nbsp;</div>
@@ -171,12 +174,21 @@
 
     <section id='project-view' class='hidden' onclick='closeAll'>
       <div id='close-all' onclick='closeAll'>
-        <span class='desktop'>Close project</span>
-        <span class='mobile'>Tap to close project</span>
+        <div class='desktop'>Click anywhere to close</div>
+        <div class='mobile'>
+          <svg width="18" height="19" viewBox="0 0 18 19">
+          <path d="M 7.25 16C 7.25 16.4142 7.58579 16.75 8 16.75C 8.41421 16.75 8.75 16.4142 8.75 16L 7.25 16ZM 8 0L 8.53033 -0.53033L 8 -1.06066L 7.46967 -0.53033L 8 0ZM -0.53033 7.46967C -0.823223 7.76256 -0.823223 8.23744 -0.53033 8.53033C -0.237437 8.82322 0.237437 8.82322 0.53033 8.53033L -0.53033 7.46967ZM 15.4697 8.53033C 15.7626 8.82322 16.2374 8.82322 16.5303 8.53033C 16.8232 8.23744 16.8232 7.76256 16.5303 7.46967L 15.4697 8.53033ZM 8.75 16L 8.75 0L 7.25 0L 7.25 16L 8.75 16ZM 7.46967 -0.53033L -0.53033 7.46967L 0.53033 8.53033L 8.53033 0.53033L 7.46967 -0.53033ZM 7.46967 0.53033L 15.4697 8.53033L 16.5303 7.46967L 8.53033 -0.53033L 7.46967 0.53033Z"/>
+          </svg>
+          <span>Scroll to close</span>
+        </div>
       </div>
 
       <article id='project--vexvolt'>
         <h1>VEXvolt</h1>
+
+        <hr />
+
+        <p>I'll add more content here soon. Sorry!</p>
 
         <hr />
 
@@ -196,6 +208,19 @@
         <h1>Playbook</h1>
 
         <hr />
+        <p>Having played D&amp;D for several years now, I've had a ton of fun with the game. Some of my best college memories were made with the crew I ran with—lots of laughs, plenty of epic moments, and... math. This tool has taken on several forms of the time I've spent working on it, with the most recent build gearing up for a beta test.</p>
+
+        <p>I'll add more content here soon. Sorry!</p>
+
+        <a href='https://dribbble.com/alexpriceco/projects/538677-Playbook' title='Some shots from the work done on Playbook.' class='button'>
+					<div><span>On Dribbble</span></div>
+				</a>
+
+        <a href='https://alexprice.co/playbook' title='Join the beta waitlist' class='button'>
+					<div><span>Sign up for the beta</span></div>
+				</a>
+
+        <hr />
 
         <div class='contact'>
           <h2>Like what you see?</h2>
@@ -211,8 +236,10 @@
       </article>
       <article id='project--evaline'>
         <h1>Evaline, Inc.</h1>
+
         <hr />
-        <p>Over 9 months, I led product design and front-end development on a team of 5, on three products. I hired our first engineering role, and branded the company.</p>
+
+        <p>Over 9 months, I led product design and front-end development on a team of 5, on three projects. I hired our first engineering role, and branded the company.</p>
 
         <div class='image-list'>
           <img src='media/projects/evaline/1-min.jpg' />
@@ -221,13 +248,7 @@
           <img src='media/projects/evaline/4-min.jpg' />
         </div>
 
-        <p>Another sound byte about the work I did, as well as some other stuff like lessons learned from the project, people I collab’d with, and stuff like that.</p>
-
-        <p>Another sound byte about the work I did, as well as some other stuff like lessons learned from the project, people I collab’d with, and stuff like that. Notice that this paragraph is a little bit longer than the one previous, just to fill the space, mostly.</p>
-
-        <p>Another sound byte about the work I did, as well as some other stuff like lessons learned from the project, people I collab’d with, and stuff like that. Notice that this paragraph is a little bit longer than the one previous, just to fill the space, mostly.</p>
-
-        <p>Another sound byte about the work I did, as well as some other stuff like lessons learned from the project, people I collab’d with, and stuff like that. Notice that this paragraph is a little bit longer than the one previous, just to fill the space, mostly.</p>
+        <p>I'll add more content here soon. Sorry!</p>
 
         <a href='https://dribbble.com/alexpriceco/projects/535866-Evaline' title='Some shots from the work I did at Evaline.' class='button'>
 					<div><span>On Dribbble</span></div>
@@ -257,7 +278,8 @@
     (() => {
       for (let img of document.images) {
         img.className += ' loading'
-        const newImage = new Image() // eslint-disable-line
+        // eslint-disable-next-line
+        const newImage = new Image()
         newImage.onload = () => {
           img.className = img.className.replace(' loading', '')
           img.src = newImage.src
@@ -271,18 +293,14 @@
 
     // eslint-disable-next-line
     function openProject (projectId) {
-      document.getElementById(`project-view`).className = ''
-      document.getElementById(`body`).className = 'prevent-scroll'
+      document.getElementById('project-view').className = ''
+      document.getElementById('body').className = 'prevent-scroll'
 
       const projectView = document.getElementById('project-view')
       for (let article of projectView.children) { article.className = '' }
 
       const project = document.getElementById(`project--${projectId}`)
       project.className = 'active'
-      console.debug(projectId, project)
-      // show article
-      // load hi-res images
-        // if images inside of that project id aren't already hi-res
     }
 
     // eslint-disable-next-line
