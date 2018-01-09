@@ -297,6 +297,11 @@
 
     // eslint-disable-next-line
     function openProject (projectId) {
+      if (projectId === 'resume') {
+        window.open('https://alexprice.co/media/Alexander Price, Product Designer.pdf', '_self')
+        return
+      }
+
       document.getElementById('project-view').scrollTop = 0
       document.getElementById('project-view').className = ''
       document.getElementById('body').className = 'prevent-scroll'
