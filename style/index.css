@@ -582,8 +582,7 @@ footer {
       -webkit-transform: translate3d(-50%, 1em, 0);
       -moz-transform: translate3d(-50%, 1em, 0);
       transform: translate3d(-50%, 1em, 0); }
-    #project-view article > p:not(:last-child),
-    #project-view article > div:not(:last-child) {
+    #project-view article p, #project-view article > div {
       margin-bottom: 1.5em;
       width: 100%; }
     #project-view article .image-list:hover img {
@@ -604,7 +603,7 @@ footer {
       font-size: 1em;
       line-height: 1.5em;
       width: 100%; }
-    #project-view article > hr:not(:last-child) {
+    #project-view article > hr {
       margin-bottom: 4em;
       margin-top: 4em;
       background: rgba(255, 255, 255, 0.1);
@@ -700,6 +699,22 @@ footer {
   #project-view {
     max-height: 100vh;
     -webkit-overflow-scrolling: touch; }
+    #project-view article {
+      max-width: 100vw;
+      min-width: 100vw;
+      width: 100vw;
+      padding: 2em;
+      padding-bottom: 8em; }
+      #project-view article .button {
+        width: 100%;
+        margin: 1em 0 0.5em 0; }
+      #project-view article hr {
+        width: 100vw;
+        -webkit-transform: translateX(-2em);
+        -moz-transform: translateX(-2em);
+        transform: translateX(-2em); }
+      #project-view article:not(.active) {
+        display: none; }
     #project-view #close-all {
       top: 2.5em; }
       #project-view #close-all svg {
@@ -767,7 +782,7 @@ footer {
     margin: 0;
     margin-top: 0;
     margin-bottom: 4em; }
-    #project-view article hr:not(:last-child) {
+    #project-view article hr {
       width: calc(100% + 4em);
       -webkit-transform: translateX(-2em);
       -moz-transform: translateX(-2em);
