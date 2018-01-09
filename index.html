@@ -3,7 +3,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Alex Price</title>
-		<link rel='stylesheet' href='style/index.css?v=1.66'>
+		<link rel='stylesheet' href='style/index.css?v=1.7'>
 	  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	  <meta name='viewport' content='width=device-width, initial-scale=1'>
 	  <meta name='description' content='Digital product designer. Looking for a job.'>
@@ -172,9 +172,37 @@
     <section id='project-view' class='hidden' onclick='closeAll'>
       <article id='project--vexvolt'>
         <h1>VEXvolt</h1>
+
+        <hr />
+
+        <div class='contact'>
+          <h2>Like what you see?</h2>
+          <p>I'm open for contract work, and currently searching for a full-time product design role.</p>
+          <a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co' class='button'>
+  					<div><span>Email me</span></div>
+  				</a>
+          <a title='Check out Playbook, D&D character sheets in the cloud.' class='button' onclick='openProject(`playbook`)'>
+  					<div><span>Next Project</span></div>
+  				</a>
+        </div>
+      </article>
       </article>
       <article id='project--playbook'>
         <h1>Playbook</h1>
+
+        <hr />
+
+        <div class='contact'>
+          <h2>Like what you see?</h2>
+          <p>I'm open for contract work, and currently searching for a full-time product design role.</p>
+          <a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co' class='button'>
+  					<div><span>Email me</span></div>
+  				</a>
+          <a title='Read about Evaline, the EV charger management company I worked at.' class='button' onclick='openProject(`evaline`)'>
+  					<div><span>Next project</span></div>
+  				</a>
+        </div>
+      </article>
       </article>
       <article id='project--evaline'>
         <h1>Evaline, Inc.</h1>
@@ -182,9 +210,10 @@
         <p>Over 9 months, I led product design and front-end development on a team of 5, on three products. I hired our first engineering role, and branded the company.</p>
 
         <div class='image-list'>
-          <img src='temp-min.jpg' />
-          <img src='temp-min.jpg' />
-          <img src='temp-min.jpg' />
+          <img src='media/projects/evaline/1-min.jpg' />
+          <img src='media/projects/evaline/2-min.jpg' />
+          <img src='media/projects/evaline/3-min.jpg' />
+          <img src='media/projects/evaline/4-min.jpg' />
         </div>
 
         <p>Another sound byte about the work I did, as well as some other stuff like lessons learned from the project, people I collab’d with, and stuff like that.</p>
@@ -195,15 +224,25 @@
 
         <p>Another sound byte about the work I did, as well as some other stuff like lessons learned from the project, people I collab’d with, and stuff like that. Notice that this paragraph is a little bit longer than the one previous, just to fill the space, mostly.</p>
 
-        <a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co' class='button'>
-					<div><span>Email me</span></div>
+        <a href='https://dribbble.com/alexpriceco/projects/535866-Evaline' title='Some shots from the work I did at Evaline.' class='button'>
+					<div><span>On Dribbble</span></div>
+				</a>
+
+        <a href='http://evaline.io' title='Evaline website' class='button'>
+					<div><span>Marketing site</span></div>
 				</a>
 
         <hr />
 
         <div class='contact'>
           <h2>Like what you see?</h2>
-          <p>I'm open for contract work, and currently searching for a full-time product design role. You can reach me at alex@alexprice.co.</p>
+          <p>I'm open for contract work, and currently searching for a full-time product design role.</p>
+          <a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co' class='button'>
+  					<div><span>Email me</span></div>
+  				</a>
+          <a title='Not convinced? Read into prevoius work.' class='button' onclick='openProject(`resume`)'>
+  					<div><span>View my resume</span></div>
+  				</a>
         </div>
       </article>
     </section>
@@ -228,6 +267,11 @@
     // eslint-disable-next-line
     function openProject (projectId) {
       document.getElementById(`project-view`).className = ''
+      document.getElementById(`body`).className = 'prevent-scroll'
+
+      const projectView = document.getElementById('project-view')
+      for (let article of projectView.children) { article.className = '' }
+
       const project = document.getElementById(`project--${projectId}`)
       project.className = 'active'
       console.debug(projectId, project)
@@ -239,6 +283,7 @@
     // eslint-disable-next-line
     function closeAll (event) {
       if (event.target.id !== 'project-view') return
+      document.getElementById(`body`).className = ''
       const projectView = document.getElementById('project-view')
       for (let article of projectView.children) { article.className = '' }
       projectView.className = 'hidden'

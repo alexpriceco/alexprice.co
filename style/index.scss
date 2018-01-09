@@ -236,6 +236,7 @@ section.contact {
   margin-top: 1em;
   height: 3em;
   width: 12em;
+  cursor: pointer;
 
   color: $white;
   text-decoration: none;
@@ -362,6 +363,36 @@ section#project-view {
   height: 100vh;
   background: rgba($black, 0.9);
   @include ease(200ms);
+  @include transform(translateZ(2px));
+
+  &::after {
+    content: 'Close project';
+    position: absolute;
+    left: 50%; top: 2em;
+    min-width: 27.2em;
+    font-size: 1.25em;
+    opacity: 0.25;
+    color: $white;
+    padding: 0 4em;
+    box-sizing: border-box;
+
+    @include transform(translateX(-50%));
+    animation-delay: 1s;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: 2;
+
+    -webkit-animation-delay: 1s;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 2;
+  }
+
+  @include keyframes('pulse') {
+    0% { opacity: 0.25; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0.25; }
+  }
 
   &.hidden {
     opacity: 0;
@@ -373,14 +404,14 @@ section#project-view {
     top: 2em; left: 50%;
     pointer-events: all;
     min-width: 34em;
-    max-height: calc(100vh - 8em);
+    max-height: calc(100vh - 10em);
     overflow-y: scroll;
     background: $grey;
     box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
     box-sizing: border-box;
     border-radius: 2px;
-    margin: 2em;
-    padding: 2em;
+    margin-top: 4em;
+    padding: 4em;
 
     @include ease(200ms);
     @include transform(translate3d(-50%, 0, 0));
@@ -391,28 +422,68 @@ section#project-view {
       @include transform(translate3d(-50%, 1em, 0));
     }
 
-    > *:not(:last-child):not(h1):not(h2) {
+    > p:not(:last-child),
+    > div:not(:last-child) {
       margin-bottom: 1.5em;
+      width: 100%;
+    }
+
+    .image-list:hover img { opacity: 0.5; }
+    .image-list img:hover { opacity: 1; }
+
+    img {
+      @include ease(200ms);
+      cursor: zoom-in;
+      width: 8em;
+      height: 8em;
+      border-radius: 2px;
+      object-fit: cover;
     }
 
     p {
       opacity: 0.8;
       font-size: 1em;
       line-height: 1.5em;
+      width: 100%;
     }
 
-    hr {
+    > hr:not(:last-child) {
+      margin-bottom: 4em;
+      margin-top: 4em;
       background: rgba($white, 0.1);
       border: none;
       height: 1px;
-      width: calc(100% + 4em);
-      @include transform(translateX(-2em));
+      width: calc(100% + 8em);
+      @include transform(translateX(-4em));
+    }
+
+    > hr:first-of-type {
+      margin-top: 1em;
+    }
+
+    .button {
+      width: auto;
+      padding: 0 2em;
+      margin-top: 2em;
+      margin-right: 0.5em;
+      display: inline-flex;
+      div { @include transform(translate3d(0, 0, 0)); }
     }
 
     div.contact {
-      padding-top: 2em;
+      padding-bottom: 2em;
+      .button {
+        color: $black;
+        &::before { background: $white; }
+        &:hover::before { background: rgba($white, 0.9); }
+      }
     }
   }
+}
+
+#body.prevent-scroll {
+  height: 100vh;
+  overflow: hidden;
 }
 
 // phone
