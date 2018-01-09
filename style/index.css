@@ -184,6 +184,23 @@ table {
   animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite; }
 
+#notice {
+  width: 100vw;
+  height: auto;
+  padding: 1em;
+  color: rgba(33, 118, 255, 0.75);
+  background: #000000;
+  line-height: 1.2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; }
+  #notice > p {
+    display: table;
+    width: auto;
+    max-width: 40em;
+    margin: 0 auto; }
+
 * {
   box-sizing: border-box; }
 

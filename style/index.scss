@@ -10,6 +10,24 @@ $grey:   #1B1B1B;
 $blue1:  #2176FF;
 $blue2:  #1969FF;
 
+#notice {
+  width: 100vw;
+  height: auto;
+  padding: 1em;
+  color: rgba($blue1, 0.75);
+  background: $black;
+  line-height: 1.2em;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 1;
+  > p {
+    display: table;
+    width: auto;
+    max-width: 40em;
+    margin: 0 auto;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
