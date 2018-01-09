@@ -3,7 +3,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Alex Price</title>
-		<link rel='stylesheet' href='style/index.css?v=1.7'>
+		<link rel='stylesheet' href='style/index.css?v=1.71'>
 	  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	  <meta name='viewport' content='width=device-width, initial-scale=1'>
 	  <meta name='description' content='Digital product designer. Looking for a job.'>
@@ -293,6 +293,7 @@
 
     // eslint-disable-next-line
     function openProject (projectId) {
+      document.getElementById('project-view').scrollTop = 0
       document.getElementById('project-view').className = ''
       document.getElementById('body').className = 'prevent-scroll'
 
