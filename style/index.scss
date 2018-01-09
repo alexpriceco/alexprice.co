@@ -139,7 +139,7 @@ section.projects {
     margin-bottom: 1em;
     margin-left: 1em;
 
-    *:not(img.loading) {
+    *:not(.loading) {
       @include ease(200ms);
       @include transform(translate3d(0, 0, 0));
     }

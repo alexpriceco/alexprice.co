@@ -287,7 +287,7 @@ section.projects {
     text-decoration: none;
     margin-bottom: 1em;
     margin-left: 1em; }
-    section.projects article *:not(img.loading) {
+    section.projects article *:not(.loading) {
       -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
