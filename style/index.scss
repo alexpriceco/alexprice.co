@@ -672,6 +672,17 @@ section#project-view {
 
   section.projects {
     margin-left: 2em;
+  }
+
+  footer article.social a,
+  footer article.social a:visited {
+    margin-right: 3em;
+    &::after { right: -1.5em; }
+  }
+}
+
+@media (min-width: 1600px) and (pointer: fine) {
+  section.projects {
     &:hover article * { opacity: 0.6; }
 
     article {
@@ -683,11 +694,5 @@ section#project-view {
         opacity: 1;
       }
     }
-  }
-
-  footer article.social a,
-  footer article.social a:visited {
-    margin-right: 3em;
-    &::after { right: -1.5em; }
   }
 }
