@@ -354,7 +354,7 @@ footer {
   }
 }
 
-section#project-view {
+#project-view {
   overflow-x: hidden;
   overflow-y: scroll;
   position: fixed;
@@ -370,6 +370,7 @@ section#project-view {
     left: 0; top: 2em;
     text-align: center;
     width: 100vw;
+    height: 1em;
     font-size: 1.25em;
     opacity: 0.25;
     color: $white;
@@ -377,6 +378,10 @@ section#project-view {
     box-sizing: border-box;
     cursor: pointer;
     @include ease(200ms);
+
+    span.mobile { display: none; }
+    span.desktop { display: block; }
+    span { pointer-events: none; }
 
     animation-delay: 1.5s;
     animation-name: pulse;
@@ -558,6 +563,29 @@ section#project-view {
     h2 { font-size: 1em; }
   }
 
+  #project-view {
+    article {
+      padding: 2em;
+      max-height: calc(100% - 6em);
+      border-radius: 0;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+      top: 0;
+      min-width: 0;
+      width: 100vw;
+      margin: 0;
+      margin-top: 0;
+      margin-bottom: 4em;
+    }
+
+    #close-all {
+      bottom: 2em;
+      top: auto;
+      span.desktop { display: none; }
+      span.mobile { display: block; }
+    }
+  }
+
   footer {
     padding-bottom: 4em;
     flex-direction: column;
@@ -606,6 +634,29 @@ section#project-view {
 
     > div.padding {
       width: 1px; height: 1px;
+    }
+  }
+
+  #project-view {
+    article {
+      padding: 2em;
+      max-height: calc(100% - 6em);
+      border-radius: 0;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+      top: 0;
+      min-width: 0;
+      width: 100vw;
+      margin: 0;
+      margin-top: 0;
+      margin-bottom: 4em;
+    }
+
+    #close-all {
+      bottom: 2em;
+      top: auto;
+      span.desktop { display: none; }
+      span.mobile { display: block; }
     }
   }
 

@@ -477,7 +477,7 @@ footer {
     footer article.mail a:hover span:nth-child(2), footer article.mail a:visited:hover span:nth-child(2) {
       opacity: 0.8; }
 
-section#project-view {
+#project-view {
   overflow-x: hidden;
   overflow-y: scroll;
   position: fixed;
@@ -492,12 +492,13 @@ section#project-view {
   -webkit-transform: translateZ(2px);
   -moz-transform: translateZ(2px);
   transform: translateZ(2px); }
-  section#project-view #close-all {
+  #project-view #close-all {
     position: absolute;
     left: 0;
     top: 2em;
     text-align: center;
     width: 100vw;
+    height: 1em;
     font-size: 1.25em;
     opacity: 0.25;
     color: #FFFFFF;
@@ -513,7 +514,13 @@ section#project-view {
     -webkit-animation-delay: 1.5s;
     -webkit-animation-name: pulse;
     -webkit-animation-duration: 1s; }
-    section#project-view #close-all:hover {
+    #project-view #close-all span.mobile {
+      display: none; }
+    #project-view #close-all span.desktop {
+      display: block; }
+    #project-view #close-all span {
+      pointer-events: none; }
+    #project-view #close-all:hover {
       opacity: 1; }
 @-moz-keyframes pulse {
   0% {
@@ -536,10 +543,10 @@ section#project-view {
     opacity: 0.5; }
   100% {
     opacity: 0.25; } }
-  section#project-view.hidden {
+  #project-view.hidden {
     opacity: 0;
     pointer-events: none; }
-  section#project-view article {
+  #project-view article {
     position: fixed;
     top: 2em;
     left: 50%;
@@ -559,21 +566,21 @@ section#project-view {
     -webkit-transform: translate3d(-50%, 0, 0);
     -moz-transform: translate3d(-50%, 0, 0);
     transform: translate3d(-50%, 0, 0); }
-    section#project-view article:not(.active) {
+    #project-view article:not(.active) {
       opacity: 0;
       pointer-events: none;
       -webkit-transform: translate3d(-50%, 1em, 0);
       -moz-transform: translate3d(-50%, 1em, 0);
       transform: translate3d(-50%, 1em, 0); }
-    section#project-view article > p:not(:last-child),
-    section#project-view article > div:not(:last-child) {
+    #project-view article > p:not(:last-child),
+    #project-view article > div:not(:last-child) {
       margin-bottom: 1.5em;
       width: 100%; }
-    section#project-view article .image-list:hover img {
+    #project-view article .image-list:hover img {
       opacity: 0.5; }
-    section#project-view article .image-list img:hover {
+    #project-view article .image-list img:hover {
       opacity: 1; }
-    section#project-view article img {
+    #project-view article img {
       -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -582,12 +589,12 @@ section#project-view {
       height: 8em;
       border-radius: 2px;
       object-fit: cover; }
-    section#project-view article p {
+    #project-view article p {
       opacity: 0.8;
       font-size: 1em;
       line-height: 1.5em;
       width: 100%; }
-    section#project-view article > hr:not(:last-child) {
+    #project-view article > hr:not(:last-child) {
       margin-bottom: 4em;
       margin-top: 4em;
       background: rgba(255, 255, 255, 0.1);
@@ -597,25 +604,25 @@ section#project-view {
       -webkit-transform: translateX(-4em);
       -moz-transform: translateX(-4em);
       transform: translateX(-4em); }
-    section#project-view article > hr:first-of-type {
+    #project-view article > hr:first-of-type {
       margin-top: 1em; }
-    section#project-view article .button {
+    #project-view article .button {
       width: auto;
       padding: 0 2em;
       margin-top: 2em;
       margin-right: 0.5em;
       display: inline-flex; }
-      section#project-view article .button div {
+      #project-view article .button div {
         -webkit-transform: translate3d(0, 0, 0);
         -moz-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0); }
-    section#project-view article div.contact {
+    #project-view article div.contact {
       padding-bottom: 2em; }
-      section#project-view article div.contact .button {
+      #project-view article div.contact .button {
         color: #000000; }
-        section#project-view article div.contact .button::before {
+        #project-view article div.contact .button::before {
           background: #FFFFFF; }
-        section#project-view article div.contact .button:hover::before {
+        #project-view article div.contact .button:hover::before {
           background: rgba(255, 255, 255, 0.9); }
 
 #body.prevent-scroll {
@@ -678,6 +685,26 @@ section#project-view {
     section.contact h2 {
       font-size: 1em; }
 
+  #project-view article {
+    padding: 2em;
+    max-height: calc(100% - 6em);
+    border-radius: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    top: 0;
+    min-width: 0;
+    width: 100vw;
+    margin: 0;
+    margin-top: 0;
+    margin-bottom: 4em; }
+  #project-view #close-all {
+    bottom: 2em;
+    top: auto; }
+    #project-view #close-all span.desktop {
+      display: none; }
+    #project-view #close-all span.mobile {
+      display: block; }
+
   footer {
     padding-bottom: 4em;
     flex-direction: column;
@@ -723,6 +750,26 @@ section#project-view {
     section.projects > div.padding {
       width: 1px;
       height: 1px; }
+
+  #project-view article {
+    padding: 2em;
+    max-height: calc(100% - 6em);
+    border-radius: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    top: 0;
+    min-width: 0;
+    width: 100vw;
+    margin: 0;
+    margin-top: 0;
+    margin-bottom: 4em; }
+  #project-view #close-all {
+    bottom: 2em;
+    top: auto; }
+    #project-view #close-all span.desktop {
+      display: none; }
+    #project-view #close-all span.mobile {
+      display: block; }
 
   footer article.social a,
   footer article.social a:visited {
