@@ -365,27 +365,28 @@ section#project-view {
   @include ease(200ms);
   @include transform(translateZ(2px));
 
-  &::after {
-    content: 'Close project';
+  #close-all {
     position: absolute;
-    left: 50%; top: 2em;
-    min-width: 27.2em;
+    left: 0; top: 2em;
+    text-align: center;
+    width: 100vw;
     font-size: 1.25em;
     opacity: 0.25;
     color: $white;
     padding: 0 4em;
     box-sizing: border-box;
+    cursor: pointer;
+    @include ease(200ms);
 
-    @include transform(translateX(-50%));
-    animation-delay: 1s;
+    animation-delay: 1.5s;
     animation-name: pulse;
-    animation-duration: 2s;
-    animation-iteration-count: 2;
+    animation-duration: 1s;
 
-    -webkit-animation-delay: 1s;
+    -webkit-animation-delay: 1.5s;
     -webkit-animation-name: pulse;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: 2;
+    -webkit-animation-duration: 1s;
+
+    &:hover { opacity: 1; }
   }
 
   @include keyframes('pulse') {

@@ -492,28 +492,29 @@ section#project-view {
   -webkit-transform: translateZ(2px);
   -moz-transform: translateZ(2px);
   transform: translateZ(2px); }
-  section#project-view::after {
-    content: 'Close project';
+  section#project-view #close-all {
     position: absolute;
-    left: 50%;
+    left: 0;
     top: 2em;
-    min-width: 27.2em;
+    text-align: center;
+    width: 100vw;
     font-size: 1.25em;
     opacity: 0.25;
     color: #FFFFFF;
     padding: 0 4em;
     box-sizing: border-box;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    transform: translateX(-50%);
-    animation-delay: 1s;
+    cursor: pointer;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    animation-delay: 1.5s;
     animation-name: pulse;
-    animation-duration: 2s;
-    animation-iteration-count: 2;
-    -webkit-animation-delay: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 1.5s;
     -webkit-animation-name: pulse;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: 2; }
+    -webkit-animation-duration: 1s; }
+    section#project-view #close-all:hover {
+      opacity: 1; }
 @-moz-keyframes pulse {
   0% {
     opacity: 0.25; }
@@ -781,19 +782,6 @@ section#project-view {
 
   section.projects {
     margin-left: 2em; }
-    section.projects:hover article * {
-      opacity: 0.6; }
-    section.projects article:hover h2 {
-      opacity: 1; }
-    section.projects article:hover p {
-      opacity: 0.8; }
-    section.projects article:hover img {
-      opacity: 1; }
-    section.projects article:hover span {
-      opacity: 1; }
-      section.projects article:hover span::after {
-        opacity: 0.5;
-        width: 100%; }
 
   footer article.social a,
   footer article.social a:visited {
@@ -801,5 +789,19 @@ section#project-view {
     footer article.social a::after,
     footer article.social a:visited::after {
       right: -1.5em; } }
+@media (min-width: 1600px) and (pointer: fine) {
+  section.projects:hover article * {
+    opacity: 0.6; }
+  section.projects article:hover h2 {
+    opacity: 1; }
+  section.projects article:hover p {
+    opacity: 0.8; }
+  section.projects article:hover img {
+    opacity: 1; }
+  section.projects article:hover span {
+    opacity: 1; }
+    section.projects article:hover span::after {
+      opacity: 0.5;
+      width: 100%; } }
 
 /*# sourceMappingURL=index.css.map */

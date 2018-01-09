@@ -170,6 +170,8 @@
 		</footer>
 
     <section id='project-view' class='hidden' onclick='closeAll'>
+      <div id='close-all' onclick='closeAll'>Close project</div>
+
       <article id='project--vexvolt'>
         <h1>VEXvolt</h1>
 
@@ -282,7 +284,8 @@
 
     // eslint-disable-next-line
     function closeAll (event) {
-      if (event.target.id !== 'project-view') return
+      const id = event.target.id
+      if (id !== 'project-view' && id !== 'close-all') return
       document.getElementById(`body`).className = ''
       const projectView = document.getElementById('project-view')
       for (let article of projectView.children) { article.className = '' }
