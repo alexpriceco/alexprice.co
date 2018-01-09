@@ -548,7 +548,6 @@ section#project-view {
 @media (min-width: 900px) and (max-width: 1599px) {
   div.main > div {
     flex-direction: column;
-    &:hover article * { opacity: 0.6; }
   }
 
   header {
@@ -567,12 +566,17 @@ section#project-view {
     margin: 0;
     margin-bottom: 2em;
     a:nth-child(2n - 1) { margin-left: 0; }
-    &:hover h2 { opacity: 1; }
-    &:hover p { opacity: 0.8; }
-    &:hover img { opacity: 1; }
-    &:hover span {
-      &::after { opacity: 0.5; width: 100%; }
-      opacity: 1;
+
+    &:hover article * { opacity: 0.6; }
+
+    article {
+      &:hover h2 { opacity: 1; }
+      &:hover p { opacity: 0.8; }
+      &:hover img { opacity: 1; }
+      &:hover span {
+        &::after { opacity: 0.5; width: 100%; }
+        opacity: 1;
+      }
     }
   }
 
@@ -587,7 +591,6 @@ section#project-view {
 @media (min-width: 1600px) {
   div.main > div {
     flex-direction: row;
-    &:hover article * { opacity: 0.6; }
   }
 
   header {
@@ -598,12 +601,16 @@ section#project-view {
 
   section.projects {
     margin-left: 2em;
-    &:hover h2 { opacity: 1; }
-    &:hover p { opacity: 0.8; }
-    &:hover img { opacity: 1; }
-    &:hover span {
-      &::after { opacity: 0.5; width: 100%; }
-      opacity: 1;
+    &:hover article * { opacity: 0.6; }
+
+    article {
+      &:hover h2 { opacity: 1; }
+      &:hover p { opacity: 0.8; }
+      &:hover img { opacity: 1; }
+      &:hover span {
+        &::after { opacity: 0.5; width: 100%; }
+        opacity: 1;
+      }
     }
   }
 
