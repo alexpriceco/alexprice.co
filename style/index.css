@@ -577,7 +577,7 @@ footer {
     transform: translate3d(-50%, 0, 0); }
     #project-view article:not(.active) {
       opacity: 0;
-      max-height: 0;
+      max-height: 80vh;
       pointer-events: none;
       -webkit-transform: translate3d(-50%, 1em, 0);
       -moz-transform: translate3d(-50%, 1em, 0);
@@ -714,7 +714,7 @@ footer {
         -moz-transform: translateX(-2em);
         transform: translateX(-2em); }
       #project-view article:not(.active) {
-        display: none; }
+        max-height: 80vh; }
     #project-view #close-all {
       top: 2.5em; }
       #project-view #close-all svg {

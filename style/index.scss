@@ -433,7 +433,7 @@ footer {
 
     &:not(.active) {
       opacity: 0;
-      max-height: 0;
+      max-height: 80vh;
       pointer-events: none;
       @include transform(translate3d(-50%, 1em, 0));
     }
@@ -595,7 +595,7 @@ footer {
         @include transform(translateX(-2em));
       }
 
-      &:not(.active) { display: none; }
+      &:not(.active) { max-height: 80vh; }
     }
 
     #close-all {
