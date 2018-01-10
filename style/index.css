@@ -200,6 +200,10 @@ table {
     width: auto;
     max-width: 40em;
     margin: 0 auto; }
+  #notice svg {
+    height: 0.9em;
+    margin-right: 0.5em;
+    fill: rgba(33, 118, 255, 0.85); }
 
 * {
   box-sizing: border-box; }
@@ -618,7 +622,7 @@ footer {
     #project-view article .button {
       width: auto;
       padding: 0 2em;
-      margin-top: 2em;
+      margin-top: 0;
       margin-right: 0.5em;
       display: inline-flex; }
       #project-view article .button div {

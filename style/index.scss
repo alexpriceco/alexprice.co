@@ -26,6 +26,11 @@ $blue2:  #1969FF;
     max-width: 40em;
     margin: 0 auto;
   }
+  svg {
+    height: 0.9em;
+    margin-right: 0.5em;
+    fill: rgba($blue1, 0.85);
+  }
 }
 
 * {
@@ -479,7 +484,7 @@ footer {
     .button {
       width: auto;
       padding: 0 2em;
-      margin-top: 2em;
+      margin-top: 0;
       margin-right: 0.5em;
       display: inline-flex;
       div { @include transform(translate3d(0, 0, 0)); }
