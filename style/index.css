@@ -565,7 +565,7 @@ footer {
     pointer-events: none; }
   #project-view article {
     pointer-events: all;
-    min-width: 34em;
+    min-width: 40em;
     background: #1B1B1B;
     box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
     box-sizing: border-box;
