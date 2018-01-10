@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang='en'>
 	<head>
 		<meta charset='utf-8'>
@@ -286,7 +286,7 @@
     </section>
 	</body>
 
-  <script>
+  <script async type='text/javascript'>
     (() => {
       for (let img of document.images) {
         document.getElementById('project-view').style = ''
@@ -330,6 +330,23 @@
       const projectView = document.getElementById('project-view')
       for (let article of projectView.children) { article.className = '' }
       projectView.className = 'hidden'
+    }
+  </script>
+
+  <script type='application/ld+json'>
+    {
+      // eslint-ignore-next-line
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Alex Price, Digital Product Designer",
+      "image": "https://alexprice.co/media/me.jpg",
+      "url": "https://alexprice.co",
+      "sameAs": [
+        "https://twitter.com/alexpriceco",
+        "https://instagram.com/alexpriceco",
+        "https://github.com/alexpriceco",
+        "https://medium.com/alexpriceco"
+      ]
     }
   </script>
 
