@@ -839,13 +839,13 @@ footer {
 @media (min-width: 1600px) {
   div.main > div {
     flex-direction: row;
+    align-items: center;
   }
 
   header {
     flex-direction: column;
     max-width: 26em;
     margin-right: 2em;
-    padding-top: 10vh;
   }
 
   section.projects {
