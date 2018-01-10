@@ -640,6 +640,8 @@ footer {
     margin-left: 10vw;
     justify-content: center;
     min-height: 60vh;
+    padding-top: 10vh;
+    padding-bottom: 2em;
   }
 
   section.projects {
@@ -647,6 +649,7 @@ footer {
     flex-wrap: nowrap;
     padding: 0 10vw;
     overflow-x: scroll;
+    padding-top: 2em;
     max-width: 100vw;
     margin: 0;
 
@@ -710,6 +713,7 @@ footer {
     flex-direction: row;
     max-width: 51em;
     margin: 8em 0 8em 0;
+    padding-top: 10vh;
 
     h2 { max-width: 16em; }
     article.social { margin: 0 0 1em 0; }
@@ -717,6 +721,7 @@ footer {
 
   section.projects {
     margin: 0;
+    padding-top: 2em;
     margin-bottom: 2em;
     a:nth-child(2n - 1) { margin-left: 0; }
   }
@@ -760,10 +765,12 @@ footer {
     flex-direction: column;
     max-width: 26em;
     margin-right: 2em;
+    padding-top: 10vh;
   }
 
   section.projects {
     margin-left: 2em;
+    padding-top: 2em;
   }
 
   footer article.social a,

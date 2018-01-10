@@ -3,7 +3,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Alex Price</title>
-		<link rel='stylesheet' href='style/index.css?v=1.75'>
+		<link rel='stylesheet' href='style/index.css?v=1.76'>
 	  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	  <meta name='viewport' content='width=device-width, initial-scale=1'>
 	  <meta name='description' content='Digital product designer. Looking for a job.'>
@@ -181,7 +181,7 @@
 			</article>
 		</footer>
 
-    <section id='project-view' class='hidden' onclick='closeAll'>
+    <section id='project-view' style='opacity: 0;' class='hidden' onclick='closeAll'>
       <div id='close-all' onclick='closeAll'>
         <div class='desktop'>Click anywhere to close</div>
         <div class='mobile'>
@@ -286,6 +286,7 @@
   <script>
     (() => {
       for (let img of document.images) {
+        document.getElementById('project-view').style = ''
         img.className += ' loading'
         // eslint-disable-next-line
         const newImage = new Image()
