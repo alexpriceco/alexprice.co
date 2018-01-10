@@ -202,6 +202,7 @@ table {
     margin: 0 auto; }
   #notice svg {
     height: 0.9em;
+    margin-top: 0.1em;
     margin-right: 0.5em;
     fill: rgba(33, 118, 255, 0.85); }
 

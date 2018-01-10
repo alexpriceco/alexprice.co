@@ -20,14 +20,17 @@ $blue2:  #1969FF;
   position: absolute;
   top: 0; left: 0;
   z-index: 1;
+
   > p {
     display: table;
     width: auto;
     max-width: 40em;
     margin: 0 auto;
   }
+
   svg {
     height: 0.9em;
+    margin-top: 0.1em;
     margin-right: 0.5em;
     fill: rgba($blue1, 0.85);
   }
