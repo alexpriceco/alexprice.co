@@ -447,13 +447,13 @@ footer {
     &:not(.active) {
       opacity: 0;
       max-height: 80vh;
+      overflow: hidden;
       pointer-events: none;
       @include transform(translate3d(-50%, 1em, 0));
     }
 
     p, > div {
       margin-bottom: 1.5em;
-      width: 100%;
     }
 
     .image-list {
@@ -492,8 +492,6 @@ footer {
       cursor: zoom-in;
       min-width: 0;
       width: 100%;
-      // max-height: 8em;
-      // width: auto;
     }
 
     h2 {
@@ -502,10 +500,11 @@ footer {
 
     p {
       opacity: 0.8;
-      max-width: 36em;
+      max-width: 25.6em;
       margin-top: 1em;
       font-size: 1.25em;
       line-height: 1.6em;
+      word-break: keep-all;
     }
 
     > hr {
