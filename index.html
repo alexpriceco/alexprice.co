@@ -3,7 +3,6 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Alex Price, Digital Product Designer</title>
-		<link rel='stylesheet' href='style/index.css?v=1.82'>
 	  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	  <meta name='viewport' content='width=device-width, initial-scale=1'>
 	  <meta name='description' content="I'm Alex Price, a Digital Product Designer looking for a job.">
@@ -29,6 +28,13 @@
 	  <meta name='msapplication-TileColor' content='#101010 '>
 	  <meta name='msapplication-TileImage' content='media/favicon/ms-icon-144x144.png'>
 	  <meta name='theme-color' content='#101010 '>
+
+    <style>
+      body {
+        background: black;
+        color: white;
+      }
+    </style>
 	</head>
 
 	<body id='body'>
@@ -183,7 +189,7 @@
 			</article>
 		</footer>
 
-    <div id='project-view' style='opacity: 0;' class='hidden' onclick='closeAll'>
+    <div id='project-view' style='visibility: collapse;' class='hidden' onclick='closeAll'>
       <div id='close-all' onclick='closeAll'>
         <div class='desktop'>Click anywhere to close</div>
         <div class='mobile'>
@@ -423,8 +429,23 @@
       </article>
     </div>
 
+    <noscript>
+      <link href='style/index.css?v=1.82' rel='stylesheet' />
+    </noscript>
+
     <script>
       (() => {
+        const src = 'style/index.css?v=1.82'
+        if (document.createStyleSheet) {
+          document.createStyleSheet(src)
+        } else {
+          const link = document.createElement('link')
+          const head = document.getElementsByTagName('head')[0]
+          link.rel = 'stylesheet'
+          link.href = src
+          head.appendChild(link)
+        }
+
         for (let img of document.images) {
           document.getElementById('project-view').style = ''
           img.className += ' loading'
