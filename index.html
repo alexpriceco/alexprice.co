@@ -30,7 +30,7 @@
 	  <meta name='theme-color' content='#101010 '>
 
     <style>
-      body {
+      body .main {
         color: white;background:#142A58;background:-webkit-radial-gradient(50% 90%, rgba(0,0,0,0.5) 0%, #000 140%),-webkit-linear-gradient(-45deg, #2176FF 0%, #1969FF 100%);background:-moz-radial-gradient(50% 90%, cover, rgba(0,0,0,0.5) 0%, #000 140%),-moz-linear-gradient(-45deg, #2176FF 0%, #1969FF 100%);background:radial-gradient(50% 90%, cover, rgba(0,0,0,0.5) 0%, #000 140%),linear-gradient(135deg, #2176FF 0%, #1969FF 100%);min-height:90vh;
       }
 
@@ -549,6 +549,7 @@
         }
 
         document.getElementById('project-view').onclick = closeAll
+        document.onkeydown = (e) => closeAll(e)
       })()
 
       // eslint-disable-next-line
@@ -560,7 +561,7 @@
 
         document.getElementById('project-view').scrollTop = 0
         document.getElementById('project-view').className = ''
-        document.getElementById('body').className = 'prevent-scroll'
+        document.getElementById('body').className = 'loaded prevent-scroll'
 
         const projectView = document.getElementById('project-view')
         for (let article of projectView.children) { article.className = '' }
@@ -570,13 +571,26 @@
       }
 
       // eslint-disable-next-line
-      function closeAll (event) {
-        const id = event.target.id
-        if (id !== 'project-view' && id !== 'close-all') return
-        document.getElementById(`body`).className = ''
+      function closeAll (e) {
+        let isEscape = false
+        if ('key' in e) isEscape = (e.key === 'Escape' || e.key === 'Esc')
+        else isEscape = (e.keyCode === 27)
+
+        const body = document.getElementById(`body`)
         const projectView = document.getElementById('project-view')
-        for (let article of projectView.children) { article.className = '' }
-        projectView.className = 'hidden'
+
+        if (isEscape) {
+          if (body.className !== 'loaded') e.preDefault()
+          for (let article of projectView.children) { article.className = '' }
+          projectView.className = 'hidden'
+          body.className = 'loaded'
+        } else {
+          const id = e.target.id
+          if (id !== 'project-view' && id !== 'close-all') return
+          for (let article of projectView.children) { article.className = '' }
+          projectView.className = 'hidden'
+          body.className = 'loaded'
+        }
       }
     </script>
 

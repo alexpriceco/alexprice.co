@@ -12,15 +12,16 @@ $orange: #FF6929;
 
 #notice {
   pointer-events: none;
-  width: 100vw;
-  height: auto;
-  padding: 1em;
   color: rgba($blue1, 0.75);
   background: $black;
   line-height: 1.2em;
   position: absolute;
   top: 0; left: 0;
   z-index: 1;
+
+  width: 100vw;
+  height: auto;
+  padding: 1em;
 
   > p {
     display: table;
@@ -387,6 +388,11 @@ footer {
   }
 }
 
+body.prevent-scroll .main, body.prevent-scroll #notice {
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+}
+
 #project-view {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -394,7 +400,8 @@ footer {
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba($black, 0.9);
+  background: rgba($black, 0.25);
+  visibility: visible;
   @include ease(200ms);
   @include transform(translateZ(2px));
 
@@ -440,28 +447,29 @@ footer {
   }
 
   article {
+    border: 1px solid rgba($white, 0.1);
     pointer-events: all;
     max-width: 40em;
     min-width: 40em;
     background: $grey;
-    box-shadow: 0px 2px 12px rgba(17, 17, 17, 0.2);
+    box-shadow: 0 2px 4em $black;
     box-sizing: border-box;
     border-radius: 2px;
     padding: 4em;
 
     position: absolute;
-    top: 6em;
+    top: 18em;
     left: 50%;
 
     @include ease(200ms);
-    @include transform(translate3d(-50%, 0, 0));
+    @include transform(translate3d(-50%, -12em, 0));
 
     &:not(.active) {
       opacity: 0;
       max-height: 80vh;
       overflow: hidden;
       pointer-events: none;
-      @include transform(translate3d(-50%, 1em, 0));
+      @include transform(translate3d(-50%, -10em, 0));
     }
 
     a:not(.button) {
@@ -622,6 +630,7 @@ footer {
   }
 
   section.projects {
+    // TODO: add indicators
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 10vh 2em;
@@ -731,6 +740,7 @@ footer {
   }
 
   section.projects {
+    // TODO: add indicators
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 0 10vw;
@@ -760,7 +770,6 @@ footer {
     article {
       padding: 2em;
       border-radius: 0;
-      top: 6em;
       min-width: 0;
       width: 100vw;
       margin: 0;
@@ -822,9 +831,13 @@ footer {
   }
 
   #project-view {
-    article {
-      margin: 0;
+    -webkit-overflow-scrolling: touch;
+    > * {
+      will-change: transform;
+      -webkit-transform: translateZ(0px);
     }
+
+    article { margin: 0; }
   }
 }
 
@@ -871,9 +884,13 @@ footer {
   }
 
   #project-view {
-    article {
-      margin: 0;
+    -webkit-overflow-scrolling: touch;
+    > * {
+      will-change: transform;
+      -webkit-transform: translateZ(0px);
     }
+
+    article { margin: 0; }
   }
 }
 
