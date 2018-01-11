@@ -34,10 +34,16 @@
         color: white;background:#142A58;background:-webkit-radial-gradient(50% 90%, rgba(0,0,0,0.5) 0%, #000 140%),-webkit-linear-gradient(-45deg, #2176FF 0%, #1969FF 100%);background:-moz-radial-gradient(50% 90%, cover, rgba(0,0,0,0.5) 0%, #000 140%),-moz-linear-gradient(-45deg, #2176FF 0%, #1969FF 100%);background:radial-gradient(50% 90%, cover, rgba(0,0,0,0.5) 0%, #000 140%),linear-gradient(135deg, #2176FF 0%, #1969FF 100%);min-height:90vh;
       }
 
-      svg {
-        height:1em;width:1em;fill:white;
+      body > * {
+        -webkit-transition:all 200ms cubic-bezier(0.42, 0, 0.58, 1);-moz-transition:all 200ms cubic-bezier(0.42, 0, 0.58, 1);transition:all 200ms cubic-bezier(0.42, 0, 0.58, 1);
       }
+
+      body:not(.loaded) > * { opacity: 0; }
     </style>
+
+    <noscript><style>
+      body > * { opacity: 1; }
+    </style></noscript>
 	</head>
 
 	<body id='body'>
@@ -507,19 +513,26 @@
 
     <noscript>
       <link href='style/index.css?v=1.87' rel='stylesheet' />
+      <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
     </noscript>
 
     <script>
       (() => {
-        const src = 'style/index.css?v=1.87'
-        if (document.createStyleSheet) {
-          document.createStyleSheet(src)
-        } else {
-          const link = document.createElement('link')
-          const head = document.getElementsByTagName('head')[0]
-          link.rel = 'stylesheet'
-          link.href = src
-          head.appendChild(link)
+        let cssSource = 'style/index.css?v=1.87'
+        let fontSource = 'https://fonts.googleapis.com/css?family=Istok+Web'
+
+        const cssElem = document.createElement('link')
+        const fontElem = document.createElement('link')
+        const head = document.getElementsByTagName('head')[0]
+        cssElem.rel = 'stylesheet'
+        fontElem.rel = 'stylesheet'
+        cssElem.href = cssSource
+        fontElem.href = fontSource
+        head.appendChild(cssElem)
+        head.appendChild(fontElem)
+
+        cssElem.onload = () => {
+          document.getElementById('body').className = 'loaded'
         }
 
         for (let img of document.images) {
