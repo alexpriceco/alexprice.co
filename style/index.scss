@@ -507,7 +507,7 @@ body.prevent-scroll .main, body.prevent-scroll #notice {
       }
     }
 
-    p, > div {
+    p, > div, ol {
       margin-bottom: 1.5em;
     }
 
@@ -557,6 +557,20 @@ body.prevent-scroll .main, body.prevent-scroll #notice {
       opacity: 0.8;
       max-width: 25.6em;
       margin-top: 1em;
+      font-size: 1.25em;
+      line-height: 1.6em;
+      word-break: keep-all;
+    }
+
+    ol {
+      list-style-type: decimal;
+      padding-left: 4em;
+    }
+
+    li {
+      opacity: 0.8;
+      max-width: 25.6em;
+      margin-top: 0.5em;
       font-size: 1.25em;
       line-height: 1.6em;
       word-break: keep-all;
