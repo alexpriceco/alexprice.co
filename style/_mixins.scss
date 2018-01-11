@@ -24,6 +24,11 @@
             transform: $properties;
 }
 
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+     -moz-transform: translate3d($x, $y, $z);
+
+
 @mixin shadow($top, $left, $blur, $spread, $color) {
   -webkit-box-shadow: $top $left $blur $spread $color;
   -moz-box-shadow: $top $left $blur $spread $color;
@@ -34,12 +39,7 @@
   -moz-animation-delay: $s;
   -webkit-animation-delay: $s;
   animation-delay: $s;
-}
-
-@mixin translate3d($x, $y, $z) {
-  -webkit-transform: translate3d($x, $y, $z);
-     -moz-transform: translate3d($x, $y, $z);
-          transform: translate3d($x, $y, $z);
+}        transform: translate3d($x, $y, $z);
 }
 
 @mixin transition($rules) {

@@ -255,10 +255,19 @@ section.contact {
   }
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .button {
   margin-top: 1em;
   height: 3em;
   width: 12em;
+  max-height: 3em;
+  min-height: 3em;
+  align-self: flex-end;
   cursor: pointer;
 
   color: $white;
@@ -271,6 +280,8 @@ section.contact {
   justify-content: center;
 
   svg { fill: $white; }
+  svg.no-fill { fill: none; }
+  svg.translate { transform: translateY(0.15em); }
 
   &::before {
     content: '';
@@ -569,11 +580,6 @@ footer {
 
     div.contact {
       padding-bottom: 2em;
-      .button {
-        color: $black;
-        &::before { background: $white; }
-        &:hover::before { background: rgba($white, 0.9); }
-      }
     }
   }
 }
@@ -686,6 +692,10 @@ footer {
       > div.desktop { display: none; }
       > div.mobile { display: block; }
     }
+  }
+
+  .buttons {
+    flex-direction: column;
   }
 
   footer {
@@ -839,13 +849,13 @@ footer {
 @media (min-width: 1600px) {
   div.main > div {
     flex-direction: row;
+    align-items: center;
   }
 
   header {
     flex-direction: column;
     max-width: 26em;
     margin-right: 2em;
-    padding-top: 10vh;
   }
 
   section.projects {
