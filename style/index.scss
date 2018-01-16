@@ -388,7 +388,8 @@ footer {
   }
 }
 
-body.prevent-scroll .main, body.prevent-scroll #notice {
+body.prevent-scroll .main > *,
+body.prevent-scroll #notice {
   -webkit-filter: blur(8px);
   filter: blur(8px);
 }
