@@ -9,7 +9,7 @@ export class Contact extends Component {
         <img src='static/me-min.jpg' className='loading' />
         <h2>Let's talk.</h2>
         <p>I'm open for contract work, and currently interviewing for a full-time product design role.</p>
-        <a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co' class='button'>
+        <a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co' className='button'>
           <div>
             <svg width='16' height='12.444' viewBox='0 0 18 14'>
               <path transform='translate(1 1)' d='M 0.00176325 0L 0.00176325 -0.75C -0.412407 -0.75 -0.748176 -0.414281 -0.748237 -0.000110203L 0.00176325 0ZM 16.0009 0L 16.7509 2.46763e-05C 16.7509 -0.198892 16.6719 -0.389664 16.5313 -0.530321C 16.3906 -0.670979 16.1998 -0.75 16.0009 -0.75L 16.0009 0ZM 16.0005 12L 16.0005 12.75C 16.4147 12.75 16.7505 12.4143 16.7505 12.0001L 16.0005 12ZM 0 12L -0.75 11.9999C -0.750029 12.1989 -0.671025 12.3896 -0.530369 12.5303C -0.389714 12.671 -0.198931 12.75 0 12.75L 0 12ZM 0.00176325 0.75L 16.0009 0.75L 16.0009 -0.75L 0.00176325 -0.75L 0.00176325 0.75ZM 15.2509 -2.46763e-05L 15.2505 12L 16.7505 12.0001L 16.7509 2.46763e-05L 15.2509 -2.46763e-05ZM 16.0005 11.25L 0 11.25L 0 12.75L 16.0005 12.75L 16.0005 11.25ZM 0.75 12.0001L 0.751763 0.000110203L -0.748237 -0.000110203L -0.75 11.9999L 0.75 12.0001Z' />
