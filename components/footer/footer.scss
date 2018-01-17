@@ -1,0 +1,101 @@
+@import '../vars';
+@import '../mixins';
+
+footer {
+  padding: 2em;
+  padding-bottom: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  article.social {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+    @include ease(200ms);
+
+    a, a:visited {
+      @include ease(200ms);
+      color: $white;
+      text-decoration: none;
+      margin-right: 2em;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      > span, > svg {
+        @include ease(200ms);
+        opacity: 0.5;
+      }
+
+      svg {
+        height: 1.125em;
+      }
+
+      &::after {
+        @include ease(200ms);
+        content: '';
+        width: 1px;
+        height: 0.75em;
+        background: rgba($white, 0.25);
+        position: absolute;
+        right: -0.75em;
+        top: 0.125em;
+      }
+
+      &:last-child {
+        &::after { display: none; }
+        margin-right: 0;
+      }
+
+      // TODO: desktop
+      // &:hover {
+      //   > span, > svg { opacity: 1; }
+      // }
+
+      > span {
+        display: none;
+      }
+    }
+
+    svg {
+      @include transform(translate3d(0, 0, 1px));
+      fill: $white;
+      height: 1em;
+      margin-right: 0.5em;
+    }
+  }
+
+  article.mail {
+    a, a:visited {
+      font-size: 1.125em;
+      color: $white;
+      text-decoration: none;
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translateZ(0) scale(1.0, 1.0);
+      transform: translateZ(0);
+
+      span {
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1.0, 1.0);
+        transform: translateZ(0);
+        border: 1px solid transparent;
+        @include ease(200ms);
+        opacity: 0.5;
+      }
+
+      span:nth-child(2) { opacity: 0.4; }
+
+      // TODO: desktop
+      // &:hover {
+      //   span { opacity: 1; }
+      //   span:nth-child(2) { opacity: 0.8; }
+      // }
+    }
+  }
+}

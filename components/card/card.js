@@ -17,8 +17,7 @@ export class Card extends Component {
         <h2>{title}</h2>
         <p>{summary}</p>
         <img
-          src={`static/projects/${id}/preview-min.jpg`}
-          className='loading'
+          src={`static/projects/${id}/preview-min.jpg`} className='loading'
         />
         <Stylesheet sheet={sheet} />
       </article>

@@ -13,8 +13,8 @@ article.card {
   margin-bottom: 1em;
   margin-left: 2em;
   max-width: 25em;
-  min-width: 22em;
-  height: 14.5em;
+  min-width: 24em;
+  min-height: 14.5em;
 
   background: $grey;
   color: $white;
@@ -29,6 +29,7 @@ article.card {
     color: $white;
     text-decoration: none;
     opacity: 0.8;
+    font-size: 1.1em;
     max-width: 14.5em;
     line-height: 1.5em;
     -webkit-transform: translate3d(0, 0, 1px);

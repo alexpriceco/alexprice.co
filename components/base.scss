@@ -23,6 +23,46 @@ img.loading {
   image-rendering: pixelated;
 }
 
+.button {
+  margin-top: 2em;
+  height: 3em;
+  width: 12em;
+  max-height: 3em;
+  min-height: 3em;
+  cursor: pointer;
+
+  color: $white;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg { fill: $white; margin-right: 1em; }
+  svg.no-fill { fill: none; }
+  svg.translate { transform: translateY(0.15em); }
+
+  &::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $blue1;
+    border-radius: 0.25em;
+    @include ease(300ms);
+    z-index: -1;
+  }
+
+  &:hover::before {
+    @include transform(scale(1.02, 1));
+    background: $blue2;
+  }
+}
+
 header {
   background: #142A58;
   // for desktop
@@ -60,14 +100,22 @@ header {
 }
 
 section.project-cards {
+  box-sizing: border-box;
   flex-direction: row;
   flex-wrap: nowrap;
   display: flex;
 
   max-width: 100vw;
-  padding: 10vh 2em;
+  padding: 10vh 0;
   margin: 0;
 
   -webkit-overflow-scrolling: touch;
   overflow-x: scroll;
+
+  div.placeholder {
+    width: 1px;
+    height: 1px;
+    padding: 1em;
+    background: transparent;
+  }
 }

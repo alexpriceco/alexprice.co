@@ -4,6 +4,8 @@ import Stylesheet from '../components/general/stylesheet.js'
 import sheet from '../components/base.scss'
 
 import Card from '../components/card/card.js'
+import Contact from '../components/contact/contact.js'
+import Footer from '../components/footer/footer.js'
 
 export class Index extends Component {
   constructor (props, context) {
@@ -64,14 +66,11 @@ export class Index extends Component {
           </div>
           <section className='project-cards'>
             {this.state.cards.map((card, i) => <Card {...card} i={i} />)}
+            <div className='placeholder' />
           </section>
         </header>
-        <section>
-          // contact me
-        </section>
-        <footer>
-          // footer stuff
-        </footer>
+        <Contact />
+        <Footer />
         <Stylesheet sheet={sheet} />
       </main>
     )
