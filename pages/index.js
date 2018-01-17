@@ -65,7 +65,7 @@ export class Index extends Component {
             </h2>
           </div>
           <section className='project-cards'>
-            {this.state.cards.map((card, i) => <Card {...card} i={i} />)}
+            {this.state.cards.map((card, i) => <Card {...card} key={i} />)}
             <div className='placeholder hidden' />
           </section>
         </header>
