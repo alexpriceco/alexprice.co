@@ -1,0 +1,14 @@
+@import 'vars';
+@import 'reset';
+
+body {
+  color: $white;
+  background: $black;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font: 16px/20px $font-family;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+}

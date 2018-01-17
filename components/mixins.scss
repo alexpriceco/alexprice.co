@@ -1,4 +1,3 @@
-
 // Animation easing 💃🕺 so smoove
 @mixin ease($ms) {
     -webkit-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
@@ -12,10 +11,10 @@
             transition-delay: $ms;
 }
 
-@mixin animation-delay($ms) {
-    -webkit-animation-delay: $ms;
-       -moz-animation-delay: $ms;
-            animation-delay: $ms;
+@mixin box-shadow($top, $left, $blur, $spread, $color) {
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  -moz-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
 }
 
 @mixin transform($properties) {
@@ -27,19 +26,23 @@
 @mixin translate3d($x, $y, $z) {
   -webkit-transform: translate3d($x, $y, $z);
      -moz-transform: translate3d($x, $y, $z);
-          transform: translate3d($x, $y, $z);
-}
-
-@mixin shadow($top, $left, $blur, $spread, $color) {
-  -webkit-box-shadow: $top $left $blur $spread $color;
-  -moz-box-shadow: $top $left $blur $spread $color;
-  box-shadow: $top $left $blur $spread $color;
 }
 
 @mixin animation-delay($s) {
   -moz-animation-delay: $s;
   -webkit-animation-delay: $s;
   animation-delay: $s;
+}
+
+@mixin keyframes($name) {
+  @-moz-keyframes #{$name} { @content; }
+  @-webkit-keyframes #{$name} { @content; }
+  @keyframes #{$name} { @content; }
+
+  .#{$name} {
+    animation-name: #{$name};
+    -webkit-animation-name: #{$name};
+  }
 }
 
 @mixin transition($rules) {

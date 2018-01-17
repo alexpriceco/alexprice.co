@@ -1,0 +1,12 @@
+@import '../vars';
+@import '../reset';
+@import '../mixins';
+@import '../animations';
+
+.row {
+  margin: 0;
+  padding: 1em 0;
+  border-bottom: 1px solid $black;
+  span:last-child { color: $vexvolt--text; }
+  &:first-child { margin-top: 4em; }
+}
