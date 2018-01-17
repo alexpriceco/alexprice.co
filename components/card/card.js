@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Stylesheet from '../stylesheet.js'
+import Stylesheet from '../general/stylesheet.js'
 import sheet from './card.scss'
 
 export class Card extends Component {
@@ -11,18 +11,17 @@ export class Card extends Component {
   }
 
   render () {
-    const { data } = this.props
+    const { title, summary, i, id } = this.props
     return (
-      <div>
-        { Object.keys(data).map((key, n) => {
-          return (
-            <p className='row' key={n}>
-              <span>{key}</span>: <span>{data[key]}</span>
-            </p>
-          )
-        })}
+      <article key={`card--${i}`} className='card'>
+        <h2>{title}</h2>
+        <p>{summary}</p>
+        <img
+          src={`static/projects/${id}/preview-min.jpg`}
+          className='loading'
+        />
         <Stylesheet sheet={sheet} />
-      </div>
+      </article>
     )
   }
 }
