@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Stylesheet from '../general/stylesheet.js'
 import sheet from './contact.scss'
+import Image from '../general/image.js'
 
 export class Contact extends Component {
   render () {
     return (
       <section className='contact'>
-        <img src='static/me-min.jpg' className='loading' />
+        <Image src='static/me-min.jpg' className='loading' rel="That's me!" />
         <h2>Let's talk.</h2>
         <p>I'm open for contract work, and currently interviewing for a full-time product design role.</p>
         <a href='mailto:alex@alexprice.co?Subject=I%27d%20like%20to%20hire/contract%20you%21' title='📧 alex@alexprice.co' className='button'>
