@@ -187,6 +187,7 @@ main > article.project {
   box-sizing: border-box;
   width: 100vw;
   padding: 1em;
+  padding-top: 10vh;
 
   p {
     opacity: 0.9;
@@ -348,8 +349,11 @@ main > article.project {
     }
 
     .button-row {
+      display: flex;
+      flex-direction: row;
       max-width: 37.5em;
       margin: 0 auto;
+      > * { margin-right: 2em; }
     }
   }
 
@@ -366,6 +370,63 @@ main > article.project {
   }
 }
 
+main.evaline-inc {
+  $ev: #11E186;
+  header {
+    svg { fill: black; }
+    h1, h2 {
+      color: $black;
+      text-shadow: 2px 0 4px rgba($black, 0.15);
+    }
+  }
+
+  header::before {
+    $stop: rgba($ev, 0.75);
+    $start: rgba($ev, 0.9);
+    background: -webkit-linear-gradient(180deg, $start 0%, $stop 100%);
+    background: -moz-linear-gradient(180deg, $start 0%, $stop 100%);
+    background: linear-gradient(180deg, $start 0%, $stop 100%);
+  }
+
+  article.project {
+    a:not(.button), a:visited:not(.button) {
+      color: $ev;
+      opacity: 1;
+      &::before { background: rgba($ev, 0.6); }
+      &::after { background: rgba($ev, 0.3); }
+    }
+
+    .button {
+      color: $black;
+      &::before { background: $ev; }
+    }
+  }
+}
+
+main.playbook {
+  $book: #AD0A3D;
+  header::before {
+    $stop: rgba($book, 0.75);
+    $start: rgba($book, 0.9);
+    background: -webkit-linear-gradient(180deg, $start 0%, $stop 100%);
+    background: -moz-linear-gradient(180deg, $start 0%, $stop 100%);
+    background: linear-gradient(180deg, $start 0%, $stop 100%);
+  }
+
+  article.project {
+    a:not(.button), a:visited:not(.button) {
+      color: $book;
+      opacity: 1;
+      &::before { background: rgba($book, 0.6); }
+      &::after { background: rgba($book, 0.3); }
+    }
+
+    .button {
+      color: $white;
+      &::before { background: $book; }
+    }
+  }
+}
 
 main.vexvolt {
   $volt: #F04800;
