@@ -12,6 +12,7 @@ export class Index extends Component {
     super(props, context)
     this.state = {
       loading: true,
+      loaded: true,
       error: '',
 
       cards: [
@@ -44,12 +45,15 @@ export class Index extends Component {
   }
 
   componentDidMount () {
-    this.setState({ loading: false })
+    this.setState({ loading: false }, () => {
+      setTimeout(() => this.setState({ loaded: true }), 1000)
+    })
   }
 
   render () {
+    const { loading, loaded } = this.state
     return (
-      <main class={this.state.loading ? 'loading' : ''}>
+      <main class={loading ? 'loading' : (loaded ? 'loaded' : '')}>
         <DocumentHead />
         <header>
           <div>

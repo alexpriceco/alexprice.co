@@ -101,17 +101,24 @@ footer {
     article.mail { margin: 0; }
   }
 
-  // TODO: desktop-up
-  // article.social a,
-  // article.social a:visited {
-  //   &:hover {
-  //     > span, > svg { opacity: 1; }
-  //   }
-  // }
-  // article.mail {
-  //   &:hover {
-  //     span { opacity: 1; }
-  //     span:nth-child(2) { opacity: 0.8; }
-  //   }
-  // }
+  @include for-size(desktop-up) {
+    max-width: 64em;
+    margin: 0 auto;
+  }
+
+  @media (pointer: fine) {
+    article.social a,
+    article.social a:visited {
+      &:hover {
+        > span, > svg { opacity: 1; }
+      }
+    }
+
+    article.mail {
+      &:hover {
+        span { opacity: 1; }
+        span:nth-child(2) { opacity: 0.8; }
+      }
+    }
+  }
 }

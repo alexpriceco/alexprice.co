@@ -78,8 +78,8 @@ section.contact {
 
     &::before { opacity: 0; }
   }
-  // TODO: tablet-portrait-up
-  // TODO: tablet-landscape-up
-  // TODO: desktop-up
-  // TODO: big-desktop-up
+
+  @include for-size(big-desktop-up) {
+    margin: 40vh 0;
+  }
 }

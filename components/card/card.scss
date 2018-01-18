@@ -62,14 +62,15 @@ article.card {
     margin-top: 1em;
 
     &::after {
-      @include ease(200ms);
+      @include ease(300ms);
       content: '';
       position: absolute;
-      bottom: -1px;
+      bottom: 1px;
       left: 0;
       width: 0;
       height: 1px;
-      background: rgba($white, 0.8);
+      background: rgba($white, 0.6);
+      border-radius: 1px;
       opacity: 0;
     }
 
@@ -134,6 +135,17 @@ article.card {
       width: 8em;
     }
   }
-  // TODO: desktop-up
-  // TODO: big-desktop-up
+
+  @include for-size(desktop-up) {
+    padding-left: 3em;
+    min-width: 0;
+    max-width: 32em;
+  }
+
+  @media (pointer: fine) {
+    &:hover span::after {
+      width: calc(100% - 2px);
+      opacity: 1;
+    }
+  }
 }
