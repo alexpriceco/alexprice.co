@@ -68,27 +68,6 @@ img.loading {
 }
 
 header {
-  // background: #142A58;
-  // for desktop
-  // $radial-start: rgba($black, 0.5) 0%;
-  // $radial-stop: rgba($black, 1) 140%;
-  // background: -webkit-radial-gradient(50% 90%, $radial-start, $radial-stop),
-  //             -webkit-linear-gradient(-45deg, $blue1 0%, $blue2 100%);
-  // background: -moz-radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
-  //             -moz-linear-gradient(-45deg, $blue1 0%,  $blue2 100%);
-  // background: radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
-  //             linear-gradient(135deg, $blue1 0%, $blue2 100%);
-
-
-  // $radial-start: rgba($black, 0.5) -50%;
-  // $radial-stop: rgba($black, 0.75) 150%;
-  // background: -webkit-radial-gradient(50% 90%, $radial-start, $radial-stop),
-  //             -webkit-linear-gradient(-45deg, $blue1 0%, $blue2 100%);
-  // background: -moz-radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
-  //             -moz-linear-gradient(-45deg, $blue1 0%, $blue2 100%);
-  // background: radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
-  //             linear-gradient(135deg, $blue1 0%, $blue2 100%);
-
   min-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -105,6 +84,14 @@ header {
       opacity: 0.8;
       line-height: 1.75em;
     }
+
+    @include for-size(tablet-portrait-up) {
+      max-width: 26em;
+    }
+    // TODO: tablet-portrait-up
+    // TODO: tablet-landscape-up
+    // TODO: desktop-up
+    // TODO: big-desktop-up
   }
 }
 
@@ -126,6 +113,17 @@ section.project-cards {
     height: 1px;
     padding: 1em;
     background: transparent;
-    &.hidden { display: none; }
+    @include for-size(phone-only) { display: none; }
   }
+
+  @include for-size(tablet-portrait-up) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  // TODO: tablet-portrait-up
+  // TODO: tablet-landscape-up
+  // TODO: desktop-up
+  // TODO: big-desktop-up
 }

@@ -33,8 +33,9 @@ section.contact {
 
   p {
     margin: 0;
+    opacity: 0.8;
     font-size: 1.25em;
-    line-height: 1.5em;
+    line-height: 1.75em;
   }
 
   img {
@@ -44,8 +45,41 @@ section.contact {
     left: 50%;
     top: 0;
     width: 100%;
-    background-size: cover;
+    object-position: top;
+    object-fit: cover;
     z-index: -2;
     @include transform(translateX(-50%));
   }
+
+  @include for-size(tablet-portrait-up) {
+    flex-direction: row;
+    min-height: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: stretch;
+    margin: 20vh 0;
+
+    img {
+      border-radius: 0.25em;
+      position: relative;
+      object-position: top;
+      object-fit: cover;
+      left: auto; top: auto;
+      width: 6em;
+      max-height: 15em;
+    }
+
+    > div {
+      max-width: 20em;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    &::before { opacity: 0; }
+  }
+  // TODO: tablet-portrait-up
+  // TODO: tablet-landscape-up
+  // TODO: desktop-up
+  // TODO: big-desktop-up
 }

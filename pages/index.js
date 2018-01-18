@@ -19,7 +19,7 @@ export class Index extends Component {
           title: '🚙 Evaline, Inc.',
           id: 'evaline-inc',
           summary: `Led product design for three products, then used React and GraphQL to build them.`,
-          linkText: 'Read the postmortem'
+          linkText: 'Read about it'
         },
         {
           title: '⚡️ VEXvolt',
@@ -31,7 +31,7 @@ export class Index extends Component {
           title: '⚔️ Playbook',
           id: 'playbook',
           summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`,
-          linkText: 'Dscover Playbook'
+          linkText: 'Discover Playbook'
         },
         {
           title: '📄 Resume',

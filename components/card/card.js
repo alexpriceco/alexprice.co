@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Router from 'next/router'
 
 import Stylesheet from '../general/stylesheet.js'
@@ -12,30 +12,17 @@ export const ArrowIcon = () => (
   </svg>
 )
 
-export class Card extends Component {
-  constructor (props, context) {
-    super(props, context)
-    this.state = {
-      // any state?
-    }
-  }
-
-  render () {
-    const { title, summary, id, linkText } = this.props
-    return (
-      <article
-        className='card'
-        ref={r => { this.ref = r }}
-        onClick={() => Router.push({ pathname: `/${id}` })}
-      >
-        <h2>{title}</h2>
-        <p>{summary}</p>
-        <div><span>{linkText}</span><ArrowIcon /></div>
-        <Image src={`static/projects/${id}/preview-min.jpg`} rel='' />
-        <Stylesheet sheet={sheet} />
-      </article>
-    )
-  }
-}
+export const Card = (props) => (
+  <article
+    className='card'
+    onClick={() => Router.push({ pathname: `/${props.id}` })}
+  >
+    <h2>{props.title}</h2>
+    <p>{props.summary}</p>
+    <div><span>{props.linkText}</span><ArrowIcon /></div>
+    <Image src={`static/projects/${props.id}/preview-min.jpg`} rel='' />
+    <Stylesheet sheet={sheet} />
+  </article>
+)
 
 export default Card
