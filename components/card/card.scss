@@ -117,13 +117,23 @@ article.card {
     margin-bottom: 2em;
     height: 28em;
     border-radius: 0.25em;
-
     &::before { opacity: 0; }
-
     &:nth-child(odd) { margin-right: 2em; }
   }
-  // TODO: tablet-portrait-up
-  // TODO: tablet-landscape-up
+
+  @include for-size(tablet-landscape-up) {
+    justify-content: center;
+    padding-right: 10em;
+    min-height: none;
+    height: 20em;
+
+    img {
+      right: 0;
+      left: auto;
+      height: 100%;
+      width: 8em;
+    }
+  }
   // TODO: desktop-up
   // TODO: big-desktop-up
 }

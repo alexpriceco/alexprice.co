@@ -10,8 +10,24 @@ body {
   font-weight: 400;
 }
 
-main > * { @include easeProp(opacity, 200ms); }
+main > * { @include easeProp(200ms, opacity); }
 main.loading > * { opacity: 0; }
+
+main section.project-cards > *,
+main header > div h1,
+main header > div h2,
+header > div article.social a.connection {
+  @include easeProp(500ms, opacity);
+  &:nth-child(1) { @include transition-delay(100ms); }
+  &:nth-child(2) { @include transition-delay(200ms); }
+  &:nth-child(3) { @include transition-delay(300ms); }
+  &:nth-child(4) { @include transition-delay(400ms); }
+}
+
+main.loading header > div article.social a.connection,
+main.loading section.project-cards > *,
+main.loading header > div h1,
+main.loading header > div h2 { opacity: 0; }
 
 h1, h2, h3, h4 {
   font-weight: 400;
@@ -76,17 +92,74 @@ header {
   padding: 2em 2em 0 2em;
   box-sizing: border-box;
 
-  > div.title {
-    padding-top: 15vh;
+  > div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10vh;
     padding-bottom: 15vh;
+
+    h1 {
+      font-size: 2em;
+      line-height: 2em;
+      margin: 0;
+    }
 
     h2 {
       opacity: 0.8;
+      margin-top: 0.5em;
       line-height: 1.75em;
     }
 
+    article.social {
+      margin-top: 2em;
+      font-size: 1.25em;
+
+      &:hover a * {
+        opacity: 0.6;
+      }
+
+      a.connection {
+        text-decoration: none;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        display: flex;
+        color: rgba($white, 0.5);
+
+        @include ease(300ms);
+        @include transform(translateZ(0));
+
+        span:first-of-type {
+          margin: 0.5em;
+          color: $white;
+        }
+
+        svg {
+          fill: rgba($white, 0.5);
+          height: 1em;
+        }
+
+        * {
+          @include ease(500ms);
+          @include transform(translateZ(0));
+        }
+
+        &:hover * { opacity: 1; }
+      }
+    }
+
     @include for-size(tablet-portrait-up) {
-      max-width: 26em;
+      height: 50vh;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: calc(100vw - 4em);
+      > * { max-width: 26em; }
+    }
+
+    @include for-size(tablet-landscape-up) {
+      justify-content: space-around;
+      align-items: center;
     }
     // TODO: tablet-portrait-up
     // TODO: tablet-landscape-up
