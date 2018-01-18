@@ -64,12 +64,16 @@ export class Index extends Component {
     let path = `/projects/${id}`
     if (id === 'resume') {
       path = `static/projects/resume/Alexander Price, Product Designer.pdf`
-    } else Router.prefetch(path)
-
-    setTimeout(() => Router.push(path), 100)
-    this.setState({ loading: true }, () => {
-      setTimeout(() => window.scrollTo(0, 0), 0)
-    })
+      console.log(window.location.href)
+      window.location.href += path
+      console.log(window.location.href)
+    } else {
+      Router.prefetch(path)
+      setTimeout(() => Router.push(path), 100)
+      this.setState({ loading: true }, () => {
+        setTimeout(() => window.scrollTo(0, 0), 0)
+      })
+    }
   }
 
   render () {

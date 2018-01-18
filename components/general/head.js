@@ -7,6 +7,13 @@ export const DocumentHead = (props) => (
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <meta name='description' content="I'm Alex Price, a Digital Product Designer looking for a job." />
+    <meta property='og:site_name' content='Your Website Name Here' />
+    <meta property='og:title' content='Alex Price, Digital Product Deigner' />
+    <meta property='og:description' content='Compelling description of URL that is about 300 characters in length.' />
+    <meta property='og:image' content='YOURIMAGEURLGOESHERE.JPG' />
+    <meta property='og:url' content='http://yourcontentURLgoeshere.com/' />
+
+
 
     <link rel='apple-touch-icon' sizes='57x57' href='media/favicon/apple-icon-57x57.png' />
     <link rel='apple-touch-icon' sizes='60x60' href='media/favicon/apple-icon-60x60.png' />
