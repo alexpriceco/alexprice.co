@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import Image from '../components/general/image.js'
-import DocumentHead from '../components/general/head.js'
-import Stylesheet from '../components/general/stylesheet.js'
-import sheet from '../components/article.scss'
+import Image from '../../components/general/image.js'
+import DocumentHead from '../../components/general/head.js'
+import Stylesheet from '../../components/general/stylesheet.js'
+import sheet from '../../components/article.scss'
 
-import Contact from '../components/contact/contact.js'
-import Footer from '../components/footer/footer.js'
+import Contact from '../../components/contact/contact.js'
+import Footer from '../../components/footer/footer.js'
+import Loader from '../../components/loader/loader.js'
 
 export class Page extends Component {
   constructor (props, context) {
@@ -18,17 +19,18 @@ export class Page extends Component {
   }
 
   componentDidMount () {
-    this.setState({ loading: false }, () => {
+    setTimeout(() => this.setState({ loading: false }, () => {
       setTimeout(() => this.setState({ loaded: true }), 1000)
-    })
+    }), 300)
   }
 
   render () {
     const { loading, loaded } = this.state
     const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
     return (
-      <main class={loadingClass + ' playbook'}>
+      <main className={loadingClass + ' playbook'}>
         <DocumentHead />
+        <Loader status={loadingClass} />
         <header>
           <div>
             <h1>Playbook</h1>
@@ -40,7 +42,7 @@ export class Page extends Component {
             </div>
           </div>
 
-          <Image rel='' src='static/projects/playbook/preview-min.jpg' />
+          <Image rel='' src='/static/projects/playbook/preview-min.jpg' />
         </header>
         <article className='project'>
           <p>Having played D&amp;D for several years now, I've had a ton of fun with the game. Some of my best college memories were made with the crew I ran with—lots of laughs, plenty of epic moments, and... math. This tool has taken on several forms of the time I've spent working on it, with the most recent build gearing up for a beta test.</p>
@@ -55,10 +57,10 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/playbook/1-min.png'
+                src='/static/projects/playbook/1-min.png'
                 alt='A shot of the first version of Playbook' />
               <Image
-                src='static/projects/playbook/2-min.png'
+                src='/static/projects/playbook/2-min.png'
                 alt='Another shot of the Playbook MVP' />
             </div>
             <span>Shots of the Garlic-based app</span>
@@ -74,13 +76,13 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/playbook/3-min.jpg'
+                src='/static/projects/playbook/3-min.jpg'
                 alt='Some icon work on v2' />
               <Image
-                src='static/projects/playbook/4-min.jpg'
+                src='/static/projects/playbook/4-min.jpg'
                 alt='An example of the improved visual style' />
               <Image
-                src='static/projects/playbook/5-min.jpg'
+                src='/static/projects/playbook/5-min.jpg'
                 alt='Visual style applied to data-heavy tables' />
             </div>
             <span>Shots of v2, with special focus on branding</span>
@@ -96,13 +98,13 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/playbook/6-min.png'
+                src='/static/projects/playbook/6-min.png'
                 alt='Main menu of the new Playbook' />
               <Image
-                src='static/projects/playbook/7-min.png'
+                src='/static/projects/playbook/7-min.png'
                 alt='Fun, randomly generated loading messages!' />
               <Image
-                src='static/projects/playbook/8-min.png'
+                src='/static/projects/playbook/8-min.png'
                 alt='The Playbook landing page' />
             </div>
             <span>New Playbook and landing page</span>
@@ -122,7 +124,7 @@ export class Page extends Component {
 
             <a href='https://alexprice.co/playbook' title='Join the beta waitlist' className='button'>
               <div>
-                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' className='no-fill translate' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' className='no-fill translate' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
                   <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
                   <polyline points='15 3 21 3 21 9' />
                   <line x1='10' y1='14' x2='21' y2='3' />

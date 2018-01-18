@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import Image from '../components/general/image.js'
-import DocumentHead from '../components/general/head.js'
-import Stylesheet from '../components/general/stylesheet.js'
-import sheet from '../components/article.scss'
+import Image from '../../components/general/image.js'
+import DocumentHead from '../../components/general/head.js'
+import Stylesheet from '../../components/general/stylesheet.js'
+import sheet from '../../components/article.scss'
 
-import Contact from '../components/contact/contact.js'
-import Footer from '../components/footer/footer.js'
+import Contact from '../../components/contact/contact.js'
+import Footer from '../../components/footer/footer.js'
+import Loader from '../../components/loader/loader.js'
 
 export class Page extends Component {
   constructor (props, context) {
@@ -18,17 +19,18 @@ export class Page extends Component {
   }
 
   componentDidMount () {
-    this.setState({ loading: false }, () => {
+    setTimeout(() => this.setState({ loading: false }, () => {
       setTimeout(() => this.setState({ loaded: true }), 1000)
-    })
+    }), 300)
   }
 
   render () {
     const { loading, loaded } = this.state
     const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
     return (
-      <main class={loadingClass + ' evaline-inc'}>
+      <main className={loadingClass + ' evaline-inc'}>
         <DocumentHead />
+        <Loader status={loadingClass} />
         <header>
           <div>
             <h1>Evaline, Inc.</h1>
@@ -40,7 +42,7 @@ export class Page extends Component {
             </div>
           </div>
 
-          <Image rel='' src='static/projects/evaline-inc/preview-min.jpg' />
+          <Image rel='' src='../static/projects/evaline-inc/preview-min.jpg' />
         </header>
         <article className='project'>
           <p>Over 9 months, I led product design and front-end development on a team of 5, on three projects. I hired our first engineering role, and branded the company.</p>
@@ -48,10 +50,10 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/evaline-inc/1-min.jpg'
+                src='../static/projects/evaline-inc/1-min.jpg'
                 alt='Some of my work from Evaline (1)' />
               <Image
-                src='static/projects/evaline-inc/2-min.jpg'
+                src='../static/projects/evaline-inc/2-min.jpg'
                 alt='Some of my work from Evaline (2)' />
             </div>
             <span>Working shots!</span>
@@ -83,10 +85,10 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/evaline-inc/3-min.jpg'
+                src='../static/projects/evaline-inc/3-min.jpg'
                 alt='Some of my work from Evaline (3)' />
               <Image
-                src='static/projects/evaline-inc/4-min.jpg'
+                src='../static/projects/evaline-inc/4-min.jpg'
                 alt='Some of my work from Evaline (4)' />
             </div>
             <span>More working shots!</span>

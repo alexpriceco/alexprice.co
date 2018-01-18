@@ -16,7 +16,7 @@ main.loading > * { opacity: 0; }
 main.loaded header > div h1,
 main.loaded header > div h2,
 main.loaded section.project-cards > *,
-main.loaded header > div article.social a.connection {
+main.loaded:not(.loading) header > div article.social a.connection {
   &:nth-child(1) { @include transition-delay(100ms); }
   &:nth-child(2) { @include transition-delay(200ms); }
   &:nth-child(3) { @include transition-delay(300ms); }
@@ -30,7 +30,10 @@ main.loaded header > div article.social a.connection {
 main.loading header > div article.social a.connection,
 main.loading section.project-cards > *,
 main.loading header > div h1,
-main.loading header > div h2 { opacity: 0; }
+main.loading header > div h2 {
+  &:nth-child(n) { @include transition-delay(0); }
+  opacity: 0;
+}
 
 h1, h2, h3, h4 {
   font-weight: 400;

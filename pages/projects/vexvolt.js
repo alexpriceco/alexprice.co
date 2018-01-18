@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import Image from '../components/general/image.js'
-import DocumentHead from '../components/general/head.js'
-import Stylesheet from '../components/general/stylesheet.js'
-import sheet from '../components/article.scss'
+import Image from '../../components/general/image.js'
+import DocumentHead from '../../components/general/head.js'
+import Stylesheet from '../../components/general/stylesheet.js'
+import sheet from '../../components/article.scss'
 
-import Contact from '../components/contact/contact.js'
-import Footer from '../components/footer/footer.js'
+import Contact from '../../components/contact/contact.js'
+import Footer from '../../components/footer/footer.js'
+import Loader from '../../components/loader/loader.js'
 
 export class Page extends Component {
   constructor (props, context) {
@@ -18,16 +19,18 @@ export class Page extends Component {
   }
 
   componentDidMount () {
-    this.setState({ loading: false }, () => {
+    setTimeout(() => this.setState({ loading: false }, () => {
       setTimeout(() => this.setState({ loaded: true }), 1000)
-    })
+    }), 300)
   }
 
   render () {
     const { loading, loaded } = this.state
+    const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
     return (
-      <main class={loading ? 'loading' : (loaded ? 'loaded' : '') + ' vexvolt'}>
+      <main className={loadingClass + ' vexvolt'}>
         <DocumentHead />
+        <Loader status={loadingClass} />
         <header>
           <div>
             <h1>VEXvolt</h1>
@@ -39,7 +42,7 @@ export class Page extends Component {
             </div>
           </div>
 
-          <Image rel='' src='static/projects/vexvolt/preview-min.jpg' />
+          <Image rel='' src='../static/projects/vexvolt/preview-min.jpg' />
         </header>
         <article className='project'>
           <h2>Discovering a Problem</h2>
@@ -50,10 +53,10 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/vexvolt/1-min.jpg'
+                src='../static/projects/vexvolt/1-min.jpg'
                 alt='One of the engineering program rooms' />
               <Image
-                src='static/projects/vexvolt/2-min.jpg'
+                src='../static/projects/vexvolt/2-min.jpg'
                 alt='A render of revision three' />
             </div>
             <span>From left: high school, electronics, render.</span>
@@ -71,10 +74,10 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/vexvolt/3-min.png'
+                src='../static/projects/vexvolt/3-min.png'
                 alt='Another technical drawing' />
               <Image
-                src='static/projects/vexvolt/4-min.png'
+                src='../static/projects/vexvolt/4-min.png'
                 alt='Technical drawing, à la top view' />
             </div>
             <span>Shots from the patent application.</span>
@@ -92,13 +95,13 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
-                src='static/projects/vexvolt/5-min.jpg'
+                src='../static/projects/vexvolt/5-min.jpg'
                 alt='My printer!' />
               <Image
-                src='static/projects/vexvolt/6-min.jpg'
+                src='../static/projects/vexvolt/6-min.jpg'
                 alt='Part of a housing, with support material' />
               <Image
-                src='static/projects/vexvolt/7-min.jpg'
+                src='../static/projects/vexvolt/7-min.jpg'
                 alt='Several prints on a table' />
             </div>
             <span>From left: high school, electronics, render.</span>

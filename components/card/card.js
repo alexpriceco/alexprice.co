@@ -1,5 +1,4 @@
 import React from 'react'
-import Router from 'next/router'
 
 import Stylesheet from '../general/stylesheet.js'
 import sheet from './card.scss'
@@ -15,14 +14,7 @@ export const ArrowIcon = () => (
 export const Card = (props) => (
   <article
     className='card'
-    onClick={() => {
-      props.moving()
-      Router.push({
-        pathname: props.id === 'resume'
-          ? 'static/projects/resume/Alexander Price, Product Designer.pdf'
-          : `/projects/${props.id}`
-      })
-    }}
+    onClick={() => props.navigateTo(props.id)}
   >
     <h2>{props.title}</h2>
     <p>{props.summary}</p>

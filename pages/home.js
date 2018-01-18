@@ -4,7 +4,6 @@ import Stylesheet from '../components/general/stylesheet.js'
 import sheet from '../components/not-found.scss'
 
 export default class Home extends Component {
-
   render () {
     return (
       <section>
@@ -21,5 +20,3 @@ export default class Home extends Component {
     )
   }
 }
-
-export default Home

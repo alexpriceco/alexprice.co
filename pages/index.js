@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Router from 'next/router'
+
 import DocumentHead from '../components/general/head.js'
 import Stylesheet from '../components/general/stylesheet.js'
 import sheet from '../components/base.scss'
@@ -6,6 +8,7 @@ import sheet from '../components/base.scss'
 import Card from '../components/card/card.js'
 import Contact from '../components/contact/contact.js'
 import Footer from '../components/footer/footer.js'
+import Loader from '../components/loader/loader.js'
 
 export class Index extends Component {
   constructor (props, context) {
@@ -43,7 +46,7 @@ export class Index extends Component {
       ]
     }
 
-    this.moving = this.moving.bind(this)
+    this.navigateTo = this.navigateTo.bind(this)
   }
 
   componentDidMount () {
@@ -52,7 +55,13 @@ export class Index extends Component {
     })
   }
 
-  moving () {
+  navigateTo (id) {
+    let path = `/projects/${id}`
+    if (id === 'resume') {
+      path = `static/projects/resume/Alexander Price, Product Designer.pdf`
+    } else Router.prefetch(path)
+
+    setTimeout(() => Router.push(path), 100)
     this.setState({ loading: true }, () => {
       setTimeout(() => window.scrollTo(0, 0), 0)
     })
@@ -63,6 +72,7 @@ export class Index extends Component {
     return (
       <main className={loading ? 'loading' : (loaded ? 'loaded' : '')}>
         <DocumentHead />
+        <Loader status={loading ? 'loading' : (loaded ? 'loaded' : '')} />
         <header>
           <div>
             <article className='title'>
@@ -103,7 +113,7 @@ export class Index extends Component {
           </div>
           <section className='project-cards'>
             { this.state.cards.map((c, i) => <Card {...c}
-              moving={this.moving} key={i} />)
+              navigateTo={this.navigateTo} key={i} />)
             }
             <div className='placeholder hidden' />
           </section>

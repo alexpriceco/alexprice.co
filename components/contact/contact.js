@@ -7,7 +7,7 @@ export class Contact extends Component {
   render () {
     return (
       <section className='contact'>
-        <Image src='static/me-min.jpg' className='loading' rel="That's me!" />
+        <Image src='/static/me-min.jpg' className='loading' rel="That's me!" />
         <div>
           <h2>Let's talk.</h2>
           <p>I'm open for contract work, and currently interviewing for a full-time product design role.</p>
