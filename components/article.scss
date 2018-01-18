@@ -97,8 +97,12 @@ header {
   position: relative;
 
   h1 { margin: 0; }
-  h1, h2 {
-    text-shadow: 2px 0 4px rgba($black, 0.5);
+  h1, h2 { text-shadow: 2px 0 4px rgba($black, 0.5); }
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     z-index: 1;
   }
 
@@ -168,6 +172,15 @@ header {
     animation-delay: 1s;
     animation-name: bob;
   }
+
+  @include for-size(tablet-portrait-up) {
+    > div {
+      width: 37.5em;
+      margin: 0 auto;
+      h1 { max-width: 12em; }
+      h2 { max-width: 16em; }
+    }
+  }
 }
 
 main > article.project {
@@ -206,10 +219,12 @@ main > article.project {
       color: $white;
       margin-top: 1em;
     }
-  }
 
-  .image-list:hover img { opacity: 0.5; }
-  .image-list img:hover { opacity: 1; }
+    @media (pointer: fine) {
+      &:hover img { opacity: 0.5; }
+      & img:hover { opacity: 1; }
+    }
+  }
 
   img {
     @include ease(200ms);
@@ -294,6 +309,58 @@ main > article.project {
       &:hover::after {
         width: calc(100% - 2px);
         opacity: 1;
+      }
+    }
+  }
+
+  @include for-size(tablet-portrait-up) {
+    p { font-size: 1.25em; }
+
+    p, li {
+      max-width: 30em;
+      margin: 0 auto;
+      margin-bottom: 2em;
+    }
+
+    h2 {
+      max-width: 25em;
+      margin: 1em auto;
+      margin-top: 2em;
+    }
+
+    .image-list {
+      margin: 4em 2em;
+      box-sizing: border-box;
+      width: calc(100vw - 4em);
+
+      img {
+        width: calc(50vw - 3.5em);
+        max-width: calc(100vw - 6em);
+        max-height: 12em;
+        height: 12em;
+
+        &:nth-child(3) {
+          width: 100%;
+          margin-left: 0;
+          margin-top: 1em;
+        }
+      }
+    }
+
+    .button-row {
+      max-width: 37.5em;
+      margin: 0 auto;
+    }
+  }
+
+  @include for-size(desktop-up) {
+    .image-list {
+      max-width: 60em;
+      margin: 4em auto;
+
+      img {
+        width: 29.5em;
+        max-width: 60em;
       }
     }
   }

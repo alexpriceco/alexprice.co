@@ -29,13 +29,16 @@ export class Page extends Component {
       <main class={loading ? 'loading' : (loaded ? 'loaded' : '') + ' vexvolt'}>
         <DocumentHead />
         <header>
-          <h1>VEXvolt</h1>
-          <h2>A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.</h2>
-          <div class='point'>
-            <svg viewBox='0 0 20 8' role='img' height='8' width='20'>
-              <path transform='translate(-1, -1)' d='M 20.6972 0L 3.30278 0C 2.31337 0 1.92484 1.28323 2.74808 1.83205L 11.4453 7.6302C 11.7812 7.85413 12.2188 7.85413 12.5547 7.6302L 21.2519 1.83205C 22.0752 1.28323 21.6866 0 20.6972 0Z' />
-            </svg>
+          <div>
+            <h1>VEXvolt</h1>
+            <h2>A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.</h2>
+            <div class='point'>
+              <svg viewBox='0 0 20 8' role='img' height='8' width='20'>
+                <path transform='translate(-1, -1)' d='M 20.6972 0L 3.30278 0C 2.31337 0 1.92484 1.28323 2.74808 1.83205L 11.4453 7.6302C 11.7812 7.85413 12.2188 7.85413 12.5547 7.6302L 21.2519 1.83205C 22.0752 1.28323 21.6866 0 20.6972 0Z' />
+              </svg>
+            </div>
           </div>
+
           <Image rel='' src='static/projects/vexvolt/preview-min.jpg' />
         </header>
         <article className='project'>
@@ -103,14 +106,16 @@ export class Page extends Component {
 
           <p>That's where I'm at right now. You can follow the project on Twitter. I'm running a limited beta of the new assembly to collect some feedback, so if you're in Austin, <a href='mailto:alex@alexprice.co' title='Email me!'>shoot me an email</a>. I'm launching a Kickstarter in February. Till then!</p>
 
-          <a href='https://twitter.com/vexvolt' title='Follow the project on Twitter' className='button'>
-            <div>
-              <svg role='img' height='16' width='16' className='translate' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                <path d='M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z' />
-              </svg>
-              <span>VEXvolt Twitter</span>
-            </div>
-          </a>
+          <div className='button-row'>
+            <a href='https://twitter.com/vexvolt' title='Follow the project on Twitter' className='button'>
+              <div>
+                <svg role='img' height='16' width='16' className='translate' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                  <path d='M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z' />
+                </svg>
+                <span>VEXvolt Twitter</span>
+              </div>
+            </a>
+          </div>
 
           <hr />
         </article>
