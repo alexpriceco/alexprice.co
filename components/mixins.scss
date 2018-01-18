@@ -1,0 +1,81 @@
+// Animation easing 💃🕺 so smoove
+@mixin ease($ms) {
+    -webkit-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+       -moz-transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+            transition: all $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+
+@mixin easeProp($ms, $props...) {
+    -webkit-transition: $props $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+       -moz-transition: $props $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+            transition: $props $ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
+
+@mixin transition-delay($ms) {
+    -webkit-transition-delay: $ms;
+       -moz-transition-delay: $ms;
+            transition-delay: $ms;
+}
+
+@mixin box-shadow($top, $left, $blur, $spread, $color) {
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  -moz-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
+}
+
+@mixin transform($properties) {
+    -webkit-transform: $properties;
+       -moz-transform: $properties;
+            transform: $properties;
+}
+
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+     -moz-transform: translate3d($x, $y, $z);
+}
+
+@mixin animation-delay($s) {
+  -moz-animation-delay: $s;
+  -webkit-animation-delay: $s;
+  animation-delay: $s;
+}
+
+@mixin keyframes($name) {
+  @-moz-keyframes #{$name} { @content; }
+  @-webkit-keyframes #{$name} { @content; }
+  @keyframes #{$name} { @content; }
+
+  .#{$name} {
+    animation-name: #{$name};
+    -webkit-animation-name: #{$name};
+  }
+}
+
+@mixin transition($rules) {
+  -webkit-transition: $rules;
+     -moz-transition: $rules;
+          transition: $rules;
+}
+
+@mixin animate($s) {
+  -webkit-animation-duration: $s;
+  animation-duration: $s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+// from: medium.freecodecamp.org/
+// the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862
+@mixin for-size($size) {
+  @if $size == phone-only {
+    @media (max-width: 599px) { @content; }
+  } @else if $size == tablet-portrait-up {
+    @media (min-width: 600px) { @content; }
+  } @else if $size == tablet-landscape-up {
+    @media (min-width: 900px) { @content; }
+  } @else if $size == desktop-up {
+    @media (min-width: 1200px) { @content; }
+  } @else if $size == big-desktop-up {
+    @media (min-width: 1800px) { @content; }
+  }
+}
