@@ -51,7 +51,12 @@ export class Index extends Component {
 
   componentDidMount () {
     this.setState({ loading: false }, () => {
-      setTimeout(() => this.setState({ loaded: true }), 1000)
+      setTimeout(() => {
+        this.setState({ loaded: true })
+        const ReactGA = require('react-ga')
+        if (ReactGA && ReactGA.initialize) ReactGA.initialize('UA-63630411-1')
+        else console.warn('Google Analytics unable to initialize.')
+      }, 1000)
     })
   }
 
