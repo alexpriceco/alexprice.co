@@ -1,5 +1,6 @@
 @import 'vars';
 @import 'reset';
+@import 'animations';
 
 body {
   color: $white;
@@ -8,6 +9,9 @@ body {
   font: 16px/20px $font-family;
   font-weight: 400;
 }
+
+main > * { @include easeProp(opacity, 200ms); }
+main.loading > * { opacity: 0; }
 
 h1, h2, h3, h4 {
   font-weight: 400;
@@ -64,7 +68,7 @@ img.loading {
 }
 
 header {
-  background: #142A58;
+  // background: #142A58;
   // for desktop
   // $radial-start: rgba($black, 0.5) 0%;
   // $radial-stop: rgba($black, 1) 140%;
@@ -76,14 +80,14 @@ header {
   //             linear-gradient(135deg, $blue1 0%, $blue2 100%);
 
 
-  $radial-start: rgba($black, 0.5) -50%;
-  $radial-stop: rgba($black, 0.75) 150%;
-  background: -webkit-radial-gradient(50% 90%, $radial-start, $radial-stop),
-              -webkit-linear-gradient(-45deg, $blue1 0%, $blue2 100%);
-  background: -moz-radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
-              -moz-linear-gradient(-45deg, $blue1 0%,  $blue2 100%);
-  background: radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
-              linear-gradient(135deg, $blue1 0%, $blue2 100%);
+  // $radial-start: rgba($black, 0.5) -50%;
+  // $radial-stop: rgba($black, 0.75) 150%;
+  // background: -webkit-radial-gradient(50% 90%, $radial-start, $radial-stop),
+  //             -webkit-linear-gradient(-45deg, $blue1 0%, $blue2 100%);
+  // background: -moz-radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
+  //             -moz-linear-gradient(-45deg, $blue1 0%, $blue2 100%);
+  // background: radial-gradient(50% 90%, cover, $radial-start, $radial-stop),
+  //             linear-gradient(135deg, $blue1 0%, $blue2 100%);
 
   min-height: 80vh;
   display: flex;
@@ -96,6 +100,11 @@ header {
   > div.title {
     padding-top: 15vh;
     padding-bottom: 15vh;
+
+    h2 {
+      opacity: 0.8;
+      line-height: 1.75em;
+    }
   }
 }
 

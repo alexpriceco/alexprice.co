@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Head from '../components/general/head.js'
 import Stylesheet from '../components/general/stylesheet.js'
 import sheet from '../components/not-found.scss'
 
@@ -14,6 +15,7 @@ export default class Error extends Component {
     return (
       <section>
         <Stylesheet sheet={sheet} />
+        <Head title={`Disaster! (${this.props.statusCode} error)`} />
         <section>
           <h1>Disaster!</h1>
           <p>

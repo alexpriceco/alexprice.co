@@ -4,6 +4,7 @@ body {
   font-family: 'Istok Web', sans-serif;
   background: #000000;
   color: #ffffff;
+  padding: 0 1em;
 }
 
 section {
@@ -13,15 +14,17 @@ section {
   align-items: flex-start;
   max-width: 28em;
   margin: 0 auto;
-  height: calc(100vh - 2em);
+  height: 80vh;
 }
 
 h1 {
   font-weight: 400;
+  margin-bottom: 0.5em;
   font-size: 2em;
 }
 
 p {
+  margin: 0;
   display: inline-block;
   line-height: 1.75em;
   font-weight: 400;

@@ -1,18 +1,15 @@
 @import 'mixins';
 
-@include keyframes('slideInUp') {
+@include keyframes('fadeIn') {
   0% {
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%);
-    visibility: hidden;
-  } 1% {
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%);
-    visibility: visible;
+    -webkit-transform: translateY(0.5em);
+    transform: translateY(0.5em);
+    opacity: 0;
   } 100% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.slideInUp { -webkit-font-smoothing: antialiased; }
+.fadeIn { -webkit-font-smoothing: antialiased; }

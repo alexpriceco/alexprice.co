@@ -11,49 +11,45 @@ export class Index extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      loading: false,
+      loading: true,
       error: '',
 
       cards: [
         {
-          title: 'VEXvolt',
-          id: 'vexvolt',
-          summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`
-        },
-        {
-          title: 'Playbook',
-          id: 'playbook',
-          summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`
-        },
-        {
-          title: 'Evaline, Inc',
+          title: '🚙 Evaline, Inc.',
           id: 'evaline-inc',
-          summary: `Led product design for three products, then used React and GraphQL to build them.`
+          summary: `Led product design for three products, then used React and GraphQL to build them.`,
+          linkText: 'Read the postmortem'
         },
         {
-          title: 'Resume',
+          title: '⚡️ VEXvolt',
+          id: 'vexvolt',
+          summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`,
+          linkText: 'Check it out'
+        },
+        {
+          title: '⚔️ Playbook',
+          id: 'playbook',
+          summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`,
+          linkText: 'Dscover Playbook'
+        },
+        {
+          title: '📄 Resume',
           id: 'resume',
-          summary: `Get a brief overview of some skills I've employed, and projects I’ve worked on.`
+          summary: `Get a brief overview of some skills I've employed, and projects I’ve worked on.`,
+          linkText: 'View resume'
         }
       ]
     }
   }
 
   componentDidMount () {
+    this.setState({ loading: false })
   }
 
   render () {
-    if (this.state.loading) {
-      return (
-        <main>
-          Just a second...
-          <Stylesheet sheet={sheet} />
-        </main>
-      )
-    }
-
     return (
-      <main>
+      <main class={this.state.loading ? 'loading' : ''}>
         <DocumentHead />
         <header>
           <div className='title'>
