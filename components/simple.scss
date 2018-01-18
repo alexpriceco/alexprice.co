@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Istok+Web');
+@import 'mixins';
 
 body {
   font-family: 'Istok Web', sans-serif;
@@ -15,6 +16,9 @@ section {
   max-width: 28em;
   margin: 0 auto;
   height: 80vh;
+
+  @include ease(200ms);
+  &.loading { opacity: 0; }
 }
 
 h1 {

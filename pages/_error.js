@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Head from '../components/general/head.js'
 import Stylesheet from '../components/general/stylesheet.js'
-import sheet from '../components/not-found.scss'
+import sheet from '../components/simple.scss'
 
 export default class Error extends Component {
   static getInitialProps ({ res, jsonPageRes }) {
