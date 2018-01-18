@@ -15,11 +15,14 @@ export const ArrowIcon = () => (
 export const Card = (props) => (
   <article
     className='card'
-    onClick={() => Router.push({
-      pathname: props.id === 'resume'
-        ? 'static/projects/resume/Alexander Price, Product Designer.pdf'
-        : `/${props.id}`
-    })}
+    onClick={() => {
+      props.moving()
+      Router.push({
+        pathname: props.id === 'resume'
+          ? 'static/projects/resume/Alexander Price, Product Designer.pdf'
+          : `/projects/${props.id}`
+      })
+    }}
   >
     <h2>{props.title}</h2>
     <p>{props.summary}</p>

@@ -32,7 +32,7 @@ export class Page extends Component {
           <div>
             <h1>VEXvolt</h1>
             <h2>A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.</h2>
-            <div class='point'>
+            <div className='point'>
               <svg viewBox='0 0 20 8' role='img' height='8' width='20'>
                 <path transform='translate(-1, -1)' d='M 20.6972 0L 3.30278 0C 2.31337 0 1.92484 1.28323 2.74808 1.83205L 11.4453 7.6302C 11.7812 7.85413 12.2188 7.85413 12.5547 7.6302L 21.2519 1.83205C 22.0752 1.28323 21.6866 0 20.6972 0Z' />
               </svg>

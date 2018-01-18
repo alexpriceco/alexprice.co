@@ -1,0 +1,193 @@
+@import 'reset';
+@import 'mixins';
+@import 'animations';
+@import url('https://fonts.googleapis.com/css?family=Gentium+Basic:400,700');
+
+$red: #B71240;
+$red2: #B31A42;
+$black: #000000;
+$white: #F4EBDC;
+$off-white: #E8D9C1;
+$off-white2: #9E8D72;
+$font-family: 'Gentium Basic', sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $black;
+  color: $black;
+  min-width: 100vw;
+}
+
+main {
+  background: $white;
+  box-sizing: border-box;
+  cursor: default;
+  font-family: $font-family;
+  line-height: 1.75em;
+  font-size: 20px;
+  height: calc(100vh + 8em);
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 600;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: normal;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  border: 0;
+
+  margin: 0;
+  padding: 0;
+  background: $off-white;
+
+  &:first-of-type {
+    margin-top: 1.5em;
+  }
+}
+
+input {
+  box-sizing: border-box;
+  font-family: $font-family;
+  background: transparent;
+  position: relative;
+  font-size: 1em;
+  padding: 1em 0;
+  width: 100%;
+  border: 0;
+  margin: 0;
+
+  @include ease(200ms);
+
+  &::placeholder {
+    color: $off-white2;
+    opacity: 1;
+  }
+
+  &:focus {
+    padding: 1em;
+    outline: none;
+    background: $off-white;
+
+    &::placeholder {
+      color: $black;
+      opacity: 0.5;
+    }
+  }
+}
+
+section {
+  width: 16em;
+  margin-top: -6em;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  article {
+    opacity: 0;
+    min-width: 16em;
+    pointer-events: none;
+    @include ease(200ms);
+    overflow: visible;
+    z-index: 100;
+
+    &:nth-of-type(1) {
+      &.up { @include transform(translate3d(0, -1em, 0)) }
+      &.down { @include transform(translate3d(0, 1em, 0)) }
+      &.visible {
+        opacity: 1;
+        pointer-events: all;
+        @include transform(translate3d(0, 0, 0))
+      }
+    }
+
+    &:nth-of-type(2) {
+      &.up { @include transform(translate3d(-16em, -1em, 0)) }
+      &.down { @include transform(translate3d(-16em, 1em, 0)) }
+      &.visible {
+        opacity: 1;
+        pointer-events: all;
+        @include transition-delay(100ms);
+        @include transform(translate3d(-16em, 0, 0))
+      }
+    }
+
+    &:nth-of-type(3) {
+      &.up { @include transform(translate3d(-32em, -1em, 0)) }
+      &.down { @include transform(translate3d(-32em, 1em, 0)) }
+      &.visible {
+        opacity: 1;
+        pointer-events: all;
+        @include transition-delay(100ms);
+        @include transform(translate3d(-32em, 0, 0))
+      }
+    }
+  }
+}
+
+.footer-wrapper {
+  width: 100vw;
+  background: $black;
+  font-size: 0.9em;
+  position: absolute;
+  left: 0;
+  top: calc(100vh - 1em);
+  footer { margin: 0 auto; }
+}
+
+.button {
+  cursor: pointer;
+  margin-top: 1.5em;
+  padding: 0.75em 1.5em;
+  display: inline-block;
+
+  border-radius: 2px;
+  @include ease(200ms);
+
+  color: $white;
+  background: $red;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: $red2;
+    @include box-shadow(2px, 0, 1em, 0.5em, rgba($black, 0.05));
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+section.loaded > * {
+  @include transform(translateY(0));
+  opacity: 1;
+}
+
+section > * {
+  @include ease(300ms);
+  &:nth-child(1) { @include transition-delay(100ms); }
+  &:nth-child(2) { @include transition-delay(200ms); }
+}
+
+section.loading > * {
+  @include transform(translateY(1em));
+  opacity: 0;
+}

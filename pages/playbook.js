@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import Image from '../components/general/image.js'
-import DocumentHead from '../components/general/head.js'
-import Stylesheet from '../components/general/stylesheet.js'
-import sheet from '../components/article.scss'
-
-import Contact from '../components/contact/contact.js'
+import Head from '../components/general/head.js'
 import Footer from '../components/footer/footer.js'
+import Stylesheet from '../components/general/stylesheet.js'
+import sheet from '../components/playbook-landing.scss'
 
-export class Page extends Component {
+export default class Playbook extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
       loading: true,
       loaded: true,
-      error: ''
+      email: '',
+      step: 0
     }
   }
 
@@ -23,123 +21,100 @@ export class Page extends Component {
     })
   }
 
+  setStep (n) {
+    this.setState({ step: n })
+    if (n === 1 && this.input) this.input.focus()
+    if (n === 2) this.submitEmail()
+  }
+
+  validateEmail () {
+    const { email } = this.state
+
+    let valid = false
+    if (email.match(/.+@.+\..+/) !== null) valid = true
+    if (valid) this.setState({ valid: true })
+    else this.setState({ valid: false })
+
+    return valid
+  }
+
+  submitEmail () {
+    const email = '*' + this.state.email + '*'
+    const data = JSON.stringify({
+      text: email + ' signed up for the beta!'
+    })
+    const req = new XMLHttpRequest() // eslint-disable-line
+    const slackWebhook = 'https://hooks.slack.com/services/' +
+      'T076KJELT/B8FSZ5TBJ/kTMddEu7qHJZbXdRfzLxXlHa'
+    req.open('POST', slackWebhook, true)
+    req.send(data)
+  }
+
   render () {
-    const { loading, loaded } = this.state
-    const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
+    const { step, loading, loaded } = this.state
     return (
-      <main class={loadingClass + ' playbook'}>
-        <DocumentHead />
-        <header>
-          <div>
-            <h1>Playbook</h1>
-            <h2>A simpler D&D character sheet, built with great design, and a focused user experience.</h2>
-            <div className='point'>
-              <svg viewBox='0 0 20 8' role='img' height='8' width='20'>
-                <path transform='translate(-1, -1)' d='M 20.6972 0L 3.30278 0C 2.31337 0 1.92484 1.28323 2.74808 1.83205L 11.4453 7.6302C 11.7812 7.85413 12.2188 7.85413 12.5547 7.6302L 21.2519 1.83205C 22.0752 1.28323 21.6866 0 20.6972 0Z' />
-              </svg>
-            </div>
-          </div>
-
-          <Image rel='' src='static/projects/playbook/preview-min.jpg' />
-        </header>
-        <article className='project'>
-          <p>Having played D&amp;D for several years now, I've had a ton of fun with the game. Some of my best college memories were made with the crew I ran with—lots of laughs, plenty of epic moments, and... math. This tool has taken on several forms of the time I've spent working on it, with the most recent build gearing up for a beta test.</p>
-
-          <h2>Version one</h2>
-          <p>The first iteration of Playbook came about as a result of my frustration with existing tools. I'm a forgetful person, and hate anything on paper. If I receive a document, I scan it, and dump it into Dropbox, or it's going to get lost. Throughout my time playing D&D, I'd tried tools I used at work (text editors and Figma), in addition to tools built by the community (like Fight Club). My work tools were a pain to keep updated, and lacked much of the automation necessary to be valuable, and I found D&D-specific tools to be clunky, and aesthetically disappointing.</p>
-
-          <p>I built a custom, static site for my character at the time, a warlock, with all my spells, sorted by what made the most sense for a warlock, and inputs for things like inventory, health points, and abilities, all stored locally, so as to persist between sessions.</p>
-
-          <p>The sheet worked great, but it required quite a bit of upkeep, and wasn't scalable to other character builds.</p>
-
-          <div className='image-list'>
-            <div>
-              <Image
-                src='static/projects/playbook/1-min.png'
-                alt='A shot of the first version of Playbook' />
-              <Image
-                src='static/projects/playbook/2-min.png'
-                alt='Another shot of the Playbook MVP' />
-            </div>
-            <span>Shots of the Garlic-based app</span>
-          </div>
-
-          <h2>Version Two</h2>
-          <p>I'd just started a new full time position at Evaline, Inc., working on tools for electric vehicle drivers, and needed to get comfortable with React. React made perfect sense for Playbook—many parts of the project were similar (read: components), and it was difficult to control elements on the page with pure javascript and html.</p>
-
-          <p>I got overzealous with the first build, and stagnated. With the first version, I'd focused <i>just on my character</i>, and hadn't given a second thought to other builds, and how different races, classes, and play styles might effect the way the app should be represented. Building for all the potential use cases was incredibly difficult, and ultimately, without a clear strategy for deployment, with work ramping up, and just little old me, I took a step back.</p>
-
-          <p>I'd established a clear visual dictionary for the app though, with a royal red, and muted tan color scheme, paired with plenty of serifs and drop caps. I wanted to keep in line with the fantasy feeling of D&D, and designing this second iteration of Playbook gave me an opportunity to work on something so different from my normal groove.</p>
-
-          <div className='image-list'>
-            <div>
-              <Image
-                src='static/projects/playbook/3-min.jpg'
-                alt='Some icon work on v2' />
-              <Image
-                src='static/projects/playbook/4-min.jpg'
-                alt='An example of the improved visual style' />
-              <Image
-                src='static/projects/playbook/5-min.jpg'
-                alt='Visual style applied to data-heavy tables' />
-            </div>
-            <span>Shots of v2, with special focus on branding</span>
-          </div>
-
-          <h2>Version Two, again</h2>
-          <p>Having taken a several-month hiatus on Playbook, I picked it back up again after leaving Evaline in December of 2017. I went back to pen, paper, and Figma, and thought about how a desktop web-app might best represent different portions of a character sheet.</p>
-
-          <p>I did my research, and collected many different variations on the character sheet from the community. Some went more artistic, whereas some really geeked out on the PDF math they could do. I categorized different sections of the sheet, and grouped similar functions together.</p>
-
-          <p>I also partnered with my friend Connor. I'd worked with him before at Evaline (and before that), and he was a part of my weekly D&D group. Having another person on the project gave me motivation to put time in.</p>
-
-          <div className='image-list'>
-            <div>
-              <Image
-                src='static/projects/playbook/6-min.png'
-                alt='Main menu of the new Playbook' />
-              <Image
-                src='static/projects/playbook/7-min.png'
-                alt='Fun, randomly generated loading messages!' />
-              <Image
-                src='static/projects/playbook/8-min.png'
-                alt='The Playbook landing page' />
-            </div>
-            <span>New Playbook and landing page</span>
-          </div>
-
-          <p>Right now, we're still working on building out support for all the basic classes and races. You can follow along on Dribbble, or sign up for the beta waitlist below. There's a ton of challenging design and engineering problems, and I'm looking forward to future posts about solving those.</p>
-
-          <div className='button-row'>
-            <a href='https://dribbble.com/alexpriceco/projects/538677-Playbook' title='Some shots from the work done on Playbook.' className='button'>
-              <div>
-                <svg role='img' height='16' width='16' viewBox='0 0 24 24' className='translate' xmlns='http://www.w3.org/2000/svg'>
-                  <path d='M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z' />
-                </svg>
-                <span>On Dribbble</span>
-              </div>
-            </a>
-
-            <a href='https://alexprice.co/playbook' title='Join the beta waitlist' className='button'>
-              <div>
-                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' className='no-fill translate' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-                  <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
-                  <polyline points='15 3 21 3 21 9' />
-                  <line x1='10' y1='14' x2='21' y2='3' />
-                </svg>
-                <span>Join the beta</span>
-              </div>
-            </a>
-          </div>
-
-          <hr />
-        </article>
-        <Contact />
-        <Footer />
+      <main>
         <Stylesheet sheet={sheet} />
+        <Head title='APCO: Playbook' />
+        <section className={loading ? 'loading' : (loaded ? 'loaded' : '')}>
+          <svg width='72' height='72' viewBox='0 0 72 72' version='1.1' fill='none'>
+            <path transform='translate(22 16)' fill='#B31A42' d='M 0.28125 40.3125L 0.28125 38.9688C 1.69792 38.6771 2.80208 38.3646 3.59375 38.0312C 4.40625 37.6771 4.8125 37.3542 4.8125 37.0625L 4.8125 3.125C 4.04167 3.22917 3.27083 3.34375 2.5 3.46875C 1.75 3.57292 1.01042 3.6875 0.28125 3.8125L 0 1.875C 1 1.60417 2.08333 1.35417 3.25 1.125C 4.4375 0.895833 5.66667 0.697917 6.9375 0.53125C 8.20833 0.364583 9.48958 0.239583 10.7812 0.15625C 12.0938 0.0520833 13.3854 0 14.6562 0C 16.9062 0 18.9375 0.239583 20.75 0.71875C 22.5625 1.19792 24.1042 1.90625 25.375 2.84375C 26.6667 3.78125 27.6562 4.9375 28.3438 6.3125C 29.0521 7.6875 29.4062 9.27083 29.4062 11.0625C 29.4062 12.5 29.1979 13.8125 28.7812 15C 28.3854 16.1875 27.8438 17.25 27.1562 18.1875C 26.4896 19.1042 25.7188 19.9062 24.8438 20.5938C 23.9688 21.2604 23.0521 21.8229 22.0938 22.2812C 21.1562 22.7188 20.2083 23.0521 19.25 23.2812C 18.3125 23.4896 17.4375 23.5938 16.625 23.5938C 14.6667 23.5938 12.9896 23.2812 11.5938 22.6562L 10.875 20.3125C 11.75 20.7083 12.5833 20.9688 13.375 21.0938C 14.1875 21.1979 14.9583 21.25 15.6875 21.25C 16.6458 21.25 17.6458 21.0625 18.6875 20.6875C 19.7292 20.3125 20.6875 19.75 21.5625 19C 22.4375 18.25 23.1562 17.3229 23.7188 16.2188C 24.2812 15.1146 24.5625 13.8229 24.5625 12.3438C 24.5625 10.6354 24.25 9.16667 23.625 7.9375C 23.0208 6.70833 22.1875 5.70833 21.125 4.9375C 20.0625 4.14583 18.8229 3.5625 17.4062 3.1875C 15.9896 2.8125 14.4792 2.625 12.875 2.625C 12.3542 2.625 11.8333 2.63542 11.3125 2.65625C 10.8125 2.65625 10.3125 2.66667 9.8125 2.6875L 9.8125 37.0625C 9.8125 37.1875 9.89583 37.3229 10.0625 37.4688C 10.2292 37.6146 10.5104 37.7708 10.9062 37.9375C 11.3229 38.1042 11.8854 38.2708 12.5938 38.4375C 13.3021 38.6042 14.1979 38.7812 15.2812 38.9688L 15.2812 40.3125L 0.28125 40.3125Z' />
+            <path strokeWidth='2' transform='translate(1 1)' stroke='#B31A42' d='M 61.9999 65L 61.9999 70L 70.0002 70L 70.0002 62L 53.9999 62L 45.9999 70L 34.9999 70L 24 70L 16 62L 11 62M 61.9999 59L 61.9999 54L 70.0002 45.9999L 70.0002 34.9999L 70.0002 24L 61.9999 15.9997L 61.9999 0L 70.0002 0L 70.0002 8L 65 8M 59 8L 53.9999 8L 45.9999 0L 34.9999 0L 24 0L 16 8L 0 8L 0 0L 8 0L 8 5M 5 62L 0 62L 0 70L 8 70L 8 54L 0 46L 0 34.9999L 0 24L 8 16L 8 11' />
+            <path strokeWidth='2' transform='translate(1 1)' stroke='#B31A42' d='M 11 0L 16 0L 18 2M 0 11L 0 16L 2 18M 22 6L 24 8L 19 13L 13 13L 13 19L 8 24L 6 22M 59 0L 54 0L 52 2M 48 6L 46 8L 51 13L 57 13L 57 19L 62 24L 64 22M 68 18L 70 16L 70 11M 70 59L 70 54L 68 52M 64 48L 62 46L 57 51L 57 57L 51 57L 46 62L 48 64M 52 68L 54 70L 59 70M 11 70L 16 70L 18 68M 22 64L 24 62L 19 57L 13 57L 13 51L 8 46L 6 48M 2 52L 0 54L 0 59M 27 3L 27 5L 29 7L 41 7L 43 5L 43 3M 67 27L 65 27L 63 29L 63 41L 65 43L 67 43M 3 27L 5 27L 7 29L 7 41L 5 43L 3 43M 27 67L 27 65L 29 63L 41 63L 43 65L 43 67M 13 25L 15 27L 15 45L 13 47M 57 25L 55 27L 55 45L 57 47M 58 35L 60 35M 12 35L 10 35M 10 31L 12 31M 12 39L 10 39M 58 39L 60 39M 58 31L 60 31' />
+          </svg>
+
+          <div>
+            <article className={step === 0 ? 'visible' : 'down'}>
+              <h1>Less math, more monster slaying.</h1>
+              <p>Playbook is a cloud character sheet coming in 2018. If you'd like early access, I'm looking for beta testers.</p>
+              <div className='button' onClick={() => this.setStep(1)}>
+                I'm interested!
+              </div>
+            </article>
+
+            <article className={step < 1 ? 'up' : (step === 1 ? 'visible' : 'down')}>
+              <h1>Join the beta waitlist?</h1>
+              <p>Your address will never be shared, and you'll receive one email when Playbook is ready for you.</p>
+              <hr />
+              <input
+                id='email'
+                type='email'
+                ref={(r) => { this.input = r }}
+                value={this.state.email}
+                placeholder='your@email.io'
+                onChange={(event) => {
+                  this.setState({ email: event.target.value }, () => {
+                    this.validateEmail()
+                  })
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && this.state.valid) this.setStep(2)
+                }}
+              />
+              <hr />
+              <div
+                className={`button ${this.state.valid ? '' : 'disabled'}`}
+                onClick={() => this.setStep(2)}
+              >
+                Sign me up!
+              </div>
+            </article>
+
+            <article className={step < 2 ? 'up' : (step === 2 ? 'visible' : 'down')}>
+              <h1>Thank you!</h1>
+              <p>
+                I’m stoked you’re interested in Playbook, and look forward to offering you a beta invite. Till then! 
+                <br /><br />
+                &mdash; Alex
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <div className='footer-wrapper'>
+          <Footer />
+        </div>
       </main>
     )
   }
 }
-
-export default Page
