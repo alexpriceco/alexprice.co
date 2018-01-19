@@ -131,11 +131,11 @@ export default class Home extends Component {
 
     if (overdue) {
       suggestion = <a href={aTask.url} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
-      if (dueToday) span = <span>You have {dueToday} tasks due today, and {overdue} overdue. Why don't you start with {suggestion}</span>
+      if (dueToday) span = <span>You have {dueToday === 1 ? 'one ' : dueToday} task{dueToday === 1 ? '' : 's'} due today, and {overdue} overdue. Why don't you start with {suggestion}</span>
       else span = <span>There's nothing on the docket today, but there are {overdue} overdue. Why don't you start with {suggestion}</span>
     } else if (dueToday) {
       suggestion = <a href={aTask.url} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
-      span = <span>You have {dueToday} tasks due today. Why don't you start with {suggestion}</span>
+      span = <span>You have {dueToday === 1 ? 'one ' : dueToday} task{dueToday === 1 ? '' : 's'} due today. Why don't you start with {suggestion}</span>
     }
 
     return span
@@ -164,7 +164,7 @@ export default class Home extends Component {
         : <section>
           <h1>Good day, Alexander.</h1>
           <p>
-            It's {this.getDay()} {this.getDate()}.<span>{this.getTaskSummary()}</span>
+            It's {this.getDay()} {this.getDate()}. <span>{this.getTaskSummary()}</span>
           </p>
         </section>}
       </section>

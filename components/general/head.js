@@ -9,7 +9,7 @@ export const DocumentHead = (props) => (
     <meta name='description' content="I'm Alex Price, a Digital Product Designer looking for a job." />
     <meta property='og:site_name' content='Alex Price, Digital Product Deigner' />
     <meta property='og:title' content='Alex Price, Digital Product Deigner' />
-    <meta property='og:image' content='static/me.jpg' />
+    <meta property='og:image' content='https://alexprice.co/static/me.jpg' />
     <meta property='og:url' content='https://alexprice.co/' />
     <meta property='og:description' content='Digital product designer from ATX. Background in electric vehicles, robotics, and supply chain edtech. D&D on the weekends.' />
 
