@@ -10,6 +10,8 @@ import Contact from '../components/contact/contact.js'
 import Footer from '../components/footer/footer.js'
 import Loader from '../components/loader/loader.js'
 
+import ReactGA from 'react-ga'
+
 export class Index extends Component {
   constructor (props, context) {
     super(props, context)
@@ -53,9 +55,8 @@ export class Index extends Component {
     this.setState({ loading: false }, () => {
       setTimeout(() => {
         this.setState({ loaded: true })
-        const ReactGA = require('react-ga')
-        if (ReactGA && ReactGA.initialize) ReactGA.initialize('UA-63630411-1')
-        else console.warn('Google Analytics unable to initialize.')
+        ReactGA.initialize('UA-63630411-1')
+        ReactGA.pageview(window.location.pathname + window.location.search)
       }, 1000)
     })
   }
@@ -64,9 +65,7 @@ export class Index extends Component {
     let path = `/projects/${id}`
     if (id === 'resume') {
       path = `static/projects/resume/Alexander Price, Product Designer.pdf`
-      console.log(window.location.href)
       window.location.href += path
-      console.log(window.location.href)
     } else {
       Router.prefetch(path)
       setTimeout(() => Router.push(path), 100)

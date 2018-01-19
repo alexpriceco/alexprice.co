@@ -8,6 +8,8 @@ import Contact from '../../components/contact/contact.js'
 import Footer from '../../components/footer/footer.js'
 import Loader from '../../components/loader/loader.js'
 
+import ReactGA from 'react-ga'
+
 export class Page extends Component {
   constructor (props, context) {
     super(props, context)
@@ -21,9 +23,8 @@ export class Page extends Component {
   componentDidMount () {
     setTimeout(() => this.setState({ loading: false }, () => {
       setTimeout(() => this.setState({ loaded: true }), 1000)
-      const ReactGA = require('react-ga')
-      if (ReactGA && ReactGA.initialize) ReactGA.initialize('UA-63630411-1')
-      else console.warn('Google Analytics unable to initialize.')
+      ReactGA.initialize('UA-63630411-1')
+      ReactGA.pageview(window.location.pathname + window.location.search)
     }), 300)
   }
 
