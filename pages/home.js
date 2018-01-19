@@ -130,11 +130,11 @@ export default class Home extends Component {
     let span = <span>It looks like you're done for the day! 🎉 {suggestion}</span>
 
     if (overdue) {
-      suggestion = <a href={`https://todoist.com`} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
+      suggestion = <a href={aTask.url} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
       if (dueToday) span = <span>You have {dueToday} tasks due today, and {overdue} overdue. Why don't you start with {suggestion}</span>
       else span = <span>There's nothing on the docket today, but there are {overdue} overdue. Why don't you start with {suggestion}</span>
     } else if (dueToday) {
-      suggestion = <a href={`https://todoist.com`} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
+      suggestion = <a href={aTask.url} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
       span = <span>You have {dueToday} tasks due today. Why don't you start with {suggestion}</span>
     }
 
