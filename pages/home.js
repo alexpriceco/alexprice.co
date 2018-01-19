@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Head from '../components/general/head.js'
 import Stylesheet from '../components/general/stylesheet.js'
 import sheet from '../components/simple.scss'
-import { TODOIST_TOKEN } from '../config/tokens.js'
 import axios from 'axios'
 
 export default class Home extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
+      noToken: false,
       loading: true,
       today: new Date(),
       aTask: {},
@@ -21,7 +21,7 @@ export default class Home extends Component {
 
   componentDidMount () {
     this.setState({ date: this.getDate() })
-    this.fetchTasks(TODOIST_TOKEN)
+    this.fetchTasks()
   }
 
   getDate () {
@@ -64,37 +64,63 @@ export default class Home extends Component {
     })()
   }
 
-  async fetchTasks (token) {
-    const uri = 'https://beta.todoist.com/API/v8/tasks'
-
-    axios.get(uri, {
-      params: {
-        'token': token,
-        'filter': `due ${this.getDate()} | overdue`
-      }
-    })
-    .then(response => {
-      let dueToday = 0
-      let overdue = 0
-
-      for (let task of response.data) {
-        if (task.due.string === this.state.date) dueToday++
-        else overdue++
-      }
-
-      const random = Math.floor(Math.random() * response.data.length)
-
+  tryKey (token) {
+    this.fetchTasks(token).then((res) => {
+      /* global localStorage */
+      localStorage.setItem('todoistToken', token)
+      this.input.blur()
       this.setState({
-        aTask: response.data[random],
-        tasks: response.data,
-        dueToday: dueToday,
-        overdue: overdue,
-        loading: false
-      }, console.debug(this.state.firstTask))
+        noToken: false,
+        token
+      })
+    }).catch((err) => {
+      console.error(err)
     })
-    .catch(error => {
-      console.error(error)
-      this.setState({ loading: false, error })
+  }
+
+  async fetchTasks (provided) {
+    const uri = 'https://beta.todoist.com/API/v8/tasks'
+    const token = provided || await localStorage.getItem('todoistToken')
+
+    return new Promise((resolve, reject) => {
+      if (!token) {
+        this.setState({
+          loading: false,
+          noToken: true
+        }, () => {
+          if (this.input) this.input.focus()
+          else console.debug('this.input undef', this.input)
+        })
+      } else {
+        axios.get(uri, {
+          params: {
+            'token': token,
+            'filter': `due ${this.getDate()} | overdue`
+          }
+        })
+        .then(response => {
+          let dueToday = 0
+          let overdue = 0
+
+          for (let task of response.data) {
+            if (task.due.string === this.state.date) dueToday++
+            else overdue++
+          }
+
+          const random = Math.floor(Math.random() * response.data.length)
+
+          this.setState({
+            aTask: response.data[random],
+            tasks: response.data,
+            dueToday: dueToday,
+            overdue: overdue,
+            loading: false
+          }, resolve())
+        })
+        .catch(error => {
+          this.setState({ loading: false, error }, reject(new Error(error)))
+        })
+      }
     })
   }
 
@@ -104,11 +130,11 @@ export default class Home extends Component {
     let span = <span>It looks like you're done for the day! 🎉 {suggestion}</span>
 
     if (overdue) {
-      suggestion = <a href={`https://todoist.com`} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a>
+      suggestion = <a href={`https://todoist.com`} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
       if (dueToday) span = <span>You have {dueToday} tasks due today, and {overdue} overdue. Why don't you start with {suggestion}</span>
       else span = <span>There's nothing on the docket today, but there are {overdue} overdue. Why don't you start with {suggestion}</span>
     } else if (dueToday) {
-      suggestion = <a href={`https://todoist.com`} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a>
+      suggestion = <a href={`https://todoist.com`} rel='Launch Todoist'>"{String(aTask.content).replace(/__|\*|\#|(?:\[([^\]]*)\]\([^)]*\))/gm, '$1')}"?</a> // eslint-disable-line
       span = <span>You have {dueToday} tasks due today. Why don't you start with {suggestion}</span>
     }
 
@@ -120,12 +146,27 @@ export default class Home extends Component {
       <section className={this.state.loading ? 'loading' : ''}>
         <Stylesheet sheet={sheet} />
         <Head title='Home!' />
-        <section>
+        { this.state.noToken
+         ? <section style={{ fontFamily: 'Inconsolata, monospace' }}>
+           <input
+             autoFocus
+             ref={input => { this.input = input }}
+             placeholder='Todoist API token'
+             value={this.state.token}
+             onKeyDown={(event) => {
+               if (event.key === 'Enter') this.tryKey(event.target.value)
+             }}
+           />
+           <span style={{ opacity: 0.5, paddingLeft: '1em' }}>
+            Todoist.com > settings > integrations
+          </span>
+         </section>
+        : <section>
           <h1>Good day, Alexander.</h1>
           <p>
-            It's {this.getDay()} {this.getDate()}. <span>{this.getTaskSummary()}</span>
+            It's {this.getDay()} {this.getDate()}.<span>{this.getTaskSummary()}</span>
           </p>
-        </section>
+        </section>}
       </section>
     )
   }
