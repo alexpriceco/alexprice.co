@@ -1,0 +1,15 @@
+@import '../vars';
+@import '../mixins';
+
+div.canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  max-width: 90vh;
+  @include transform(translate(-50%, -50%));
+  z-index: -1;
+}

@@ -9,6 +9,7 @@ import Card from '../components/card/card.js'
 import Contact from '../components/contact/contact.js'
 import Footer from '../components/footer/footer.js'
 import Loader from '../components/loader/loader.js'
+import Strand from '../components/strand/strand.js'
 
 import ReactGA from 'react-ga'
 
@@ -70,7 +71,7 @@ export class Index extends Component {
       Router.prefetch(path)
       setTimeout(() => Router.push(path), 100)
       this.setState({ loading: true }, () => {
-        setTimeout(() => window.scrollTo(0, 0), 0)
+        setTimeout(() => window.scrollTo(0, 0), 300)
       })
     }
   }
@@ -81,7 +82,7 @@ export class Index extends Component {
       <main className={loading ? 'loading' : (loaded ? 'loaded' : '')}>
         <DocumentHead />
         <Loader status={loading ? 'loading' : (loaded ? 'loaded' : '')} />
-        <header>
+        <header style={{ opacity: loading ? 0 : 'inherit' }}>
           <div>
             <article className='title'>
               <h1>
@@ -118,6 +119,7 @@ export class Index extends Component {
                 <span>photos</span><span> @alexpriceco</span>
               </a>
             </article>
+            <Strand />
           </div>
           <section className='project-cards'>
             { this.state.cards.map((c, i) => <Card {...c}

@@ -22,9 +22,12 @@ main.loaded:not(.loading) header > div article.social a.connection {
   &:nth-child(3) { @include transition-delay(300ms); }
   &:nth-child(4) { @include transition-delay(400ms); }
   $easing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
-  -webkit-transition: opacity 400ms $easing-function !important;
-     -moz-transition: opacity 400ms $easing-function !important;
-          transition: opacity 400ms $easing-function !important;
+  -webkit-transition: opacity 400ms $easing-function,
+    transform 200ms $easing-function !important;
+     -moz-transition: opacity 400ms $easing-function,
+      transform 200ms $easing-function !important;
+          transition: opacity 400ms $easing-function,
+            transform 200ms $easing-function !important;
 }
 
 main.loading header > div article.social a.connection,
@@ -103,6 +106,7 @@ header {
     flex-direction: column;
     padding-top: 10vh;
     padding-bottom: 15vh;
+    position: relative;
 
     h1 {
       font-size: 2em;
@@ -186,7 +190,7 @@ section.project-cards {
   margin: 0;
 
   -webkit-overflow-scrolling: touch;
-  overflow-x: scroll;
+  overflow-x: visible;
 
   @include for-size(tablet-portrait-up) {
     align-items: center;
@@ -196,7 +200,14 @@ section.project-cards {
   }
 
   @media (pointer: fine) {
+    & > * {
+      @include transform(scale(1));
+    }
+
     &:hover > * { opacity: 0.5; }
-    & > *:hover { opacity: 1; }
+    & > *:hover {
+      opacity: 1;
+      @include transform(scale(1.01))
+    }
   }
 }
