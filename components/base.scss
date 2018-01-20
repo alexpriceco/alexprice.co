@@ -137,20 +137,16 @@ header {
     @include for-size(tablet-portrait-up) {
       height: 50vh;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       width: calc(100vw - 4em);
       > * { max-width: 26em; }
     }
 
     @include for-size(tablet-landscape-up) {
-      justify-content: space-around;
+      max-width: 66em;
+      justify-content: flex-start;
       align-items: center;
-    }
-
-    @include for-size(big-desktop-up) {
-      justify-content: space-between;
-      max-width: 68em;
     }
   }
 }

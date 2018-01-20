@@ -4,6 +4,7 @@ import DocumentHead from '../../components/general/head.js'
 import Stylesheet from '../../components/general/stylesheet.js'
 import sheet from '../../components/article.scss'
 
+import ArticleLinks from '../../components/article-links/links.js'
 import Contact from '../../components/contact/contact.js'
 import Footer from '../../components/footer/footer.js'
 import Loader from '../../components/loader/loader.js'
@@ -126,6 +127,7 @@ export class Page extends Component {
 
           <hr />
         </article>
+        <ArticleLinks linkIds={['playbook', 'resume']} />
         <Contact />
         <Footer />
         <Stylesheet sheet={sheet} />

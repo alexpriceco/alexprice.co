@@ -9,7 +9,6 @@ import Card from '../components/card/card.js'
 import Contact from '../components/contact/contact.js'
 import Footer from '../components/footer/footer.js'
 import Loader from '../components/loader/loader.js'
-import Strand from '../components/strand/strand.js'
 
 import ReactGA from 'react-ga'
 
@@ -89,10 +88,9 @@ export class Index extends Component {
                 Thoughtful design,<br />serious technology.
               </h1>
               <h2>
-                <span>I'm Alex Price,</span> a digital product designer. My background is in electric vehicles, robotics, and supply chain edtech.
+                <span>I'm Alex Price,</span> a digital product designer. My background is in electric vehicles, robotics, and supply chain simulation edtech.
               </h2>
             </article>
-            <Strand />
           </div>
           <section className='project-cards'>
             { this.state.cards.map((c, i) => <Card {...c}

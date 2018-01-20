@@ -13,13 +13,13 @@ export const ArrowIcon = () => (
 
 export const Card = (props) => (
   <article
-    className='card'
+    className={'card ' + props.id}
     onClick={() => props.navigateTo(props.id)}
   >
     <h2>{props.title}</h2>
     <p>{props.summary}</p>
     <div><span>{props.linkText}</span><ArrowIcon /></div>
-    <Image src={`static/projects/${props.id}/preview-min.jpg`} rel='' />
+    <Image src={`/static/projects/${props.id}/preview-min.jpg`} rel='' />
     <Stylesheet sheet={sheet} />
   </article>
 )
