@@ -402,13 +402,10 @@ main > article.project {
 }
 
 main.evaline-inc {
-  $ev: #14C96C;
+  $ev: #18B365;
   header {
-    svg { fill: black; }
-    h1, h2 {
-      color: $black;
-      text-shadow: 2px 0 4px rgba($black, 0.05);
-    }
+    svg { fill: $white; }
+    h1, h2 { color: $white; }
   }
 
   header::before {
@@ -428,7 +425,7 @@ main.evaline-inc {
     }
 
     .button {
-      color: $black;
+      color: $white;
       &::before { background: $ev; }
     }
   }

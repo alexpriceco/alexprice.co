@@ -3,6 +3,7 @@ import Router from 'next/router'
 
 import DocumentHead from '../components/general/head.js'
 import Stylesheet from '../components/general/stylesheet.js'
+import Image from '../components/general/image.js'
 import sheet from '../components/base.scss'
 
 import Card from '../components/card/card.js'
@@ -91,6 +92,10 @@ export class Index extends Component {
                 <span>I'm Alex Price,</span> a digital product designer. My background is in electric vehicles, robotics, and supply chain simulation edtech.
               </h2>
             </article>
+
+            <div className='introducing-me'>
+              <Image src='/static/me.jpg' />
+            </div>
           </div>
           <section className='project-cards'>
             { this.state.cards.map((c, i) => <Card {...c}
