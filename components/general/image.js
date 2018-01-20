@@ -27,7 +27,7 @@ export class Image extends Component {
     this.img = document.createElement('img')
     this.img.src = src || this.state.src
     this.img.onload = () => this.setState({ loading: false })
-    this.img.onerror = () => this.setState({ loading: false })
+    this.img.onerror = (e) => console.error(new Error('Img failed to load.', e))
   }
 
   render () {

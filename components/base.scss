@@ -127,6 +127,10 @@ header {
       max-height: 16em;
       border-radius: 0.25em;
     }
+
+    @include for-size(phone-only) {
+      display: none;
+    }
   }
 
   > div {

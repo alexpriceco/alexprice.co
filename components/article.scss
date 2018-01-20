@@ -187,7 +187,6 @@ main > article.project {
   box-sizing: border-box;
   width: 100vw;
   padding: 1em;
-  padding-top: 10vh;
 
   p {
     opacity: 0.9;
@@ -355,6 +354,10 @@ main > article.project {
       margin: 0 auto;
       > * { margin-right: 2em; }
     }
+  }
+
+  @include for-size(tablet-portrait-up) {
+    padding-top: 10vh;
   }
 
   @include for-size(desktop-up) {
