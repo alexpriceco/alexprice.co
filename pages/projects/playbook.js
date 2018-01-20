@@ -141,7 +141,7 @@ export class Page extends Component {
 
           <hr />
         </article>
-        <ArticleLinks linkIds={['evaline-inc', 'resume']} />
+        <ArticleLinks linkIds={['evaline-inc', 'resume']} setLoading={(callback) => this.setState({ loading: true }, () => callback())} />
         <Contact />
         <Footer />
         <Stylesheet sheet={sheet} />

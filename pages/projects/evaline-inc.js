@@ -131,7 +131,7 @@ export class Page extends Component {
             </a>
           </div>
         </article>
-        <ArticleLinks linkIds={['vexvolt', 'resume']} />
+        <ArticleLinks linkIds={['vexvolt', 'resume']} setLoading={(callback) => this.setState({ loading: true }, () => callback())} />
         <Contact />
         <Footer />
         <Stylesheet sheet={sheet} />

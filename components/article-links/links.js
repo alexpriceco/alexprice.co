@@ -52,9 +52,9 @@ export class ArticleLinks extends Component {
       path = `static/projects/resume/Alexander Price, Product Designer.pdf`
       window.location.href += path
     } else {
-      this.setState({ loading: true }, () => {
-        setTimeout(() => window.scrollTo(0, 0), 300)
+      this.props.setLoading(() => {
         setTimeout(() => Router.push(path), 100)
+        setTimeout(() => window.scrollTo(0, 0), 300)
       })
     }
   }

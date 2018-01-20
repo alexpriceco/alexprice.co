@@ -127,7 +127,7 @@ export class Page extends Component {
 
           <hr />
         </article>
-        <ArticleLinks linkIds={['playbook', 'resume']} />
+        <ArticleLinks linkIds={['playbook', 'resume']} setLoading={(callback) => this.setState({ loading: true }, () => callback())} />
         <Contact />
         <Footer />
         <Stylesheet sheet={sheet} />
