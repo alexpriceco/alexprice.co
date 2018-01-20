@@ -10,32 +10,32 @@ body {
   font-weight: 400;
 }
 
-main > * { @include easeProp(200ms, opacity); }
-main.loading > * { opacity: 0; }
-
-main.loaded header > div h1,
-main.loaded header > div h2,
-main.loaded section.project-cards > *,
-main.loaded:not(.loading) header > div article.social a.connection {
-  &:nth-child(1) { @include transition-delay(100ms); }
-  &:nth-child(2) { @include transition-delay(200ms); }
-  &:nth-child(3) { @include transition-delay(300ms); }
-  &:nth-child(4) { @include transition-delay(400ms); }
-  $easing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
-  -webkit-transition: opacity 400ms $easing-function,
-    transform 200ms $easing-function !important;
-     -moz-transition: opacity 400ms $easing-function,
-      transform 200ms $easing-function !important;
-          transition: opacity 400ms $easing-function,
-            transform 200ms $easing-function !important;
+main.loading header section.project-cards .card {
+  opacity: 0;
 }
 
-main.loading header > div article.social a.connection,
-main.loading section.project-cards > *,
-main.loading header > div h1,
-main.loading header > div h2 {
-  &:nth-child(n) { @include transition-delay(0); }
-  opacity: 0;
+main.loaded header {
+  section.project-cards .card,
+  > div div.introducing-me,
+  > div article.title-group h1,
+  > div article.title-group h2 {
+     @extend .fadeIn;
+     @include animate(0.75s);
+  }
+
+  > div article.title-group h2 { @include animation-delay(0.15s) }
+  div.introducing-me {
+    @include animate(1s);
+    @include animation-delay(0.4s)
+  }
+
+  section.project-cards .card {
+    @include animate(1s);
+    &:nth-child(1) { @include animation-delay(0.5s) }
+    &:nth-child(2) { @include animation-delay(0.6s) }
+    &:nth-child(3) { @include animation-delay(0.7s) }
+    &:nth-child(4) { @include animation-delay(0.8s) }
+  }
 }
 
 h1, h2, h3, h4 {
@@ -157,7 +157,7 @@ header {
       text-shadow: 0 2px 6px $black;
     }
 
-    article.title {
+    article.title-group {
       position: relative;
       overflow: visible;
     }

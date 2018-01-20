@@ -23,10 +23,10 @@ export class Index extends Component {
 
       cards: [
         {
-          title: '🚙 Evaline, Inc.',
-          id: 'evaline-inc',
-          summary: `Led product design for three products, then used React and GraphQL to build them.`,
-          linkText: 'Read about it'
+          title: '⚔️ Playbook',
+          id: 'playbook',
+          summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`,
+          linkText: 'Discover Playbook'
         },
         {
           title: '⚡️ VEXvolt',
@@ -35,10 +35,10 @@ export class Index extends Component {
           linkText: 'Check it out'
         },
         {
-          title: '⚔️ Playbook',
-          id: 'playbook',
-          summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`,
-          linkText: 'Discover Playbook'
+          title: '🚙 Evaline, Inc.',
+          id: 'evaline-inc',
+          summary: `Led product design for three products, then used React and GraphQL to build them.`,
+          linkText: 'Read about it'
         },
         {
           title: '📄 Resume',
@@ -84,7 +84,7 @@ export class Index extends Component {
         <Loader status={loading ? 'loading' : (loaded ? 'loaded' : '')} />
         <header style={{ opacity: loading ? 0 : 'inherit' }}>
           <div>
-            <article className='title'>
+            <article className='title-group'>
               <h1>
                 Thoughtful design,<br />serious technology.
               </h1>
