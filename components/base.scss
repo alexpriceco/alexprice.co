@@ -14,7 +14,7 @@ main.loading header section.project-cards .card {
   opacity: 0;
 }
 
-main:not(.loading):not(.loaded) header {
+main:not(.loading) header {
   section.project-cards .card,
   > div div.introducing-me,
   > div article.title-group h1,
@@ -35,6 +35,21 @@ main:not(.loading):not(.loaded) header {
     &:nth-child(2) { @include animation-delay(0.6s) }
     &:nth-child(3) { @include animation-delay(0.7s) }
     &:nth-child(4) { @include animation-delay(0.8s) }
+  }
+}
+
+main.loaded header {
+  section.project-cards .card,
+  > div div.introducing-me,
+  > div article.title-group h1,
+  > div article.title-group h2 {
+     animation-name: none;
+  }
+
+  section.project-cards > .card {
+    @media (pointer: fine) {
+      @include ease(200ms);
+    }
   }
 }
 
@@ -205,7 +220,6 @@ section.project-cards {
 
   @media (pointer: fine) {
     & > .card {
-      @include ease(200ms);
       @include transform(scale(1));
     }
 
