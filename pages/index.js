@@ -18,7 +18,7 @@ export class Index extends Component {
     super(props, context)
     this.state = {
       loading: true,
-      loaded: true,
+      loaded: false,
       error: '',
 
       cards: [
@@ -58,7 +58,7 @@ export class Index extends Component {
         this.setState({ loaded: true })
         ReactGA.initialize('UA-63630411-1')
         ReactGA.pageview(window.location.pathname + window.location.search)
-      }, 1000)
+      }, 1500)
     })
   }
 
@@ -78,6 +78,8 @@ export class Index extends Component {
 
   render () {
     const { loading, loaded } = this.state
+    console.log(loading, loaded)
+    console.log(loading ? 'loading' : (loaded ? 'loaded' : ''))
     return (
       <main className={loading ? 'loading' : (loaded ? 'loaded' : '')}>
         <DocumentHead />

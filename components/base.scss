@@ -14,7 +14,7 @@ main.loading header section.project-cards .card {
   opacity: 0;
 }
 
-main.loaded header {
+main:not(.loading):not(.loaded) header {
   section.project-cards .card,
   > div div.introducing-me,
   > div article.title-group h1,
@@ -204,12 +204,13 @@ section.project-cards {
   }
 
   @media (pointer: fine) {
-    & > * {
+    & > .card {
+      @include ease(200ms);
       @include transform(scale(1));
     }
 
-    &:hover > * { opacity: 0.5; }
-    & > *:hover {
+    &:hover > .card { opacity: 0.5; }
+    & > .card:hover {
       opacity: 1;
       @include transform(scale(1.01))
     }
