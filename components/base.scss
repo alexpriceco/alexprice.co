@@ -113,7 +113,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2em 2em 0 2em;
+  padding: 1.5em 1em 0 1em;
   box-sizing: border-box;
 
   .introducing-me {
@@ -151,9 +151,12 @@ header {
   > div {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding-top: 10vh;
     padding-bottom: 15vh;
     position: relative;
+    min-height: 24em;
 
     h1 {
       font-size: 2em;
