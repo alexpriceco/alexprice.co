@@ -132,6 +132,7 @@ header {
 
   .introducing-me {
     position: relative;
+    display: none;
 
     &::before {
       content: '';
