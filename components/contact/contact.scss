@@ -28,10 +28,12 @@ section.contact {
       rgba($black, 0) 40%, rgba($black, 1) 50vh);
   }
 
-  h2, p {
+  h2, p, .button {
+    position: relative;
     z-index: 10;
     text-shadow: 0px 2px 4px rgba($black, 0.25);
   }
+
   h2 { margin: 0.25em 0; }
 
   p {
