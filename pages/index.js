@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
+import { isDay } from '../components/daylight-sensor/sensor.js'
 
 import DocumentHead from '../components/general/head.js'
 import Stylesheet from '../components/general/stylesheet.js'
@@ -19,6 +20,7 @@ export class Index extends Component {
       loading: true,
       loaded: false,
       error: '',
+      daytime: false,
 
       cards: [
         {
@@ -52,6 +54,7 @@ export class Index extends Component {
   }
 
   componentDidMount () {
+    isDay().then((daytime) => this.setState({ daytime }))
     this.setState({ loading: false }, () => {
       setTimeout(() => {
         this.setState({ loaded: true })
@@ -80,11 +83,13 @@ export class Index extends Component {
   }
 
   render () {
-    const { loading, loaded } = this.state
+    const { loading, loaded, daytime } = this.state
+    const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
+    const daymode = daytime ? ' daymode' : ''
     return (
-      <main className={loading ? 'loading' : (loaded ? 'loaded' : '')}>
+      <main className={loadingClass + daymode}>
         <DocumentHead />
-        <Loader status={loading ? 'loading' : (loaded ? 'loaded' : '')} />
+        <Loader status={loadingClass} />
         <header style={{ opacity: loading ? 0 : 'inherit' }}>
           <div>
             <article className='title-group'>

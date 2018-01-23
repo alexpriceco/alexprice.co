@@ -162,3 +162,17 @@ article.card {
     }
   }
 }
+
+main.daymode article.card {
+  border: 1px solid $lightgrey;
+  background: darken($white, 2%);
+  box-sizing: border-box;
+  color: $black;
+
+  h2, p, span {
+    color: $black;
+    text-shadow: none;
+  }
+
+  svg path { fill: $black; }
+}

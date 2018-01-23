@@ -53,6 +53,11 @@ main.loaded header {
   }
 }
 
+main {
+  @include ease(0.5s);
+  background: $black;
+}
+
 h1, h2, h3, h4 {
   font-weight: 400;
   line-height: 1.5em;
@@ -246,5 +251,31 @@ section.project-cards {
       opacity: 1;
       @include transform(scale(1.01))
     }
+  }
+}
+
+main.daymode  {
+  z-index: -10;
+  background: $white;
+
+  header {
+    h1, h2 { text-shadow: none; }
+    h1 { color: $black; }
+    h2 {
+      color: lighten($black, 50%);
+      > span { color: $black; }
+    }
+  }
+
+  section.contact {
+    background: $white;
+    h2, p {
+      color: $black;
+      text-shadow: 0px 2px 4px rgba($black, 0.1);
+    }
+  }
+
+  footer {
+    background: $black;
   }
 }
