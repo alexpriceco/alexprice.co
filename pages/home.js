@@ -145,28 +145,32 @@ export default class Home extends Component {
     return (
       <section className={this.state.loading ? 'loading' : ''}>
         <Stylesheet sheet={sheet} />
-        <Head title='Home!' />
-        { this.state.noToken
-         ? <section style={{ fontFamily: 'Inconsolata, monospace' }}>
-           <input
-             autoFocus
-             ref={input => { this.input = input }}
-             placeholder='Todoist API token'
-             value={this.state.token}
-             onKeyDown={(event) => {
-               if (event.key === 'Enter') this.tryKey(event.target.value)
-             }}
-           />
-           <span style={{ opacity: 0.5, paddingLeft: '1em' }}>
-            Todoist.com > settings > integrations
-          </span>
-         </section>
-        : <section>
-          <h1>Good day, Alexander.</h1>
-          <p>
-            It's {this.getDay()} {this.getDate()}. <span>{this.getTaskSummary()}</span>
-          </p>
-        </section>}
+        <Head title='🏠 Home' />
+        { this.state.loading
+          ? <section style={{ fontFamily: 'Inconsolata, monospace' }}>
+            <span>Loading...</span>
+          </section>
+          : (this.state.noToken
+            ? <section style={{ fontFamily: 'Inconsolata, monospace' }}>
+              <input
+                autoFocus
+                ref={input => { this.input = input }}
+                placeholder='Todoist API token'
+                value={this.state.token}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') this.tryKey(event.target.value)
+                }}
+              />
+              <span style={{ opacity: 0.5, paddingLeft: '1em' }}>
+              Todoist.com > settings > integrations
+              </span>
+            </section>
+            : <section>
+              <h1>Good day, Alexander.</h1>
+              <p>
+                It's {this.getDay()} {this.getDate()}. <span>{this.getTaskSummary()}</span>
+              </p>
+            </section>)}
       </section>
     )
   }

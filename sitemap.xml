@@ -3,12 +3,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://alexprice.co/</loc>
-    <lastmod>2018-01-10T04:12:13+00:00</lastmod>
+    <lastmod>2018-01-22T08:12:13+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
+    <loc>https://alexprice.co/projects/evaline-inc</loc>
+    <lastmod>2018-01-22T08:12:13+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://alexprice.co/projects/playbook</loc>
+    <lastmod>2018-01-22T08:12:13+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://alexprice.co/projects/vexvolt</loc>
+    <lastmod>2018-01-22T08:12:13+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://alexprice.co/playbook</loc>
-    <lastmod>2018-01-10T04:12:13+00:00</lastmod>
+    <lastmod>2018-01-22T08:12:13+00:00</lastmod>
     <priority>0.80</priority>
   </url>
 </urlset>
