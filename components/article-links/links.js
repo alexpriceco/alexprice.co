@@ -42,7 +42,7 @@ export class ArticleLinks extends Component {
   componentDidMount () {
     for (let id of this.props.linkIds) {
       let path = `/projects/${id}`
-      Router.prefetch(path)
+      if (id !== 'resume') Router.prefetch(path)
     }
   }
 
