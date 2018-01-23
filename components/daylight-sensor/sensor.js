@@ -42,13 +42,13 @@ async function getFreshCoords () {
   /* global XMLHttpRequest */
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest()
-    request.open('GET', 'http://ip-api.com/json', true)
+    request.open('GET', 'https://freegeoip.net/json', true)
     request.onload = () => {
       if (request.status >= 200 && request.status < 400) {
         const res = JSON.parse(request.responseText)
         resolve({
-          lat: res.lat,
-          lon: res.lon
+          lat: res.latitude,
+          lon: res.longitude
         })
       } else {
         const e = new Error(`Request status is ${request.status}`)
