@@ -152,7 +152,7 @@ article.card {
       @include ease(200ms);
     }
 
-    &:hover {
+    &.link:hover {
       span, p, svg { opacity: 0.15; }
       &::after { opacity: 0.8; }
       span::after {

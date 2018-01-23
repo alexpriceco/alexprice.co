@@ -21,7 +21,7 @@ export class Page extends Component {
       loading: true,
       loaded: true,
       error: '',
-      daytime: true
+      daytime: false
     }
   }
 
@@ -36,7 +36,6 @@ export class Page extends Component {
 
   render () {
     const { loading, loaded, daytime } = this.state
-    console.info(daytime)
     const daymode = daytime ? ' daymode ' : ''
     const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
     return (

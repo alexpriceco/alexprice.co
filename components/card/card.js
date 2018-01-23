@@ -13,7 +13,7 @@ export const ArrowIcon = () => (
 
 export const Card = (props) => (
   <article
-    className={'card ' + props.id}
+    className={'card ' + props.id + (props.link ? ' link' : '')}
     onClick={() => props.navigateTo(props.id)}
   >
     <h2>{props.title}</h2>

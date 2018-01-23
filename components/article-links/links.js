@@ -69,7 +69,7 @@ export class ArticleLinks extends Component {
     return (
       <section className='more-projects'>
         { cards.map((card, i) => {
-          return <Card {...card} key={i}
+          return <Card link {...card} key={i}
             navigateTo={this.navigateTo} />
         }) }
       </section>

@@ -84,7 +84,21 @@ img.loading {
   align-items: center;
   justify-content: center;
 
-  svg { fill: $white; margin-right: 1em; }
+  > div {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  svg {
+    fill: $white;
+    margin-right: 1em;
+    transform: translateY(-0.15em);
+  }
+
   svg.no-fill { fill: none; }
   svg.translate { transform: translateY(0.15em); }
 
