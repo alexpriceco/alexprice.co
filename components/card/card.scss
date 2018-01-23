@@ -148,9 +148,17 @@ article.card {
   }
 
   @media (pointer: fine) {
-    &:hover span::after {
-      width: calc(100% - 2px);
-      opacity: 1;
+    &::after, span, p, svg {
+      @include ease(200ms);
+    }
+
+    &:hover {
+      span, p, svg { opacity: 0.15; }
+      &::after { opacity: 0.8; }
+      span::after {
+        width: calc(100% - 2px);
+        opacity: 1;
+      }
     }
   }
 }

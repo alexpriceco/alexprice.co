@@ -8,6 +8,8 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
+  width: 100vw;
 
   article.social {
     display: flex;
@@ -102,7 +104,6 @@ footer {
   }
 
   @include for-size(desktop-up) {
-    max-width: 64em;
     margin: 0 auto;
   }
 

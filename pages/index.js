@@ -58,6 +58,10 @@ export class Index extends Component {
         this.setState({ loaded: true })
         ReactGA.initialize('UA-63630411-1')
         ReactGA.pageview(window.location.pathname + window.location.search)
+
+        for (let p of this.state.cards) {
+          if (p.id !== 'resume') Router.prefetch(`/projects/${p.id}`)
+        }
       }, 1500)
     })
   }
@@ -78,8 +82,6 @@ export class Index extends Component {
 
   render () {
     const { loading, loaded } = this.state
-    console.log(loading, loaded)
-    console.log(loading ? 'loading' : (loaded ? 'loaded' : ''))
     return (
       <main className={loading ? 'loading' : (loaded ? 'loaded' : '')}>
         <DocumentHead />

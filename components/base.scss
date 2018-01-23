@@ -98,7 +98,7 @@ img.loading {
     background: $blue1;
     border-radius: 0.25em;
     @include ease(300ms);
-    z-index: -1;
+    z-index: 0;
   }
 
   &:hover::before {

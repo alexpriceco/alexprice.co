@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { isDay } from '../../components/daylight-sensor/sensor.js'
+
 import Image from '../../components/general/image.js'
 import DocumentHead from '../../components/general/head.js'
 import Stylesheet from '../../components/general/stylesheet.js'
@@ -18,11 +20,13 @@ export class Page extends Component {
     this.state = {
       loading: true,
       loaded: true,
-      error: ''
+      error: '',
+      daytime: true
     }
   }
 
   componentDidMount () {
+    isDay().then((daytime) => this.setState({ daytime }))
     setTimeout(() => this.setState({ loading: false }, () => {
       setTimeout(() => this.setState({ loaded: true }), 1000)
       ReactGA.initialize('UA-63630411-1')
@@ -31,10 +35,12 @@ export class Page extends Component {
   }
 
   render () {
-    const { loading, loaded } = this.state
+    const { loading, loaded, daytime } = this.state
+    console.info(daytime)
+    const daymode = daytime ? ' daymode ' : ''
     const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
     return (
-      <main className={loadingClass + ' evaline-inc'}>
+      <main className={loadingClass + daymode + ' evaline-inc'}>
         <DocumentHead />
         <Loader status={loadingClass} />
         <header>
