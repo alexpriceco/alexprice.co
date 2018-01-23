@@ -25,10 +25,19 @@ async function getStoredCoords () {
   return new Promise((resolve, reject) => {
     let promises = [localStorage.getItem('lat'), localStorage.getItem('lon')]
     Promise.all(promises).then((coordinates) => {
-      resolve({
-        lat: coordinates[0],
-        lon: coordinates[1]
-      })
+      if (coordinates[0] === 'undefined' || coordinates[1] === 'undefined') {
+        getFreshCoords().then((newCoords) => {
+          resolve({
+            lat: coordinates[0],
+            lon: coordinates[1]
+          })
+        })
+      } else {
+        resolve({
+          lat: coordinates[0],
+          lon: coordinates[1]
+        })
+      }
     })
   })
 }

@@ -12,7 +12,7 @@ article.card {
   box-sizing: border-box;
   width: 100vw;
   max-width: 32em;
-  padding: 4em 2em;
+  padding: 2em;
   margin: 0 0 2em 0;
   height: 60vh;
 
@@ -121,6 +121,7 @@ article.card {
     max-width: calc(50vw - 3em);
     min-width: calc(50vw - 3em);
     margin-bottom: 2em;
+    padding: 4em 2em;
     height: 28em;
     border-radius: 0.25em;
     &::before { opacity: 0; }
