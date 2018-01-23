@@ -104,6 +104,31 @@ header {
   flex-direction: column;
   position: relative;
 
+  .back-to-home {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    border-radius: 0.25em;
+    background: transparent;
+    border: 1px solid $white;
+    color: $white;
+    padding: 1em 1.5em;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 1;
+    flex-grow: 0;
+    font-size: 1.125em;
+    width: auto;
+    cursor: pointer;
+
+    svg {
+      transform: rotate(180deg);
+      padding-left: 0.5em;
+    }
+  }
+
   h1 { margin: 0; }
   h1, h2 { text-shadow: 2px 0 4px rgba($black, 0.5); }
   > div {

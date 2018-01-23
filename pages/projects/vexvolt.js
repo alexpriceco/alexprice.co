@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Router from 'next/router'
 
 import { isDay } from '../../components/daylight-sensor/sensor.js'
 
@@ -43,6 +44,16 @@ export class Page extends Component {
         <DocumentHead />
         <Loader status={loadingClass} />
         <header>
+          <div className='back-to-home' onClick={() => {
+            this.setState({ loading: true }, () => {
+              setTimeout(() => Router.push('/'), 200)
+            })
+          }}>
+            <svg width='16' height='10.66664' viewBox='0 0 12 8' >
+              <path fill='white' d='M 0.268426 4.17888C 0.268426 4.17888 0.981672 4.65438 1.63612 4.65438L 9.4895 4.65433L 8.00877 6.04856C 7.93647 6.12078 7.88591 6.2077 7.85699 6.30868L 7.54782 7.37727C 7.48998 7.57251 7.48279 7.69171 7.52617 7.73517L 7.71598 7.92498C 7.82439 8.03331 7.94191 8.02436 8.06845 7.89782L 11.9663 4L 8.06845 0.102179C 7.94191 -0.0243648 7.82439 -0.0333124 7.71598 0.0750167L 7.52617 0.264832C 7.48279 0.308292 7.48998 0.427486 7.54782 0.622733L 7.85699 1.69132C 7.88591 1.7923 7.93648 1.87922 8.00877 1.95144L 9.4895 3.34548L 0.268426 3.34545C 0.0894753 3.34545 0 3.42214 0 3.57553L 0 3.94113C 0 4.00249 0.0894753 4.08174 0.268426 4.17888Z' />
+            </svg>
+            Back to home
+          </div>
           <div>
             <h1>VEXvolt</h1>
             <h2>A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.</h2>
