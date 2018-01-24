@@ -1,6 +1,6 @@
-@import 'vars';
-@import 'reset';
-@import 'animations';
+@import '../vars';
+@import '../reset';
+@import '../animations';
 
 body {
   color: $white;
@@ -35,8 +35,9 @@ main.loaded header > div .point { @include animation-delay(0.6s); }
 > .more-projects,
 > section.contact {
   @include ease(0.75s);
-  background: $black;
 }
+
+main.daymode { background: $white; }
 
 h1, h2, h3, h4 {
   font-weight: 400;

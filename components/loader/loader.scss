@@ -2,17 +2,18 @@
 @import '../mixins';
 
 div.loader {
-  @include transform(translate(-50%, calc(-50% + 1em)));
+  @include transform(translate(0, 1em));
   @include ease(200ms);
-  z-index: -1;
+  z-index: 10;
   opacity: 0;
 
   position: fixed;
   pointer-events: none;
-  top: 50%; left: 50%;
+  top: calc(50% - 1.25em);
+  left: calc(50% - 3.75em);
 
   &.loading {
-    @include transform(translate(-50%, -50%));
+    z-index: 10;
     opacity: 1;
   }
 }

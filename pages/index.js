@@ -17,44 +17,39 @@ export class Index extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
+      daytime: true,
       loading: true,
       loaded: false,
       error: '',
-      daytime: false,
 
-      cards: [
-        {
-          title: '⚔️ Playbook',
-          id: 'playbook',
-          summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`,
-          linkText: 'Discover Playbook'
-        },
-        {
-          title: '⚡️ VEXvolt',
-          id: 'vexvolt',
-          summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`,
-          linkText: 'Check it out'
-        },
-        {
-          title: '🚙 Evaline, Inc.',
-          id: 'evaline-inc',
-          summary: `Led product design for three products, then used React and GraphQL to build them.`,
-          linkText: 'Read about it'
-        },
-        {
-          title: '📄 Resume',
-          id: 'resume',
-          summary: `Get a brief overview of some skills I've employed, and projects I’ve worked on.`,
-          linkText: 'View resume'
-        }
-      ]
+      cards: [{
+        id: 'playbook',
+        title: '⚔️ Playbook',
+        linkText: 'Discover Playbook',
+        summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`
+      }, {
+        id: 'vexvolt',
+        title: '⚡️ VEXvolt',
+        linkText: 'Check it out',
+        summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`
+      }, {
+        id: 'evaline-inc',
+        title: '🚙 Evaline, Inc.',
+        linkText: 'Read about it',
+        summary: `Led product design for three products, then used React and GraphQL to build them.`
+      }, {
+        id: 'resume',
+        title: '📄 Resume',
+        linkText: 'View resume',
+        summary: `Get a brief overview of some skills I've employed, and projects I’ve worked on.`
+      }]
     }
 
     this.navigateTo = this.navigateTo.bind(this)
   }
 
   componentDidMount () {
-    isDay().then((daytime) => this.setState({ daytime }))
+    isDay().then(daytime => this.setState({ daytime }))
     this.setState({ loading: false }, () => {
       setTimeout(() => {
         this.setState({ loaded: true })
@@ -89,7 +84,7 @@ export class Index extends Component {
     return (
       <main className={loadingClass + daymode}>
         <DocumentHead />
-        <Loader status={loadingClass} />
+        <Loader status={loadingClass} dark={daytime} />
         <header style={{ opacity: loading ? 0 : 'inherit' }}>
           <div>
             <article className='title-group'>

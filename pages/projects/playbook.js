@@ -1,48 +1,14 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 
-import { isDay } from '../../components/daylight-sensor/sensor.js'
-
 import Image from '../../components/general/image.js'
-import DocumentHead from '../../components/general/head.js'
-import Stylesheet from '../../components/general/stylesheet.js'
-import sheet from '../../components/article.scss'
-
 import ArticleLinks from '../../components/article-links/links.js'
-import Contact from '../../components/contact/contact.js'
-import Footer from '../../components/footer/footer.js'
-import Loader from '../../components/loader/loader.js'
-
-import ReactGA from 'react-ga'
+import Article from '../../components/article/article.js'
 
 export class Page extends Component {
-  constructor (props, context) {
-    super(props, context)
-    this.state = {
-      loading: true,
-      loaded: true,
-      error: '',
-      daytime: false
-    }
-  }
-
-  componentDidMount () {
-    isDay().then((daytime) => this.setState({ daytime }))
-    setTimeout(() => this.setState({ loading: false }, () => {
-      setTimeout(() => this.setState({ loaded: true }), 1000)
-      ReactGA.initialize('UA-63630411-1')
-      ReactGA.pageview(window.location.pathname + window.location.search)
-    }), 300)
-  }
-
   render () {
-    const { loading, loaded, daytime } = this.state
-    const daymode = daytime ? ' daymode ' : ''
-    const loadingClass = loading ? 'loading' : (loaded ? 'loaded' : '')
     return (
-      <main className={loadingClass + daymode + ' playbook'}>
-        <DocumentHead />
-        <Loader status={loadingClass} />
+      <Article id={'playbook'}>
         <header>
           <div className='back-to-home' onClick={() => {
             this.setState({ loading: true }, () => {
@@ -159,10 +125,7 @@ export class Page extends Component {
           <hr />
         </article>
         <ArticleLinks linkIds={['evaline-inc', 'resume']} setLoading={(callback) => this.setState({ loading: true }, () => callback())} />
-        <Contact />
-        <Footer />
-        <Stylesheet sheet={sheet} />
-      </main>
+      </Article>
     )
   }
 }
