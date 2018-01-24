@@ -5,6 +5,8 @@ export class Image extends Component {
     super(props, context)
     this.state = {
       loading: true,
+      setRef: false,
+      style: {},
       src: ''
     }
   }
@@ -23,6 +25,12 @@ export class Image extends Component {
     }
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (prevProps.setRef && this.image && !this.state.setRef) {
+      prevProps.setRef(this.image)
+    }
+  }
+
   loadSrc (src) {
     this.img = document.createElement('img')
     this.img.src = src || this.state.src
@@ -35,6 +43,8 @@ export class Image extends Component {
       return <img
         rel={this.props.rel}
         src={this.state.src}
+        data-zoom-target={this.state.src}
+        ref={(image) => { this.image = image }}
         className={this.props.className || ''}
       />
     } else {

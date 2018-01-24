@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 
+import mediumZoom from 'medium-zoom'
+
 import Image from '../../components/general/image.js'
 import ArticleLinks from '../../components/article-links/links.js'
 import Article from '../../components/article/article.js'
 
 export class Page extends Component {
+  setRef (image) {
+    console.debug(this.state, this.props)
+    mediumZoom(image, {
+      margin: 24,
+      background: 'rgba(0, 0, 0, 0.25)'
+    })
+  }
+
   render () {
     return (
       <Article id={'evaline-inc'}>
@@ -38,9 +48,11 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='../static/projects/evaline-inc/1-min.jpg'
                 alt='Some of my work from Evaline (1)' />
               <Image
+                setRef={this.setRef}
                 src='../static/projects/evaline-inc/2-min.jpg'
                 alt='Some of my work from Evaline (2)' />
             </div>
@@ -73,9 +85,11 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='../static/projects/evaline-inc/3-min.jpg'
                 alt='Some of my work from Evaline (3)' />
               <Image
+                setRef={this.setRef}
                 src='../static/projects/evaline-inc/4-min.jpg'
                 alt='Some of my work from Evaline (4)' />
             </div>

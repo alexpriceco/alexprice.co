@@ -165,10 +165,12 @@ article.card {
 
 main.daymode article.card {
   @include box-shadow(0.5em, 0, 1.5em, 0, rgba($black, 0.05));
-  border: 1px solid $lightgrey;
   background: darken($white, 2%);
   box-sizing: border-box;
   color: $black;
+
+  border: 1px solid $lightgrey;
+  &.link { border: none; }
 
   h2, p, span {
     color: $black;

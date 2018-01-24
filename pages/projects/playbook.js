@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 
+import mediumZoom from 'medium-zoom'
+
 import Image from '../../components/general/image.js'
 import ArticleLinks from '../../components/article-links/links.js'
 import Article from '../../components/article/article.js'
 
 export class Page extends Component {
+  setRef (image) {
+    console.debug(this.state, this.props)
+    mediumZoom(image, {
+      margin: 24,
+      background: 'rgba(0, 0, 0, 0.25)'
+    })
+  }
+
   render () {
     return (
       <Article id={'playbook'}>
@@ -45,9 +55,11 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/1-min.png'
                 alt='A shot of the first version of Playbook' />
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/2-min.png'
                 alt='Another shot of the Playbook MVP' />
             </div>
@@ -64,12 +76,15 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/3-min.jpg'
                 alt='Some icon work on v2' />
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/4-min.jpg'
                 alt='An example of the improved visual style' />
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/5-min.jpg'
                 alt='Visual style applied to data-heavy tables' />
             </div>
@@ -86,12 +101,15 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/6-min.png'
                 alt='Main menu of the new Playbook' />
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/7-min.png'
                 alt='Fun, randomly generated loading messages!' />
               <Image
+                setRef={this.setRef}
                 src='/static/projects/playbook/8-min.png'
                 alt='The Playbook landing page' />
             </div>
@@ -121,8 +139,6 @@ export class Page extends Component {
               </div>
             </a>
           </div>
-
-          <hr />
         </article>
         <ArticleLinks linkIds={['evaline-inc', 'resume']} setLoading={(callback) => this.setState({ loading: true }, () => callback())} />
       </Article>

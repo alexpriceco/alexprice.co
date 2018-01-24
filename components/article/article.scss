@@ -105,6 +105,16 @@ header {
   flex-direction: column;
   position: relative;
 
+  &::after {
+    content: '';
+    width: 100vw;
+    height: 2em;
+    background: $black;
+    position: absolute;
+    left: 0; bottom: -1em;
+    border-radius: 1em;
+  }
+
   .back-to-home {
     position: absolute;
     top: 1em;
@@ -218,10 +228,11 @@ header {
 }
 
 main > article.project {
-  @include animation-delay(0.6s);
+  @include animation-delay(0.4s);
   box-sizing: border-box;
   width: 100vw;
   padding: 1em;
+  position: relative;
 
   p {
     opacity: 0.9;
@@ -238,11 +249,11 @@ main > article.project {
     > div {
       display: flex;
       align-items: stretch;
+      justify-content: center;
       flex-wrap: wrap;
 
-      > img + img:not(:nth-child(3)) {
-        margin-left: 1em;
-      }
+      img { margin-top: 1em; }
+      > img + img { margin-left: 1em; }
     }
 
     span {
@@ -264,19 +275,11 @@ main > article.project {
   img {
     @include ease(200ms);
     border-radius: 2px;
-    object-fit: cover;
     cursor: zoom-in;
     max-height: 8em;
     align-self: stretch;
-    width: calc(50vw - 1.5em);
     max-width: calc(100vw - 2.05em);
-    height: 8em;
-
-    &:nth-child(3) {
-      width: 100%;
-      margin-left: 0;
-      margin-top: 1em;
-    }
+    height: 12em;
   }
 
   h2 {
@@ -380,16 +383,8 @@ main > article.project {
       width: calc(100vw - 4em);
 
       img {
-        width: calc(50vw - 3.5em);
         max-width: calc(100vw - 6em);
         max-height: 12em;
-        height: 12em;
-
-        &:nth-child(3) {
-          width: 100%;
-          margin-left: 0;
-          margin-top: 1em;
-        }
       }
     }
 
@@ -409,7 +404,6 @@ main > article.project {
       justify-content: center;
       max-width: 50em;
       margin: 4em auto;
-      img:nth-child(-n + 2) { max-width: 24em; }
     }
   }
 }
@@ -534,6 +528,10 @@ main.vexvolt {
 main.daymode  {
   z-index: -10;
 
+  header::after {
+    background: $white;
+  }
+
   > article,
   > .more-projects,
   > section.contact {
@@ -545,7 +543,7 @@ main.daymode  {
     > hr { background: rgba($black, 0.05); }
 
     .image-list img {
-      @include box-shadow(0.25em, 0, 1.5em, 0, rgba($black, 0.1));
+      @include box-shadow(0.25em, 0, 1.5em, 0, rgba($black, 0.05));
     }
   }
 

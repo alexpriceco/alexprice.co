@@ -1,14 +1,24 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 
+import mediumZoom from 'medium-zoom'
+
 import Image from '../../components/general/image.js'
 import ArticleLinks from '../../components/article-links/links.js'
 import Article from '../../components/article/article.js'
 
 export class Page extends Component {
+  setRef (image) {
+    console.debug(this.state, this.props)
+    mediumZoom(image, {
+      margin: 24,
+      background: 'rgba(0, 0, 0, 0.25)'
+    })
+  }
+
   render () {
     return (
-      <Article id={'playbook'}>
+      <Article id={'vexvolt'}>
         <header>
           <div className='back-to-home' onClick={() => {
             this.setState({ loading: true }, () => {
@@ -41,9 +51,11 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='../static/projects/vexvolt/1-min.jpg'
                 alt='One of the engineering program rooms' />
               <Image
+                setRef={this.setRef}
                 src='../static/projects/vexvolt/2-min.jpg'
                 alt='A render of revision three' />
             </div>
@@ -62,9 +74,11 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='../static/projects/vexvolt/3-min.png'
                 alt='Another technical drawing' />
               <Image
+                setRef={this.setRef}
                 src='../static/projects/vexvolt/4-min.png'
                 alt='Technical drawing, à la top view' />
             </div>
@@ -83,12 +97,15 @@ export class Page extends Component {
           <div className='image-list'>
             <div>
               <Image
+                setRef={this.setRef}
                 src='../static/projects/vexvolt/5-min.jpg'
                 alt='My printer!' />
               <Image
+                setRef={this.setRef}
                 src='../static/projects/vexvolt/6-min.jpg'
                 alt='Part of a housing, with support material' />
               <Image
+                setRef={this.setRef}
                 src='../static/projects/vexvolt/7-min.jpg'
                 alt='Several prints on a table' />
             </div>
@@ -107,8 +124,6 @@ export class Page extends Component {
               </div>
             </a>
           </div>
-
-          <hr />
         </article>
         <ArticleLinks linkIds={['playbook', 'resume']} setLoading={(callback) => this.setState({ loading: true }, () => callback())} />
       </Article>
