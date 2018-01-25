@@ -54,6 +54,7 @@ img.loading {
 }
 
 .button {
+  font-size: 1.125em;
   margin-top: 2em;
   height: 3em;
   width: 12em;
@@ -113,6 +114,13 @@ header {
     position: absolute;
     left: 0; bottom: -1em;
     border-radius: 1em;
+  }
+
+  @include for-size(tablet-landscape-up) {
+    &::after {
+      opacity: 0;
+      bottom: -2em;
+    }
   }
 
   .back-to-home {
@@ -234,12 +242,62 @@ main > article.project {
   padding: 1em;
   position: relative;
 
+  h2 {
+    font-size: 1.75em;
+  }
+
   p {
     opacity: 0.9;
     font-size: 1.125em;
     line-height: 1.75em;
     margin-top: 1em;
     word-wrap: break-word;
+    overflow-wrap: hyphenate-word;
+    hyphens: overflow;
+
+    &.callout {
+      padding: 1.5em 1em;
+      font-size: 1.5em;
+      padding-bottom: 3em;
+      margin-bottom: 1.5em;
+      position: relative;
+
+      &:not(:first-child) {
+        padding-top: 3em;
+        margin-top: 1.5em;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 1em;
+          top: 0;
+          width: 4em;
+          height: 1px;
+          background: $white;
+          opacity: 0.1;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 1em;
+        bottom: 0;
+        width: 4em;
+        height: 1px;
+        background: $white;
+        opacity: 0.1;
+      }
+
+      @include for-size(tablet-portrait-up) {
+        &:not(:first-child) {
+          padding-top: 10vh;
+          margin-top: 10vh;
+        }
+
+        margin-bottom: 10vh;
+        padding-bottom: 10vh;
+      }
+    }
   }
 
   .image-list {
@@ -251,6 +309,12 @@ main > article.project {
       align-items: stretch;
       justify-content: center;
       flex-wrap: wrap;
+
+      .spacer {
+        width: 1em;
+        height: 2em;
+        display: none;
+      }
 
       img {
         margin: 0;
@@ -270,6 +334,30 @@ main > article.project {
       margin-top: 1em;
     }
 
+    @include for-size(phone-only) {
+      > div {
+        width: 100vw;
+        margin-left: -1em;
+        box-sizing: border-box;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        padding: 0 1em;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+
+        .spacer {
+          display: inline-block;
+        }
+
+        > img {
+          margin: 1em;
+          display: inline-block;
+          &:nth-last-child(2) { margin-right: 1.5em; }
+        }
+      }
+    }
+
     @media (pointer: fine) {
       &:hover img { opacity: 0.5; }
       & img:hover { opacity: 1; }
@@ -287,7 +375,7 @@ main > article.project {
   }
 
   h2 {
-    margin-top: 2em;
+    margin-top: 3em;
   }
 
   ol {
@@ -300,7 +388,7 @@ main > article.project {
     max-width: 25.6em;
     margin: 1em 0 0 0;
     padding: 0;
-    font-size: 1.25em;
+    font-size: 1.125em;
     line-height: 1.6em;
     word-break: keep-all;
     list-style: none;
@@ -315,6 +403,8 @@ main > article.project {
     }
   }
 
+  p svg { opacity: 0.5; }
+
   > hr {
     margin-bottom: 4em;
     margin-left: -1em;
@@ -327,12 +417,22 @@ main > article.project {
 
   a:not(.button), a:visited:not(.button) {
     opacity: 1;
-    position: relative;
-    display: inline-block;
     color: $white;
+    position: relative;
     -webkit-transform: translate3d(0, 0, 1px);
     text-decoration: none;
-    white-space: normal;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 
     &::after {
       @include ease(300ms);
@@ -367,24 +467,26 @@ main > article.project {
   }
 
   @include for-size(tablet-portrait-up) {
-    p { font-size: 1.25em; }
-
+    padding-top: 10vh;
     p, li {
+      font-size: 1.25em;
       max-width: 30em;
       margin: 0 auto;
       margin-bottom: 1em;
     }
 
     h2 {
-      max-width: 25em;
+      max-width: 21.5em;
       margin: 1em auto;
-      margin-top: 2em;
+      margin-top: 4em;
     }
 
     .image-list {
       margin: 4em 2em;
       box-sizing: border-box;
       width: calc(100vw - 4em);
+      align-items: center;
+      justify-content: center;
 
       img + img { margin-left: 1em; }
 
@@ -400,16 +502,6 @@ main > article.project {
       max-width: 37.5em;
       margin: 0 auto;
       > * { margin-right: 2em; }
-    }
-  }
-
-  @include for-size(tablet-portrait-up) {
-    padding-top: 10vh;
-    .image-list {
-      align-items: center;
-      justify-content: center;
-      max-width: 50em;
-      margin: 4em auto;
     }
   }
 }
@@ -546,7 +638,14 @@ main.daymode  {
 
   > article.project {
     color: $black;
+    p svg {
+      margin-right: 0.5em;
+      path { fill: $black; }
+    }
     > hr { background: rgba($black, 0.05); }
+
+    p.callout::before,
+    p.callout::after { background: $black; }
 
     .image-list {
       span { color: $black; }

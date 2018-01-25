@@ -43,6 +43,8 @@ export class Page extends Component {
           <Image rel='' src='/static/projects/playbook/preview-min.jpg' />
         </header>
         <article className='project'>
+          <p className='callout'>D&amp;D is a ton of fun. Roleplaying is a joy, and adventuring with friends is great. Doing math, and tracking numbers... not so much.</p>
+
           <p>Having played D&amp;D for several years now, I've had a ton of fun with the game. Some of my best college memories were made with the crew I ran with—lots of laughs, plenty of epic moments, and... math. This tool has taken on several forms of the time I've spent working on it, with the most recent build gearing up for a beta test.</p>
 
           <h2>Version one</h2>
@@ -62,6 +64,7 @@ export class Page extends Component {
                 setRef={this.setRef}
                 src='/static/projects/playbook/2-min.png'
                 alt='Another shot of the Playbook MVP' />
+              <div className='spacer'>&nbsp;</div>
             </div>
             <span>Shots of the Garlic-based app</span>
           </div>
@@ -87,6 +90,7 @@ export class Page extends Component {
                 setRef={this.setRef}
                 src='/static/projects/playbook/5-min.jpg'
                 alt='Visual style applied to data-heavy tables' />
+              <div className='spacer'>&nbsp;</div>
             </div>
             <span>Shots of v2, with special focus on branding</span>
           </div>
@@ -108,6 +112,7 @@ export class Page extends Component {
                 setRef={this.setRef}
                 src='/static/projects/playbook/8-min.png'
                 alt='The Playbook landing page' />
+              <div className='spacer'>&nbsp;</div>
             </div>
             <span>New Playbook and landing page</span>
           </div>

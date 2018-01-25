@@ -44,9 +44,11 @@ export class Page extends Component {
         </header>
         <article className='project'>
           <h2>Discovering a Problem</h2>
-          <p>I was a bit of a nerd in high school. I graduated as VP of the science club, and president of the robotics team, having completed three years of VEX, FRC, and NAO robotics. As a VEX robotics competitor, I ran into a specific problem that many teams shared—dealing with batteries was a pain in the ass. A team replaces a battery (or two, if you need the power), before every round, and uses the VEX-specific batteries off the field as well. As a result, you end up with a <em>ton</em> of batteries lying around, and determining the charge state of each battery isn't trivial.</p>
+          <p>A team uses 1 - 4 batteries between per round, resulting in a <em>ton</em> of batteries lying around. When you go to grab another battery though, determining the charge state becomes a problem.</p>
 
           <p>Most teams use a multimeter, which runs around $50, and is difficult to use—there's extra settings you don't need, and the leads aren't designed to work well with VEX batteries. It's a cumbersome, ineffective, expensive tool for the job.</p>
+
+          <p className='callout'>As a VEX robotics competitor, I ran into a problem many teams shared: dealing with batteries was a pain in the ass.</p>
 
           <div className='image-list'>
             <div>
@@ -58,6 +60,7 @@ export class Page extends Component {
                 setRef={this.setRef}
                 src='../static/projects/vexvolt/2-min.jpg'
                 alt='A render of revision three' />
+              <div className='spacer'>&nbsp;</div>
             </div>
             <span>From left: high school, electronics, render.</span>
           </div>
@@ -81,6 +84,7 @@ export class Page extends Component {
                 setRef={this.setRef}
                 src='../static/projects/vexvolt/4-min.png'
                 alt='Technical drawing, à la top view' />
+              <div className='spacer'>&nbsp;</div>
             </div>
             <span>Shots from the patent application.</span>
           </div>
@@ -108,6 +112,7 @@ export class Page extends Component {
                 setRef={this.setRef}
                 src='../static/projects/vexvolt/7-min.jpg'
                 alt='Several prints on a table' />
+              <div className='spacer'>&nbsp;</div>
             </div>
             <span>From left: high school, electronics, render.</span>
           </div>
