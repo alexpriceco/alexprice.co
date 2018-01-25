@@ -117,6 +117,14 @@ article.card {
     width: 100%;
   }
 
+  h2 svg {
+    @include transform(scale(1.1));
+    will-change: opacity;
+    padding-bottom: 0.1em;
+    margin-left: 0em;
+    opacity: 0;
+  }
+
   @include for-size(tablet-portrait-up) {
     max-width: calc(50vw - 3em);
     min-width: calc(50vw - 3em);
@@ -153,10 +161,15 @@ article.card {
     }
 
     &.link:hover {
-      span, p, svg { opacity: 0.15; }
+      span, p, svg { opacity: 0.1; }
       &::after { opacity: 0.8; }
       span::after {
         width: calc(100% - 2px);
+        opacity: 1;
+      }
+
+      h2 svg {
+        margin-left: 0.5em;
         opacity: 1;
       }
     }

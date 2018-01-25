@@ -16,7 +16,7 @@ export const Card = (props) => (
     className={'card ' + props.id + (props.link ? ' link' : '')}
     onClick={() => props.navigateTo(props.id)}
   >
-    <h2>{props.title}</h2>
+    <h2>{props.title}<ArrowIcon /></h2>
     <p>{props.summary}</p>
     <div><span>{props.linkText}</span><ArrowIcon /></div>
     <Image src={`/static/projects/${props.id}/preview-min.jpg`} rel='' />

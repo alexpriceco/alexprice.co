@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Head from '../components/general/head.js'
+import Loader from '../components/loader/loader.js'
 import Stylesheet from '../components/general/stylesheet.js'
 import sheet from '../components/simple.scss'
 import axios from 'axios'
@@ -148,7 +149,7 @@ export default class Home extends Component {
         <Head title='🏠 Home' />
         { this.state.loading
           ? <section style={{ fontFamily: 'Inconsolata, monospace' }}>
-            <span>Loading...</span>
+            <Loader />
           </section>
           : (this.state.noToken
             ? <section style={{ fontFamily: 'Inconsolata, monospace' }}>

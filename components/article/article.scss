@@ -554,10 +554,6 @@ main.daymode  {
     }
   }
 
-  .more-projects {
-    @include for-size(phone-only) { margin: 4em 0; }
-  }
-
   .more-projects .card {
     margin-bottom: 1em;
 
@@ -580,7 +576,26 @@ main.daymode  {
     }
 
     &::after {
-      background: rgba($white, 0.5);
+      background: rgba($white, 0.85);
+    }
+  }
+
+  .more-projects {
+    @include for-size(phone-only) {
+      margin: 4em 0;
+
+      .card::before {
+        background: -webkit-linear-gradient(180deg,
+          rgba($white, 0) 25%, rgba($white, 1) 50%);
+        background: -moz-linear-gradient(180deg,
+          rgba($white, 0) 25%, rgba($white, 1) 50%);
+        background: linear-gradient(180deg,
+          rgba($white, 0) 25%, rgba($white, 1) 50%);
+      }
+
+      .card::after {
+        background: rgba($white, 0.5);
+      }
     }
   }
 

@@ -4,7 +4,7 @@ import Router from 'next/router'
 import mediumZoom from 'medium-zoom'
 
 import Image from '../../components/general/image.js'
-import ArticleLinks from '../../components/article-links/links.js'
+import ArticleLinks from '../../components/article/links.js'
 import Article from '../../components/article/article.js'
 
 export class Page extends Component {
