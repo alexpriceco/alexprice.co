@@ -23,6 +23,11 @@ export class Index extends Component {
       error: '',
 
       cards: [{
+        id: 'evaline-inc',
+        title: '🚙 Evaline, Inc.',
+        linkText: 'Read about it',
+        summary: `Led product design for three products, then used React and GraphQL to build them.`
+      }, {
         id: 'playbook',
         title: '⚔️ Playbook',
         linkText: 'Discover Playbook',
@@ -32,11 +37,6 @@ export class Index extends Component {
         title: '⚡️ VEXvolt',
         linkText: 'Check it out',
         summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`
-      }, {
-        id: 'evaline-inc',
-        title: '🚙 Evaline, Inc.',
-        linkText: 'Read about it',
-        summary: `Led product design for three products, then used React and GraphQL to build them.`
       }, {
         id: 'resume',
         title: '📄 Resume',
