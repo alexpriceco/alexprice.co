@@ -64,7 +64,7 @@ export class Page extends Component {
                 alt='Engage, our solution for public charger discovery.' />
               <div className='spacer'>&nbsp;</div>
             </div>
-            <span>Left to right: B2B platform, native consumer app</span>
+            <span>Left &rarr; right: B2B platform, native B2C app</span>
           </div>
 
           <h2>Contracting</h2>
