@@ -385,7 +385,8 @@ main > article.project {
       margin: 4em 2em;
       box-sizing: border-box;
       width: calc(100vw - 4em);
-      > img + img { margin-left: 1em; }
+
+      img + img { margin-left: 1em; }
 
       img {
         max-width: calc(100vw - 6em);
@@ -547,8 +548,9 @@ main.daymode  {
     color: $black;
     > hr { background: rgba($black, 0.05); }
 
-    .image-list img {
-      @include box-shadow(0.25em, 0, 1.5em, 0, rgba($black, 0.05));
+    .image-list {
+      span { color: $black; }
+      img { @include box-shadow(0.25em, 0, 1.5em, 0, rgba($black, 0.05)); }
     }
   }
 

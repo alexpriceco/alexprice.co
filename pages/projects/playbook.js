@@ -106,10 +106,6 @@ export class Page extends Component {
                 alt='Main menu of the new Playbook' />
               <Image
                 setRef={this.setRef}
-                src='/static/projects/playbook/7-min.png'
-                alt='Fun, randomly generated loading messages!' />
-              <Image
-                setRef={this.setRef}
                 src='/static/projects/playbook/8-min.png'
                 alt='The Playbook landing page' />
             </div>
