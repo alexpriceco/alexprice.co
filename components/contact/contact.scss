@@ -30,6 +30,7 @@ section.contact {
 
   h2, p, .button {
     position: relative;
+    color: $white;
     z-index: 10;
     text-shadow: 0px 2px 4px rgba($black, 0.25);
   }
@@ -86,5 +87,23 @@ section.contact {
 
   @include for-size(big-desktop-up) {
     margin: 40vh 0;
+  }
+}
+
+main.daymode section.contact {
+  > div { h2, p { color: $white; } }
+  background: -webkit-linear-gradient(180deg,
+    rgba($black, 0) 40%, rgba($black, 1) 50vh);
+  background: -moz-linear-gradient(180deg,
+    rgba($black, 0) 40%, rgba($black, 1) 50vh);
+  background: linear-gradient(180deg,
+    rgba($black, 0) 40%, rgba($black, 1) 50vh);
+
+  @include for-size(tablet-portrait-up) {
+    background: $white;
+    > div h2, > div p {
+      color: $black;
+      text-shadow: 0px 2px 4px rgba($black, 0.1);
+    }
   }
 }

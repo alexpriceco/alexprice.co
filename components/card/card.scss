@@ -169,8 +169,12 @@ main.daymode article.card {
   box-sizing: border-box;
   color: $black;
 
-  border: 1px solid $lightgrey;
+  border: none;
   &.link { border: none; }
+
+  @include for-size(tablet-portrait-up) {
+    &:not(.link) { border: 1px solid $lightgrey; }
+  }
 
   h2, p, span {
     color: $black;
@@ -178,4 +182,13 @@ main.daymode article.card {
   }
 
   svg path { fill: $black; }
+
+  &::before {
+    background: -webkit-linear-gradient(180deg,
+      rgba($white, 0) 0%, rgba($white, 1) 50%);
+    background: -moz-linear-gradient(180deg,
+      rgba($white, 0) 0%, rgba($white, 1) 50%);
+    background: linear-gradient(180deg,
+      rgba($white, 0) 0%, rgba($white, 1) 50%);
+  }
 }
