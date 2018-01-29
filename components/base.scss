@@ -16,7 +16,6 @@ main.loading header section.project-cards .card {
 
 main:not(.loading) header {
   section.project-cards .card,
-  > div div.introducing-me,
   > div article.title-group h1,
   > div article.title-group h2 {
      @extend .fadeIn;
@@ -24,23 +23,25 @@ main:not(.loading) header {
   }
 
   > div article.title-group h2 { @include animation-delay(0.15s) }
-  div.introducing-me {
-    @include animate(1s);
+
+  img.introducing-me {
+    animation-name: fadeInImg;
+    @include animate(1.5s);
     @include animation-delay(0.4s)
   }
 
   section.project-cards .card {
     @include animate(1s);
-    &:nth-child(1) { @include animation-delay(0.5s) }
-    &:nth-child(2) { @include animation-delay(0.6s) }
-    &:nth-child(3) { @include animation-delay(0.7s) }
-    &:nth-child(4) { @include animation-delay(0.8s) }
+    &:nth-child(1) { @include animation-delay(0.6s) }
+    &:nth-child(2) { @include animation-delay(0.7s) }
+    &:nth-child(3) { @include animation-delay(0.8s) }
+    &:nth-child(4) { @include animation-delay(0.9s) }
   }
 }
 
 main.loaded header {
   section.project-cards .card,
-  > div div.introducing-me,
+  > div img.introducing-me,
   > div article.title-group h1,
   > div article.title-group h2 {
      animation-name: none;
@@ -139,34 +140,18 @@ header {
 
   .introducing-me {
     position: relative;
-    display: none;
+    min-width: 75vw;
+    max-width: 100vw;
+    opacity: 0.125;
+    position: absolute;
+    right: -45%;
+    top: -2em;
+    background-position: right 50%;
+    background-size: cover;
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 50%;
-      width: 100%;
-      height: 50%;
-      background: linear-gradient(180deg, transparent 0%, $black 95%)
-    }
-
-    &::after {
-      @include transform(translateX(-50%));
-      content: "👋 Hello!";
-      position: absolute;
-      font-size: 1.25em;
-      bottom: 0;
-      left: 50%;
-      opacity: 0.7;
-    }
-
-    img {
-      max-height: 16em;
-      border-radius: 0.25em;
-    }
-
-    @include for-size(phone-only) {
-      display: none;
+    @include for-size(tablet-landscape-up) {
+      right: -25%;
+      opacity: 0.5;
     }
   }
 

@@ -10,6 +10,7 @@ import Card from '../components/card/card.js'
 import Contact from '../components/contact/contact.js'
 import Footer from '../components/footer/footer.js'
 import Loader from '../components/loader/loader.js'
+import Image from '../components/general/image.js'
 
 import ReactGA from 'react-ga'
 
@@ -96,7 +97,11 @@ export class Index extends Component {
               </h2>
             </article>
 
-            <div className='introducing-me' />
+            <Image
+              rel=''
+              className='introducing-me'
+              src='static/fade-min.png'
+            />
           </div>
           <section className='project-cards'>
             { this.state.cards.map((c, i) => <Card {...c}

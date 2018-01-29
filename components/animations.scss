@@ -16,6 +16,18 @@
   -webkit-font-smoothing: antialiased;
 }
 
+@include keyframes('fadeInImg') {
+  0% {
+    -webkit-transform: translateY(0.5em);
+    transform: translateY(0.5em);
+    opacity: 0;
+  } 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: inherit;
+  }
+}
+
 @include keyframes('slideIn') {
   0% {
     -webkit-transform: translateY(0.5em);
