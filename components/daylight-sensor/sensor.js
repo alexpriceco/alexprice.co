@@ -51,27 +51,28 @@ async function getFreshCoords () {
   /* global XMLHttpRequest */
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest()
-    request.open('GET', 'https://freegeoip.net/json', true)
+    request.open('GET', 'https://freegeoip.net/json/', true)
+    request.onerror = (error) => console.error(`IP coordinates failed: `, error)
     request.onload = () => {
       if (request.status >= 200 && request.status < 400) {
         const res = JSON.parse(request.responseText)
-        resolve({
-          lat: res.latitude,
-          lon: res.longitude
-        })
-      } else {
-        const e = new Error(`Request status is ${request.status}`)
-        return reject(e)
-      }
+        resolve({ lat: res.latitude, lon: res.longitude })
+      } else return reject(new Error(`Request status is ${request.status}`))
     }
+
     request.send()
   })
 }
 
-function isItDaytime (coords, callback) {
-  const times = SunCalc.getTimes(new Date(), coords.lat, coords.lon)
-  if (new Date() > times.dawn && new Date() < times.dusk) return true
-  else return false
+function isItDaytime (coords) {
+  if (coords) {
+    const times = SunCalc.getTimes(new Date(), coords.lat, coords.lon)
+    if (new Date() > times.dawn && new Date() < times.dusk) return true
+    else return false
+  } else {
+    if (new Date().getHours() > 5 && new Date().getHours() < 18) return true
+    else return false
+  }
 }
 
 module.exports = {
@@ -84,12 +85,18 @@ module.exports = {
             getFreshCoords().then((freshCoords) => {
               setFreshCoords(freshCoords)
               resolve(isItDaytime(freshCoords))
+            }).catch((e) => {
+              console.error(e)
+              resolve(isItDaytime(false))
             })
           }
         })
       } else {
         getFreshCoords().then((freshCoords) => {
           resolve(isItDaytime(freshCoords))
+        }).catch((e) => {
+          console.error(e)
+          resolve(isItDaytime(false))
         })
       }
     })
