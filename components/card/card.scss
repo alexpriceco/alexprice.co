@@ -23,6 +23,7 @@ article.card {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  backface-visibility: hidden;
 
   > *:not(img) {
     z-index: 1;
@@ -45,7 +46,7 @@ article.card {
     font-size: 1.25em;
     max-width: 14.5em;
     line-height: 1.5em;
-    -webkit-transform: translate3d(0, 0, 1px);
+    -webkit-transform: translate3d(0, 0, 0);
   }
 
   svg {
@@ -62,7 +63,7 @@ article.card {
     position: relative;
     display: inline-block;
     color: $white;
-    -webkit-transform: translate3d(0, 0, 1px);
+    -webkit-transform: translate3d(0, 0, 0);
     text-decoration: none;
     margin-top: 1em;
 

@@ -230,13 +230,14 @@ section.project-cards {
 
   @media (pointer: fine) {
     & > .card {
-      @include transform(scale(1));
+      @include transform(scale(1) perspective(1px) translateZ(0));
     }
 
     &:hover > .card { opacity: 0.5; }
     & > .card:hover {
       opacity: 1;
-      @include transform(scale(1.01))
+      backface-visibility: hidden;
+      @include transform(scale(1.01) perspective(1px) translateZ(0))
     }
   }
 }
