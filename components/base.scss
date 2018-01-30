@@ -140,8 +140,8 @@ header {
 
   .introducing-me {
     position: relative;
-    min-width: 75vw;
-    max-width: 100vw;
+    min-height: 100vh;
+    max-width: 1000vw;
     opacity: 0.125;
     position: absolute;
     right: -45%;
@@ -152,6 +152,10 @@ header {
     @include for-size(tablet-landscape-up) {
       right: -25%;
       opacity: 0.5;
+    }
+
+    @include for-size(desktop-up) {
+      right: -45%;
     }
   }
 
