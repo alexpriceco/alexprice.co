@@ -186,7 +186,22 @@ main.daymode article.card {
   &.link { border: none; }
 
   @include for-size(tablet-portrait-up) {
-    &:not(.link) { border: 1px solid $lightgrey; }
+    &:not(.link) {
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid rgba($black, 0.05);
+      }
+
+      img { z-index: 1; }
+    }
   }
 
   h2, p, span {
