@@ -35,7 +35,9 @@ article.card {
   }
 
   h2 {
+    position: relative;
     margin-bottom: 0;
+    padding-left: 1.5em;
   }
 
   p {
@@ -118,12 +120,25 @@ article.card {
     width: 100%;
   }
 
-  h2 svg {
-    @include transform(scale(1.1));
-    will-change: opacity;
-    padding-bottom: 0.1em;
-    margin-left: 0em;
-    opacity: 0;
+  h2 {
+    svg {
+      @include transform(scale(1.1));
+      will-change: opacity;
+      padding-bottom: 0.1em;
+      margin-left: 0em;
+      opacity: 0;
+    }
+
+    > img {
+      position: absolute;
+      background-position: center center;
+      background-size: contain;
+      left: 0;
+      top: auto;
+      bottom: 0.4em;
+      height: 1em;
+      width: 1em;
+    }
   }
 
   @include for-size(tablet-portrait-up) {
@@ -179,7 +194,7 @@ article.card {
 
 main.daymode article.card {
   @include box-shadow(0.5em, 0, 1.5em, 0, rgba($black, 0.05));
-  background: darken($white, 2%);
+  background: $white;
   box-sizing: border-box;
   color: $black;
 
