@@ -234,20 +234,21 @@ section.project-cards {
 
   @media (pointer: fine) {
     & > .card {
-      @include transform(scale(1));
+      @include transform(scale(1) perspective(1px) translateZ(0));
     }
 
     &:hover > .card { opacity: 0.5; }
     & > .card:hover {
       opacity: 1;
-      @include transform(scale(1.01))
+      backface-visibility: hidden;
+      @include transform(scale(1.01) perspective(1px) translateZ(0))
     }
   }
 }
 
 main.daymode  {
   z-index: -10;
-  background: $white;
+  background: darken($white, 2%);
 
   header {
     h1, h2 { text-shadow: none; }
@@ -259,7 +260,7 @@ main.daymode  {
   }
 
   section.contact {
-    background: $white;
+    background: darken($white, 2%);
     h2, p {
       color: $black;
       text-shadow: 0px 2px 4px rgba($black, 0.1);

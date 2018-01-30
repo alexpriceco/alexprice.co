@@ -25,22 +25,22 @@ export class Index extends Component {
 
       cards: [{
         id: 'evaline-inc',
-        title: '🚙 Evaline, Inc.',
+        title: 'Evaline, Inc.',
         linkText: 'Read about it',
         summary: `Led product design for three products, then used React and GraphQL to build them.`
       }, {
         id: 'playbook',
-        title: '⚔️ Playbook',
+        title: 'Playbook',
         linkText: 'Discover Playbook',
         summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`
       }, {
         id: 'vexvolt',
-        title: '⚡️ VEXvolt',
+        title: 'VEXvolt',
         linkText: 'Check it out',
         summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`
       }, {
         id: 'resume',
-        title: '📄 Resume',
+        title: 'Resume',
         linkText: 'View resume',
         summary: `Get a brief overview of some skills I've employed, and projects I’ve worked on.`
       }]
