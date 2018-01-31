@@ -57,6 +57,7 @@ main.loaded header {
 main {
   @include ease(0.5s);
   background: $black;
+  overflow: hidden;
 }
 
 main.daymode { background: $white; }
