@@ -260,14 +260,6 @@ main.daymode  {
     }
   }
 
-  section.contact {
-    background: darken($white, 2%);
-    h2, p {
-      color: $black;
-      text-shadow: 0px 2px 4px rgba($black, 0.1);
-    }
-  }
-
   footer {
     background: $black;
   }
