@@ -100,11 +100,16 @@ section.contact {
     opacity: 0.5;
     pointer-events: none;
 
-    @include ease(150ms);
+    @include ease(250ms);
     @include transform(translate(1em, -2.25em));
     &:nth-of-type(2) { @include transform(translate(1em, -3.375em)); }
     &:nth-of-type(3) { @include transform(translate(1em, -4.5em)); }
-    &.hidden { opacity: 0; }
+    &.hidden {
+      opacity: 0;
+      @include transform(translate(1em, -2em));
+      &:nth-of-type(2) { @include transform(translate(1em, -3.125em)); }
+      &:nth-of-type(3) { @include transform(translate(1em, -4.25em)); }
+    }
   }
 
   @include for-size(tablet-portrait-up) {

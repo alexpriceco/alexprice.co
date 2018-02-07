@@ -18,15 +18,36 @@ export class Contact extends Component {
     }
   }
 
-  componentDidMount () {
-    this.cyclePlaceholder(this.state.placeholder)
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.step === 0 && this.state.step === 1) {
+      setTimeout(() => this.cyclePlaceholder(this.state.placeholder), 2500)
+    }
+
+    const { value, type } = this.state
+    const getTypeOf = (raw) => {
+      const value = raw.trim()
+      if (
+        !isNaN(parseInt(value.charAt(0))) ||
+        value.charAt(0) === '(' ||
+        value.charAt(0) === '+'
+      ) return 'phone'
+      else if (value.charAt(0) === '@') return 'twitter'
+      else if (/(.+)@(.+)/.test(value)) return 'email'
+      else if (value.length > 5) return 'plain'
+      else return false
+    }
+
+    if (value) {
+      const newType = getTypeOf(value)
+      if (type !== newType) this.setState({ type: newType })
+    }
   }
 
   cyclePlaceholder (n) {
     if (this.state.value === '') {
       const newN = n === 2 ? 0 : n + 1
       this.setState({ placeholder: newN })
-      setTimeout(() => this.cyclePlaceholder(newN), 3000)
+      setTimeout(() => this.cyclePlaceholder(newN), 2500)
     }
   }
 
