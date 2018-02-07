@@ -112,6 +112,27 @@ section.contact {
     }
   }
 
+  div.button {
+    font-size: 1.125em;
+    margin-top: -1.5em;
+    @include ease(200ms);
+
+    &.invalid {
+      pointer-events: none;
+      svg { opacity: 0.5; }
+      &::before { background: $light-grey; }
+      color: rgba($white, 0.5);
+      opacity: 0.75;
+    }
+
+    &.hidden {
+      @include transform(translateY(1em));
+      color: rgba($white, 0);
+      svg { opacity: 0; }
+      opacity: 0;
+    }
+  }
+
   @include for-size(tablet-portrait-up) {
     flex-direction: row;
     min-height: 75vh;
