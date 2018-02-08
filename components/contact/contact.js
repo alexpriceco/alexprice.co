@@ -39,6 +39,8 @@ export class Contact extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     if (prevState.step === 0 && this.state.step === 1) {
+      if (this.inputRef) this.inputRef.focus()
+      else console.warn(`Couldn't autofocus input`)
       setTimeout(() => this.cyclePlaceholder(this.state.placeholder), 2500)
     }
 
@@ -68,7 +70,6 @@ export class Contact extends Component {
     if (value) {
       const newType = getTypeOf(value)
       const newValid = isValid(newType, value)
-      console.info(newType, newType === false, newType === 'false', typeof newType)
       if (valid !== newValid) {
         this.setState({ valid: newValid })
         if (newType === false || newType === 'false') {
@@ -96,7 +97,6 @@ export class Contact extends Component {
 
   render () {
     const { step, value, valid, placeholder, type } = this.state
-    console.debug(type)
 
     return (
       <section className='contact'>
