@@ -8,6 +8,18 @@ const MailIcon = () => (
   </svg>
 )
 
+const TwitterIcon = () => (
+  <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+    <path d='M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z' />
+  </svg>
+)
+
+const MessageIcon = () => (
+  <svg width='18' height='18' viewBox='0 0 18 18'>
+    <path stroke='white' fill='none' strokeWidth='1.5' transform='translate(1 1)' d='M 16 7.55557C 16.003 8.72878 15.7289 9.88613 15.2 10.9333C 14.5728 12.1882 13.6086 13.2437 12.4155 13.9816C 11.2223 14.7195 9.84731 15.1106 8.44443 15.1111C 7.27122 15.1142 6.11387 14.8401 5.06666 14.3111L 0 16L 1.68889 10.9333C 1.15994 9.88613 0.885829 8.72878 0.888887 7.55557C 0.88943 6.15269 1.28054 4.77766 2.01841 3.58451C 2.75629 2.39135 3.81178 1.42719 5.06666 0.800024C 6.11387 0.271075 7.27122 -0.00303356 8.44443 2.53227e-05L 8.88887 2.53227e-05C 10.7416 0.10224 12.4916 0.884256 13.8037 2.19634C 15.1157 3.50843 15.8978 5.25837 16 7.11113L 16 7.55557Z' />
+  </svg>
+)
+
 export class Contact extends Component {
   constructor (props, context) {
     super(props, context)
@@ -30,7 +42,7 @@ export class Contact extends Component {
       setTimeout(() => this.cyclePlaceholder(this.state.placeholder), 2500)
     }
 
-    const { value, type } = this.state
+    const { value, type, valid } = this.state
     const getTypeOf = (raw) => {
       const value = raw.trim()
       if (
@@ -46,22 +58,32 @@ export class Contact extends Component {
 
     const isValid = (type, raw) => {
       const value = raw.trim()
-      if (type === 'phone') {
-        if (
-          false // TODO phone validation
-        ) return true
-        else return false
-      } else if (type === 'twitter' && value.length > 3) return true
-      else if (type === 'email') return false // TODO
+      if (type === 'phone') return value.replace(/\D/g, '').length >= 7
+      else if (type === 'twitter' && value.length > 3) return true
+      else if (type === 'email') return (/\S+@\S+\.\S+/).test(value)
       else if (value.length > 5) return true
       else return false
     }
 
     if (value) {
       const newType = getTypeOf(value)
-      const valid = isValid(newType, value)
-      if (type !== newType) this.setState({ type: newType })
-    } else if (type !== false) this.setState({ type: false })
+      const newValid = isValid(newType, value)
+      console.info(newType, newType === false, newType === 'false', typeof newType)
+      if (valid !== newValid) {
+        this.setState({ valid: newValid })
+        if (newType === false || newType === 'false') {
+          setTimeout(() => this.setState({ type: newType }), 1000)
+        }
+      } else if (type !== newType) {
+        if (newType === false || newType === 'false') {
+          setTimeout(() => this.setState({ type: newType }), 1000)
+        } else this.setState({ type: newType })
+      }
+    } else if (type !== false) {
+      if (typeof type === 'string') {
+        setTimeout(() => this.setState({ type: false }), 1000)
+      } else this.setState({ type: false })
+    }
   }
 
   cyclePlaceholder (n) {
@@ -74,6 +96,7 @@ export class Contact extends Component {
 
   render () {
     const { step, value, valid, placeholder, type } = this.state
+    console.debug(type)
 
     return (
       <section className='contact'>
@@ -103,11 +126,10 @@ export class Contact extends Component {
             (123) 456-7890</span>
 
           <div className={`button ${type ? '' : 'hidden'} ${valid ? 'valid' : 'invalid'}`}>
-            { type === 'twitter' ? <div><MailIcon /> Tweet at me!</div>
-              : (type === 'mail' ? <div><MailIcon /> Email me!</div>
-                : type === 'phone' ? <div><MailIcon /> Send me a text!</div>
-                  : <div><MailIcon /> Send it!</div>)
-            }
+            {type === 'phone' ? <div><MessageIcon /> Send me a text!</div> : ''}
+            {type === 'twitter' ? <div><TwitterIcon /> Tweet at me!</div> : ''}
+            {type === 'email' ? <div><MailIcon /> Email me!</div> : ''}
+            {type === false ? <div><MailIcon /> Send it!</div> : ''}
           </div>
         </div>
 
