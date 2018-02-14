@@ -31,8 +31,9 @@ export class Contact extends Component {
       // 2 is sent
 
       placeholder: 0,
-      valid: false,
+      visible: false,
       type: false,
+      valid: false,
       value: ''
     }
   }
@@ -44,7 +45,7 @@ export class Contact extends Component {
       setTimeout(() => this.cyclePlaceholder(this.state.placeholder), 2500)
     }
 
-    const { value, type, valid } = this.state
+    const { value, type } = this.state
     const getTypeOf = (raw) => {
       const value = raw.trim()
       if (
@@ -70,20 +71,23 @@ export class Contact extends Component {
     if (value) {
       const newType = getTypeOf(value)
       const newValid = isValid(newType, value)
-      if (valid !== newValid) {
-        this.setState({ valid: newValid })
-        if (newType === false || newType === 'false') {
-          setTimeout(() => this.setState({ type: newType }), 1000)
+
+      if ((newType === 'false' || newType === false) && type) {
+        if (prevState.visible) {
+          this.setState({
+            visible: false,
+            valid: newValid
+          })
         }
-      } else if (type !== newType) {
-        if (newType === false || newType === 'false') {
-          setTimeout(() => this.setState({ type: newType }), 1000)
-        } else this.setState({ type: newType })
+      } else if (newType !== type && newType) {
+        this.setState({
+          type: newType,
+          valid: newValid,
+          visible: true
+        })
       }
-    } else if (type !== false) {
-      if (typeof type === 'string') {
-        setTimeout(() => this.setState({ type: false }), 1000)
-      } else this.setState({ type: false })
+    } else if (value !== prevState.value) {
+      this.setState({ visible: false })
     }
   }
 
@@ -96,7 +100,7 @@ export class Contact extends Component {
   }
 
   render () {
-    const { step, value, valid, placeholder, type } = this.state
+    const { step, value, valid, placeholder, type, visible } = this.state
 
     return (
       <section className='contact'>
@@ -125,7 +129,15 @@ export class Contact extends Component {
           <span className={`placeholder ${value === '' && placeholder === 2 ? '' : 'hidden'}`}>
             (123) 456-7890</span>
 
-          <div className={`button ${type ? '' : 'hidden'} ${valid ? 'valid' : 'invalid'}`}>
+          <div
+            className={`button ${
+              visible ? '' : 'hidden'} ${valid ? 'valid' : 'invalid'
+            }`}
+            onClick={() => {
+              const { type, value } = this.state
+              console.debug(type, value)
+            }}
+          >
             {type === 'phone' ? <div><MessageIcon /> Send me a text!</div> : ''}
             {type === 'twitter' ? <div><TwitterIcon /> Tweet at me!</div> : ''}
             {type === 'email' ? <div><MailIcon /> Email me!</div> : ''}
