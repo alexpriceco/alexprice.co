@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Stylesheet from '../general/stylesheet.js'
+import { TODOIST_TOKEN } from '../../config.js'
 import sheet from './contact.scss'
+import axios from 'axios'
 
 const MailIcon = () => (
   <svg width='18' height='15.75' viewBox='0 0 16 14' fill='none'>
@@ -9,8 +11,8 @@ const MailIcon = () => (
 )
 
 const TwitterIcon = () => (
-  <svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-    <path d='M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z' />
+  <svg role='img' viewBox='0 0 24 24' width='18' height='18' xmlns='http://www.w3.org/2000/svg' style={{ marginBottom: '-2px' }}>
+    <path fill='white' d='M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z' />
   </svg>
 )
 
@@ -38,6 +40,16 @@ export class Contact extends Component {
     }
   }
 
+  guid () {
+    let s4 = () => (
+      Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16).substring(1)
+    )
+
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4()
+  }
+
   componentDidUpdate (prevProps, prevState) {
     if (prevState.step === 0 && this.state.step === 1) {
       if (this.inputRef) this.inputRef.focus()
@@ -54,7 +66,7 @@ export class Contact extends Component {
         value.charAt(0) === '+'
       ) return 'phone'
       else if (value.charAt(0) === '@') return 'twitter'
-      else if (/(.+)@(.+)/.test(value)) return 'email'
+      else if (/(.+)@/.test(value)) return 'email'
       else if (value.length > 5) return 'plain'
       else return false
     }
@@ -71,12 +83,13 @@ export class Contact extends Component {
     if (value) {
       const newType = getTypeOf(value)
       const newValid = isValid(newType, value)
+      const { valid, visible } = this.state
 
       if ((newType === 'false' || newType === false) && type) {
         if (prevState.visible) {
           this.setState({
             visible: false,
-            valid: newValid
+            valid: false
           })
         }
       } else if (newType !== type && newType) {
@@ -85,7 +98,8 @@ export class Contact extends Component {
           valid: newValid,
           visible: true
         })
-      }
+      } else if (type && !visible) this.setState({ visible: true })
+      else if (valid !== newValid) this.setState({ valid: newValid })
     } else if (value !== prevState.value) {
       this.setState({ visible: false })
     }
@@ -135,13 +149,41 @@ export class Contact extends Component {
             }`}
             onClick={() => {
               const { type, value } = this.state
-              console.debug(type, value)
+              const verb = (() => {
+                switch (type) {
+                  case 'twitter': return 'Tweet'
+                  case 'email': return 'Email'
+                  case 'phone': return 'Call'
+                  default: return ''
+                }
+              })()
+
+              const url = 'https://beta.todoist.com/API/v8/tasks'
+
+              axios.post(url, {
+                'due_string': 'today',
+                'content': `${verb} ${value}`
+              }, {
+                'headers': {
+                  'Content-Type': 'application/json',
+                  'X-Request-Id': this.guid(),
+                  'Authorization': `Bearer ${TODOIST_TOKEN}`
+                }
+              })
+              .then(() => this.setState({ step: 2 }))
+              .catch(error => {
+                this.setState({
+                  loading: false,
+                  step: -1,
+                  error
+                })
+              })
             }}
           >
             {type === 'phone' ? <div><MessageIcon /> Send me a text!</div> : ''}
             {type === 'twitter' ? <div><TwitterIcon /> Tweet at me!</div> : ''}
             {type === 'email' ? <div><MailIcon /> Email me!</div> : ''}
-            {type === false ? <div><MailIcon /> Send it!</div> : ''}
+            {['phone', 'twitter', 'email'].includes(type) ? '' : <div><MailIcon /> Send it!</div>}
           </div>
         </div>
 
@@ -150,7 +192,7 @@ export class Contact extends Component {
         </div>
 
         <div className={step === -1 ? '' : (step === 1 ? 'down' : 'up')}>
-          <h2>Error state</h2>
+          <h2>Something's gone horribly wrong. {this.state.error}</h2>
         </div>
 
         <Stylesheet sheet={sheet} />
