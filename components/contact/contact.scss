@@ -89,7 +89,7 @@ section.contact {
     padding: 1em;
     font-size: 1.125em;
     color: $white;
-    background: $light-grey;
+    background: $darkgrey;
     border-radius: 2px;
     margin-top: 1em;
     max-width: 24em;
@@ -119,7 +119,7 @@ section.contact {
 
     &.invalid {
       pointer-events: none;
-      &::before { background: $light-grey; }
+      &::before { background: $darkgrey; }
       opacity: 0.75;
     }
 
@@ -147,3 +147,24 @@ section.contact {
     margin: 10vh 0;
   }
 }
+
+@include for-size(tablet-portrait-up) {
+  main.daymode section.contact {
+    > div { h2, p { color: $white; } }
+
+    input {
+      color: $black;
+      background: $lightgrey;
+    }
+
+    .placeholder {
+      color: rgba($black, 0.6);
+    }
+
+     background: darken($white, 2%);
+     > div h2, > div p {
+       color: $black;
+       text-shadow: 0px 2px 4px rgba($black, 0);
+     }
+   }
+ }

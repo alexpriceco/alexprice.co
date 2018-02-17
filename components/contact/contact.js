@@ -10,6 +10,12 @@ const MailIcon = () => (
   </svg>
 )
 
+const ChatIcon = () => (
+  <svg width='16' height='16' viewBox='0 0 18 18' style={{ marginRight: '0.5em', marginBottom: '-2px' }}>
+    <path strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' stroke='white' transform='translate(1 1)' d='M 16 7.55557C 16.003 8.72878 15.7289 9.88613 15.2 10.9333C 14.5728 12.1882 13.6086 13.2437 12.4155 13.9816C 11.2223 14.7195 9.84731 15.1106 8.44443 15.1111C 7.27122 15.1142 6.11387 14.8401 5.06666 14.3111L 0 16L 1.68889 10.9333C 1.15994 9.88613 0.885829 8.72878 0.888887 7.55557C 0.88943 6.15269 1.28054 4.77766 2.01841 3.58451C 2.75629 2.39135 3.81178 1.42719 5.06666 0.800024C 6.11387 0.271075 7.27122 -0.00303356 8.44443 2.53227e-05L 8.88887 2.53227e-05C 10.7416 0.10224 12.4916 0.884256 13.8037 2.19634C 15.1157 3.50843 15.8978 5.25837 16 7.11113L 16 7.55557Z' />
+  </svg>
+)
+
 const TwitterIcon = () => (
   <svg role='img' viewBox='0 0 24 24' width='18' height='18' xmlns='http://www.w3.org/2000/svg' style={{ marginBottom: '-2px' }}>
     <path fill='white' d='M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z' />
@@ -120,11 +126,11 @@ export class Contact extends Component {
       <section className='contact'>
         <div className={step === 0 ? '' : 'up'}>
           <h2>I’m searching for a full-time product design role. Think I’d be a good fit for your team?</h2>
-          <a title='📧 alex@alexprice.co' className='button' onClick={() => this.setState({ step: 1 })}>
+          <a title='Let me know how to reach you?' className='button' onClick={() => this.setState({ step: 1 })}>
             <div>
-              <MailIcon />
+              <ChatIcon />
 
-              <span>Get in touch!</span>
+              <span>Let's talk!</span>
             </div>
           </a>
         </div>
