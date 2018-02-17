@@ -8,32 +8,27 @@ export class ArticleLinks extends Component {
     this.state = {
       loading: true,
       src: '',
-      cards: [
-        {
-          title: '🚙 Evaline, Inc.',
-          id: 'evaline-inc',
-          summary: `Led product design for three products, then used React and GraphQL to build them.`,
-          linkText: 'Read about it'
-        },
-        {
-          title: '⚡️ VEXvolt',
-          id: 'vexvolt',
-          summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`,
-          linkText: 'Check it out'
-        },
-        {
-          title: '⚔️ Playbook',
-          id: 'playbook',
-          summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`,
-          linkText: 'Discover Playbook'
-        },
-        {
-          title: '📄 Resume',
-          id: 'resume',
-          summary: `Get a brief overview of some skills I've employed, and projects I’ve worked on.`,
-          linkText: 'View resume'
-        }
-      ]
+      cards: [{
+        id: 'evaline-inc',
+        title: 'Evaline, Inc.',
+        linkText: 'Read about it',
+        summary: `Led product design for three products, then used React and GraphQL to build them.`
+      }, {
+        id: 'playbook',
+        title: 'Playbook',
+        linkText: 'Discover Playbook',
+        summary: `A simpler D&D character sheet, built with great design, and a focused user experience.`
+      }, {
+        id: 'vexvolt',
+        title: 'VEXvolt',
+        linkText: 'Check it out',
+        summary: `A patented hardware product for VEX robotics competitors, 3d printed on a Form 2.`
+      }, {
+        id: 'resume',
+        title: 'Resume',
+        linkText: 'View resume',
+        summary: `Get a brief overview of some skills I've employed, and projects I’ve worked on.`
+      }]
     }
 
     this.navigateTo = this.navigateTo.bind(this)
