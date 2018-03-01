@@ -7,10 +7,10 @@ div.loader {
   z-index: 10;
   opacity: 0;
 
-  position: fixed;
+  position: absolute;
   pointer-events: none;
-  top: calc(50% - 1.25em);
-  left: calc(50% - 3.75em);
+  top: calc(50vh - 1.25em);
+  left: calc(50vw - 3.75em);
 
   &.loading {
     z-index: 10;
