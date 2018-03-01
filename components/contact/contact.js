@@ -33,11 +33,6 @@ export class Contact extends Component {
     super(props, context)
     this.state = {
       step: 0,
-      // -1 is error
-      // 0 is default
-      // 1 is filling
-      // 2 is sent
-
       placeholder: 0,
       visible: false,
       type: false,
@@ -120,7 +115,14 @@ export class Contact extends Component {
   }
 
   render () {
-    const { step, value, valid, placeholder, type, visible } = this.state
+    const {
+      step,
+      type,
+      value,
+      valid,
+      visible,
+      placeholder
+    } = this.state
 
     return (
       <section className='contact'>
@@ -142,6 +144,7 @@ export class Contact extends Component {
             onInput={(e) => this.setState({ value: e.target.value })}
             ref={(r) => { this.inputRef = r }}
           />
+
           <span className={`placeholder ${value === '' && placeholder === 0 ? '' : 'hidden'}`}>
             your.email@company.com</span>
           <span className={`placeholder ${value === '' && placeholder === 1 ? '' : 'hidden'}`}>
@@ -171,9 +174,9 @@ export class Contact extends Component {
                 'content': `${verb} ${value}`
               }, {
                 'headers': {
+                  'Authorization': `Bearer ${TODOIST_TOKEN}`,
                   'Content-Type': 'application/json',
-                  'X-Request-Id': this.guid(),
-                  'Authorization': `Bearer ${TODOIST_TOKEN}`
+                  'X-Request-Id': this.guid()
                 }
               })
               .then(() => this.setState({ step: 2 }))
@@ -189,7 +192,8 @@ export class Contact extends Component {
             {type === 'phone' ? <div><MessageIcon /> Send me a text!</div> : ''}
             {type === 'twitter' ? <div><TwitterIcon /> Tweet at me!</div> : ''}
             {type === 'email' ? <div><MailIcon /> Email me!</div> : ''}
-            {['phone', 'twitter', 'email'].includes(type) ? '' : <div><MailIcon /> Send it!</div>}
+            {['phone', 'twitter', 'email'].includes(type) ? ''
+              : <div><MailIcon /> Send it!</div>}
           </div>
         </div>
 
