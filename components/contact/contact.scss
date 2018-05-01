@@ -10,6 +10,12 @@ section.contact {
   padding: 10vh 2em;
   background: $black;
 
+  img {
+    height: 1.25em;
+    margin-left: 0;
+    vertical-align: top;
+  }
+
   &::before {
     content: '';
     position: absolute;

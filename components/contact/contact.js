@@ -127,7 +127,7 @@ export class Contact extends Component {
     return (
       <section className='contact'>
         <div className={step === 0 ? '' : 'up'}>
-          <h2>I’m searching for a full-time product design role. Think I’d be a good fit for your team?</h2>
+          <h2>Open to part-time contracts, or talking about rad ideas. Or maybe both? <img src={`/static/emoji/winking.png`} rel='' /></h2>
           <a title='Let me know how to reach you?' className='button' onClick={() => this.setState({ step: 1 })}>
             <div>
               <ChatIcon />
