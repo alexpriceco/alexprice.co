@@ -101,7 +101,7 @@
     }
   }
 
-  @include keyframes('fadeOut') {
+  @include keyframes('modifiedFadeOut') {
     0% {
       -webkit-transform: translate(-50%, 0);
       transform: translate(-50%, 0);
@@ -119,6 +119,6 @@
   &.hidden {
     @include animation-delay(0);
     @include animate(0.5s);
-    animation-name: fadeOut;
+    animation-name: modifiedFadeOut;
   }
 }
