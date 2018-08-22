@@ -10,6 +10,10 @@ body {
   font-weight: 400;
 }
 
+main {
+  border-radius: 0.5em;
+}
+
 main.loading > *,
 main.loading header > div h1,
 main.loading header > div h2,
@@ -24,7 +28,7 @@ main.loaded header > div h2,
 main.loaded header > div .point {
   @include animation-delay(0.1s);
   @include animate(0.5s);
-  @extend .fadeIn;
+  @extend .fadeInDown;
 }
 
 main.loaded header > div h1 { @include animation-delay(0.25s); }
@@ -105,11 +109,14 @@ header {
   align-items: flex-start;
   flex-direction: column;
   position: relative;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  overflow: hidden;
 
   &::after {
     content: '';
     width: 100vw;
-    height: 2em;
+    height: 80vh;
     background: $black;
     position: absolute;
     left: 0; bottom: -1em;
@@ -241,6 +248,8 @@ main > article.project {
   width: 100vw;
   padding: 1em;
   position: relative;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
 
   h2 {
     font-size: 1.75em;

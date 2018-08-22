@@ -58,6 +58,7 @@ main {
   @include ease(0.5s);
   background: $black;
   overflow: hidden;
+  border-radius: 0.5em;
 }
 
 main.daymode { background: $white; }

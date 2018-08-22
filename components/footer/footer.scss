@@ -10,6 +10,31 @@ footer {
   align-items: center;
   box-sizing: border-box;
   width: 100vw;
+  position: relative;
+  z-index: 1;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    width: 100%;
+  }
+
+  &::after {
+    z-index: 0;
+    top: -0.5em;
+    height: 0.5em;
+    background: $white;
+  }
+
+  &::before {
+    z-index: -2;
+    top: -0.5em;
+    height: 1em;
+    background: $black;
+  }
 
   article.social {
     display: flex;

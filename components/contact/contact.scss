@@ -9,6 +9,8 @@ section.contact {
   overflow: hidden;
   padding: 10vh 2em;
   background: $black;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 
   img {
     height: 1.25em;

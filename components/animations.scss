@@ -12,7 +12,19 @@
   }
 }
 
-.fadeIn {
+@include keyframes('fadeInDown') {
+  0% {
+    -webkit-transform: translateY(-0.5em);
+    transform: translateY(-0.5em);
+    opacity: 0;
+  } 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fadeIn, .fadeInDown {
   -webkit-font-smoothing: antialiased;
 }
 
