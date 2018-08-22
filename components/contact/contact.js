@@ -202,7 +202,14 @@ export class Contact extends Component {
         </div>
 
         <div className={step === -1 ? '' : (step === 1 ? 'down' : 'up')}>
-          <h2>Something's gone horribly wrong. {this.state.error}</h2>
+          <h2>Something's gone horribly wrong.</h2>
+          <a
+            href='mailto:alex@alexprice.co'
+            title='Sorry about that!'
+            className='button'
+          >
+            <div><MailIcon /> Send an email</div>
+          </a>
         </div>
 
         <Stylesheet sheet={sheet} />
