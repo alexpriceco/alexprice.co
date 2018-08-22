@@ -1,0 +1,124 @@
+@import '../vars';
+@import '../animations';
+
+.banner {
+  position: fixed;
+  left: 50%;
+  bottom: 1em;
+  z-index: 50;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  padding-left: 4em;
+  border-radius: 0.25em;
+  background: $black;
+  color: $white;
+  text-decoration: none;
+  transform: translateX(-50%);
+  max-width: 100vw;
+  width: auto;
+  white-space: pre;
+  @include ease(150ms);
+
+  @include for-size(tablet-portrait-up) {
+    br { display: none; }
+  }
+
+  .dismiss {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3em;
+    height: 100%;
+    @include transform(translateY(-50%));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3em;
+      height: 100%;
+      background: $darkgrey;
+      @include ease(150ms);
+      z-index: 0;
+      opacity: 0;
+      border-top-left-radius: 0.25em;
+      border-bottom-left-radius: 0.25em;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3em;
+      height: 100%;
+      background: $black;
+      z-index: -1;
+      border-top-left-radius: 0.25em;
+      border-bottom-left-radius: 0.25em;
+    }
+
+    svg {
+      z-index: 1;
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover::after { opacity: 1; }
+  }
+
+  a, a:visited {
+    color: $white;
+    text-decoration: none;
+
+    > a, > a:visited {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
+
+  &:hover {
+    background: $darkgrey;
+  }
+
+  @include keyframes('modifiedFadeIn') {
+    0% {
+      -webkit-transform: translate(-50%, 0.5em);
+      transform: translate(-50%, 0.5em);
+      opacity: 0;
+    } 100% {
+      -webkit-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+
+  @include keyframes('fadeOut') {
+    0% {
+      -webkit-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+      opacity: 1;
+    } 100% {
+      -webkit-transform: translate(-50%, 0.5em);
+      transform: translate(-50%, 0.5em);
+      opacity: 0;
+    }
+  }
+
+  @include animate(0.25s);
+  animation-name: modifiedFadeIn;
+
+  &.hidden {
+    @include animation-delay(0);
+    @include animate(0.5s);
+    animation-name: fadeOut;
+  }
+}

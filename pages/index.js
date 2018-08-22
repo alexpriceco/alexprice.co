@@ -11,6 +11,7 @@ import Contact from '../components/contact/contact.js'
 import Footer from '../components/footer/footer.js'
 import Loader from '../components/loader/loader.js'
 import Image from '../components/general/image.js'
+import Banner from '../components/banner'
 
 import ReactGA from 'react-ga'
 
@@ -22,7 +23,6 @@ export class Index extends Component {
       loading: true,
       loaded: false,
       error: '',
-      bannerHidden: false,
 
       cards: [{
         id: 'evaline-inc',
@@ -88,20 +88,7 @@ export class Index extends Component {
         <DocumentHead />
         <Loader status={loadingClass} dark={daytime} />
         <header style={{ opacity: loading ? 0 : 'inherit' }}>
-          <a className={'banner' + (this.state.bannerHidden ? ' hidden' : '')}>
-            <div className='dismiss' onClick={() => this.setState({
-              bannerHidden: true
-            })}>
-              <svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
-                <rect width='20' height='20' fill='black' fillOpacity='0' />
-                <rect width='20' height='20' fill='black' fillOpacity='0' />
-                <path d='M5 15L15 5M15 15L5 5' stroke='white' strokeLinecap='round' strokeLinejoin='round' />
-              </svg>
-            </div>
-            <a href='mailto:alex@alexprice.co'>
-              I'm looking for an after-hours project! <br />Need a designer? <a href='mailto:alex@alexprice.co' title={`Let's work together!`}>Shoot me an email.</a>
-            </a>
-          </a>
+          <Banner />
           <div>
             <article className='title-group'>
               <h1>
