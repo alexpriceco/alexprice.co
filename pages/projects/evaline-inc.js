@@ -16,7 +16,6 @@ export const ArrowIcon = () => (
 
 export class Page extends Component {
   setRef (image) {
-    console.debug(this.state, this.props)
     mediumZoom(image, {
       margin: 24,
       background: 'rgba(0, 0, 0, 0.25)'

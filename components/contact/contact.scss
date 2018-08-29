@@ -9,8 +9,6 @@ section.contact {
   overflow: hidden;
   padding: 10vh 2em;
   background: $black;
-  border-bottom-left-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
 
   img {
     height: 1.25em;
@@ -114,6 +112,7 @@ section.contact {
     &:nth-of-type(3) { @include transform(translate(1em, -4.5em)); }
     &.hidden {
       opacity: 0;
+      pointer-events: none;
       @include transform(translate(1em, -2em));
       &:nth-of-type(2) { @include transform(translate(1em, -3.125em)); }
       &:nth-of-type(3) { @include transform(translate(1em, -4.25em)); }
@@ -133,6 +132,7 @@ section.contact {
 
     &.hidden {
       @include transform(translateY(1em));
+      pointer-events: none;
       opacity: 0;
     }
   }
@@ -157,6 +157,11 @@ section.contact {
 }
 
 @include for-size(tablet-portrait-up) {
+  section.contact {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+  }
+
   main.daymode section.contact {
     > div { h2, p { color: $white; } }
 
