@@ -44,8 +44,8 @@ export class ArticleLinks extends Component {
   navigateTo (id) {
     let path = `/projects/${id}`
     if (id === 'resume') {
-      path = `static/projects/resume/Alex Price, Product Designer.pdf`
-      window.location.href += path
+      path = `/static/projects/resume/Alex Price, Product Designer.pdf`
+      window.location.origin += path
     } else {
       this.props.setLoading(() => {
         setTimeout(() => Router.push(path), 100)
