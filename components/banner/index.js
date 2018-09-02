@@ -46,7 +46,6 @@ export class Banner extends Component {
     return (
       <a
         ref={(el) => { this.banner = el }}
-        style={{ opacity: 0 }}
         className={'banner' + (this.state.bannerHidden ? ' hidden' : '')}>
         <div className='dismiss' onClick={() => {
           this.setState({ userHidden: true, bannerHidden: true })
