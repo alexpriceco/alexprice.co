@@ -15,7 +15,8 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  max-width: 28em;
+  width: 600px;
+  max-width: calc(100vw - 4em);
   margin: 0 auto;
   height: 80vh;
 
@@ -29,16 +30,21 @@ h1 {
   font-size: 2em;
 }
 
-p {
+ul {
+  list-style: none;
   margin: 0;
-  display: inline-block;
-  line-height: 1.75em;
-  font-weight: 400;
-  font-size: 1.25em;
-}
+  padding: 0;
 
-p > span {
-  opacity: 0.8;
+  li {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 0.5em;
+  }
+
+  svg {
+    padding-right: 1em;
+    margin-bottom: -3px;
+  }
 }
 
 a, a:visited {
@@ -48,12 +54,12 @@ a, a:visited {
 
   &::after {
     content: '';
-    width: calc(100% - 1.3em);
+    width: 100%;
     height: 1px;
     background: rgba($white, 0.5);
     position: absolute;
-    bottom: 5px;
-    left: 0.4em;
+    bottom: 4px;
+    left: 0;
   }
 
   &::before {
@@ -64,12 +70,13 @@ a, a:visited {
     height: 1px;
     background: rgba($white, 1);
     position: absolute;
-    bottom: 5px;
-    left: 0.4em;
+    bottom: 4px;
+    left: 50%;
   }
 
   &:hover::before {
-    width: calc(100% - 1.3em);
+    width: 100%;
+    left: 0;
     opacity: 1;
   }
 }
