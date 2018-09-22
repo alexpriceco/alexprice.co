@@ -130,9 +130,13 @@ export default class Home extends Component {
             if (event.key === 'Enter') this.tryKey(event.target.value)
           }}
         />
-        <span style={{ opacity: 0.5, paddingLeft: '1em' }}>
-        Todoist.com > settings > integrations
-        </span>
+        <a
+          className='unstyled'
+          href='https://todoist.com/prefs/integrations'
+          style={{ marginLeft: '1em' }}
+        >
+          Todoist.com → settings → integrations
+        </a>
       </section>
     )
   }

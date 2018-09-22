@@ -52,7 +52,7 @@ a, a:visited {
   text-decoration: none;
   position: relative;
 
-  &::after {
+  &:not(.unstyled)::after {
     content: '';
     width: 100%;
     height: 1px;
@@ -62,7 +62,7 @@ a, a:visited {
     left: 0;
   }
 
-  &::before {
+  &:not(.unstyled)::before {
     @include ease(150ms);
     content: '';
     width: 0;
@@ -79,6 +79,12 @@ a, a:visited {
     left: 0;
     opacity: 1;
   }
+
+  &.unstyled {
+    opacity: 0.5;
+    @include ease(150ms);
+    &:hover { opacity: 1; }
+  }
 }
 
 input {
@@ -89,8 +95,8 @@ input {
   min-width: 28em;
   box-sizing: border-box;
   background: $black;
-  border-top: rgba($white, 0.1) 1px solid;
-  border-bottom: rgba($white, 0.1) 1px solid;
+  border-radius: 2px;
+  border: rgba($white, 0.1) 1px solid;
   font-family: 'Inconsolata', monospace;
   font-weight: 400;
   color: $white;
