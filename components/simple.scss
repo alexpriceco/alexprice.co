@@ -28,6 +28,10 @@ h1 {
   font-weight: 400;
   margin-bottom: 0.5em;
   font-size: 2em;
+
+  @include for-size(tablet-portrait-up) {
+    br { display: none; }
+  }
 }
 
 ul {
@@ -39,11 +43,47 @@ ul {
     margin: 0;
     padding: 0;
     padding-bottom: 0.5em;
-  }
+    cursor: pointer;
+    span {
+      opacity: 0.75;
+      position: relative;
+      @include ease(150ms);
+      &.last { opacity: 0.5; }
 
-  svg {
-    padding-right: 1em;
-    margin-bottom: -3px;
+      &::before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        opacity: 0;
+        @include ease(150ms);
+        transform: translateY(-50%);
+        background: $white;
+        position: absolute;
+        bottom: 50%;
+        left: 0;
+      }
+    }
+
+    svg {
+      padding-right: 1em;
+      margin-bottom: -3px;
+      rect { @include ease(150ms); }
+    }
+
+    &:hover {
+      span:not(.last) { opacity: 0.9; }
+      svg rect { opacity: 0.4; }
+    }
+
+    &.completed {
+      span {
+        opacity: 0.5;
+        &::before { opacity: 1; }
+      }
+
+      svg rect { opacity: 0.15; }
+      &:hover span { opacity: 0.75; }
+    }
   }
 }
 

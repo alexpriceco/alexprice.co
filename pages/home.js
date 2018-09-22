@@ -81,7 +81,6 @@ export default class Home extends Component {
   }
 
   async fetchTasks (provided) {
-    const uri = 'https://beta.todoist.com/API/v8/tasks'
     const token = provided || await localStorage.getItem('todoistToken')
 
     return new Promise((resolve, reject) => {
@@ -94,16 +93,10 @@ export default class Home extends Component {
           else console.debug('this.input undef', this.input)
         })
       } else {
-        axios.get(uri, {
-          params: {
-            'token': token,
-            'filter': `due ${this.getDate()} | overdue`
-          }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        axios.get('https://beta.todoist.com/API/v8/tasks', {
+          params: { 'filter': `due ${this.getDate()} | overdue` }
         }).then(response => {
-          for (let task of response.data) {
-            console.debug(task)
-          }
-
           this.setState({
             tasks: response.data,
             loading: false
@@ -115,6 +108,38 @@ export default class Home extends Component {
           )
         })
       }
+    })
+  }
+
+  async updateTask (taskId, action) {
+    const uri = `https://beta.todoist.com/API/v8/tasks/${taskId}/${action}`
+    const currentStatus = this.state.tasks
+      .filter((t) => t.id === taskId)[0]
+      .completed
+
+    if (action === 'reopen' && currentStatus === false) return
+
+    const updatedTaskList = this.state.tasks.map((task) => {
+      if (task.id === taskId) {
+        const completed = (action === 'close')
+        return { ...task, completed }
+      } else return task
+    })
+
+    this.setState({ tasks: updatedTaskList })
+
+    axios.post(uri).catch((error) => {
+      const updatedTaskList = this.state.tasks.map((task) => {
+        if (task.id === taskId) {
+          const completed = (action !== 'close')
+          return { ...task, completed }
+        } else return task
+      })
+
+      this.setState({
+        tasks: updatedTaskList,
+        error
+      })
     })
   }
 
@@ -142,21 +167,34 @@ export default class Home extends Component {
   }
 
   renderTasks (tasks) {
-    const filteredTasks = this.state.working
+    let filteredTasks = this.state.working
       ? tasks.filter((task) => task.project_id === 2180640125)
       : tasks.filter((task) => task.project_id !== 2180640125)
 
+    if (filteredTasks.length === 0) {
+      filteredTasks = this.state.working
+        ? tasks.filter((task) => task.project_id !== 2180640125)
+        : tasks.filter((task) => task.project_id === 2180640125)
+    }
+
+    if (filteredTasks.length > 5) filteredTasks.length = 5
+
     let formattedList = filteredTasks.map((task) => {
       const formattedTask = task.content
-        .replace(/(?:__|[*#])|\[(.*?)\]\(.*?\)/gm, (str) => {
-          console.info(str)
+        .replace(/\[(.*?)\]\(.*?\)/gm, (str) => {
           const url = str.match(/\(.*?\)/)[0].replace(/\)|\(/g, '')
           const label = str.match(/\[(.*?)\]/)[0].replace(/\]|\[/g, '')
           return `<a href='${url}' title=${label}>${label}</a>`
         })
 
+      const action = task.completed ? 'reopen' : 'close'
+
       return (
-        <li key={task.id}>
+        <li
+          key={task.id}
+          className={task.completed ? 'completed' : ''}
+          onClick={() => this.updateTask(task.id, action)}
+        >
           <svg width='18' height='18' viewBox='0 0 18 18' fill='none'>
             <rect
               opacity='0.25'
@@ -168,7 +206,6 @@ export default class Home extends Component {
           </svg>
 
           <span
-            style={{ opacity: 0.75 }}
             dangerouslySetInnerHTML={{ __html: formattedTask }}
           />
         </li>
@@ -191,7 +228,7 @@ export default class Home extends Component {
             />
           </svg>
 
-          <span style={{ opacity: 0.5 }}>
+          <span className='last'>
             {`${n} more${nonwork} task${n > 1 ? 's' : ''}`}
           </span>
         </li>
@@ -212,7 +249,9 @@ export default class Home extends Component {
         { this.state.noToken
           ? this.renderNoToken()
           : <section>
-            <h1>{this.state.date}</h1>
+            <h1 dangerouslySetInnerHTML={{ __html:
+              this.state.date.replace(' ', ' <br />')
+            }} />
             {this.renderTasks(this.state.tasks)}
           </section>
         }
