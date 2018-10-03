@@ -68,7 +68,7 @@ export class Index extends Component {
   navigateTo (id) {
     let path = `/projects/${id}`
     if (id === 'resume') {
-      path = `static/projects/resume/Alex Price, Product Designer.pdf`
+      path = `static/projects/resume/Alexander Price, Product Designer.pdf`
       window.location.href += path
     } else {
       Router.prefetch(path)
