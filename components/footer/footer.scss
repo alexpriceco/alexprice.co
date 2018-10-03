@@ -110,7 +110,6 @@ footer {
 
     &::before, &::after {
       content: '';
-      opacity: 1;
       position: absolute;
       left: 0;
       border-bottom-left-radius: 0.5em;
@@ -151,5 +150,11 @@ footer {
         span:nth-child(2) { opacity: 0.8; }
       }
     }
+  }
+}
+
+main.daymode footer {
+  &::before, &::after {
+    opacity: 0;
   }
 }

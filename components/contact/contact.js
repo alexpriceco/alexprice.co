@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Stylesheet from '../general/stylesheet.js'
-import { TODOIST_TOKEN } from '../../config.js'
+import { TODOIST } from '../../config.js'
 import sheet from './contact.scss'
 import axios from 'axios'
 
@@ -174,7 +174,7 @@ export class Contact extends Component {
                 'content': `${verb} ${value}`
               }, {
                 'headers': {
-                  'Authorization': `Bearer ${TODOIST_TOKEN}`,
+                  'Authorization': `Bearer ${TODOIST}`,
                   'Content-Type': 'application/json',
                   'X-Request-Id': this.guid()
                 }

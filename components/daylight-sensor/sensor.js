@@ -1,4 +1,6 @@
 import SunCalc from './suncalc.js'
+import { IP } from '../../config.js'
+import axios from 'axios'
 
 /* global localStorage, DOMException */
 // developer.mozilla.org/en-US/
@@ -24,18 +26,19 @@ function storageAvailable (type) {
 async function getStoredCoords () {
   return new Promise((resolve, reject) => {
     let promises = [localStorage.getItem('lat'), localStorage.getItem('lon')]
-    Promise.all(promises).then((coordinates) => {
-      if (coordinates[0] === 'undefined' || coordinates[1] === 'undefined') {
+
+    Promise.all(promises).then((coords) => {
+      if (typeof coords[0] !== 'number' || typeof coords[1] !== 'number') {
         getFreshCoords().then((newCoords) => {
           resolve({
-            lat: coordinates[0],
-            lon: coordinates[1]
+            lat: newCoords[0],
+            lon: newCoords[1]
           })
         })
       } else {
         resolve({
-          lat: coordinates[0],
-          lon: coordinates[1]
+          lat: coords[0],
+          lon: coords[1]
         })
       }
     })
@@ -48,19 +51,14 @@ function setFreshCoords (coords) {
 }
 
 async function getFreshCoords () {
-  /* global XMLHttpRequest */
   return new Promise((resolve, reject) => {
-    let request = new XMLHttpRequest()
-    request.open('GET', 'https://freegeoip.net/json/', true)
-    request.onerror = (error) => console.error(`IP coordinates failed: `, error)
-    request.onload = () => {
-      if (request.status >= 200 && request.status < 400) {
-        const res = JSON.parse(request.responseText)
-        resolve({ lat: res.latitude, lon: res.longitude })
-      } else return reject(new Error(`Request status is ${request.status}`))
-    }
-
-    request.send()
+    axios.get('https://ipinfo.io', {
+      headers: { 'Authorizontaion': `Bearer ${IP}` }
+    }).then(response => {
+      if (!response.data) reject(new Error('No location data'))
+      const { loc } = response.data
+      resolve(loc.split(',').map(c => +c))
+    }).catch(error => reject(error))
   })
 }
 
