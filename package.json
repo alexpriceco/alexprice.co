@@ -30,8 +30,8 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "now-build": "next build",
+    "now-start": "next start"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",

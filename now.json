@@ -1,3 +1,7 @@
 {
-  "alias": "alexprice.co"
+  "version": 2,
+  "alias": "alexprice.co",
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" }
+  ]
 }
