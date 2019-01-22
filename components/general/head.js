@@ -6,12 +6,12 @@ export const DocumentHead = (props) => (
     <title>{props.title || 'Alex Price, Digital Product Designer'}</title>
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <meta name='description' content="I'm Alex Price, a Digital Product Designer looking for a job." />
+    <meta name='description' content='Alex Price, Digital Product Designer' />
     <meta property='og:site_name' content='Alex Price, Digital Product Deigner' />
     <meta property='og:title' content='Alex Price, Digital Product Deigner' />
     <meta property='og:image' content='https://alexprice.co/static/me.jpg' />
     <meta property='og:url' content='https://alexprice.co/' />
-    <meta property='og:description' content='Digital product designer from ATX. Background in electric vehicles, robotics, and supply chain edtech. D&D on the weekends.' />
+    <meta property='og:description' content='Digital product designer from Austin. Background in supply chain, fintech, energy, and electric vehicles. D&D on the weekends.' />
 
     <link rel='apple-touch-icon' sizes='180x180' href='/static/favicons/apple-touch-icon.png' />
     <link rel='icon' type='image/png' sizes='32x32' href='/static/favicons/favicon-32x32.png' />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
-import { isDay } from '../components/daylight-sensor/sensor.js'
+import isDay from '../components/daylight-sensor/sensor.js'
 
 import DocumentHead from '../components/general/head.js'
 import Stylesheet from '../components/general/stylesheet.js'
@@ -11,7 +11,6 @@ import Contact from '../components/contact/contact.js'
 import Footer from '../components/footer/footer.js'
 import Loader from '../components/loader/loader.js'
 import Image from '../components/general/image.js'
-import Banner from '../components/banner'
 
 import ReactGA from 'react-ga'
 
@@ -88,7 +87,6 @@ export class Index extends Component {
         <DocumentHead />
         <Loader status={loadingClass} dark={daytime} />
         <header style={{ opacity: loading ? 0 : 'inherit' }}>
-          <Banner />
           <div>
             <article className='title-group'>
               <h1>

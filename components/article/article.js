@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { isDay } from '../daylight-sensor/sensor.js'
+import isDay from '../daylight-sensor/sensor.js'
 
 import DocumentHead from '../general/head.js'
 import Stylesheet from '../general/stylesheet.js'
@@ -9,7 +9,6 @@ import sheet from './article.scss'
 import Contact from '../contact/contact.js'
 import Footer from '../footer/footer.js'
 import Loader from '../loader/loader.js'
-import Banner from '../banner'
 
 import ReactGA from 'react-ga'
 
@@ -47,7 +46,6 @@ export class Page extends Component {
       <main className={`${loadingClass} ${daymode} ${this.props.id}`}>
         <DocumentHead />
         <Loader status={loadingClass} dark={daytime} />
-        <Banner />
         {this.props.children}
         <Contact />
         <Footer />

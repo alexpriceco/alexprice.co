@@ -1,20 +1,11 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 
-import mediumZoom from 'medium-zoom'
-
 import Image from '../../components/general/image.js'
 import ArticleLinks from '../../components/article/links.js'
 import Article from '../../components/article/article.js'
 
 export class Page extends Component {
-  setRef (image) {
-    mediumZoom(image, {
-      margin: 24,
-      background: 'rgba(0, 0, 0, 0.25)'
-    })
-  }
-
   render () {
     return (
       <Article id={'vexvolt'}>

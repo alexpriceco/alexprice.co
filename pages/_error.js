@@ -5,6 +5,7 @@ import sheet from '../components/simple.scss'
 
 export default class Error extends Component {
   static getInitialProps ({ res, jsonPageRes }) {
+    console.debug(res)
     const statusCode = res
       ? res.statusCode
       : (jsonPageRes ? jsonPageRes.status : null)
@@ -17,10 +18,9 @@ export default class Error extends Component {
         <Stylesheet sheet={sheet} />
         <Head title={`Disaster! (${this.props.statusCode} error)`} />
         <section>
-          <h1>Disaster!</h1>
           <p>
             { this.props.statusCode === 404
-              ? `The page you're looking for doesn't exist.`
+              ? `${'test'}`
               : (this.props.statusCode === 403
                 ? `You don't have access to this page.`
                 : `Something's gone terribly wrong.`)

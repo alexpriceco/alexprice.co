@@ -45,11 +45,6 @@ async function getStoredCoords () {
   })
 }
 
-function setFreshCoords (coords) {
-  localStorage.setItem('lat', coords.lat)
-  localStorage.setItem('lon', coords.lon)
-}
-
 async function getFreshCoords () {
   return new Promise((resolve, reject) => {
     axios.get('https://ipinfo.io', {
@@ -60,6 +55,11 @@ async function getFreshCoords () {
       resolve(loc.split(',').map(c => +c))
     }).catch(error => reject(error))
   })
+}
+
+function setFreshCoords (coords) {
+  localStorage.setItem('lat', coords.lat)
+  localStorage.setItem('lon', coords.lon)
 }
 
 function isItDaytime (coords) {
@@ -73,30 +73,30 @@ function isItDaytime (coords) {
   }
 }
 
-module.exports = {
-  isDay: async () => {
-    return new Promise((resolve, reject) => {
-      if (storageAvailable('localStorage')) {
-        getStoredCoords().then((coords) => {
-          if (coords.lat) resolve(isItDaytime(coords))
-          else {
-            getFreshCoords().then((freshCoords) => {
-              setFreshCoords(freshCoords)
-              resolve(isItDaytime(freshCoords))
-            }).catch((e) => {
-              console.error(e)
-              resolve(isItDaytime(false))
-            })
-          }
-        })
-      } else {
-        getFreshCoords().then((freshCoords) => {
-          resolve(isItDaytime(freshCoords))
-        }).catch((e) => {
-          console.error(e)
-          resolve(isItDaytime(false))
-        })
-      }
-    })
-  }
+async function isDay () {
+  return new Promise((resolve, reject) => {
+    if (storageAvailable('localStorage')) {
+      getStoredCoords().then((coords) => {
+        if (coords.lat) resolve(isItDaytime(coords))
+        else {
+          getFreshCoords().then((freshCoords) => {
+            setFreshCoords(freshCoords)
+            resolve(isItDaytime(freshCoords))
+          }).catch((e) => {
+            console.error(e)
+            resolve(false)
+          })
+        }
+      })
+    } else {
+      getFreshCoords().then((freshCoords) => {
+        resolve(isItDaytime(freshCoords))
+      }).catch((e) => {
+        console.error(e)
+        resolve(false)
+      })
+    }
+  })
 }
+
+export default isDay

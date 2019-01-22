@@ -1,18 +1,34 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 
-import mediumZoom from 'medium-zoom'
-
 import Image from '../../components/general/image.js'
 import ArticleLinks from '../../components/article/links.js'
 import Article from '../../components/article/article.js'
 
+let mediumZoom
+
 export class Page extends Component {
+  constructor () {
+    super()
+    this.state = { zoomLoaded: false }
+  }
+
+  componentDidMount () {
+    if (typeof window !== 'undefined') {
+      mediumZoom = require('medium-zoom')
+      this.setState({ zoomLoaded: true })
+    }
+  }
+
   setRef (image) {
-    mediumZoom(image, {
-      margin: 24,
-      background: 'rgba(0, 0, 0, 0.25)'
-    })
+    if (this.state.zoomLoaded) {
+      mediumZoom(image, {
+        margin: 24,
+        background: 'rgba(0, 0, 0, 0.25)'
+      })
+    }
+
+    return false
   }
 
   render () {

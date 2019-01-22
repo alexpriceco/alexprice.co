@@ -1,17 +1,21 @@
 import { Component } from 'react'
 
+let mediumZoom
+
 export class Image extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
       loading: true,
-      setRef: false,
-      style: {},
       src: ''
     }
   }
 
   componentDidMount () {
+    if (typeof window !== 'undefined') {
+      mediumZoom = require('medium-zoom').default
+    }
+
     if (this.props.src && this.state.loading) {
       this.setState({ src: this.props.src.replace('-min', '') })
       this.loadSrc(this.props.src.replace('-min', ''))
@@ -26,8 +30,11 @@ export class Image extends Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (prevProps.setRef && this.image && !this.state.setRef) {
-      prevProps.setRef(this.image)
+    if (this.image && prevState.loading !== this.state.loading) {
+      mediumZoom(this.image, {
+        background: 'rgba(0, 0, 0, 0.5)',
+        margin: 24
+      })
     }
   }
 
@@ -44,8 +51,9 @@ export class Image extends Component {
         rel={this.props.rel}
         src={this.state.src}
         data-zoom-target={this.state.src}
-        ref={(image) => { this.image = image }}
         className={this.props.className || ''}
+        ref={(image) => { this.image = image }}
+        style={{ borderRadius: '4px' }}
       />
     } else {
       return <img

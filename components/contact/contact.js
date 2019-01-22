@@ -127,7 +127,7 @@ export class Contact extends Component {
     return (
       <section className='contact'>
         <div className={step === 0 ? '' : 'up'}>
-          <h2>Open to part-time contracts, or talking about rad ideas. Or maybe both? <img src={`/static/emoji/winking.png`} rel='' /></h2>
+          <h2>Reach out if you want to chat about transportation tech, EVs, or if you just want to talk design. <img src={`/static/emoji/smiling.png`} rel='' /></h2>
           <a title='Let me know how to reach you?' className='button' onClick={() => this.setState({ step: 1 })}>
             <div>
               <ChatIcon />
@@ -141,7 +141,7 @@ export class Contact extends Component {
           <h2>How can I contact you?</h2>
           <input
             value={value}
-            onInput={(e) => this.setState({ value: e.target.value })}
+            onChange={(e) => this.setState({ value: e.target.value })}
             ref={(r) => { this.inputRef = r }}
           />
 
