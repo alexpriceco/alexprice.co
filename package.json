@@ -16,7 +16,7 @@
     "js-yaml": "^3.8.4",
     "medium-zoom": "^1.0.3",
     "next": "^7.0.2",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.13.1",
     "raw-loader": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
