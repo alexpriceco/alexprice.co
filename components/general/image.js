@@ -46,7 +46,13 @@ export class Image extends Component {
   }
 
   render () {
-    if (!this.state.loading) {
+    if (!this.state.loading && this.props.notZoomable) {
+      return <img
+        rel={this.props.rel}
+        src={this.state.src}
+        className={this.props.className || ''}
+      />
+    } else if (!this.state.loading) {
       return <img
         rel={this.props.rel}
         src={this.state.src}

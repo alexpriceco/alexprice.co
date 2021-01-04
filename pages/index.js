@@ -99,6 +99,7 @@ export class Index extends Component {
 
             <Image
               rel=''
+              notZoomable
               className='introducing-me'
               src='static/fade-min.png'
             />

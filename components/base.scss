@@ -25,7 +25,10 @@ main:not(.loading) header {
   > div article.title-group h2 { @include animation-delay(0.15s) }
 
   img.introducing-me {
-    animation-name: fadeInImg;
+    animation-name: fadeInIntroducingMe;
+    @include for-size(tablet-landscape-up) {
+      animation-name: fadeInIntroducingMeLarge;
+    }
     @include animate(1.5s);
     @include animation-delay(0.4s)
   }
@@ -41,7 +44,6 @@ main:not(.loading) header {
 
 main.loaded header {
   section.project-cards .card,
-  > div img.introducing-me,
   > div article.title-group h1,
   > div article.title-group h2 {
      animation-name: none;
