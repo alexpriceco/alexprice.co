@@ -8,7 +8,7 @@
   "author": "Alex Price <alex@alexprice.co>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "body-parser": "^1.17.1",
     "color-convert": "^1.9.0",
